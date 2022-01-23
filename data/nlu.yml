@@ -1,6 +1,14 @@
 version: "2.0"
 
 nlu:
+
+- intent: ask_recipe
+  examples: |
+    - I am hungry
+    - What can I eat today?
+    - What recipes do you suggest?
+    - I'd like to cook something today
+
 - intent: greet
   examples: |
     - hey

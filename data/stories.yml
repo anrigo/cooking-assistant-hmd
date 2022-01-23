@@ -2,6 +2,14 @@ version: "2.0"
 
 stories:
 
+- story: ask for recipes
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: ask_recipe
+  # - action: utter_propose_recipe
+  - action: action_propose_recipes
+
 - story: happy path
   steps:
   - intent: greet
