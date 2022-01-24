@@ -29,8 +29,15 @@
 from typing import Any, Text, Dict, List
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
+from rasa_sdk.events import SlotSet
 
-class ActionHelloWorld(Action):
+# import sys
+
+# sys.path.append('actions/')
+
+from actions.data import recipes
+
+class ActionProposeRecipes(Action):
 
     def name(self) -> Text:
         return "action_propose_recipes"
@@ -39,6 +46,9 @@ class ActionHelloWorld(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
-        dispatcher.utter_message(text="You can cook 123 !")
+        dispatcher.utter_message(text="Here are some recipes you can try")
+        description = ", ".join([r["name"] for r in recipes])
+        dispatcher.utter_message(text=f"{description}")
+        dispatcher.utter_message(text="Which one would you like to prepare?")
 
         return []

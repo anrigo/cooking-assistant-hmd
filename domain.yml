@@ -9,10 +9,21 @@ intents:
   - mood_unhappy
   - bot_challenge
   - ask_recipe
+  - select_recipe
+
+entities:
+  - desired_recipe
+
+slots:
+  desired_recipe:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: true
 
 responses:
-  # utter_propose_recipe:
-  # - text: "You could cook 1 2 3 4 5"
+  utter_confirm_recipe:
+  - text: "So you want to cook {desired_recipe}"
 
   utter_greet:
   - text: "Hey! How are you?"
@@ -35,6 +46,8 @@ responses:
 
 actions:
   - action_propose_recipes
+config:
+  store_entities_as_slots: true
 
 session_config:
   session_expiration_time: 60

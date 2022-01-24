@@ -7,8 +7,9 @@ stories:
   - intent: greet
   - action: utter_greet
   - intent: ask_recipe
-  # - action: utter_propose_recipe
   - action: action_propose_recipes
+  - intent: select_recipe
+  - action: utter_confirm_recipe
 
 - story: happy path
   steps:
