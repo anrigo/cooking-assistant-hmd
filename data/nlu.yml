@@ -6,12 +6,17 @@ nlu:
   examples: |
     - I am hungry
     - What can I eat today?
+    - What can I cook today?
     - What recipes do you suggest?
+    - Do you have any recipe proposals?
+    - Can you suggest me some recipes?
     - I'd like to cook something today
 
 - intent: select_recipe
   examples: |
     - I'll prepare [waffles]{"entity": "desired_recipe"}
+    - I'll cook [waffles]{"entity": "desired_recipe"}
+    - I'll go for [cacio e pepe]{"entity": "desired_recipe"}
     - I think [carbonara]{"entity": "desired_recipe"} will do
     - [amatriciana]{"entity": "desired_recipe"} seems to be tasty
 

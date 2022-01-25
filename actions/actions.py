@@ -49,6 +49,6 @@ class ActionProposeRecipes(Action):
         dispatcher.utter_message(text="Here are some recipes you can try")
         description = ", ".join([r["name"] for r in recipes])
         dispatcher.utter_message(text=f"{description}")
-        dispatcher.utter_message(text="Which one would you like to prepare?")
+        # dispatcher.utter_message(text="Which one would you like to prepare?")
 
         return []

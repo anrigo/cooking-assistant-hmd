@@ -2,13 +2,24 @@ version: "2.0"
 
 stories:
 
-- story: ask for recipes
+- story: greet then ask for recipes
   steps:
   - intent: greet
   - action: utter_greet
   - intent: ask_recipe
   - action: action_propose_recipes
   - intent: select_recipe
+    entities:
+    - desired_recipe: waffles
+  - action: utter_confirm_recipe
+
+- story: ask for recipes
+  steps:
+  - intent: ask_recipe
+  - action: action_propose_recipes
+  - intent: select_recipe
+    entities:
+    - desired_recipe: amatriciana
   - action: utter_confirm_recipe
 
 - story: happy path

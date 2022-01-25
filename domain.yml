@@ -46,6 +46,7 @@ responses:
 
 actions:
   - action_propose_recipes
+
 config:
   store_entities_as_slots: true
 
