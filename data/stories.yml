@@ -8,8 +8,8 @@ stories:
   - action: utter_greet
   - intent: ask_recipe
   - action: action_propose_recipes
-  - intent: select_recipe
-    entities:
+  - action: form_select_recipe
+  - slot_was_set:
     - desired_recipe: waffles
   - action: action_match_recipe
 
@@ -17,8 +17,8 @@ stories:
   steps:
   - intent: ask_recipe
   - action: action_propose_recipes
-  - intent: select_recipe
-    entities:
+  - action: form_select_recipe
+  - slot_was_set:
     - desired_recipe: amatriciana
   - action: action_match_recipe
 

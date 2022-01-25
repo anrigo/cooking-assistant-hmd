@@ -75,9 +75,10 @@ class ActionMatchRecipe(Action):
         idx = np.argmax(sim)
 
         if sim[idx] >= 0.8:
-            match = recipes[idx]['name']
-            say(dispatcher, f"The best match is {match}")
+            matched_recipe = recipes[idx]['name']
+            say(dispatcher, f"The best match is {matched_recipe}")
         else:
+            matched_recipe = None
             say(dispatcher, "I don't know this recipe or i didn't understand the name correctly.")
 
         return []
