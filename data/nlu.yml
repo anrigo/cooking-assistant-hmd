@@ -14,12 +14,13 @@ nlu:
 
 - intent: select_recipe
   examples: |
-    - I'll prepare [waffles]{"entity": "desired_recipe"}
-    - I'll cook [waffles]{"entity": "desired_recipe"}
-    - I'll go for [cacio e pepe]{"entity": "desired_recipe"}
-    - I think [carbonara]{"entity": "desired_recipe"} will do
-    - [muffins]{"entity": "desired_recipe"} will do
-    - [amatriciana]{"entity": "desired_recipe"} seems to be tasty
+    - I'll prepare [waffles](recipe)
+    - I'll cook [pizza](recipe)
+    - I'll go for [cacio e pepe](recipe)
+    - I think [carbonara](recipe) will do
+    - [muffins](recipe) will do
+    - [lasagna](recipe) seems to be tasty
+    - [ice cream](recipe)
 
 - intent: greet
   examples: |

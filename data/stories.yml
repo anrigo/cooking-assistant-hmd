@@ -8,19 +8,19 @@ stories:
   - action: utter_greet
   - intent: ask_recipe
   - action: action_propose_recipes
-  - action: form_select_recipe
+  - action: select_recipe_form
+  - active_loop: select_recipe_form
   - slot_was_set:
-    - desired_recipe: waffles
-  - action: action_match_recipe
+    - recipe: waffles
 
 - story: ask for recipes
   steps:
   - intent: ask_recipe
   - action: action_propose_recipes
-  - action: form_select_recipe
+  - action: select_recipe_form
+  - active_loop: select_recipe_form
   - slot_was_set:
-    - desired_recipe: amatriciana
-  - action: action_match_recipe
+    - recipe: amatriciana
 
 - story: happy path
   steps:

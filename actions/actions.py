@@ -27,8 +27,9 @@
 #         return []
 
 from typing import Any, Text, Dict, List
-from rasa_sdk import Action, Tracker
+from rasa_sdk import Action, Tracker, FormValidationAction
 from rasa_sdk.executor import CollectingDispatcher
+from rasa_sdk.types import DomainDict
 from rasa_sdk.events import SlotSet
 from difflib import SequenceMatcher
 import numpy as np
@@ -60,16 +61,20 @@ class ActionProposeRecipes(Action):
         return []
 
 
-class ActionMatchRecipe(Action):
+class ActionValidateSelectRecipeForm(FormValidationAction):
 
     def name(self) -> Text:
-        return "action_match_recipe"
+        return "validate_select_recipe_form"
 
-    def run(self, dispatcher: CollectingDispatcher,
-            tracker: Tracker,
-            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+    def validate_recipe(
+        self,
+        slot_value: Any,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: DomainDict,
+    ) -> Dict[Text, Any]:
 
-        desired = tracker.get_slot('desired_recipe')
+        desired = tracker.get_slot('recipe')
 
         sim = np.array([similarity_score(desired, r['name']) for r in recipes])
         idx = np.argmax(sim)
@@ -79,6 +84,6 @@ class ActionMatchRecipe(Action):
             say(dispatcher, f"The best match is {matched_recipe}")
         else:
             matched_recipe = None
-            say(dispatcher, "I don't know this recipe or i didn't understand the name correctly.")
+            say(dispatcher, "I don't know this recipe or i didn't understand the name correctly.\nCan you repeat or try another recipe?")
 
-        return []
+        return {"recipe": matched_recipe}

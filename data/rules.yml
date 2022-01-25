@@ -5,7 +5,7 @@ rules:
 #   steps:
 #   - intent: ask_recipe
 #   - action: action_propose_recipes
-#   - action: form_select_recipe
+#   - action: select_recipe_form
 #   - active_loop: form_select_recipe
 
 - rule: Say goodbye anytime the user says goodbye
