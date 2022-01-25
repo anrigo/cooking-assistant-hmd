@@ -22,8 +22,8 @@ slots:
     influence_conversation: true
 
 responses:
-  utter_confirm_recipe:
-  - text: "So you want to cook {desired_recipe}"
+  # utter_confirm_recipe:
+  # - text: "So you want to cook {desired_recipe}"
 
   utter_greet:
   - text: "Hey! How are you?"
@@ -46,6 +46,7 @@ responses:
 
 actions:
   - action_propose_recipes
+  - action_match_recipe
 
 config:
   store_entities_as_slots: true

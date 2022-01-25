@@ -11,7 +11,7 @@ stories:
   - intent: select_recipe
     entities:
     - desired_recipe: waffles
-  - action: utter_confirm_recipe
+  - action: action_match_recipe
 
 - story: ask for recipes
   steps:
@@ -20,7 +20,7 @@ stories:
   - intent: select_recipe
     entities:
     - desired_recipe: amatriciana
-  - action: utter_confirm_recipe
+  - action: action_match_recipe
 
 - story: happy path
   steps:

@@ -18,6 +18,7 @@ nlu:
     - I'll cook [waffles]{"entity": "desired_recipe"}
     - I'll go for [cacio e pepe]{"entity": "desired_recipe"}
     - I think [carbonara]{"entity": "desired_recipe"} will do
+    - [muffins]{"entity": "desired_recipe"} will do
     - [amatriciana]{"entity": "desired_recipe"} seems to be tasty
 
 - intent: greet
