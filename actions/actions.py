@@ -30,12 +30,19 @@ from typing import Any, Text, Dict, List
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.events import SlotSet
-
-# import sys
-
-# sys.path.append('actions/')
+from difflib import SequenceMatcher
+import numpy as np
 
 from actions.data import recipes
+
+
+def say(dispatcher: CollectingDispatcher, message: str) -> None:
+    dispatcher.utter_message(text=message)
+
+
+def similarity_score(seq1: str, seq2: str) -> float:
+    return SequenceMatcher(a=seq1.lower(), b=seq2.lower()).ratio()
+
 
 class ActionProposeRecipes(Action):
 
@@ -46,7 +53,7 @@ class ActionProposeRecipes(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
-        dispatcher.utter_message(text="Here are some recipes you can try")
+        dispatcher.utter_message(text="Here are some recipes you can try:")
         description = ", ".join([r["name"] for r in recipes])
         dispatcher.utter_message(text=f"{description}")
 
@@ -63,6 +70,15 @@ class ActionMatchRecipe(Action):
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
         desired = tracker.get_slot('desired_recipe')
-        dispatcher.utter_message(text=f"{desired}")
+        # dispatcher.utter_message(text=f"{desired}")
+
+        sim = np.array([similarity_score(desired, r['name']) for r in recipes])
+        idx = np.argmax(sim)
+
+        if sim[idx] >= 0.8:
+            match = recipes[idx]['name']
+            say(dispatcher, f"The best match is {match}")
+        else:
+            say(dispatcher, "I don't know this recipe or i didn't understand the name correctly.")
 
         return []
