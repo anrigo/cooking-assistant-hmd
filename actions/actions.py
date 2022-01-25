@@ -53,9 +53,9 @@ class ActionProposeRecipes(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
-        dispatcher.utter_message(text="Here are some recipes you can try:")
+        say(dispatcher, "Here are some recipes you can try:")
         description = ", ".join([r["name"] for r in recipes])
-        dispatcher.utter_message(text=f"{description}")
+        say(dispatcher, f"{description}")
 
         return []
 
@@ -70,7 +70,6 @@ class ActionMatchRecipe(Action):
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
         desired = tracker.get_slot('desired_recipe')
-        # dispatcher.utter_message(text=f"{desired}")
 
         sim = np.array([similarity_score(desired, r['name']) for r in recipes])
         idx = np.argmax(sim)
