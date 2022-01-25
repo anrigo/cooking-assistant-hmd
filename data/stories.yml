@@ -12,6 +12,26 @@ stories:
   - active_loop: select_recipe_form
   - slot_was_set:
     - recipe: waffles
+    - confirm_recipe: true
+  - active_loop: null
+
+- story: greet then ask for recipes - deny
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: ask_recipe
+  - action: action_propose_recipes
+  - action: select_recipe_form
+  - active_loop: select_recipe_form
+  - slot_was_set:
+    - recipe: waffles
+    - confirm_recipe: false
+  - action: action_restart_recipe_form
+  - active_loop: select_recipe_form
+  - slot_was_set:
+    - recipe: amatriciana
+    - confirm_recipe: true
+  - active_loop: null
 
 - story: ask for recipes
   steps:
@@ -21,6 +41,8 @@ stories:
   - active_loop: select_recipe_form
   - slot_was_set:
     - recipe: amatriciana
+    - confirm_recipe: true
+  - active_loop: null
 
 - story: happy path
   steps:

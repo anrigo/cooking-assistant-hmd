@@ -15,12 +15,14 @@ nlu:
 - intent: select_recipe
   examples: |
     - I'll prepare [waffles](recipe)
+    - I'll prepare [cacio e pepe](recipe)
     - I'll cook [pizza](recipe)
+    - I'll cook [cacio e pepe](recipe)
     - I'll go for [cacio e pepe](recipe)
+    - I'll go for [amatriciana](recipe)
     - I think [carbonara](recipe) will do
-    - [muffins](recipe) will do
-    - [lasagna](recipe) seems to be tasty
-    - [ice cream](recipe)
+    - I think [cacio e pepe](recipe) will do
+    - I think [amatriciana](recipe) will do
 
 - intent: greet
   examples: |

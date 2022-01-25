@@ -16,12 +16,22 @@ entities:
 
 slots:
   recipe:
-    type: rasa.shared.core.slots.TextSlot
+    type: text
+    initial_value: null
+    auto_fill: true
+    influence_conversation: true
+  
+  confirm_recipe:
+    type: bool
     initial_value: null
     auto_fill: true
     influence_conversation: true
 
 responses:
+
+  utter_ask_select_recipe_form_confirm_recipe:
+  - text: "Do you want to go for this recipe?"
+
   utter_ask_select_recipe_form_recipe:
   - text: "Which recipe would you like to prepare?"
   - text: "What would you like to eat?"
@@ -48,6 +58,7 @@ responses:
 actions:
   - action_propose_recipes
   - validate_select_recipe_form
+  - action_restart_recipe_form
 
 forms:
   select_recipe_form:
@@ -55,6 +66,10 @@ forms:
         recipe:
         - type: from_entity
           entity: recipe
+        confirm_recipe:
+        - type: from_intent
+          value: true
+          intent: affirm
 
 config:
   store_entities_as_slots: true
