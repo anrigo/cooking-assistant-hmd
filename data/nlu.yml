@@ -18,6 +18,7 @@ nlu:
     - I'll prepare [cacio e pepe](recipe)
     - I'll cook [pizza](recipe)
     - I'll cook [cacio e pepe](recipe)
+    - I'll cook [muffins](recipe)
     - I'll go for [cacio e pepe](recipe)
     - I'll go for [amatriciana](recipe)
     - I think [carbonara](recipe) will do

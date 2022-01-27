@@ -32,9 +32,9 @@ responses:
   utter_ask_select_recipe_form_confirm_recipe:
   - text: "Do you want to go for this recipe?"
 
-  utter_ask_select_recipe_form_recipe:
-  - text: "Which recipe would you like to prepare?"
-  - text: "What would you like to eat?"
+  # utter_ask_select_recipe_form_recipe:
+  # - text: "Which recipe would you like to prepare?"
+  # - text: "What would you like to eat?"
 
   utter_greet:
   - text: "Hey! How are you?"
@@ -56,9 +56,9 @@ responses:
   - text: "I am a bot, powered by Rasa."
 
 actions:
-  - action_propose_recipes
   - validate_select_recipe_form
   - action_restart_recipe_form
+  - action_ask_select_recipe_form_recipe
 
 forms:
   select_recipe_form:

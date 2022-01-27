@@ -30,7 +30,7 @@ from typing import Any, Text, Dict, List
 from rasa_sdk import Action, Tracker, FormValidationAction
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.types import DomainDict
-from rasa_sdk.events import SlotSet, FollowupAction
+from rasa_sdk.events import SlotSet, FollowupAction, EventType
 from difflib import SequenceMatcher
 import numpy as np
 
@@ -45,18 +45,34 @@ def similarity_score(seq1: str, seq2: str) -> float:
     return SequenceMatcher(a=seq1.lower(), b=seq2.lower()).ratio()
 
 
-class ActionProposeRecipes(Action):
+# class ActionProposeRecipes(Action):
 
+#     def name(self) -> Text:
+#         return "action_propose_recipes"
+
+#     def run(self, dispatcher: CollectingDispatcher,
+#             tracker: Tracker,
+#             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+#         say(dispatcher, "Here are some recipes you can try:")
+#         description = ", ".join([r["name"] for r in recipes])
+#         say(dispatcher, f"{description}")
+
+#         return []
+
+
+class AskSelectRecipeFormRecipe(Action):
     def name(self) -> Text:
-        return "action_propose_recipes"
+        return "action_ask_select_recipe_form_recipe"
 
-    def run(self, dispatcher: CollectingDispatcher,
-            tracker: Tracker,
-            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-
+    def run(
+        self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict
+    ) -> List[EventType]:
+        
         say(dispatcher, "Here are some recipes you can try:")
         description = ", ".join([r["name"] for r in recipes])
         say(dispatcher, f"{description}")
+        say(dispatcher, "Which recipe would you like to prepare?")
 
         return []
 
@@ -104,6 +120,7 @@ class ActionValidateSelectRecipeForm(FormValidationAction):
         else:
             say(dispatcher, "confirm false or none")
             return {"confirm_recipe": None}
+
 
 class ActionRestartRecipeForm(Action):
 

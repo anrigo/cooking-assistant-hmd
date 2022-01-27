@@ -7,7 +7,6 @@ stories:
   - intent: greet
   - action: utter_greet
   - intent: ask_recipe
-  - action: action_propose_recipes
   - action: select_recipe_form
   - active_loop: select_recipe_form
   - slot_was_set:
@@ -48,7 +47,6 @@ stories:
   - intent: greet
   - action: utter_greet
   - intent: ask_recipe
-  - action: action_propose_recipes
   - action: select_recipe_form
   - active_loop: select_recipe_form
   - slot_was_set:
