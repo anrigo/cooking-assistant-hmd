@@ -11,9 +11,33 @@ stories:
   - action: select_recipe_form
   - active_loop: select_recipe_form
   - slot_was_set:
+    - requested_slot: recipe
+  - slot_was_set:
     - recipe: waffles
+  - slot_was_set:
+    - requested_slot: confirm_recipe
+  - slot_was_set:
     - confirm_recipe: true
   - active_loop: null
+  - action: action_restart_recipe_form
+
+- story: ask directly for recipe
+  steps:
+  - intent: select_recipe
+    entities:
+    - recipe: amatriciana
+  - action: select_recipe_form
+  - active_loop: select_recipe_form
+  - slot_was_set:
+    - requested_slot: recipe
+  - slot_was_set:
+    - recipe: amatriciana
+  - slot_was_set:
+    - requested_slot: confirm_recipe
+  - slot_was_set:
+    - confirm_recipe: true
+  - active_loop: null
+  - action: action_restart_recipe_form
 
 - story: greet then ask for recipes - deny
   steps:
@@ -24,25 +48,26 @@ stories:
   - action: select_recipe_form
   - active_loop: select_recipe_form
   - slot_was_set:
+    - requested_slot: recipe
+  - slot_was_set:
     - recipe: waffles
-    - confirm_recipe: false
+  - slot_was_set:
+    - requested_slot: confirm_recipe
+  - slot_was_set:
+    - confirm_recipe: null
+  - active_loop: null
   - action: action_restart_recipe_form
   - active_loop: select_recipe_form
   - slot_was_set:
-    - recipe: amatriciana
-    - confirm_recipe: true
-  - active_loop: null
-
-- story: ask for recipes
-  steps:
-  - intent: ask_recipe
-  - action: action_propose_recipes
-  - action: select_recipe_form
-  - active_loop: select_recipe_form
+    - requested_slot: recipe
   - slot_was_set:
     - recipe: amatriciana
+  - slot_was_set:
+    - requested_slot: confirm_recipe
+  - slot_was_set:
     - confirm_recipe: true
   - active_loop: null
+  - action: action_restart_recipe_form
 
 - story: happy path
   steps:
