@@ -18,6 +18,8 @@ stories:
     - requested_slot: confirm_recipe
   - slot_was_set:
     - confirm_recipe: true
+  - slot_was_set:
+    - requested_slot: null
   - active_loop: null
   - action: action_restart_recipe_form
 
@@ -36,6 +38,8 @@ stories:
     - requested_slot: confirm_recipe
   - slot_was_set:
     - confirm_recipe: true
+  - slot_was_set:
+    - requested_slot: null
   - active_loop: null
   - action: action_restart_recipe_form
 
@@ -55,6 +59,8 @@ stories:
     - requested_slot: confirm_recipe
   - slot_was_set:
     - confirm_recipe: null
+  - slot_was_set:
+    - requested_slot: null
   - active_loop: null
   - action: action_restart_recipe_form
   - active_loop: select_recipe_form
@@ -66,6 +72,8 @@ stories:
     - requested_slot: confirm_recipe
   - slot_was_set:
     - confirm_recipe: true
+  - slot_was_set:
+    - requested_slot: null
   - active_loop: null
   - action: action_restart_recipe_form
 
