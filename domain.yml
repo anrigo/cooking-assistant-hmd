@@ -21,6 +21,12 @@ slots:
     auto_fill: true
     influence_conversation: true
   
+  number_people:
+    type: text
+    initial_value: null
+    auto_fill: true
+    influence_conversation: false
+  
   confirm_recipe:
     type: bool
     initial_value: null
@@ -28,6 +34,15 @@ slots:
     influence_conversation: true
 
 responses:
+  utter_propose_recipes:
+  - text: "Here are some recipes you can try:"
+  - text: "You could try one of those:"
+  - text: "Here are some suggestions:"
+
+  utter_choose_one_recipe:
+  - text: "Which recipe would you like to prepare?"
+  - text: "Which one would you like to prepare?"
+  - text: "Please choose one"
 
   utter_ask_select_recipe_form_confirm_recipe:
   - text: "Do you want to go for this recipe?"

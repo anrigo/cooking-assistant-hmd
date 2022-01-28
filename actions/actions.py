@@ -40,6 +40,9 @@ from actions.data import recipes
 def say(dispatcher: CollectingDispatcher, message: str) -> None:
     dispatcher.utter_message(text=message)
 
+def resp(dispatcher: CollectingDispatcher, utter: str) -> None:
+    dispatcher.utter_message(response=utter)
+
 
 def similarity_score(seq1: str, seq2: str) -> float:
     return SequenceMatcher(a=seq1.lower(), b=seq2.lower()).ratio()
@@ -69,10 +72,10 @@ class AskSelectRecipeFormRecipe(Action):
         self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict
     ) -> List[EventType]:
         
-        say(dispatcher, "Here are some recipes you can try:")
+        resp(dispatcher, 'utter_propose_recipes')
         description = ", ".join([r["name"] for r in recipes])
         say(dispatcher, f"{description}")
-        say(dispatcher, "Which recipe would you like to prepare?")
+        resp(dispatcher, 'utter_choose_one_recipe')
 
         return []
 
@@ -90,14 +93,14 @@ class ActionValidateSelectRecipeForm(FormValidationAction):
         domain: DomainDict,
     ) -> Dict[Text, Any]:
 
-        desired = tracker.get_slot('recipe')
+        query = tracker.get_slot('recipe')
 
-        sim = np.array([similarity_score(desired, r['name']) for r in recipes])
+        sim = np.array([similarity_score(query, r['name']) for r in recipes])
         idx = np.argmax(sim)
 
         if sim[idx] >= 0.8:
             matched_recipe = recipes[idx]['name']
-            say(dispatcher, f"The best match is {matched_recipe}")
+            say(dispatcher, f"I understand you want to cook {matched_recipe}")
         else:
             matched_recipe = None
             say(dispatcher, "I don't know this recipe or i didn't understand the name correctly.\nCan you repeat or try another recipe?")

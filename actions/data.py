@@ -1,3 +1,4 @@
+# by default ingredients amounts are fixed for one person
 recipes = [
             {'name': 'Carbonara', 'ingredients': [
                 {'name': 'egg yolks', 'amount': 2, 'unit': None},
