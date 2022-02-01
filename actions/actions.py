@@ -107,7 +107,7 @@ class ActionValidateSelectRecipeForm(FormValidationAction):
 
         return {"recipe": matched_recipe}
     
-    def validate_confirm_recipe(
+    def validate_number_people(
         self,
         slot_value: Any,
         dispatcher: CollectingDispatcher,
@@ -115,14 +115,19 @@ class ActionValidateSelectRecipeForm(FormValidationAction):
         domain: DomainDict,
     ) -> Dict[Text, Any]:
 
-        confirm = tracker.get_slot('confirm_recipe')
+        num = tracker.get_slot('number_people')
+        say(dispatcher, f"Received: {num}")
+        return {"number_people": num}
 
-        if confirm:
-            say(dispatcher, "confirm true")
-            return {"confirm_recipe": confirm}
-        else:
-            say(dispatcher, "confirm false or none")
-            return {"confirm_recipe": None}
+    def validate_confirm_recipe_form(
+        self,
+        slot_value: Any,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: DomainDict,
+    ) -> Dict[Text, Any]:
+
+        return {"confirm_recipe_form": tracker.get_slot('confirm_recipe_form')}
 
 
 class ActionRestartRecipeForm(Action):
@@ -134,9 +139,9 @@ class ActionRestartRecipeForm(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
-        confirm = tracker.get_slot('confirm_recipe')
+        confirm = tracker.get_slot('confirm_recipe_form')
 
         if not confirm:
-            return [SlotSet("recipe", None), SlotSet("confirm_recipe", None), FollowupAction(name="select_recipe_form")]
+            return [SlotSet("recipe", None), SlotSet("confirm_recipe_form", None), FollowupAction(name="select_recipe_form")]
 
         return []

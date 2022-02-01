@@ -2,6 +2,15 @@ version: "2.0"
 
 nlu:
 
+- intent: inform_num_people
+  examples: |
+    - i'll cook for [3](number_people) people
+    - i'll prepare for [2](number_people) people
+    - i'll cook for [three](number_people) people
+    - i'll prepare for [two](number_people) people
+    - for [5](number_people) people
+    - for [four](number_people)
+
 - intent: ask_recipe
   examples: |
     - I am hungry
