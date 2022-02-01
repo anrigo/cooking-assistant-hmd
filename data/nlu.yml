@@ -37,6 +37,8 @@ nlu:
     - I think [carbonara](recipe) will do
     - I think [cacio e pepe](recipe) will do
     - I think [amatriciana](recipe) will do
+    - I'll prepare [waffles](recipe) for [four]{"entity":"number_people", "value": "4"}
+    - I'll cook [pizza](recipe) for [three]{"entity":"number_people", "value": "3"} people
 
 - intent: greet
   examples: |
