@@ -6,10 +6,14 @@ nlu:
   examples: |
     - i'll cook for [3](number_people) people
     - i'll prepare for [2](number_people) people
-    - i'll cook for [three](number_people) people
-    - i'll prepare for [two](number_people) people
+    - i'll cook for [three]{"entity":"number_people", "value": "3"} people
+    - i'll prepare for [two]{"entity":"number_people", "value": "2"} people
     - for [5](number_people) people
-    - for [four](number_people)
+    - for [four]{"entity":"number_people", "value": "4"}
+    - for [five]{"entity":"number_people", "value": "5"}
+    - for [six]{"entity":"number_people", "value": "6"}
+    - just for [me]{"entity":"number_people", "value": "1"}
+    - just for [one]{"entity":"number_people", "value": "1"}
 
 - intent: ask_recipe
   examples: |

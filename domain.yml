@@ -47,7 +47,7 @@ responses:
   - text: "Please choose one"
 
   utter_ask_select_recipe_form_confirm_recipe_form:
-  - text: "Do you want to go for this recipe?"
+  - text: "I understand you want to cook {recipe} for {number_people} people. Is it correct?"
 
   utter_ask_select_recipe_form_number_people:
   - text: "For how many people are you going to cook?"

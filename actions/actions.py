@@ -100,7 +100,7 @@ class ActionValidateSelectRecipeForm(FormValidationAction):
 
         if sim[idx] >= 0.8:
             matched_recipe = recipes[idx]['name']
-            say(dispatcher, f"I understand you want to cook {matched_recipe}")
+            # say(dispatcher, f"I understand you want to cook {matched_recipe}")
         else:
             matched_recipe = None
             say(dispatcher, "I don't know this recipe or i didn't understand the name correctly.\nCan you repeat or try another recipe?")
@@ -116,7 +116,7 @@ class ActionValidateSelectRecipeForm(FormValidationAction):
     ) -> Dict[Text, Any]:
 
         num = tracker.get_slot('number_people')
-        say(dispatcher, f"Received: {num}")
+        # say(dispatcher, f"Received: {num}")
         return {"number_people": num}
 
     def validate_confirm_recipe_form(
@@ -142,6 +142,6 @@ class ActionRestartRecipeForm(Action):
         confirm = tracker.get_slot('confirm_recipe_form')
 
         if not confirm:
-            return [SlotSet("recipe", None), SlotSet("confirm_recipe_form", None), FollowupAction(name="select_recipe_form")]
+            return [SlotSet("recipe", None), SlotSet("number_people", None), SlotSet("confirm_recipe_form", None), FollowupAction(name="select_recipe_form")]
 
         return []
