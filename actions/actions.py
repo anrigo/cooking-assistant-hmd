@@ -73,7 +73,7 @@ class AskSelectRecipeFormRecipe(Action):
     ) -> List[EventType]:
         
         resp(dispatcher, 'utter_propose_recipes')
-        description = ", ".join([r["name"] for r in recipes])
+        description = ", ".join([r for r in recipes.keys()])
         say(dispatcher, f"{description}")
         resp(dispatcher, 'utter_choose_one_recipe')
 
@@ -95,11 +95,11 @@ class ActionValidateSelectRecipeForm(FormValidationAction):
 
         query = tracker.get_slot('recipe')
 
-        sim = np.array([similarity_score(query, r['name']) for r in recipes])
+        sim = np.array([similarity_score(query, r) for r in recipes.keys()])
         idx = np.argmax(sim)
 
         if sim[idx] >= 0.8:
-            matched_recipe = recipes[idx]['name']
+            matched_recipe = list(recipes.keys())[idx]
             # say(dispatcher, f"I understand you want to cook {matched_recipe}")
         else:
             matched_recipe = None
@@ -159,9 +159,9 @@ class ActionListIngredients(Action):
 
         recipe = tracker.get_slot('recipe')
 
-        for r in recipes:
-            if r['name'] == recipe:
-                ings = r['ingredients']
+        ings = recipes[recipe]['ingredients']
+
+        print(ings)
 
         num = tracker.get_slot('number_people')
 
