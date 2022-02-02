@@ -73,7 +73,7 @@ responses:
 
 actions:
   - validate_select_recipe_form
-  - action_restart_recipe_form
+  - action_submit_recipe_form
   - action_ask_select_recipe_form_recipe
 
 forms:

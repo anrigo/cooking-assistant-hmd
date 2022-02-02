@@ -130,10 +130,10 @@ class ActionValidateSelectRecipeForm(FormValidationAction):
         return {"confirm_recipe_form": tracker.get_slot('confirm_recipe_form')}
 
 
-class ActionRestartRecipeForm(Action):
+class ActionSubmitRecipeForm(Action):
 
     def name(self) -> Text:
-        return "action_restart_recipe_form"
+        return "action_submit_recipe_form"
 
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,

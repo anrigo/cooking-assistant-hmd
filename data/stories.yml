@@ -20,7 +20,7 @@ stories:
 #   - slot_was_set:
 #     - requested_slot: null
 #   - active_loop: null
-#   - action: action_restart_recipe_form
+#   - action: action_submit_recipe_form
 
 # - story: ask directly for recipe
 #   steps:
@@ -40,7 +40,7 @@ stories:
 #   - slot_was_set:
 #     - requested_slot: null
 #   - active_loop: null
-#   - action: action_restart_recipe_form
+#   - action: action_submit_recipe_form
 
 - story: greet then ask for recipes - deny
   steps:
@@ -64,7 +64,7 @@ stories:
   - slot_was_set:
     - requested_slot: null
   - active_loop: null
-  - action: action_restart_recipe_form
+  - action: action_submit_recipe_form
   - active_loop: select_recipe_form
   - slot_was_set:
     - requested_slot: recipe
@@ -81,7 +81,7 @@ stories:
   - slot_was_set:
     - requested_slot: null
   - active_loop: null
-  - action: action_restart_recipe_form
+  - action: action_submit_recipe_form
 
 - story: happy path
   steps:
