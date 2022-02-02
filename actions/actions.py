@@ -144,4 +144,27 @@ class ActionSubmitRecipeForm(Action):
         if not confirm:
             return [SlotSet("recipe", None), SlotSet("number_people", None), SlotSet("confirm_recipe_form", None), FollowupAction(name="select_recipe_form")]
 
+        say(dispatcher, "aaaaaa")
+        return [FollowupAction(name="action_list_ingredients")]
+
+
+class ActionListIngredients(Action):
+
+    def name(self) -> Text:
+        return "action_list_ingredients"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        recipe = tracker.get_slot('recipe')
+
+        for r in recipes:
+            if r['name'] == recipe:
+                ings = r['ingredients']
+
+        num = tracker.get_slot('number_people')
+
+        say(dispatcher, f"{type(num)}")
+
         return []
