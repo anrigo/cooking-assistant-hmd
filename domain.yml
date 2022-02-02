@@ -75,6 +75,7 @@ actions:
   - validate_select_recipe_form
   - action_submit_recipe_form
   - action_ask_select_recipe_form_recipe
+  - action_list_ingredients
 
 forms:
   select_recipe_form:

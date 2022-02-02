@@ -1,20 +1,20 @@
 version: "2.0"
-
 nlu:
-
 - intent: inform_num_people
   examples: |
     - i'll cook for [3](number_people) people
     - i'll prepare for [2](number_people) people
-    - i'll cook for [three]{"entity":"number_people", "value": "3"} people
-    - i'll prepare for [two]{"entity":"number_people", "value": "2"} people
+    - i'll cook for [three]{"entity": "number_people", "value": "3"} people
+    - i'll prepare for [two]{"entity": "number_people", "value": "2"} people
     - for [5](number_people) people
-    - for [four]{"entity":"number_people", "value": "4"}
-    - for [five]{"entity":"number_people", "value": "5"}
-    - for [six]{"entity":"number_people", "value": "6"}
-    - just for [me]{"entity":"number_people", "value": "1"}
-    - just for [one]{"entity":"number_people", "value": "1"}
-
+    - for [four]{"entity": "number_people", "value": "4"}
+    - for [five]{"entity": "number_people", "value": "5"}
+    - for [six]{"entity": "number_people", "value": "6"}
+    - just for [me]{"entity": "number_people", "value": "1"}
+    - just for [one]{"entity": "number_people", "value": "1"}
+    - for [three]{"entity": "number_people", "value": "3"} people
+    - for [three]{"entity": "number_people", "value": "3"} people
+    - just for [me]{"entity": "number_people", "value": "1"}
 - intent: ask_recipe
   examples: |
     - I am hungry
@@ -24,7 +24,8 @@ nlu:
     - Do you have any recipe proposals?
     - Can you suggest me some recipes?
     - I'd like to cook something today
-
+    - i am hungry
+    - whac could i cook today?
 - intent: select_recipe
   examples: |
     - I'll prepare [waffles](recipe)
@@ -37,9 +38,11 @@ nlu:
     - I think [carbonara](recipe) will do
     - I think [cacio e pepe](recipe) will do
     - I think [amatriciana](recipe) will do
-    - I'll prepare [waffles](recipe) for [four]{"entity":"number_people", "value": "4"}
-    - I'll cook [pizza](recipe) for [three]{"entity":"number_people", "value": "3"} people
-
+    - I'll prepare [waffles](recipe) for [four]{"entity": "number_people", "value": "4"}
+    - I'll cook [pizza](recipe) for [three]{"entity": "number_people", "value": "3"} people
+    - i'll go for [amatriciana](recipe)
+    - i'll go for [amatriciana](recipe)
+    - i'll cook [carbonara](recipe)
 - intent: greet
   examples: |
     - hey
@@ -55,7 +58,6 @@ nlu:
     - goodmorning
     - goodevening
     - good afternoon
-
 - intent: goodbye
   examples: |
     - good afternoon
@@ -69,7 +71,6 @@ nlu:
     - see you around
     - bye bye
     - see you later
-
 - intent: affirm
   examples: |
     - yes
@@ -78,7 +79,7 @@ nlu:
     - of course
     - that sounds good
     - correct
-
+    - yes it is
 - intent: deny
   examples: |
     - no
@@ -88,7 +89,6 @@ nlu:
     - don't like that
     - no way
     - not really
-
 - intent: mood_great
   examples: |
     - perfect
@@ -105,7 +105,6 @@ nlu:
     - so so perfect
     - so good
     - so perfect
-
 - intent: mood_unhappy
   examples: |
     - my day was horrible
@@ -122,10 +121,28 @@ nlu:
     - extremly sad
     - so saad
     - so sad
-
 - intent: bot_challenge
   examples: |
     - are you a bot?
     - are you a human?
     - am I talking to a bot?
     - am I talking to a human?
+- synonym: '3'
+  examples: |
+    - three
+- synonym: '2'
+  examples: |
+    - two
+- synonym: '4'
+  examples: |
+    - four
+- synonym: '5'
+  examples: |
+    - five
+- synonym: '6'
+  examples: |
+    - six
+- synonym: '1'
+  examples: |
+    - me
+    - one
