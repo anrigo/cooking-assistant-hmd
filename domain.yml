@@ -52,6 +52,11 @@ responses:
   utter_ask_select_recipe_form_number_people:
   - text: "For how many people are you going to cook?"
 
+  utter_present_ingredients:
+  - text: "Here's what you need:"
+  - text: "Here's a list of ingredients"
+  - text: "Here's the list of ingredients you are going to need"
+
   utter_greet:
   - text: "Hey! How are you?"
 

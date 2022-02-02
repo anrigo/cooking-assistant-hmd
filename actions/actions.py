@@ -157,14 +157,16 @@ class ActionListIngredients(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
-        recipe = tracker.get_slot('recipe')
+        recipe_key = tracker.get_slot('recipe')
+        ings = recipes[recipe_key].ingredients
+        num = int(tracker.get_slot('number_people'))
 
-        ings = recipes[recipe]['ingredients']
+        resp(dispatcher, "utter_present_ingredients")
 
+        # for ing in ings:
+        #     if not ing['amount'] is None:
+        #         if not ing['unit'] is None:
+        #             say(dispatcher, "{} {} of {}")
         print(ings)
-
-        num = tracker.get_slot('number_people')
-
-        say(dispatcher, f"{type(num)}")
 
         return []
