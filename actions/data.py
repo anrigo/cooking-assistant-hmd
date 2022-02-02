@@ -5,17 +5,17 @@ recipes = {
             'Carbonara': Munch.fromDict({'ingredients': [
                 {'name': 'egg yolks', 'amount': 2, 'unit': None},
                 {'name': 'cheek lard', 'amount': 45, 'unit': 'grams'},
-                {'name': 'italian sheep\'s milk cheese', 'amount': 40, 'unit': 'grams'},
+                {'name': 'Pecorino Romano cheese', 'amount': 40, 'unit': 'grams'},
                 {'name': 'spaghetti', 'amount': 100, 'unit': 'grams'}
             ]}),
             'Amatriciana': Munch.fromDict({'ingredients': [
                 {'name': 'tomato sauce', 'amount': 100, 'unit': 'grams'},
                 {'name': 'cheek lard', 'amount': 45, 'unit': 'grams'},
-                {'name': 'italian sheep\'s milk cheese', 'amount': 20, 'unit': 'grams'},
+                {'name': 'Pecorino Romano cheese', 'amount': 20, 'unit': 'grams'},
                 {'name': 'spaghetti', 'amount': 100, 'unit': 'grams'}
             ]}),
             'Cacio e pepe': Munch.fromDict({'ingredients': [
-                {'name': 'italian sheep\'s milk cheese', 'amount': 60, 'unit': 'grams'},
+                {'name': 'Pecorino Romano cheese', 'amount': 60, 'unit': 'grams'},
                 {'name': 'spaghetti', 'amount': 100, 'unit': 'grams'},
                 {'name': 'pepper', 'amount': None, 'unit': None}
             ]}),
