@@ -53,7 +53,7 @@ responses:
   - text: "For how many people are you going to cook?"
 
   utter_present_ingredients:
-  - text: "Here's what you need:"
+  - text: "Here's what you need"
   - text: "Here's a list of ingredients"
   - text: "Here's the list of ingredients you are going to need"
 

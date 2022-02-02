@@ -144,7 +144,6 @@ class ActionSubmitRecipeForm(Action):
         if not confirm:
             return [SlotSet("recipe", None), SlotSet("number_people", None), SlotSet("confirm_recipe_form", None), FollowupAction(name="select_recipe_form")]
 
-        say(dispatcher, "aaaaaa")
         return [FollowupAction(name="action_list_ingredients")]
 
 
@@ -163,10 +162,9 @@ class ActionListIngredients(Action):
 
         resp(dispatcher, "utter_present_ingredients")
 
-        # for ing in ings:
-        #     if not ing['amount'] is None:
-        #         if not ing['unit'] is None:
-        #             say(dispatcher, "{} {} of {}")
-        print(ings)
+        for ing in ings:
+            if not ing.amount is None:
+                if not ing.unit is None:
+                    say(dispatcher, f"{ing.amount} {ing.unit} of {ing.name}")
 
         return []

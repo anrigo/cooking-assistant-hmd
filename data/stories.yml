@@ -109,3 +109,91 @@ stories:
   - active_loop: null
   - action: action_submit_recipe_form
   - action: action_list_ingredients
+
+- story: interactive_story_1
+  steps:
+  - intent: select_recipe
+    entities:
+    - recipe: amatriciana
+    - number_people: '3'
+  - slot_was_set:
+    - recipe: amatriciana
+  - slot_was_set:
+    - number_people: '3'
+  - action: select_recipe_form
+  - active_loop: select_recipe_form
+  - slot_was_set:
+    - recipe: Amatriciana
+  - slot_was_set:
+    - number_people: '3'
+  - slot_was_set:
+    - recipe: Amatriciana
+  - slot_was_set:
+    - number_people: '3'
+  - slot_was_set:
+    - requested_slot: confirm_recipe_form
+  - slot_was_set:
+    - confirm_recipe_form: true
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_submit_recipe_form
+  - action: action_list_ingredients
+
+- story: interactive_story_2
+  steps:
+  - intent: select_recipe
+    entities:
+    - recipe: amatriciana
+  - slot_was_set:
+    - recipe: amatriciana
+  - action: select_recipe_form
+  - active_loop: select_recipe_form
+  - slot_was_set:
+    - recipe: Amatriciana
+  - slot_was_set:
+    - recipe: Amatriciana
+  - slot_was_set:
+    - requested_slot: number_people
+  - slot_was_set:
+    - number_people: '1'
+  - slot_was_set:
+    - number_people: '1'
+  - slot_was_set:
+    - requested_slot: confirm_recipe_form
+  - slot_was_set:
+    - confirm_recipe_form: true
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_submit_recipe_form
+  - action: action_list_ingredients
+
+- story: interactive_story_3
+  steps:
+  - intent: inform_num_people
+    entities:
+    - number_people: '2'
+  - slot_was_set:
+    - number_people: '2'
+  - action: select_recipe_form
+  - active_loop: select_recipe_form
+  - slot_was_set:
+    - number_people: '2'
+  - slot_was_set:
+    - number_people: '2'
+  - slot_was_set:
+    - requested_slot: recipe
+  - slot_was_set:
+    - recipe: carbonara
+  - slot_was_set:
+    - recipe: Carbonara
+  - slot_was_set:
+    - requested_slot: confirm_recipe_form
+  - slot_was_set:
+    - confirm_recipe_form: true
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_submit_recipe_form
+  - action: action_list_ingredients
