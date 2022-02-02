@@ -165,6 +165,13 @@ class ActionListIngredients(Action):
         for ing in ings:
             if not ing.amount is None:
                 if not ing.unit is None:
-                    say(dispatcher, f"{ing.amount} {ing.unit} of {ing.name}")
+                    # both amount and unit: 30 grams of cheese
+                    say(dispatcher, f"{ing.amount*num} {ing.unit} of {ing.name}")
+                else:
+                    # just the amount: 2 egg yolks
+                    say(dispatcher, f"{ing.amount*num} {ing.name}")
+            else:
+                # none of the two: pepper to your liking
+                say(dispatcher, f"{ing.name} to your liking")
 
         return []
