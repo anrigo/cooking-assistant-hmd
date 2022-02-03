@@ -1,5 +1,15 @@
 version: "2.0"
 nlu:
+- intent: user_did_not_understand
+  examples: |
+    - Can you repeat?
+    - I'm sorry I didn't understand
+    - I didn't understand
+    - I didn't understand, can you repeat please?
+    - I didn't understand, can you repeat?
+    - I didn't get it
+    - Can you repeat please?
+    - can you repeat?
 - intent: user_ready
   examples: |
     - I'm ready
@@ -15,6 +25,8 @@ nlu:
     - Done
     - I'm done
     - I'm done with this step
+    - i'm ready for the next step
+    - done
 - intent: inform_num_people
   examples: |
     - i'll cook for [3](number_people) people
@@ -28,8 +40,6 @@ nlu:
     - just for [me]{"entity": "number_people", "value": "1"}
     - just for [one]{"entity": "number_people", "value": "1"}
     - for [three]{"entity": "number_people", "value": "3"} people
-    - for [three]{"entity": "number_people", "value": "3"} people
-    - just for [me]{"entity": "number_people", "value": "1"}
 - intent: ask_recipe
   examples: |
     - I am hungry
@@ -58,6 +68,7 @@ nlu:
     - I'll cook [pizza](recipe) for [three]{"entity": "number_people", "value": "3"} people
     - i'll go for [crepes](recipe)
     - i'll cook [carbonara](recipe)
+    - i'll cook [crepes](recipe) for [four]{"entity": "number_people", "value": "4"} people
 - intent: greet
   examples: |
     - hey
@@ -95,6 +106,7 @@ nlu:
     - that sounds good
     - correct
     - yes it is
+    - yes it is correct
 - intent: deny
   examples: |
     - no

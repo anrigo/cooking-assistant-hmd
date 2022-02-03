@@ -1,120 +1,94 @@
-version: "2.0"
-
-intents:
-  - greet
-  - goodbye
-  - affirm
-  - deny
-  - mood_great
-  - mood_unhappy
-  - bot_challenge
-  - ask_recipe
-  - select_recipe
-  - inform_num_people
-  - user_ready
-
-entities:
-  - recipe
-  - number_people
-
-slots:
-  recipe:
-    type: text
-    initial_value: null
-    auto_fill: true
-    influence_conversation: true
-  
-  number_people:
-    type: float
-    initial_value: null
-    auto_fill: true
-    influence_conversation: true
-  
-  confirm_recipe_form:
-    type: bool
-    initial_value: null
-    auto_fill: true
-    influence_conversation: true
-  
-  step_idx:
-    type: float
-    initial_value: null
-    auto_fill: false
-    influence_conversation: false
-
-responses:
-  utter_propose_recipes:
-  - text: "Here are some recipes you can try:"
-  - text: "You could try one of those:"
-  - text: "Here are some suggestions:"
-
-  utter_choose_one_recipe:
-  - text: "Which recipe would you like to prepare?"
-  - text: "Which one would you like to prepare?"
-  - text: "Please choose one"
-
-  utter_ask_select_recipe_form_confirm_recipe_form:
-  - text: "I understand you want to cook {recipe} for {number_people} people. Is it correct?"
-
-  utter_ask_select_recipe_form_number_people:
-  - text: "For how many people are you going to cook?"
-
-  utter_present_ingredients:
-  - text: "Here's what you need"
-  - text: "Here's a list of ingredients"
-  - text: "Here's the list of ingredients you are going to need"
-
-  utter_user_ready:
-  - text: "Please tell me when you are ready"
-  - text: "Let me know when you are ready"
-  - text: "Please tell me when you are ready for the next step"
-  - text: "Let me know when you are ready for the next step"
-  - text: "Tell me when you want to proceed"
-  - text: "Let me know when you want to proceed"
-
-  utter_greet:
-  - text: "Hey! How are you?"
-
-  utter_cheer_up:
-  - text: "Here is something to cheer you up:"
-    image: "https://i.imgur.com/nGF1K8f.jpg"
-
-  utter_did_that_help:
-  - text: "Did that help you?"
-
-  utter_happy:
-  - text: "Great, carry on!"
-
-  utter_goodbye:
-  - text: "Bye"
-
-  utter_iamabot:
-  - text: "I am a bot, powered by Rasa."
-
-actions:
-  - validate_select_recipe_form
-  - action_submit_recipe_form
-  - action_ask_select_recipe_form_recipe
-  - action_list_ingredients
-  - action_next_step
-
-forms:
-  select_recipe_form:
-    required_slots:
-        recipe:
-        - type: from_entity
-          entity: recipe
-        number_people:
-        - type: from_entity
-          entity: number_people
-        confirm_recipe_form:
-        - type: from_intent
-          value: true
-          intent: affirm
-
-config:
-  store_entities_as_slots: true
-
+version: '2.0'
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
+intents:
+- affirm
+- user_ready
+- user_did_not_understand
+- select_recipe
+- greet
+- goodbye
+- deny
+- mood_great
+- mood_unhappy
+- bot_challenge
+- ask_recipe
+- inform_num_people
+entities:
+- number_people
+- recipe
+slots:
+  recipe:
+    type: text
+    influence_conversation: true
+  number_people:
+    type: float
+    influence_conversation: true
+    max_value: 1.0
+    min_value: 0.0
+  confirm_recipe_form:
+    type: bool
+    influence_conversation: true
+  step_idx:
+    type: float
+    auto_fill: false
+    influence_conversation: false
+    max_value: 1.0
+    min_value: 0.0
+responses:
+  utter_propose_recipes:
+  - text: 'Here are some recipes you can try:'
+  - text: 'You could try one of those:'
+  - text: 'Here are some suggestions:'
+  utter_choose_one_recipe:
+  - text: Which recipe would you like to prepare?
+  - text: Which one would you like to prepare?
+  - text: Please choose one
+  utter_ask_select_recipe_form_confirm_recipe_form:
+  - text: I understand you want to cook {recipe} for {number_people} people. Is it correct?
+  utter_ask_select_recipe_form_number_people:
+  - text: For how many people are you going to cook?
+  utter_present_ingredients:
+  - text: Here's what you need
+  - text: Here's a list of ingredients
+  - text: Here's the list of ingredients you are going to need
+  utter_user_ready:
+  - text: Please tell me when you are ready
+  - text: Let me know when you are ready
+  - text: Please tell me when you are ready for the next step
+  - text: Let me know when you are ready for the next step
+  - text: Tell me when you want to proceed
+  - text: Let me know when you want to proceed
+  utter_greet:
+  - text: Hey! How are you?
+  utter_cheer_up:
+  - text: 'Here is something to cheer you up:'
+    image: https://i.imgur.com/nGF1K8f.jpg
+  utter_did_that_help:
+  - text: Did that help you?
+  utter_happy:
+  - text: Great, carry on!
+  utter_goodbye:
+  - text: Bye
+  utter_iamabot:
+  - text: I am a bot, powered by Rasa.
+actions:
+- action_ask_select_recipe_form_recipe
+- action_list_ingredients
+- action_next_step
+- action_submit_recipe_form
+- validate_select_recipe_form
+forms:
+  select_recipe_form:
+    required_slots:
+      recipe:
+      - type: from_entity
+        entity: recipe
+      number_people:
+      - type: from_entity
+        entity: number_people
+      confirm_recipe_form:
+      - type: from_intent
+        value: true
+        intent: affirm

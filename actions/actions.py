@@ -211,4 +211,13 @@ class ActionNextStep(Action):
                 return []
         else:
             # user wants to repeat current step
-            return[]
+            if intent == 'user_did_not_understand':
+                say(dispatcher, 'Of course')
+
+                if step_idx < 0:
+                    return [FollowupAction(name="action_list_ingredients")]
+                else:
+                    step = steps[step_idx]
+                    say(dispatcher, step.description)
+
+            return []
