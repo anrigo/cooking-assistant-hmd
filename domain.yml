@@ -34,6 +34,12 @@ slots:
     initial_value: null
     auto_fill: true
     influence_conversation: true
+  
+  step_idx:
+    type: float
+    initial_value: null
+    auto_fill: false
+    influence_conversation: true
 
 responses:
   utter_propose_recipes:
@@ -56,6 +62,14 @@ responses:
   - text: "Here's what you need"
   - text: "Here's a list of ingredients"
   - text: "Here's the list of ingredients you are going to need"
+
+  utter_user_ready:
+  - text: "Please tell me when you are ready"
+  - text: "Let me know when you are ready"
+  - text: "Please tell me when you are ready for the next step"
+  - text: "Let me know when you are ready for the next step"
+  - text: "Tell me when you want to proceed"
+  - text: "Let me know when you want to proceed"
 
   utter_greet:
   - text: "Hey! How are you?"

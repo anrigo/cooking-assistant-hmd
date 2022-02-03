@@ -19,14 +19,14 @@ recipes = {
                 {'name': 'spaghetti', 'amount': 100, 'unit': 'grams'},
                 {'name': 'pepper', 'amount': None, 'unit': None}
             ]}),
-            'Crepes': Munch.fromDict(
-                {'ingredients': [
+            'Crepes': Munch.fromDict({
+                'ingredients': [
                     {'name': 'butter', 'amount': None, 'unit': None},
                     {'name': '00 flour', 'amount': 83, 'unit': 'grams'},
                     {'name': 'eggs', 'amount': 1, 'unit': None},
                     {'name': 'whole milk', 'amount': 167, 'unit': 'milliliters'}
-                ]},
-                {'steps': [
+                ],
+                'steps': [
                     {'description': 'Break the eggs in a large bowl.'},
                     {'description': 'Pour the milk and whisk until they the eggs get incorporate in it.'},
                     {'description': 'Sift the flour over the bowl while mixing.'},
@@ -39,8 +39,8 @@ recipes = {
                     {'description': 'Cook it for about 45 seconds until golden.'},
                     {'description': 'Use a palette to flip the crepe on the other side and cook it for about 30 seconds.'},
                     {'description': 'Slide the crepe on a plate to be served. Then you can cook another.'}
-                ]}
-            ),
+                ]
+                }),
             'Waffles': Munch.fromDict({'ingredients': [
                 {'name': '00 flour', 'amount': 140, 'unit': 'grams'},
                 {'name': 'eggs', 'amount': 3, 'unit': None},

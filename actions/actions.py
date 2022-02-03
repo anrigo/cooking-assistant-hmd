@@ -144,7 +144,7 @@ class ActionSubmitRecipeForm(Action):
         if not confirm:
             return [SlotSet("recipe", None), SlotSet("number_people", None), SlotSet("confirm_recipe_form", None), FollowupAction(name="select_recipe_form")]
 
-        return [FollowupAction(name="action_list_ingredients")]
+        return [SlotSet('step_idx', -1), FollowupAction(name="action_list_ingredients")]
 
 
 class ActionListIngredients(Action):
@@ -159,6 +159,7 @@ class ActionListIngredients(Action):
         recipe_key = tracker.get_slot('recipe')
         ings = recipes[recipe_key].ingredients
         num = int(tracker.get_slot('number_people'))
+        step_idx = int(tracker.get_slot('step_idx'))
 
         resp(dispatcher, "utter_present_ingredients")
 
@@ -173,5 +174,12 @@ class ActionListIngredients(Action):
             else:
                 # none of the two: pepper to your liking
                 say(dispatcher, f"{ing.name} to your liking")
+        
+        resp(dispatcher, 'utter_user_ready')
 
-        return []
+        if step_idx < 0:
+            # list of ingredients after having selected the recipe
+            return []
+        else:
+            # list of ingredients in the middle of a recipe because the user asked to repeat
+            return []
