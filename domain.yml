@@ -11,6 +11,7 @@ intents:
   - ask_recipe
   - select_recipe
   - inform_num_people
+  - user_ready
 
 entities:
   - recipe
@@ -39,7 +40,7 @@ slots:
     type: float
     initial_value: null
     auto_fill: false
-    influence_conversation: true
+    influence_conversation: false
 
 responses:
   utter_propose_recipes:
@@ -95,6 +96,7 @@ actions:
   - action_submit_recipe_form
   - action_ask_select_recipe_form_recipe
   - action_list_ingredients
+  - action_next_step
 
 forms:
   select_recipe_form:

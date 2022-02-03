@@ -1,5 +1,20 @@
 version: "2.0"
 nlu:
+- intent: user_ready
+  examples: |
+    - I'm ready
+    - I'm ready for the next step
+    - Let's go with the next step
+    - Let's go to the next step
+    - Let's go on
+    - We can go on
+    - Let's proceed
+    - We can proceed
+    - Proceed
+    - Go on
+    - Done
+    - I'm done
+    - I'm done with this step
 - intent: inform_num_people
   examples: |
     - i'll cook for [3](number_people) people

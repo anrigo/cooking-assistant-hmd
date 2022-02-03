@@ -27,6 +27,7 @@
 #         return []
 
 from typing import Any, Text, Dict, List
+from matplotlib.pyplot import step
 from rasa_sdk import Action, Tracker, FormValidationAction
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.types import DomainDict
@@ -177,9 +178,37 @@ class ActionListIngredients(Action):
         
         resp(dispatcher, 'utter_user_ready')
 
-        if step_idx < 0:
-            # list of ingredients after having selected the recipe
-            return []
+        return []
+
+
+class ActionNextStep(Action):
+
+    def name(self) -> Text:
+        return "action_next_step"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        recipe_key = tracker.get_slot('recipe')
+        step_idx = int(tracker.get_slot('step_idx'))
+        steps = recipes[recipe_key].steps
+
+        intent = tracker.get_intent_of_latest_message()
+
+        if intent == 'user_ready':
+            # user wants to procceed to the next step
+            step_idx += 1
+
+            if step_idx < len(steps):
+                step = steps[step_idx]
+                say(dispatcher, step.description)
+
+                return [SlotSet('step_idx', step_idx)]
+            else:
+                # recipe completed
+                print('Recipe completed: to implement')
+                return []
         else:
-            # list of ingredients in the middle of a recipe because the user asked to repeat
-            return []
+            # user wants to repeat current step
+            return[]

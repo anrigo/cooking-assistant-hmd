@@ -1,12 +1,10 @@
 version: "2.0"
 
 rules:
-# - rule: Activate select recipe form
-#   steps:
-#   - intent: ask_recipe
-#   - action: action_propose_recipes
-#   - action: select_recipe_form
-#   - active_loop: form_select_recipe
+- rule: Next step
+  steps:
+  - intent: user_ready
+  - action: action_next_step
 
 - rule: Say goodbye anytime the user says goodbye
   steps:

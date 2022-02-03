@@ -28,7 +28,7 @@ recipes = {
                 ],
                 'steps': [
                     {'description': 'Break the eggs in a large bowl.'},
-                    {'description': 'Pour the milk and whisk until they the eggs get incorporate in it.'},
+                    {'description': 'Pour the milk and whisk until the eggs get incorporated in it.'},
                     {'description': 'Sift the flour over the bowl while mixing.'},
                     {'description': 'Whisk until you obtain a smooth batter.'},
                     {'description': 'Let the batter rest in the fridge for 30 minutes.'},
