@@ -30,6 +30,7 @@ nlu:
   examples: |
     - I'll prepare [waffles](recipe)
     - I'll prepare [cacio e pepe](recipe)
+    - I'll prepare [crepes](recipe)
     - I'll cook [pizza](recipe)
     - I'll cook [cacio e pepe](recipe)
     - I'll cook [muffins](recipe)
@@ -40,8 +41,7 @@ nlu:
     - I think [amatriciana](recipe) will do
     - I'll prepare [waffles](recipe) for [four]{"entity": "number_people", "value": "4"}
     - I'll cook [pizza](recipe) for [three]{"entity": "number_people", "value": "3"} people
-    - i'll go for [amatriciana](recipe)
-    - i'll go for [amatriciana](recipe)
+    - i'll go for [crepes](recipe)
     - i'll cook [carbonara](recipe)
 - intent: greet
   examples: |

@@ -19,17 +19,11 @@ recipes = {
                 {'name': 'spaghetti', 'amount': 100, 'unit': 'grams'},
                 {'name': 'pepper', 'amount': None, 'unit': None}
             ]}),
-            'Muffins': Munch.fromDict({'ingredients': [
-                {'name': 'butter', 'amount': 60, 'unit': 'grams'},
-                {'name': 'sugar', 'amount': 66, 'unit': 'grams'},
+            'Crepes': Munch.fromDict({'ingredients': [
+                {'name': 'butter', 'amount': None, 'unit': None},
+                {'name': '00 flour', 'amount': 83, 'unit': 'grams'},
                 {'name': 'eggs', 'amount': 1, 'unit': None},
-                {'name': 'pepper', 'amount': None, 'unit': None},
-                {'name': '00 flour', 'amount': '132', 'unit': 'grams'},
-                {'name': 'milk', 'amount': 68, 'unit': 'grams'},
-                {'name': 'dark chocolate chips', 'amount': 50, 'unit': 'grams'},
-                {'name': 'baking powder', 'amount': 5, 'unit': 'grams'},
-                {'name': 'bicarbonate', 'amount': 0.5, 'unit': 'teaspoon'},
-                {'name': 'salt', 'amount': None, 'unit': None}
+                {'name': 'whole milk', 'amount': 167, 'unit': 'milliliters'}
             ]}),
             'Waffles': Munch.fromDict({'ingredients': [
                 {'name': '00 flour', 'amount': 140, 'unit': 'grams'},
