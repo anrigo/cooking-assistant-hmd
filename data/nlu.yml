@@ -27,6 +27,7 @@ nlu:
     - I'm done with this step
     - i'm ready for the next step
     - done
+    - i'm ready
 - intent: inform_num_people
   examples: |
     - i'll cook for [3](number_people) people
@@ -40,6 +41,7 @@ nlu:
     - just for [me]{"entity": "number_people", "value": "1"}
     - just for [one]{"entity": "number_people", "value": "1"}
     - for [three]{"entity": "number_people", "value": "3"} people
+    - for [two]{"entity": "number_people", "value": "2"}
 - intent: ask_recipe
   examples: |
     - I am hungry
@@ -51,6 +53,7 @@ nlu:
     - I'd like to cook something today
     - i am hungry
     - whac could i cook today?
+    - what can i eat today?
 - intent: select_recipe
   examples: |
     - I'll prepare [waffles](recipe)
@@ -69,6 +72,7 @@ nlu:
     - i'll go for [crepes](recipe)
     - i'll cook [carbonara](recipe)
     - i'll cook [crepes](recipe) for [four]{"entity": "number_people", "value": "4"} people
+    - i'll go with [crepes](recipe)
 - intent: greet
   examples: |
     - hey

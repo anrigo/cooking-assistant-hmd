@@ -1,10 +1,10 @@
 version: "2.0"
 
 rules:
-- rule: Next step
-  steps:
-  - intent: user_ready
-  - action: action_next_step
+# - rule: Next step
+#   steps:
+#   - intent: user_ready
+#   - action: action_next_step
 
 - rule: Say goodbye anytime the user says goodbye
   steps:

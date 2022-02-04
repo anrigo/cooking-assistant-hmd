@@ -3,18 +3,18 @@ session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
 intents:
-- affirm
-- user_ready
 - user_did_not_understand
+- inform_num_people
+- user_ready
+- ask_recipe
 - select_recipe
+- affirm
 - greet
 - goodbye
 - deny
 - mood_great
 - mood_unhappy
 - bot_challenge
-- ask_recipe
-- inform_num_people
 entities:
 - number_people
 - recipe

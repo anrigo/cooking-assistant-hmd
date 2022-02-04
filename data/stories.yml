@@ -198,26 +198,24 @@ stories:
   - action: action_submit_recipe_form
   - action: action_list_ingredients
 
+
 - story: interactive_story_1
   steps:
-  - intent: select_recipe
-    entities:
-    - recipe: crepes
-    - number_people: '4'
-  - slot_was_set:
-    - recipe: crepes
-  - slot_was_set:
-    - number_people: '4'
+  - intent: ask_recipe
   - action: select_recipe_form
   - active_loop: select_recipe_form
   - slot_was_set:
+    - requested_slot: recipe
+  - slot_was_set:
+    - recipe: crepes
+  - slot_was_set:
     - recipe: Crepes
   - slot_was_set:
-    - number_people: '4'
+    - requested_slot: number_people
   - slot_was_set:
-    - recipe: Crepes
+    - number_people: '2'
   - slot_was_set:
-    - number_people: '4'
+    - number_people: '2'
   - slot_was_set:
     - requested_slot: confirm_recipe_form
   - slot_was_set:
@@ -240,3 +238,42 @@ stories:
   - action: action_next_step
   - slot_was_set:
     - step_idx: 1
+
+- story: interactive_story_2
+  steps:
+  - intent: ask_recipe
+  - action: select_recipe_form
+  - active_loop: select_recipe_form
+  - slot_was_set:
+    - requested_slot: recipe
+  - slot_was_set:
+    - recipe: crepes
+  - slot_was_set:
+    - recipe: crepes
+  - slot_was_set:
+    - recipe: Crepes
+  - slot_was_set:
+    - requested_slot: number_people
+  - slot_was_set:
+    - number_people: '2'
+  - slot_was_set:
+    - number_people: '2'
+  - slot_was_set:
+    - number_people: '2'
+  - slot_was_set:
+    - requested_slot: confirm_recipe_form
+  - slot_was_set:
+    - confirm_recipe_form: true
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_submit_recipe_form
+  - slot_was_set:
+    - step_idx: -1
+  - action: action_list_ingredients
+  - intent: user_ready
+  - action: action_next_step
+  - slot_was_set:
+    - step_idx: 0
+  - intent: user_did_not_understand
+  - action: action_next_step

@@ -221,3 +221,19 @@ class ActionNextStep(Action):
                     say(dispatcher, step.description)
 
             return []
+
+
+# class ActionRepeatStep(Action):
+
+#     def name(self) -> Text:
+#         return "action_repeat_step"
+
+#     def run(self, dispatcher: CollectingDispatcher,
+#             tracker: Tracker,
+#             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+#         recipe_key = tracker.get_slot('recipe')
+#         step_idx = int(tracker.get_slot('step_idx'))
+#         steps = recipes[recipe_key].steps
+
+#         intent = tracker.get_intent_of_latest_message()
