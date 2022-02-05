@@ -4,11 +4,11 @@ session_config:
   carry_over_slots_to_new_session: true
 intents:
 - user_did_not_understand
-- inform_num_people
-- user_ready
-- ask_recipe
 - select_recipe
 - affirm
+- user_ready
+- inform_num_people
+- ask_recipe
 - greet
 - goodbye
 - deny
@@ -77,6 +77,7 @@ actions:
 - action_ask_select_recipe_form_recipe
 - action_list_ingredients
 - action_next_step
+- action_repeat
 - action_submit_recipe_form
 - validate_select_recipe_form
 forms:

@@ -194,46 +194,40 @@ class ActionNextStep(Action):
         step_idx = int(tracker.get_slot('step_idx'))
         steps = recipes[recipe_key].steps
 
-        intent = tracker.get_intent_of_latest_message()
+        # user wants to procceed to the next step
+        step_idx += 1
 
-        if intent == 'user_ready':
-            # user wants to procceed to the next step
-            step_idx += 1
+        if step_idx < len(steps):
+            step = steps[step_idx]
+            say(dispatcher, step.description)
 
-            if step_idx < len(steps):
-                step = steps[step_idx]
-                say(dispatcher, step.description)
-
-                return [SlotSet('step_idx', step_idx)]
-            else:
-                # recipe completed
-                print('Recipe completed: to implement')
-                return []
+            return [SlotSet('step_idx', step_idx)]
         else:
-            # user wants to repeat current step
-            if intent == 'user_did_not_understand':
-                say(dispatcher, 'Of course')
-
-                if step_idx < 0:
-                    return [FollowupAction(name="action_list_ingredients")]
-                else:
-                    step = steps[step_idx]
-                    say(dispatcher, step.description)
-
+            # recipe completed
+            print('Recipe completed: to implement')
             return []
 
 
-# class ActionRepeatStep(Action):
+class ActionRepeat(Action):
 
-#     def name(self) -> Text:
-#         return "action_repeat_step"
+    def name(self) -> Text:
+        return "action_repeat"
 
-#     def run(self, dispatcher: CollectingDispatcher,
-#             tracker: Tracker,
-#             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
-#         recipe_key = tracker.get_slot('recipe')
-#         step_idx = int(tracker.get_slot('step_idx'))
-#         steps = recipes[recipe_key].steps
+        recipe_key = tracker.get_slot('recipe')
+        step_idx = int(tracker.get_slot('step_idx'))
+        steps = recipes[recipe_key].steps
 
-#         intent = tracker.get_intent_of_latest_message()
+        # user wants to repeat current step
+        say(dispatcher, 'Of course')
+
+        if step_idx < 0:
+            return [FollowupAction(name="action_list_ingredients")]
+        else:
+            step = steps[step_idx]
+            say(dispatcher, step.description)
+
+            return []

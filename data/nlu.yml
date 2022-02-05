@@ -10,6 +10,8 @@ nlu:
     - I didn't get it
     - Can you repeat please?
     - can you repeat?
+    - i'm sorry, can you repeat?
+    - i did not understand, can you repeat?
 - intent: user_ready
   examples: |
     - I'm ready
@@ -73,6 +75,7 @@ nlu:
     - i'll cook [carbonara](recipe)
     - i'll cook [crepes](recipe) for [four]{"entity": "number_people", "value": "4"} people
     - i'll go with [crepes](recipe)
+    - i'll cook [crepes](recipe) for [four]{"entity": "number_people", "value": "4"} people
 - intent: greet
   examples: |
     - hey
