@@ -173,8 +173,8 @@ class ActionListIngredients(Action):
                     # just the amount: 2 egg yolks
                     say(dispatcher, f"{ing.amount*num} {ing.name}")
             else:
-                # none of the two: pepper to your liking
-                say(dispatcher, f"{ing.name} to your liking")
+                # none of the two: pepper
+                say(dispatcher, f"{ing.name}")
         
         resp(dispatcher, 'utter_user_ready')
 
