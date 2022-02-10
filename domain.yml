@@ -1,4 +1,6 @@
 version: '2.0'
+config:
+  store_entities_as_slots: true
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
@@ -15,9 +17,11 @@ intents:
 - mood_great
 - mood_unhappy
 - bot_challenge
+- back_step
 entities:
 - number_people
 - recipe
+- delta_steps
 slots:
   recipe:
     type: text
@@ -36,6 +40,10 @@ slots:
     influence_conversation: false
     max_value: 1.0
     min_value: 0.0
+  delta_steps:
+    type: float
+    auto_fill: true
+    influence_conversation: false
 responses:
   utter_propose_recipes:
   - text: 'Here are some recipes you can try:'
@@ -80,6 +88,7 @@ actions:
 - action_repeat
 - action_submit_recipe_form
 - validate_select_recipe_form
+- action_backward_step
 forms:
   select_recipe_form:
     required_slots:

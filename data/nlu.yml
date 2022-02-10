@@ -1,5 +1,10 @@
 version: "2.0"
 nlu:
+- intent: back_step
+  examples: |
+    - Can we go back [two]{"entity": "delta_steps", "value": "2"} steps?
+    - Go back [one]{"entity": "delta_steps", "value": "1"} step
+    - Go back [two]{"entity": "delta_steps", "value": "2"} step
 - intent: user_did_not_understand
   examples: |
     - Can you repeat?

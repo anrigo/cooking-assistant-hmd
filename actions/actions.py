@@ -194,11 +194,12 @@ class ActionNextStep(Action):
         step_idx = int(tracker.get_slot('step_idx'))
         steps = recipes[recipe_key].steps
 
-        # user wants to procceed to the next step
+        # user wants to proceed to the next step
         step_idx += 1
 
         if step_idx < len(steps):
             step = steps[step_idx]
+            # print(step_idx)
             say(dispatcher, step.description)
 
             return [SlotSet('step_idx', step_idx)]
@@ -231,3 +232,27 @@ class ActionRepeat(Action):
             say(dispatcher, step.description)
 
             return []
+
+
+class ActionBackwardStep(Action):
+
+    def name(self) -> Text:
+        return "action_backward_step"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        recipe_key = tracker.get_slot('recipe')
+        step_idx = int(tracker.get_slot('step_idx'))
+        delta = int(tracker.get_slot('delta_steps'))
+        steps = recipes[recipe_key].steps
+
+        # user wants to go back
+        step_idx = max(-1, step_idx - delta)
+
+
+        step = steps[step_idx]
+        say(dispatcher, step.description)
+
+        return [SlotSet('step_idx', step_idx)]
