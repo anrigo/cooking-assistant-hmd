@@ -29,32 +29,7 @@ stories:
   - intent: deny
   - action: utter_goodbye
 
-- story: interactive_story_1
-  steps:
-  - intent: ask_recipe
-  - action: select_recipe_form
-  - active_loop: select_recipe_form
-  - slot_was_set:
-    - requested_slot: recipe
-  - slot_was_set:
-    - recipe: amatriciana
-  - slot_was_set:
-    - recipe: Amatriciana
-  - slot_was_set:
-    - requested_slot: number_people
-  - slot_was_set:
-    - number_people: '3'
-  - slot_was_set:
-    - number_people: '3'
-  - slot_was_set:
-    - requested_slot: confirm_recipe_form
-  - slot_was_set:
-    - confirm_recipe_form: true
-  - slot_was_set:
-    - requested_slot: null
-  - active_loop: null
-  - action: action_submit_recipe_form
-  - action: action_list_ingredients
+### INTERACTIVE STORIES ###
 
 - story: interactive_story_2
   steps:
@@ -242,3 +217,61 @@ stories:
     - step_idx: 1
   - intent: user_did_not_understand
   - action: action_repeat
+
+- story: interactive_story_1
+  steps:
+  - intent: ask_recipe
+  - action: select_recipe_form
+  - active_loop: select_recipe_form
+  - slot_was_set:
+    - requested_slot: recipe
+  - slot_was_set:
+    - recipe: carbonara
+  - slot_was_set:
+    - recipe: Carbonara
+  - slot_was_set:
+    - requested_slot: number_people
+  - slot_was_set:
+    - number_people: '2'
+  - slot_was_set:
+    - number_people: '2'
+  - slot_was_set:
+    - requested_slot: confirm_recipe_form
+  - slot_was_set:
+    - confirm_recipe_form: true
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_submit_recipe_form
+  - slot_was_set:
+    - step_idx: -1
+  - action: action_list_ingredients
+  - intent: user_ready
+  - action: action_next_step
+  - slot_was_set:
+    - step_idx: 0
+  - intent: user_ready
+  - action: action_next_step
+  - slot_was_set:
+    - step_idx: 1
+  - intent: back_step
+    entities:
+    - delta_steps: '1'
+  - slot_was_set:
+    - delta_steps: '1'
+  - action: action_backward_step
+  - slot_was_set:
+    - step_idx: 0
+  - intent: user_ready
+  - action: action_next_step
+  - slot_was_set:
+    - step_idx: 1
+  - intent: back_step
+    entities:
+    - delta_steps: '2'
+  - slot_was_set:
+    - delta_steps: '2'
+  - action: action_backward_step
+  - slot_was_set:
+    - step_idx: -1
+  - action: action_list_ingredients

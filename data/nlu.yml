@@ -5,6 +5,10 @@ nlu:
     - Can we go back [two]{"entity": "delta_steps", "value": "2"} steps?
     - Go back [one]{"entity": "delta_steps", "value": "1"} step
     - Go back [two]{"entity": "delta_steps", "value": "2"} step
+    - please go back [one]{"entity": "delta_steps", "value": "1"} step
+    - can you go back [one]{"entity": "delta_steps", "value": "1"} step?
+    - go back [two]{"entity": "delta_steps", "value": "2"} steps
+    - go back [once]{"entity": "delta_steps", "value": "1"}
 - intent: user_did_not_understand
   examples: |
     - Can you repeat?
@@ -35,6 +39,10 @@ nlu:
     - i'm ready for the next step
     - done
     - i'm ready
+    - proceed please
+    - i'm ready to proceed
+    - ready, go on
+    - don
 - intent: inform_num_people
   examples: |
     - i'll cook for [3](number_people) people
@@ -49,6 +57,8 @@ nlu:
     - just for [one]{"entity": "number_people", "value": "1"}
     - for [three]{"entity": "number_people", "value": "3"} people
     - for [two]{"entity": "number_people", "value": "2"}
+    - Just for [two]{"entity": "number_people", "value": "2"}
+    - just for [two]{"entity": "number_people", "value": "2"}
 - intent: ask_recipe
   examples: |
     - I am hungry
@@ -61,6 +71,7 @@ nlu:
     - i am hungry
     - whac could i cook today?
     - what can i eat today?
+    - what can i cook today?
 - intent: select_recipe
   examples: |
     - I'll prepare [waffles](recipe)
@@ -80,7 +91,8 @@ nlu:
     - i'll cook [carbonara](recipe)
     - i'll cook [crepes](recipe) for [four]{"entity": "number_people", "value": "4"} people
     - i'll go with [crepes](recipe)
-    - i'll cook [crepes](recipe) for [four]{"entity": "number_people", "value": "4"} people
+    - i think i'll cook [amatriciana](recipe)
+    - i think im going to cook a [carbonara](recipe)
 - intent: greet
   examples: |
     - hey
@@ -166,12 +178,16 @@ nlu:
     - are you a human?
     - am I talking to a bot?
     - am I talking to a human?
-- synonym: '3'
-  examples: |
-    - three
 - synonym: '2'
   examples: |
     - two
+- synonym: '1'
+  examples: |
+    - one
+    - me
+- synonym: '3'
+  examples: |
+    - three
 - synonym: '4'
   examples: |
     - four
@@ -181,7 +197,3 @@ nlu:
 - synonym: '6'
   examples: |
     - six
-- synonym: '1'
-  examples: |
-    - me
-    - one

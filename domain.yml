@@ -1,27 +1,25 @@
 version: '2.0'
-config:
-  store_entities_as_slots: true
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
 intents:
-- user_did_not_understand
-- select_recipe
-- affirm
-- user_ready
+- back_step
 - inform_num_people
 - ask_recipe
+- affirm
+- user_ready
+- select_recipe
+- user_did_not_understand
 - greet
 - goodbye
 - deny
 - mood_great
 - mood_unhappy
 - bot_challenge
-- back_step
 entities:
+- delta_steps
 - number_people
 - recipe
-- delta_steps
 slots:
   recipe:
     type: text
@@ -42,8 +40,9 @@ slots:
     min_value: 0.0
   delta_steps:
     type: float
-    auto_fill: true
     influence_conversation: false
+    max_value: 1.0
+    min_value: 0.0
 responses:
   utter_propose_recipes:
   - text: 'Here are some recipes you can try:'
@@ -83,12 +82,12 @@ responses:
   - text: I am a bot, powered by Rasa.
 actions:
 - action_ask_select_recipe_form_recipe
+- action_backward_step
 - action_list_ingredients
 - action_next_step
 - action_repeat
 - action_submit_recipe_form
 - validate_select_recipe_form
-- action_backward_step
 forms:
   select_recipe_form:
     required_slots:

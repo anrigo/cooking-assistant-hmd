@@ -251,8 +251,10 @@ class ActionBackwardStep(Action):
         # user wants to go back
         step_idx = max(-1, step_idx - delta)
 
+        if step_idx < 0:
+            return [SlotSet('step_idx', step_idx), FollowupAction(name="action_list_ingredients")]
+        else:
+            step = steps[step_idx]
+            say(dispatcher, step.description)
 
-        step = steps[step_idx]
-        say(dispatcher, step.description)
-
-        return [SlotSet('step_idx', step_idx)]
+            return [SlotSet('step_idx', step_idx)]
