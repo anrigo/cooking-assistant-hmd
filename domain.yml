@@ -3,12 +3,13 @@ session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
 intents:
+- user_ready
+- select_recipe
+- affirm
+- skip_step
 - back_step
 - inform_num_people
 - ask_recipe
-- affirm
-- user_ready
-- select_recipe
 - user_did_not_understand
 - greet
 - goodbye
@@ -86,6 +87,7 @@ actions:
 - action_list_ingredients
 - action_next_step
 - action_repeat
+- action_skip_step
 - action_submit_recipe_form
 - validate_select_recipe_form
 forms:

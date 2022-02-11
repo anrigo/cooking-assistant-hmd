@@ -1,5 +1,16 @@
 version: "2.0"
 nlu:
+- intent: skip_step
+  examples: |
+    - Skip [this step]{"entity": "delta_steps", "value": "1"}
+    - Skip [this step]{"entity": "delta_steps", "value": "1"} please
+    - Skip [two]{"entity": "delta_steps", "value": "2"} steps
+    - Skip [two]{"entity": "delta_steps", "value": "2"} steps please
+    - Skip [once]{"entity": "delta_steps", "value": "1"}
+    - Go forward [three]{"entity": "delta_steps", "value": "3"} steps
+    - Go on [three]{"entity": "delta_steps", "value": "3"} steps
+    - Skip [two]{"entity": "delta_steps", "value": "2"} times
+    - skip [two]{"entity": "delta_steps", "value": "2"} steps
 - intent: back_step
   examples: |
     - Can we go back [two]{"entity": "delta_steps", "value": "2"} steps?
@@ -93,6 +104,7 @@ nlu:
     - i'll go with [crepes](recipe)
     - i think i'll cook [amatriciana](recipe)
     - i think im going to cook a [carbonara](recipe)
+    - i want to cook [carbonara](recipe) for [three]{"entity": "number_people", "value": "3"}
 - intent: greet
   examples: |
     - hey
@@ -131,6 +143,7 @@ nlu:
     - correct
     - yes it is
     - yes it is correct
+    - you are right
 - intent: deny
   examples: |
     - no
@@ -178,13 +191,15 @@ nlu:
     - are you a human?
     - am I talking to a bot?
     - am I talking to a human?
+- synonym: '1'
+  examples: |
+    - this step
+    - once
+    - one
+    - me
 - synonym: '2'
   examples: |
     - two
-- synonym: '1'
-  examples: |
-    - one
-    - me
 - synonym: '3'
   examples: |
     - three

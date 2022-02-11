@@ -255,3 +255,17 @@ class ActionBackwardStep(Action):
         delta = int(tracker.get_slot('delta_steps'))
 
         return seek(tracker, dispatcher, -delta)
+
+
+class ActionSkipStep(Action):
+
+    def name(self) -> Text:
+        return "action_skip_step"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        delta = int(tracker.get_slot('delta_steps'))
+
+        return seek(tracker, dispatcher, delta)
