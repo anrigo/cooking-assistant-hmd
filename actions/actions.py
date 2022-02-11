@@ -41,12 +41,37 @@ from actions.data import recipes
 def say(dispatcher: CollectingDispatcher, message: str) -> None:
     dispatcher.utter_message(text=message)
 
+
 def resp(dispatcher: CollectingDispatcher, utter: str) -> None:
     dispatcher.utter_message(response=utter)
 
 
 def similarity_score(seq1: str, seq2: str) -> float:
     return SequenceMatcher(a=seq1.lower(), b=seq2.lower()).ratio()
+
+
+def seek(tracker: Tracker, dispatcher: CollectingDispatcher, delta: int):
+    recipe_key = tracker.get_slot('recipe')
+    step_idx = int(tracker.get_slot('step_idx'))
+    steps = recipes[recipe_key].steps
+
+    # user wants to go back
+    step_idx = max(-1, step_idx + delta)
+
+    if step_idx < 0:
+        # step negative: ingredients
+        return [SlotSet('step_idx', step_idx), FollowupAction(name="action_list_ingredients")]
+    elif step_idx < len(steps):
+        # step positive and inside recipe boundaries
+        step = steps[step_idx]
+        # print(step_idx)
+        say(dispatcher, step.description)
+
+        return [SlotSet('step_idx', step_idx)]
+    else:
+        # recipe completed
+        print('Recipe completed: to implement')
+        return []
 
 
 # class ActionProposeRecipes(Action):
@@ -190,23 +215,7 @@ class ActionNextStep(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
-        recipe_key = tracker.get_slot('recipe')
-        step_idx = int(tracker.get_slot('step_idx'))
-        steps = recipes[recipe_key].steps
-
-        # user wants to proceed to the next step
-        step_idx += 1
-
-        if step_idx < len(steps):
-            step = steps[step_idx]
-            # print(step_idx)
-            say(dispatcher, step.description)
-
-            return [SlotSet('step_idx', step_idx)]
-        else:
-            # recipe completed
-            print('Recipe completed: to implement')
-            return []
+        return seek(tracker, dispatcher, 1)
 
 
 class ActionRepeat(Action):
@@ -243,18 +252,6 @@ class ActionBackwardStep(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
-        recipe_key = tracker.get_slot('recipe')
-        step_idx = int(tracker.get_slot('step_idx'))
         delta = int(tracker.get_slot('delta_steps'))
-        steps = recipes[recipe_key].steps
 
-        # user wants to go back
-        step_idx = max(-1, step_idx - delta)
-
-        if step_idx < 0:
-            return [SlotSet('step_idx', step_idx), FollowupAction(name="action_list_ingredients")]
-        else:
-            step = steps[step_idx]
-            say(dispatcher, step.description)
-
-            return [SlotSet('step_idx', step_idx)]
+        return seek(tracker, dispatcher, -delta)
