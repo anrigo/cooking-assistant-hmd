@@ -12,12 +12,24 @@ recipes = {
                     {'name': 'salt', 'amount': None, 'unit': None}
                 ],
                 'steps': [
-                    {'description': 'Fill a pot with water and put it on the heat to boil.\nAdd some salt to the water, but not too much since Pecorino is alreay a very salty cheese.'},
-                    {'description': 'While you wait for the water to boil, remove the rind from the guanciale and then cut the guanciale in short strips.'},
+                    {
+                        'description': 'Fill a pot with water and put it on the heat to boil.\nAdd some salt to the water, but not too much since Pecorino is alreay a very salty cheese.',
+                        'ingredients': {5: 'as you prefer, but don\'t exagerate'}
+                    },
+                    {
+                        'description': 'While you wait for the water to boil, remove the rind from the guanciale and then cut the guanciale in short strips.',
+                        'ingredients': {1: None}
+                    },
                     {'description': 'Put the strips on a pan on medium heat for about two minutes, until they are brown and a bit crisp but not too much.\nNo oil nor butter is needed.'},
                     {'description': 'When the guanciale is ready, put it on a plate to cool down. Leave the liquid fat lost by the guanciale in the pan.'},
-                    {'description': 'When the water will start boiling, add the spaghetti. Remeber to stir it occasionally until about two minutes before tender.'},
-                    {'description': 'Meanwhile, grate the Pecorino in a bowl and combine it with the egg yolks and pepper to obtain a smooth cream.\nAdd a table spoon of pasta cooking water if it\s too firm.'},
+                    {
+                        'description': 'When the water will start boiling, add the spaghetti. Remeber to stir it occasionally until about two minutes before tender.',
+                        'ingredients': {3: None}
+                    },
+                    {
+                        'description': 'Meanwhile, grate the Pecorino in a bowl and combine it with the egg yolks and pepper to obtain a smooth cream.\nAdd a table spoon of pasta cooking water if it\s too firm.',
+                        'ingredients': {2: None, 0: None, 4: 'to your preference'}
+                    },
                     {'description': 'When the pasta is ready, still undercooked, drain it but reserve some cooking water.'},
                     {'description': 'Put the pasta in the pan with the fat lost by the guanciale and half cup of pasta cooking water and turn on the heat.\nLet it simmer until cooked and add cooking water if it becomes too dry.'},
                     {'description': 'When the pasta is ready, turn off the heat, add the guanciale and stir it vigorously for 30 seconds.'},

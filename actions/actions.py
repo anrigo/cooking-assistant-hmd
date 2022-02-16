@@ -185,7 +185,6 @@ class ActionListIngredients(Action):
         recipe_key = tracker.get_slot('recipe')
         ings = recipes[recipe_key].ingredients
         num = int(tracker.get_slot('number_people'))
-        step_idx = int(tracker.get_slot('step_idx'))
 
         resp(dispatcher, "utter_present_ingredients")
 
@@ -269,3 +268,29 @@ class ActionSkipStep(Action):
         delta = int(tracker.get_slot('delta_steps'))
 
         return seek(tracker, dispatcher, delta)
+
+
+class ActionHowMuchIng(Action):
+
+    def name(self) -> Text:
+        return "action_how_much_ing"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        # query = tracker.get_slot('recipe')
+
+        # sim = np.array([similarity_score(query, r) for r in recipes.keys()])
+        # idx = np.argmax(sim)
+
+        # if sim[idx] >= 0.8:
+        #     matched_recipe = list(recipes.keys())[idx]
+        #     # say(dispatcher, f"I understand you want to cook {matched_recipe}")
+        # else:
+        #     matched_recipe = None
+        #     say(dispatcher, "I don't know this recipe or i didn't understand the name correctly.\nCan you repeat or try another recipe?")
+
+        # return {"recipe": matched_recipe}
+
+        return []

@@ -3,6 +3,7 @@ session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
 intents:
+- how_much_ing
 - user_ready
 - select_recipe
 - affirm
@@ -18,6 +19,7 @@ intents:
 - mood_unhappy
 - bot_challenge
 entities:
+- requested_ingredient
 - delta_steps
 - number_people
 - recipe
@@ -44,6 +46,9 @@ slots:
     influence_conversation: false
     max_value: 1.0
     min_value: 0.0
+  requested_ingredient:
+    type: text
+    influence_conversation: true
 responses:
   utter_propose_recipes:
   - text: 'Here are some recipes you can try:'
