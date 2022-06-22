@@ -25,6 +25,7 @@ nlu:
     - can you go back [one]{"entity": "delta_steps", "value": "1"} step?
     - go back [two]{"entity": "delta_steps", "value": "2"} steps
     - go back [once]{"entity": "delta_steps", "value": "1"}
+    - go back []{"entity": "delta_steps", "value": "1"}
 - intent: user_did_not_understand
   examples: |
     - Can you repeat?
@@ -58,7 +59,9 @@ nlu:
     - proceed please
     - i'm ready to proceed
     - ready, go on
-    - don
+    - done
+    - Thank you, I'm ready now
+    - I'm ready now
 - intent: inform_num_people
   examples: |
     - i'll cook for [3](number_people) people

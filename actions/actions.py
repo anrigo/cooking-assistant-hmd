@@ -27,7 +27,6 @@
 #         return []
 
 from typing import Any, Text, Dict, List
-from matplotlib.pyplot import step
 from rasa_sdk import Action, Tracker, FormValidationAction
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.types import DomainDict
@@ -97,7 +96,7 @@ class AskSelectRecipeFormRecipe(Action):
     def run(
         self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict
     ) -> List[EventType]:
-        
+
         resp(dispatcher, 'utter_propose_recipes')
         description = ", ".join([r for r in recipes.keys()])
         say(dispatcher, f"{description}")
@@ -132,7 +131,7 @@ class ActionValidateSelectRecipeForm(FormValidationAction):
             say(dispatcher, "I don't know this recipe or i didn't understand the name correctly.\nCan you repeat or try another recipe?")
 
         return {"recipe": matched_recipe}
-    
+
     def validate_number_people(
         self,
         slot_value: Any,
@@ -192,14 +191,15 @@ class ActionListIngredients(Action):
             if not ing.amount is None:
                 if not ing.unit is None:
                     # both amount and unit: 30 grams of cheese
-                    say(dispatcher, f"{ing.amount*num} {ing.unit} of {ing.name}")
+                    say(dispatcher,
+                        f"{ing.amount*num} {ing.unit} of {ing.name}")
                 else:
                     # just the amount: 2 egg yolks
                     say(dispatcher, f"{ing.amount*num} {ing.name}")
             else:
                 # none of the two: pepper
                 say(dispatcher, f"{ing.name}")
-        
+
         resp(dispatcher, 'utter_user_ready')
 
         return []
@@ -243,6 +243,9 @@ class ActionRepeat(Action):
 
 
 class ActionBackwardStep(Action):
+    # TODO Set a default value to delta steps, and return it at the end of seek,
+    # so that if the user only says "go back" without specifing a number of steps
+    #  the action can recognize that and go back only once
 
     def name(self) -> Text:
         return "action_backward_step"
