@@ -3,26 +3,26 @@ session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
 intents:
-- how_much_ing
-- user_ready
-- select_recipe
 - affirm
-- skip_step
-- back_step
-- inform_num_people
 - ask_recipe
-- user_did_not_understand
-- greet
-- goodbye
+- back_step
+- bot_challenge
 - deny
+- goodbye
+- greet
+- how_much_ing
+- inform_num_people
 - mood_great
 - mood_unhappy
-- bot_challenge
+- select_recipe
+- skip_step
+- user_did_not_understand
+- user_ready
 entities:
-- requested_ingredient
-- delta_steps
-- number_people
 - recipe
+- number_people
+- delta_steps
+- requested_ingredient
 slots:
   recipe:
     type: text

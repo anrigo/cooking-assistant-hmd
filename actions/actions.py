@@ -254,7 +254,7 @@ class ActionBackwardStep(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
-        delta = int(tracker.get_slot('delta_steps'))
+        delta = int(tracker.get_slot('delta_steps')) if tracker.get_slot('delta_steps') is not None else 1
 
         return seek(tracker, dispatcher, -delta)
 
