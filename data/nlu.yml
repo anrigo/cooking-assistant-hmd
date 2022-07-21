@@ -2,9 +2,16 @@ version: "2.0"
 nlu:
 - intent: how_much_ing
   examples: |
-    - How much [guanciale](requested_ingredient)?
-    - How much [salt](requested_ingredient)?
-    - How much [spaghetti](requested_ingredient)?
+    - How much [guanciale](ingredient)?
+    - How much [salt](ingredient)?
+    - How much [spaghetti](ingredient)?
+    - How many [eggs](ingredient)?
+    - how much [butter](ingredient)?
+    - How much [salt](ingredient)?
+    - How much [pecorino](ingredient)?
+    - how much [perorino romano cheese](ingredient)?
+    - how much [guanciale](ingredient)?
+    - how much [pepper](recipe)?
 - intent: skip_step
   examples: |
     - Skip [this step]{"entity": "delta_steps", "value": "1"}
@@ -63,6 +70,10 @@ nlu:
     - Thank you, I'm ready now
     - I'm ready now
     - I completed [this step]{"entity": "delta_steps", "value": "1"}
+    - Ready to proceed
+    - go on please
+    - go on
+    - ready
 - intent: inform_num_people
   examples: |
     - i'll cook for [3](number_people) people
@@ -79,6 +90,8 @@ nlu:
     - for [two]{"entity": "number_people", "value": "2"}
     - Just for [two]{"entity": "number_people", "value": "2"}
     - just for [two]{"entity": "number_people", "value": "2"}
+    - i'm going to make [crepes](recipe) for [4](number_people)
+    - Just for [two]{"entity": "number_people", "value": "2"}
 - intent: ask_recipe
   examples: |
     - I am hungry
@@ -92,6 +105,7 @@ nlu:
     - whac could i cook today?
     - what can i eat today?
     - what can i cook today?
+    - let's cook
 - intent: select_recipe
   examples: |
     - I'll prepare [waffles](recipe)
@@ -116,6 +130,7 @@ nlu:
     - i want to cook [carbonara](recipe) for [three]{"entity": "number_people", "value": "3"}
     - We will cook [carbonara](recipe) for [two]{"entity": "number_people", "value": "2"} today
     - We are going to cook [carbonara](recipe) for [two]{"entity": "number_people", "value": "2"} today!
+    - i'll go for [carbonara](recipe)
 - intent: greet
   examples: |
     - hey
@@ -156,6 +171,7 @@ nlu:
     - yes it is correct
     - you are right
     - Yeah!
+    - yes you got it correctly
 - intent: deny
   examples: |
     - no

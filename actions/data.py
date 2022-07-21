@@ -8,7 +8,7 @@ recipes = {
                     {'name': 'guanciale', 'amount': 45, 'unit': 'grams'},
                     {'name': 'Pecorino Romano cheese', 'amount': 40, 'unit': 'grams'},
                     {'name': 'spaghetti', 'amount': 100, 'unit': 'grams'},
-                    {'name': 'black pepper', 'amount': None, 'unit': None},
+                    {'name': 'black pepper', 'amount': 'to your preference', 'unit': None},
                     {'name': 'salt', 'amount': None, 'unit': None}
                 ],
                 'steps': [
@@ -20,7 +20,10 @@ recipes = {
                         'description': 'While you wait for the water to boil, remove the rind from the guanciale and then cut the guanciale in short strips.',
                         'ingredients': {1: None}
                     },
-                    {'description': 'Put the strips on a pan on medium heat for about two minutes, until they are brown and a bit crisp but not too much.\nNo oil nor butter is needed.'},
+                    {
+                        'description': 'Put the strips on a pan on medium heat for about two minutes, until they are brown and a bit crisp but not too much.\nNo oil nor butter is needed.',
+                        'ingredients': {3: None}
+                    },
                     {'description': 'When the guanciale is ready, put it on a plate to cool down. Leave the liquid fat lost by the guanciale in the pan.'},
                     {
                         'description': 'When the water will start boiling, add the spaghetti. Remember to stir it occasionally until about two minutes before tender.',
@@ -28,7 +31,7 @@ recipes = {
                     },
                     {
                         'description': 'Meanwhile, grate the Pecorino in a bowl and combine it with the egg yolks and pepper to obtain a smooth cream.\nAdd a table spoon of pasta cooking water if it is too firm.',
-                        'ingredients': {2: None, 0: None, 4: 'to your preference'}
+                        'ingredients': {2: None, 0: None, 4: None}
                     },
                     {'description': 'When the pasta is ready, still undercooked, drain it but reserve some cooking water.'},
                     {'description': 'Put the pasta in the pan with the fat lost by the guanciale and half cup of pasta cooking water and turn on the heat.\nLet it simmer until cooked and add cooking water if it becomes too dry.'},
@@ -99,5 +102,5 @@ recipes = {
                     {'description': 'Use a palette to flip the crepe on the other side and cook it for about 30 seconds.'},
                     {'description': 'Slide the crepe on a plate to be served. Then you can cook another.'}
                 ]
-                })
+            })
 }

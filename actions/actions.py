@@ -73,6 +73,43 @@ def seek(tracker: Tracker, dispatcher: CollectingDispatcher, delta: int):
         return []
 
 
+def format_ingredient(ing, num, step = None, idx = None):
+    out = ''
+    if ing.amount is not None and not isinstance(ing.amount, str):
+        # if the ingredient amount has been specified, it's the numerical value, use it
+        # if it requires a text description or step-specific information it's amount
+        # is either None or the description itself
+
+        if ing.unit is not None:
+            # both amount and unit: 30 grams of cheese
+            out = f"{ing.amount * num} {ing.unit} of {ing.name}"
+        else:
+            # just the amount: 2 egg yolks
+            out = f"{ing.amount * num} {ing.name}"
+    else:
+        # no amount specified, or a string
+
+        if step is not None and idx in step.ingredients.keys():
+            # if a step is specified, the function is being called by the how_much action
+
+            if step.ingredients[idx] is not None:
+                # the requested ingredient appears in the step ingredient list
+                # and there is additional information about it related to the current step
+                # output step-specific information
+                out = step.ingredients[idx]
+            elif isinstance(ing.amount, str):
+                # the ingredient has additional information but not step-specific
+                out = ing.amount
+            else:
+                # the ingredient doesn't have an amount or unit
+                out = str(ing.name)
+        else:
+            # not called by the how_much action, no need for additional information
+            # the ingredient doesn't have an amount or unit
+            out = str(ing.name)
+    return out
+
+
 # class ActionProposeRecipes(Action):
 
 #     def name(self) -> Text:
@@ -188,17 +225,7 @@ class ActionListIngredients(Action):
         resp(dispatcher, "utter_present_ingredients")
 
         for ing in ings:
-            if not ing.amount is None:
-                if not ing.unit is None:
-                    # both amount and unit: 30 grams of cheese
-                    say(dispatcher,
-                        f"{ing.amount*num} {ing.unit} of {ing.name}")
-                else:
-                    # just the amount: 2 egg yolks
-                    say(dispatcher, f"{ing.amount*num} {ing.name}")
-            else:
-                # none of the two: pepper
-                say(dispatcher, f"{ing.name}")
+            say(dispatcher, format_ingredient(ing, num))
 
         resp(dispatcher, 'utter_user_ready')
 
@@ -243,9 +270,6 @@ class ActionRepeat(Action):
 
 
 class ActionBackwardStep(Action):
-    # TODO Set a default value to delta steps, and return it at the end of seek,
-    # so that if the user only says "go back" without specifing a number of steps
-    #  the action can recognize that and go back only once
 
     def name(self) -> Text:
         return "action_backward_step"
@@ -254,7 +278,8 @@ class ActionBackwardStep(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
-        delta = int(tracker.get_slot('delta_steps')) if tracker.get_slot('delta_steps') is not None else 1
+        delta = int(tracker.get_slot('delta_steps')) if tracker.get_slot(
+            'delta_steps') is not None else 1
 
         return seek(tracker, dispatcher, -delta)
 
@@ -282,18 +307,23 @@ class ActionHowMuchIng(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
-        # query = tracker.get_slot('recipe')
+        # requested ingredient
+        query = tracker.get_slot('ingredient')
 
-        # sim = np.array([similarity_score(query, r) for r in recipes.keys()])
-        # idx = np.argmax(sim)
+        # current state
+        recipe_key = tracker.get_slot('recipe')
+        ings = recipes[recipe_key].ingredients
+        num = int(tracker.get_slot('number_people'))
+        step_idx = int(tracker.get_slot('step_idx'))
+        step = recipes[recipe_key].steps[step_idx]
 
-        # if sim[idx] >= 0.8:
-        #     matched_recipe = list(recipes.keys())[idx]
-        #     # say(dispatcher, f"I understand you want to cook {matched_recipe}")
-        # else:
-        #     matched_recipe = None
-        #     say(dispatcher, "I don't know this recipe or i didn't understand the name correctly.\nCan you repeat or try another recipe?")
+        sim = np.array([similarity_score(query, i.name) for i in ings])
+        idx = np.argmax(sim)
 
-        # return {"recipe": matched_recipe}
+        if sim[idx] >= 0.8:
+            matched_ing = ings[idx]
+            say(dispatcher, format_ingredient(matched_ing, num, step, idx))
+        else:
+            say(dispatcher, "I coudn't understand the ingredient you are asking for, or the ingredient is not part of the recipe.")
 
-        return []
+        return [SlotSet('ingredient', None)]

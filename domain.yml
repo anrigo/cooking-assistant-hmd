@@ -19,10 +19,10 @@ intents:
 - user_did_not_understand
 - user_ready
 entities:
+- ingredient
 - recipe
 - number_people
 - delta_steps
-- requested_ingredient
 slots:
   recipe:
     type: text
@@ -46,7 +46,7 @@ slots:
     influence_conversation: false
     max_value: 1.0
     min_value: 0.0
-  requested_ingredient:
+  ingredient:
     type: text
     influence_conversation: true
 responses:
@@ -89,6 +89,7 @@ responses:
 actions:
 - action_ask_select_recipe_form_recipe
 - action_backward_step
+- action_how_much_ing
 - action_list_ingredients
 - action_next_step
 - action_repeat

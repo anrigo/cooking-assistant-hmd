@@ -418,3 +418,146 @@ stories:
   - action: action_next_step
   - slot_was_set:
     - step_idx: 1
+
+- story: interactive_story_1
+  steps:
+  - intent: inform_num_people
+    entities:
+    - recipe: crepes
+    - number_people: '4'
+  - slot_was_set:
+    - recipe: crepes
+  - slot_was_set:
+    - number_people: '4'
+  - action: select_recipe_form
+  - active_loop: select_recipe_form
+  - slot_was_set:
+    - recipe: Crepes
+  - slot_was_set:
+    - number_people: '4'
+  - slot_was_set:
+    - recipe: Crepes
+  - slot_was_set:
+    - number_people: '4'
+  - slot_was_set:
+    - requested_slot: confirm_recipe_form
+  - slot_was_set:
+    - confirm_recipe_form: true
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_submit_recipe_form
+  - slot_was_set:
+    - step_idx: -1
+  - action: action_list_ingredients
+  - intent: user_ready
+  - action: action_next_step
+  - slot_was_set:
+    - step_idx: 0
+  - intent: how_much_ing
+    entities:
+    - ingredient: eggs
+  - slot_was_set:
+    - ingredient: eggs
+  - action: action_how_much_ing
+  - slot_was_set:
+    - ingredient: null
+  - intent: how_much_ing
+    entities:
+    - ingredient: butter
+  - slot_was_set:
+    - ingredient: butter
+  - action: action_how_much_ing
+  - slot_was_set:
+    - ingredient: null
+
+- story: interactive_story_1
+  steps:
+  - intent: ask_recipe
+  - action: select_recipe_form
+  - active_loop: select_recipe_form
+  - slot_was_set:
+    - requested_slot: recipe
+  - slot_was_set:
+    - recipe: carbonara
+  - slot_was_set:
+    - recipe: Carbonara
+  - slot_was_set:
+    - requested_slot: number_people
+  - slot_was_set:
+    - number_people: '2'
+  - slot_was_set:
+    - number_people: '2'
+  - slot_was_set:
+    - requested_slot: confirm_recipe_form
+  - slot_was_set:
+    - confirm_recipe_form: true
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_submit_recipe_form
+  - slot_was_set:
+    - step_idx: -1
+  - action: action_list_ingredients
+  - intent: user_ready
+  - action: action_next_step
+  - slot_was_set:
+    - step_idx: 0
+  - intent: how_much_ing
+    entities:
+    - ingredient: salt
+  - slot_was_set:
+    - ingredient: salt
+  - action: action_how_much_ing
+  - slot_was_set:
+    - ingredient: null
+  - intent: how_much_ing
+    entities:
+    - ingredient: pecorino
+  - slot_was_set:
+    - ingredient: pecorino
+  - action: action_how_much_ing
+  - slot_was_set:
+    - ingredient: null
+  - intent: how_much_ing
+    entities:
+    - ingredient: perorino romano cheese
+  - slot_was_set:
+    - ingredient: perorino romano cheese
+  - action: action_how_much_ing
+  - slot_was_set:
+    - ingredient: null
+  - intent: user_ready
+  - action: action_next_step
+  - slot_was_set:
+    - step_idx: 1
+  - intent: how_much_ing
+    entities:
+    - ingredient: guanciale
+  - slot_was_set:
+    - ingredient: guanciale
+  - action: action_how_much_ing
+  - slot_was_set:
+    - ingredient: null
+  - intent: user_ready
+  - action: action_next_step
+  - slot_was_set:
+    - step_idx: 2
+  - intent: user_ready
+  - action: action_next_step
+  - slot_was_set:
+    - step_idx: 3
+  - intent: user_ready
+  - action: action_next_step
+  - slot_was_set:
+    - step_idx: 4
+  - intent: user_ready
+  - action: action_next_step
+  - slot_was_set:
+    - step_idx: 5
+  - intent: how_much_ing
+    entities:
+    - ingredient: pepper
+  - slot_was_set:
+    - ingredient: pepper
+  - action: action_how_much_ing
