@@ -7,11 +7,11 @@ nlu:
     - How much [spaghetti](ingredient)?
     - How many [eggs](ingredient)?
     - how much [butter](ingredient)?
-    - How much [salt](ingredient)?
     - How much [pecorino](ingredient)?
     - how much [perorino romano cheese](ingredient)?
     - how much [guanciale](ingredient)?
-    - how much [pepper](recipe)?
+    - how much [pepper](ingredient)?
+    - how much [black pepper](ingredient)?
 - intent: skip_step
   examples: |
     - Skip [this step]{"entity": "delta_steps", "value": "1"}
@@ -23,6 +23,8 @@ nlu:
     - Go on [three]{"entity": "delta_steps", "value": "3"} steps
     - Skip [two]{"entity": "delta_steps", "value": "2"} times
     - skip [two]{"entity": "delta_steps", "value": "2"} steps
+    - skip [five]{"entity": "number_people", "value": "5"} steps
+    - skip [five]{"entity": "delta_steps", "value": "5"} steps please
 - intent: back_step
   examples: |
     - Can we go back [two]{"entity": "delta_steps", "value": "2"} steps?
@@ -91,7 +93,7 @@ nlu:
     - Just for [two]{"entity": "number_people", "value": "2"}
     - just for [two]{"entity": "number_people", "value": "2"}
     - i'm going to make [crepes](recipe) for [4](number_people)
-    - Just for [two]{"entity": "number_people", "value": "2"}
+    - I would say for [two]{"entity": "number_people", "value": "2"}
 - intent: ask_recipe
   examples: |
     - I am hungry
@@ -131,6 +133,7 @@ nlu:
     - We will cook [carbonara](recipe) for [two]{"entity": "number_people", "value": "2"} today
     - We are going to cook [carbonara](recipe) for [two]{"entity": "number_people", "value": "2"} today!
     - i'll go for [carbonara](recipe)
+    - i would like to cook [carbonara](recipe) today
 - intent: greet
   examples: |
     - hey
@@ -240,3 +243,6 @@ nlu:
 - synonym: '6'
   examples: |
     - six
+- synonym: 'black pepper'
+  examples: |
+    - pepper

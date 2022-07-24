@@ -19,10 +19,10 @@ intents:
 - user_did_not_understand
 - user_ready
 entities:
-- ingredient
 - recipe
-- number_people
 - delta_steps
+- ingredient
+- number_people
 slots:
   recipe:
     type: text

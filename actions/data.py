@@ -9,7 +9,7 @@ recipes = {
                     {'name': 'Pecorino Romano cheese', 'amount': 40, 'unit': 'grams'},
                     {'name': 'spaghetti', 'amount': 100, 'unit': 'grams'},
                     {'name': 'black pepper', 'amount': 'to your preference', 'unit': None},
-                    {'name': 'salt', 'amount': None, 'unit': None}
+                    {'name': 'salt', 'amount': 'to your preference', 'unit': None}
                 ],
                 'steps': [
                     {

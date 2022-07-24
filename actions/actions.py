@@ -73,8 +73,9 @@ def seek(tracker: Tracker, dispatcher: CollectingDispatcher, delta: int):
         return []
 
 
-def format_ingredient(ing, num, step = None, idx = None):
+def format_ingredient(ing, num, step = None, step_idx = None, ing_idx = None):
     out = ''
+    print(step)
     if ing.amount is not None and not isinstance(ing.amount, str):
         # if the ingredient amount has been specified, it's the numerical value, use it
         # if it requires a text description or step-specific information it's amount
@@ -89,14 +90,14 @@ def format_ingredient(ing, num, step = None, idx = None):
     else:
         # no amount specified, or a string
 
-        if step is not None and idx in step.ingredients.keys():
+        if step is not None:
             # if a step is specified, the function is being called by the how_much action
 
-            if step.ingredients[idx] is not None:
+            if step_idx > -1 and ing_idx in step.ingredients.keys() and step.ingredients[ing_idx] is not None:
                 # the requested ingredient appears in the step ingredient list
                 # and there is additional information about it related to the current step
                 # output step-specific information
-                out = step.ingredients[idx]
+                out = step.ingredients[ing_idx]
             elif isinstance(ing.amount, str):
                 # the ingredient has additional information but not step-specific
                 out = ing.amount
@@ -322,7 +323,8 @@ class ActionHowMuchIng(Action):
 
         if sim[idx] >= 0.8:
             matched_ing = ings[idx]
-            say(dispatcher, format_ingredient(matched_ing, num, step, idx))
+            # pass step index because the ingredient list is treated differently from the steps
+            say(dispatcher, format_ingredient(matched_ing, num, step, step_idx, idx))
         else:
             say(dispatcher, "I coudn't understand the ingredient you are asking for, or the ingredient is not part of the recipe.")
 
