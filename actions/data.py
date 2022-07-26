@@ -8,13 +8,13 @@ recipes = {
                     {'name': 'guanciale', 'amount': 45, 'unit': 'grams'},
                     {'name': 'Pecorino Romano cheese', 'amount': 40, 'unit': 'grams'},
                     {'name': 'spaghetti', 'amount': 100, 'unit': 'grams'},
-                    {'name': 'black pepper', 'amount': 'to your preference', 'unit': None},
-                    {'name': 'salt', 'amount': 'to your preference', 'unit': None}
+                    {'name': 'black pepper', 'amount': None, 'unit': None},
+                    {'name': 'salt', 'amount': 'as you prefer, but don\'t exagerate since the cheese is already salty', 'unit': None}
                 ],
                 'steps': [
                     {
                         'description': 'Fill a pot with water and put it on the heat to boil.\nAdd some salt to the water, but not too much since Pecorino is alreay a very salty cheese.',
-                        'ingredients': {5: 'as you prefer, but don\'t exagerate'}
+                        'ingredients': {5: None}
                     },
                     {
                         'description': 'While you wait for the water to boil, remove the rind from the guanciale and then cut the guanciale in short strips.',

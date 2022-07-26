@@ -73,13 +73,12 @@ def seek(tracker: Tracker, dispatcher: CollectingDispatcher, delta: int):
         return []
 
 
-def format_ingredient(ing, num, step = None, step_idx = None, ing_idx = None):
+def format_ingredient(ing, num, description=False):
     out = ''
-    print(step)
+
     if ing.amount is not None and not isinstance(ing.amount, str):
         # if the ingredient amount has been specified, it's the numerical value, use it
-        # if it requires a text description or step-specific information it's amount
-        # is either None or the description itself
+        # otherwise the amount is either None or a string representing some description
 
         if ing.unit is not None:
             # both amount and unit: 30 grams of cheese
@@ -90,20 +89,10 @@ def format_ingredient(ing, num, step = None, step_idx = None, ing_idx = None):
     else:
         # no amount specified, or a string
 
-        if step is not None:
-            # if a step is specified, the function is being called by the how_much action
-
-            if step_idx > -1 and ing_idx in step.ingredients.keys() and step.ingredients[ing_idx] is not None:
-                # the requested ingredient appears in the step ingredient list
-                # and there is additional information about it related to the current step
-                # output step-specific information
-                out = step.ingredients[ing_idx]
-            elif isinstance(ing.amount, str):
-                # the ingredient has additional information but not step-specific
-                out = ing.amount
-            else:
-                # the ingredient doesn't have an amount or unit
-                out = str(ing.name)
+        if description:
+            # if amount is None then the user can use the ingredient as he/she prefers
+            # if it's not None then it's a short description
+            out = 'to your preference' if ing.amount is None else ing.amount
         else:
             # not called by the how_much action, no need for additional information
             # the ingredient doesn't have an amount or unit
@@ -315,8 +304,6 @@ class ActionHowMuchIng(Action):
         recipe_key = tracker.get_slot('recipe')
         ings = recipes[recipe_key].ingredients
         num = int(tracker.get_slot('number_people'))
-        step_idx = int(tracker.get_slot('step_idx'))
-        step = recipes[recipe_key].steps[step_idx]
 
         sim = np.array([similarity_score(query, i.name) for i in ings])
         idx = np.argmax(sim)
@@ -324,7 +311,7 @@ class ActionHowMuchIng(Action):
         if sim[idx] >= 0.8:
             matched_ing = ings[idx]
             # pass step index because the ingredient list is treated differently from the steps
-            say(dispatcher, format_ingredient(matched_ing, num, step, step_idx, idx))
+            say(dispatcher, format_ingredient(matched_ing, num, description=True))
         else:
             say(dispatcher, "I coudn't understand the ingredient you are asking for, or the ingredient is not part of the recipe.")
 
