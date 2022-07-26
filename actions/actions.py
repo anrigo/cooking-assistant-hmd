@@ -304,15 +304,29 @@ class ActionHowMuchIng(Action):
         recipe_key = tracker.get_slot('recipe')
         ings = recipes[recipe_key].ingredients
         num = int(tracker.get_slot('number_people'))
+        step_idx = int(tracker.get_slot('step_idx'))
+        step = recipes[recipe_key].steps[step_idx]
 
-        sim = np.array([similarity_score(query, i.name) for i in ings])
-        idx = np.argmax(sim)
+        if query is not None:
+            sim = np.array([similarity_score(query, i.name) for i in ings])
+            idx = np.argmax(sim)
 
-        if sim[idx] >= 0.8:
-            matched_ing = ings[idx]
-            # pass step index because the ingredient list is treated differently from the steps
-            say(dispatcher, format_ingredient(matched_ing, num, description=True))
+            if sim[idx] >= 0.8:
+                matched_ing = ings[idx]
+                # pass step index because the ingredient list is treated differently from the steps
+                say(dispatcher, format_ingredient(matched_ing, num, description=True))
+            else:
+                say(dispatcher, "I coudn't understand the ingredient you are asking for, or the ingredient is not part of the recipe.")
+        elif 'ingredients' not in step.keys() or len(step.ingredients) == 0:
+            # this information is not available
+            say(dispatcher, 'I don\'t have additional information about ingredients in this step')
+        elif len(step.ingredients) == 1:
+            # its the only ingredient used
+            ing = ings[0]
+            say(dispatcher, format_ingredient(ing, num, description=True))
         else:
-            say(dispatcher, "I coudn't understand the ingredient you are asking for, or the ingredient is not part of the recipe.")
+            # there are more than 1 ingredient in the list
+            # ask which one the user is asking about
+            say(dispatcher, 'I will ask you to de-reference')
 
         return [SlotSet('ingredient', None)]

@@ -14,30 +14,36 @@ recipes = {
                 'steps': [
                     {
                         'description': 'Fill a pot with water and put it on the heat to boil.\nAdd some salt to the water, but not too much since Pecorino is alreay a very salty cheese.',
-                        'ingredients': {5: None}
+                        'ingredients': [5]
                     },
                     {
                         'description': 'While you wait for the water to boil, remove the rind from the guanciale and then cut the guanciale in short strips.',
-                        'ingredients': {1: None}
+                        'ingredients': [1]
                     },
                     {
                         'description': 'Put the strips on a pan on medium heat for about two minutes, until they are brown and a bit crisp but not too much.\nNo oil nor butter is needed.',
-                        'ingredients': {3: None}
+                        'ingredients': [3]
                     },
                     {'description': 'When the guanciale is ready, put it on a plate to cool down. Leave the liquid fat lost by the guanciale in the pan.'},
                     {
                         'description': 'When the water will start boiling, add the spaghetti. Remember to stir it occasionally until about two minutes before tender.',
-                        'ingredients': {3: None}
+                        'ingredients': [3]
                     },
                     {
                         'description': 'Meanwhile, grate the Pecorino in a bowl and combine it with the egg yolks and pepper to obtain a smooth cream.\nAdd a table spoon of pasta cooking water if it is too firm.',
-                        'ingredients': {2: None, 0: None, 4: None}
+                        'ingredients': [2, 0, 4]
                     },
                     {'description': 'When the pasta is ready, still undercooked, drain it but reserve some cooking water.'},
-                    {'description': 'Put the pasta in the pan with the fat lost by the guanciale and half cup of pasta cooking water and turn on the heat.\nLet it simmer until cooked and add cooking water if it becomes too dry.'},
+                    {
+                        'description': 'Put the pasta in the pan with the fat lost by the guanciale and half cup of pasta cooking water and turn on the heat.\nLet it simmer until cooked and add cooking water if it becomes too dry.',
+                        'ingredients': [1]
+                    },
                     {'description': 'When the pasta is ready, turn off the heat, add the guanciale and stir it vigorously for 30 seconds.'},
                     {'description': 'Now add the yolk and cheese cream and stir it vigorously again.'},
-                    {'description': 'Serve on a plate with some pepper and grated Pecorino on top.'}
+                    {
+                        'description': 'Serve on a plate with some pepper and grated Pecorino on top.',
+                        'ingredients': [2]
+                    }
                 ]
             }),
             'Amatriciana': Munch.fromDict({

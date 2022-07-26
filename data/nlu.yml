@@ -12,6 +12,7 @@ nlu:
     - how much [guanciale](ingredient)?
     - how much [pepper](ingredient)?
     - how much [black pepper](ingredient)?
+    - How much of it?
 - intent: skip_step
   examples: |
     - Skip [this step]{"entity": "delta_steps", "value": "1"}
@@ -71,11 +72,14 @@ nlu:
     - ready, go on
     - Thank you, I'm ready now
     - I'm ready now
-    - I completed [this step]{"entity": "delta_steps", "value": "1"}
+    - I completed this step
     - Ready to proceed
     - go on please
     - go on
     - ready
+    - I'm done with this step, I think
+    - I think I'm done with this step, let's go on
+    - I think I'm done with this step, let's go to the next
 - intent: inform_num_people
   examples: |
     - i'll cook for [3](number_people) people
