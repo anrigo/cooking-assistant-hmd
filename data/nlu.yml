@@ -80,6 +80,7 @@ nlu:
     - I'm done with this step, I think
     - I think I'm done with this step, let's go on
     - I think I'm done with this step, let's go to the next
+    - Go on please
 - intent: inform_num_people
   examples: |
     - i'll cook for [3](number_people) people
@@ -138,6 +139,7 @@ nlu:
     - We are going to cook [carbonara](recipe) for [two]{"entity": "number_people", "value": "2"} today!
     - i'll go for [carbonara](recipe)
     - i would like to cook [carbonara](recipe) today
+    - Let's cook [carbonara](recipe) for [three]{"entity": "number_people", "value": "3"}!
 - intent: greet
   examples: |
     - hey
@@ -179,6 +181,7 @@ nlu:
     - you are right
     - Yeah!
     - yes you got it correctly
+    - Yes, that's it
 - intent: deny
   examples: |
     - no
@@ -238,15 +241,15 @@ nlu:
 - synonym: '3'
   examples: |
     - three
-- synonym: '4'
-  examples: |
-    - four
 - synonym: '5'
   examples: |
     - five
+- synonym: '4'
+  examples: |
+    - four
 - synonym: '6'
   examples: |
     - six
-- synonym: 'black pepper'
+- synonym: black pepper
   examples: |
     - pepper

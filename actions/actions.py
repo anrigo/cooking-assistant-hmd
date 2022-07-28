@@ -317,12 +317,10 @@ class ActionHowMuchIng(Action):
                 say(dispatcher, format_ingredient(matched_ing, num, description=True))
             else:
                 say(dispatcher, "I coudn't understand the ingredient you are asking for, or the ingredient is not part of the recipe.")
-        elif 'ingredients' not in step.keys() or len(step.ingredients) == 0:
-            # this information is not available
-            say(dispatcher, 'I don\'t have additional information about ingredients in this step')
         elif len(step.ingredients) == 1:
             # its the only ingredient used
-            ing = ings[0]
+            ing_idx = step.ingredients[0]
+            ing = ings[ing_idx]
             say(dispatcher, format_ingredient(ing, num, description=True))
         else:
             # there are more than 1 ingredient in the list

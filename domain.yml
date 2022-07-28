@@ -20,9 +20,9 @@ intents:
 - user_ready
 entities:
 - recipe
+- number_people
 - delta_steps
 - ingredient
-- number_people
 slots:
   recipe:
     type: text
