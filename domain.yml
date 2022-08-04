@@ -19,8 +19,8 @@ intents:
 - user_did_not_understand
 - user_ready
 entities:
-- recipe
 - number_people
+- recipe
 - delta_steps
 - ingredient
 slots:
@@ -73,6 +73,8 @@ responses:
   - text: Let me know when you are ready for the next step
   - text: Tell me when you want to proceed
   - text: Let me know when you want to proceed
+  utter_specify_ingredient:
+  - text: To which ingredient are you referring?
   utter_greet:
   - text: Hey! How are you?
   utter_cheer_up:

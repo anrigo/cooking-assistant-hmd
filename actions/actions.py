@@ -314,9 +314,10 @@ class ActionHowMuchIng(Action):
             if sim[idx] >= 0.8:
                 matched_ing = ings[idx]
                 # pass step index because the ingredient list is treated differently from the steps
-                say(dispatcher, format_ingredient(matched_ing, num, description=True))
+                say(dispatcher, format_ingredient(
+                    matched_ing, num, description=True))
             else:
-                say(dispatcher, "I coudn't understand the ingredient you are asking for, or the ingredient is not part of the recipe.")
+                say(dispatcher, "I coudn't understand the ingredient you are asking for, or the ingredient is not part of the recipe.\nCould you repeat?")
         elif len(step.ingredients) == 1:
             # its the only ingredient used
             ing_idx = step.ingredients[0]
@@ -325,6 +326,10 @@ class ActionHowMuchIng(Action):
         else:
             # there are more than 1 ingredient in the list
             # ask which one the user is asking about
-            say(dispatcher, 'I will ask you to de-reference')
+            names = [ings[idx].name for idx in step.ingredients]
+            say(dispatcher, f'In this step {len(names)} ingredients are used:')
+            say(dispatcher, ', '.join(names))
+
+            resp(dispatcher, 'utter_specify_ingredient')
 
         return [SlotSet('ingredient', None)]
