@@ -41,7 +41,7 @@ def say(dispatcher: CollectingDispatcher, message: str) -> None:
     dispatcher.utter_message(text=message)
 
 
-def resp(dispatcher: CollectingDispatcher, utter: str) -> None:
+def utt(dispatcher: CollectingDispatcher, utter: str) -> None:
     dispatcher.utter_message(response=utter)
 
 
@@ -124,10 +124,10 @@ class AskSelectRecipeFormRecipe(Action):
         self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict
     ) -> List[EventType]:
 
-        resp(dispatcher, 'utter_propose_recipes')
+        utt(dispatcher, 'utter_propose_recipes')
         description = ", ".join([r for r in recipes.keys()])
         say(dispatcher, f"{description}")
-        resp(dispatcher, 'utter_choose_one_recipe')
+        utt(dispatcher, 'utter_choose_one_recipe')
 
         return []
 
@@ -212,12 +212,12 @@ class ActionListIngredients(Action):
         ings = recipes[recipe_key].ingredients
         num = int(tracker.get_slot('number_people'))
 
-        resp(dispatcher, "utter_present_ingredients")
+        utt(dispatcher, "utter_present_ingredients")
 
         for ing in ings:
             say(dispatcher, format_ingredient(ing, num))
 
-        resp(dispatcher, 'utter_user_ready')
+        utt(dispatcher, 'utter_user_ready')
 
         return []
 
@@ -317,7 +317,7 @@ class ActionHowMuchIng(Action):
                 say(dispatcher, format_ingredient(
                     matched_ing, num, description=True))
             else:
-                say(dispatcher, "I coudn't understand the ingredient you are asking for, or the ingredient is not part of the recipe.\nCould you repeat?")
+                utt(dispatcher, 'utter_repeat_ing')
         elif len(step.ingredients) == 1:
             # its the only ingredient used
             ing_idx = step.ingredients[0]
@@ -330,6 +330,6 @@ class ActionHowMuchIng(Action):
             say(dispatcher, f'In this step {len(names)} ingredients are used:')
             say(dispatcher, ', '.join(names))
 
-            resp(dispatcher, 'utter_specify_ingredient')
+            utt(dispatcher, 'utter_specify_ingredient')
 
         return [SlotSet('ingredient', None)]

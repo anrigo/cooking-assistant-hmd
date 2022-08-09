@@ -50,6 +50,8 @@ slots:
     type: text
     influence_conversation: true
 responses:
+  utter_repeat_ing:
+  - text: "I coudn't understand the ingredient you are asking for, or the ingredient is not part of the recipe.\nCould you repeat?"
   utter_propose_recipes:
   - text: 'Here are some recipes you can try:'
   - text: 'You could try one of those:'
@@ -74,7 +76,7 @@ responses:
   - text: Tell me when you want to proceed
   - text: Let me know when you want to proceed
   utter_specify_ingredient:
-  - text: To which ingredient are you referring?
+  - text: To which ingredient are you referring to?
   utter_greet:
   - text: Hey! How are you?
   utter_cheer_up:

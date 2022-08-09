@@ -261,3 +261,6 @@ nlu:
 - synonym: black pepper
   examples: |
     - pepper
+- synonym: pecorino romano cheese
+  examples: |
+    - pecorino
