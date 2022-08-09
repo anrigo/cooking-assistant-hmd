@@ -18,6 +18,7 @@ intents:
 - skip_step
 - user_did_not_understand
 - user_ready
+- add_recipe_to_list
 entities:
 - number_people
 - recipe
@@ -104,6 +105,7 @@ actions:
 - action_skip_step
 - action_submit_recipe_form
 - validate_select_recipe_form
+- action_add_recipe_to_list
 forms:
   select_recipe_form:
     required_slots:

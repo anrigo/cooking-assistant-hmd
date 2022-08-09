@@ -37,6 +37,9 @@ import numpy as np
 from actions.data import recipes
 
 
+shoplist = list()
+
+
 def say(dispatcher: CollectingDispatcher, message: str) -> None:
     dispatcher.utter_message(text=message)
 
@@ -136,7 +139,7 @@ class AskSelectRecipeFormRecipe(Action):
         say(dispatcher, f"{description}")
         utt(dispatcher, 'utter_choose_one_recipe')
 
-        return []
+        return [SlotSet('recipe', None), SlotSet('number_people', None)]
 
 
 class ActionValidateSelectRecipeForm(FormValidationAction):
@@ -345,3 +348,29 @@ class ActionHowMuchIng(Action):
             utt(dispatcher, 'utter_specify_ingredient')
 
         return [SlotSet('ingredient', None)]
+
+
+class ActionAddRecipeToList(Action):
+
+    def name(self) -> Text:
+        return "action_add_recipe_to_list"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        # current state
+        recipe_key = tracker.get_slot('recipe')
+
+        if recipe_key is None:
+            # no recipe is currently running
+            # add form to get recipe and num people
+            return []
+
+        ings = recipes[recipe_key].ingredients
+        num = int(tracker.get_slot('number_people'))
+
+        shoplist.extend([format_ingredient(ing, num) for ing in ings])
+        print(shoplist)
+
+        return []
