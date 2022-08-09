@@ -51,6 +51,12 @@ def similarity_score(seq1: str, seq2: str) -> float:
 
 def seek(tracker: Tracker, dispatcher: CollectingDispatcher, delta: int):
     recipe_key = tracker.get_slot('recipe')
+
+    if recipe_key is None:
+        # no recipe is currently running
+        utt(dispatcher, 'utter_start_from_here')
+        return []
+
     step_idx = int(tracker.get_slot('step_idx'))
     steps = recipes[recipe_key].steps
 
@@ -69,8 +75,9 @@ def seek(tracker: Tracker, dispatcher: CollectingDispatcher, delta: int):
         return [SlotSet('step_idx', step_idx)]
     else:
         # recipe completed
-        print('Recipe completed: to implement')
-        return []
+        utt(dispatcher, 'utter_recipe_completed')
+        utt(dispatcher, 'utter_start_from_here')
+        return [SlotSet('recipe', None), SlotSet('step_idx', step_idx)]
 
 
 def format_ingredient(ing, num, description=False):
@@ -283,9 +290,14 @@ class ActionSkipStep(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
-        delta = int(tracker.get_slot('delta_steps'))
+        delta = tracker.get_slot('delta_steps')
 
-        return seek(tracker, dispatcher, delta)
+        if delta is not None:
+            delta = int(delta)
+            return seek(tracker, dispatcher, delta)
+        else:
+            say(dispatcher, 'Sorry, I didn\'t understand how many steps you\'d like to skip')
+            return []
 
 
 class ActionHowMuchIng(Action):

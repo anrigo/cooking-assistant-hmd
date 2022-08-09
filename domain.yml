@@ -77,6 +77,10 @@ responses:
   - text: Let me know when you want to proceed
   utter_specify_ingredient:
   - text: To which ingredient are you referring to?
+  utter_recipe_completed:
+  - text: Congratulations! You completed the recipe!
+  utter_start_from_here:
+  - text: To start cooking something, for example Carbonara, say "I would like to cook Carbonara!"\nYou can also ask me for a recipe suggestion.
   utter_greet:
   - text: Hey! How are you?
   utter_cheer_up:
