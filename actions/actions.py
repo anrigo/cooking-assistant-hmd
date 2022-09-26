@@ -178,8 +178,12 @@ class ActionValidateSelectRecipeForm(FormValidationAction):
     ) -> Dict[Text, Any]:
 
         num = tracker.get_slot('number_people')
-        # say(dispatcher, f"Received: {num}")
-        return {"number_people": num}
+        
+        if num.isdigit():
+            return {"number_people": num}
+        else:
+            say(dispatcher, f'{num} is not a valid number.')
+            return {"number_people": None}
 
     def validate_confirm_recipe_form(
         self,

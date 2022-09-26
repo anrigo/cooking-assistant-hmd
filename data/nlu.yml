@@ -4,6 +4,7 @@ nlu:
   examples: |
     - Add the recipe to my shopping list
     - Add [carbonara](recipe) for [two](number_people) to my list
+    - Add [carbonara](recipe) for [two](number_people) to my shopping list
 - intent: how_much_ing
   examples: |
     - How much [guanciale](ingredient)?
