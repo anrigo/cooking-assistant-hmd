@@ -125,7 +125,7 @@ def format_ingredient(ing, num, description=False):
 
 #         return []
 
-
+# SELECT RECIPE TO COOK
 class AskSelectRecipeFormRecipe(Action):
     def name(self) -> Text:
         return "action_ask_select_recipe_form_recipe"
@@ -208,7 +208,7 @@ class ActionSubmitRecipeForm(Action):
         confirm = tracker.get_slot('confirm_recipe_form')
 
         if not confirm:
-            return [SlotSet("recipe", None), SlotSet("number_people", None), SlotSet("confirm_recipe_form", None), FollowupAction(name="select_recipe_form")]
+            return [SlotSet("recipe", None), SlotSet("number_people", None), SlotSet("confirm_recipe_form", None), FollowupAction(name="action_ask_select_recipe_form_recipe")]
 
         return [SlotSet('step_idx', -1), FollowupAction(name="action_list_ingredients")]
 
@@ -368,8 +368,8 @@ class ActionAddRecipeToList(Action):
 
         if recipe_key is None:
             # no recipe is currently running
-            # add form to get recipe and num people
-            return []
+            # run a form to select the recipe to add
+            return [FollowupAction(name="action_ask_select_recipe_to_shop_form_recipe")]
 
         ings = recipes[recipe_key].ingredients
         num = int(tracker.get_slot('number_people'))
@@ -377,4 +377,100 @@ class ActionAddRecipeToList(Action):
         shoplist.extend([format_ingredient(ing, num) for ing in ings])
         print(shoplist)
 
-        return []
+        # empty slots: slots were used to add a recipe to the shopping list, not to start cooking one
+        return [SlotSet("recipe", None), SlotSet("number_people", None)]
+
+
+# SELECT RECIPE TO SHOP
+class AskSelectRecipeFormToShopRecipe(Action):
+    def name(self) -> Text:
+        return "action_ask_select_recipe_to_shop_form_recipe"
+
+    def run(
+        self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict
+    ) -> List[EventType]:
+
+        utt(dispatcher, 'utter_propose_recipes')
+        description = ", ".join([r for r in recipes.keys()])
+        say(dispatcher, f"{description}")
+        utt(dispatcher, 'utter_choose_one_recipe')
+
+        return [SlotSet('recipe', None), SlotSet('number_people', None)]
+
+
+class ActionValidateSelectRecipeToShopForm(FormValidationAction):
+
+    def name(self) -> Text:
+        return "validate_select_recipe_to_shop_form"
+
+    def validate_recipe(
+        self,
+        slot_value: Any,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: DomainDict,
+    ) -> Dict[Text, Any]:
+
+        query = tracker.get_slot('recipe')
+
+        sim = np.array([similarity_score(query, r) for r in recipes.keys()])
+        idx = np.argmax(sim)
+
+        if sim[idx] >= 0.8:
+            matched_recipe = list(recipes.keys())[idx]
+            # say(dispatcher, f"I understand you want to cook {matched_recipe}")
+        else:
+            matched_recipe = None
+            say(dispatcher, "I don't know this recipe or i didn't understand the name correctly.\nCan you repeat or try another recipe?")
+
+        return {"recipe": matched_recipe}
+
+    def validate_number_people(
+        self,
+        slot_value: Any,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: DomainDict,
+    ) -> Dict[Text, Any]:
+
+        num = tracker.get_slot('number_people')
+        
+        if num.isdigit():
+            return {"number_people": num}
+        else:
+            say(dispatcher, f'{num} is not a valid number.')
+            return {"number_people": None}
+
+    def validate_confirm_recipe_form(
+        self,
+        slot_value: Any,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: DomainDict,
+    ) -> Dict[Text, Any]:
+
+        return {"confirm_recipe_shop_form": tracker.get_slot('confirm_recipe_shop_form')}
+
+
+class ActionSubmitRecipeToShopForm(Action):
+
+    def name(self) -> Text:
+        return "action_submit_recipe_to_shop_form"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        confirm = tracker.get_slot('confirm_recipe_shop_form')
+
+        if not confirm:
+            return [SlotSet("recipe", None), SlotSet("number_people", None), SlotSet("confirm_recipe_shop_form", None), FollowupAction(name="action_ask_select_recipe_to_shop_form_recipe")]
+
+        recipe_key = tracker.get_slot('recipe')
+        ings = recipes[recipe_key].ingredients
+        num = int(tracker.get_slot('number_people'))
+
+        shoplist.extend([format_ingredient(ing, num) for ing in ings])
+        print(shoplist)
+
+        return [SlotSet("recipe", None), SlotSet("number_people", None), SlotSet("confirm_recipe_shop_form", None)]

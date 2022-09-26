@@ -96,6 +96,9 @@ responses:
   utter_iamabot:
   - text: I am a bot, powered by Rasa.
 actions:
+- action_ask_select_recipe_to_shop_form_recipe
+- action_submit_recipe_to_shop_form
+- validate_select_recipe_to_shop_form
 - action_ask_select_recipe_form_recipe
 - action_backward_step
 - action_how_much_ing
