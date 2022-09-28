@@ -36,7 +36,13 @@ import numpy as np
 
 from actions.data import recipes
 
+# active recipe state
+class State():
+    recipe_key = None
+    num_people = None
+    step_idx = None
 
+state = State()
 shoplist = list()
 
 
@@ -53,34 +59,31 @@ def similarity_score(seq1: str, seq2: str) -> float:
 
 
 def seek(tracker: Tracker, dispatcher: CollectingDispatcher, delta: int):
-    recipe_key = tracker.get_slot('recipe')
 
-    if recipe_key is None:
+    if state.recipe_key is None:
         # no recipe is currently running
         utt(dispatcher, 'utter_start_from_here')
         return []
 
-    step_idx = int(tracker.get_slot('step_idx'))
-    steps = recipes[recipe_key].steps
+    steps = recipes[state.recipe_key].steps
 
     # user wants to go back
-    step_idx = max(-1, step_idx + delta)
+    state.step_idx = max(-1, state.step_idx + delta)
 
-    if step_idx < 0:
+    if state.step_idx < 0:
         # step negative: ingredients
-        return [SlotSet('step_idx', step_idx), FollowupAction(name="action_list_ingredients")]
-    elif step_idx < len(steps):
+        return [FollowupAction(name="action_list_ingredients")]
+    elif state.step_idx < len(steps):
         # step positive and inside recipe boundaries
-        step = steps[step_idx]
-        # print(step_idx)
+        step = steps[state.step_idx]
         say(dispatcher, step.description)
 
-        return [SlotSet('step_idx', step_idx)]
+        return []
     else:
         # recipe completed
         utt(dispatcher, 'utter_recipe_completed')
         utt(dispatcher, 'utter_start_from_here')
-        return [SlotSet('recipe', None), SlotSet('step_idx', step_idx)]
+        return []
 
 
 def format_ingredient(ing, num, description=False):
@@ -213,9 +216,13 @@ class ActionSubmitRecipeForm(Action):
         confirm = tracker.get_slot('confirm_recipe_form')
 
         if not confirm:
-            return [SlotSet("recipe", None), SlotSet("number_people", None), SlotSet("confirm_recipe_form", None), FollowupAction(name="action_ask_select_recipe_form_recipe")]
+            return [SlotSet("recipe", None), SlotSet("number_people", None), SlotSet("confirm_recipe_form", None), FollowupAction(name="action_ask_recipe")]
 
-        return [SlotSet('step_idx', -1), FollowupAction(name="action_list_ingredients")]
+        state.recipe_key = tracker.get_slot('recipe')
+        state.num_people = int(tracker.get_slot('number_people'))
+        state.step_idx = -1
+
+        return [SlotSet("recipe", None), SlotSet("number_people", None), SlotSet("confirm_recipe_form", None), FollowupAction(name="action_list_ingredients")]
 
 
 class ActionListIngredients(Action):
@@ -227,14 +234,12 @@ class ActionListIngredients(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
-        recipe_key = tracker.get_slot('recipe')
-        ings = recipes[recipe_key].ingredients
-        num = int(tracker.get_slot('number_people'))
+        ings = recipes[state.recipe_key].ingredients
 
         utt(dispatcher, "utter_present_ingredients")
 
         for ing in ings:
-            say(dispatcher, format_ingredient(ing, num))
+            say(dispatcher, format_ingredient(ing, state.num_people))
 
         utt(dispatcher, 'utter_user_ready')
 
@@ -262,17 +267,15 @@ class ActionRepeat(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
-        recipe_key = tracker.get_slot('recipe')
-        step_idx = int(tracker.get_slot('step_idx'))
-        steps = recipes[recipe_key].steps
+        steps = recipes[state.recipe_key].steps
 
         # user wants to repeat current step
         say(dispatcher, 'Of course')
 
-        if step_idx < 0:
+        if state.step_idx < 0:
             return [FollowupAction(name="action_list_ingredients")]
         else:
-            step = steps[step_idx]
+            step = steps[state.step_idx]
             say(dispatcher, step.description)
 
             return []
@@ -325,11 +328,8 @@ class ActionHowMuchIng(Action):
         query = tracker.get_slot('ingredient')
 
         # current state
-        recipe_key = tracker.get_slot('recipe')
-        ings = recipes[recipe_key].ingredients
-        num = int(tracker.get_slot('number_people'))
-        step_idx = int(tracker.get_slot('step_idx'))
-        step = recipes[recipe_key].steps[step_idx]
+        ings = recipes[state.recipe_key].ingredients
+        step = recipes[state.recipe_key].steps[state.step_idx]
 
         if query is not None:
             sim = np.array([similarity_score(query, i.name) for i in ings])
@@ -339,14 +339,14 @@ class ActionHowMuchIng(Action):
                 matched_ing = ings[idx]
                 # pass step index because the ingredient list is treated differently from the steps
                 say(dispatcher, format_ingredient(
-                    matched_ing, num, description=True))
+                    matched_ing, state.num_people, description=True))
             else:
                 utt(dispatcher, 'utter_repeat_ing')
         elif len(step.ingredients) == 1:
             # its the only ingredient used
             ing_idx = step.ingredients[0]
             ing = ings[ing_idx]
-            say(dispatcher, format_ingredient(ing, num, description=True))
+            say(dispatcher, format_ingredient(ing, state.num_people, description=True))
         else:
             # there are more than 1 ingredient in the list
             # ask which one the user is asking about
@@ -368,21 +368,16 @@ class ActionAddRecipeToList(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
-        # current state
-        recipe_key = tracker.get_slot('recipe')
-
-        if recipe_key is None:
+        if state.recipe_key is None:
             # no recipe is currently running
             # run a form to select the recipe to add
             return [FollowupAction(name="action_ask_recipe")]
 
-        ings = recipes[recipe_key].ingredients
-        num = int(tracker.get_slot('number_people'))
+        ings = recipes[state.recipe_key].ingredients
 
-        shoplist.extend([format_ingredient(ing, num) for ing in ings])
+        shoplist.extend([format_ingredient(ing, state.num_people) for ing in ings])
         print(shoplist)
 
-        # empty slots: slots were used to add a recipe to the shopping list, not to start cooking one
         return [SlotSet("recipe", None), SlotSet("number_people", None)]
 
 
@@ -457,11 +452,11 @@ class ActionSubmitRecipeToShopForm(Action):
         if not confirm:
             return [SlotSet("recipe", None), SlotSet("number_people", None), SlotSet("confirm_recipe_form", None), FollowupAction(name="action_ask_recipe")]
 
-        recipe_key = tracker.get_slot('recipe')
-        ings = recipes[recipe_key].ingredients
-        num = int(tracker.get_slot('number_people'))
+        recipe_key_shop = tracker.get_slot('recipe')
+        ings = recipes[recipe_key_shop].ingredients
+        num_shop = int(tracker.get_slot('number_people'))
 
-        shoplist.extend([format_ingredient(ing, num) for ing in ings])
+        shoplist.extend([format_ingredient(ing, num_shop) for ing in ings])
         print(shoplist)
 
         return [SlotSet("recipe", None), SlotSet("number_people", None), SlotSet("confirm_recipe_form", None)]

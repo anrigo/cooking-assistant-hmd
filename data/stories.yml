@@ -201,20 +201,14 @@ stories:
     - requested_slot: null
   - active_loop: null
   - action: action_submit_recipe_form
-  - slot_was_set:
-    - step_idx: -1
   - action: action_list_ingredients
   - intent: user_did_not_understand
   - action: action_repeat
   - action: action_list_ingredients
   - intent: user_ready
   - action: action_next_step
-  - slot_was_set:
-    - step_idx: 0
   - intent: user_ready
   - action: action_next_step
-  - slot_was_set:
-    - step_idx: 1
   - intent: user_did_not_understand
   - action: action_repeat
 
@@ -243,37 +237,25 @@ stories:
     - requested_slot: null
   - active_loop: null
   - action: action_submit_recipe_form
-  - slot_was_set:
-    - step_idx: -1
   - action: action_list_ingredients
   - intent: user_ready
   - action: action_next_step
-  - slot_was_set:
-    - step_idx: 0
   - intent: user_ready
   - action: action_next_step
-  - slot_was_set:
-    - step_idx: 1
   - intent: back_step
     entities:
     - delta_steps: '1'
   - slot_was_set:
     - delta_steps: '1'
   - action: action_backward_step
-  - slot_was_set:
-    - step_idx: 0
   - intent: user_ready
   - action: action_next_step
-  - slot_was_set:
-    - step_idx: 1
   - intent: back_step
     entities:
     - delta_steps: '2'
   - slot_was_set:
     - delta_steps: '2'
   - action: action_backward_step
-  - slot_was_set:
-    - step_idx: -1
   - action: action_list_ingredients
 
 - story: interactive_story_1
@@ -304,21 +286,15 @@ stories:
     - requested_slot: null
   - active_loop: null
   - action: action_submit_recipe_form
-  - slot_was_set:
-    - step_idx: -1
   - action: action_list_ingredients
   - intent: user_ready
   - action: action_next_step
-  - slot_was_set:
-    - step_idx: 0
   - intent: skip_step
     entities:
     - delta_steps: '2'
   - slot_was_set:
     - delta_steps: '2'
   - action: action_skip_step
-  - slot_was_set:
-    - step_idx: 2
 
 - story: interactive_story_1
   steps:
@@ -348,28 +324,18 @@ stories:
     - requested_slot: null
   - active_loop: null
   - action: action_submit_recipe_form
-  - slot_was_set:
-    - step_idx: -1
   - action: action_list_ingredients
   - intent: user_ready
   - action: action_next_step
-  - slot_was_set:
-    - step_idx: 0
   - intent: user_ready
     entities:
     - delta_steps: '1'
   - slot_was_set:
     - delta_steps: '1'
   - action: action_next_step
-  - slot_was_set:
-    - step_idx: 1
   - intent: back_step
   - action: action_backward_step
-  - slot_was_set:
-    - step_idx: 0
   - action: action_next_step
-  - slot_was_set:
-    - step_idx: 1
 
 - story: interactive_story_2
   steps:
@@ -399,25 +365,15 @@ stories:
     - requested_slot: null
   - active_loop: null
   - action: action_submit_recipe_form
-  - slot_was_set:
-    - step_idx: -1
   - action: action_list_ingredients
   - intent: user_ready
   - action: action_next_step
-  - slot_was_set:
-    - step_idx: 0
   - intent: user_ready
   - action: action_next_step
-  - slot_was_set:
-    - step_idx: 1
   - intent: back_step
   - action: action_backward_step
-  - slot_was_set:
-    - step_idx: 0
   - intent: user_ready
   - action: action_next_step
-  - slot_was_set:
-    - step_idx: 1
 
 - story: interactive_story_1
   steps:
@@ -447,13 +403,9 @@ stories:
     - requested_slot: null
   - active_loop: null
   - action: action_submit_recipe_form
-  - slot_was_set:
-    - step_idx: -1
   - action: action_list_ingredients
   - intent: user_ready
   - action: action_next_step
-  - slot_was_set:
-    - step_idx: 0
   - intent: how_much_ing
     entities:
     - ingredient: eggs
@@ -496,13 +448,9 @@ stories:
     - requested_slot: null
   - active_loop: null
   - action: action_submit_recipe_form
-  - slot_was_set:
-    - step_idx: -1
   - action: action_list_ingredients
   - intent: user_ready
   - action: action_next_step
-  - slot_was_set:
-    - step_idx: 0
   - intent: how_much_ing
     entities:
     - ingredient: salt
@@ -529,8 +477,6 @@ stories:
     - ingredient: null
   - intent: user_ready
   - action: action_next_step
-  - slot_was_set:
-    - step_idx: 1
   - intent: how_much_ing
     entities:
     - ingredient: guanciale
@@ -541,20 +487,12 @@ stories:
     - ingredient: null
   - intent: user_ready
   - action: action_next_step
-  - slot_was_set:
-    - step_idx: 2
   - intent: user_ready
   - action: action_next_step
-  - slot_was_set:
-    - step_idx: 3
   - intent: user_ready
   - action: action_next_step
-  - slot_was_set:
-    - step_idx: 4
   - intent: user_ready
   - action: action_next_step
-  - slot_was_set:
-    - step_idx: 5
   - intent: how_much_ing
     entities:
     - ingredient: black pepper
@@ -591,8 +529,6 @@ stories:
     - requested_slot: null
   - active_loop: null
   - action: action_submit_recipe_form
-  - slot_was_set:
-    - step_idx: -1
   - action: action_list_ingredients
   - intent: skip_step
     entities:
@@ -600,12 +536,8 @@ stories:
   - slot_was_set:
     - delta_steps: '5'
   - action: action_skip_step
-  - slot_was_set:
-    - step_idx: 4
   - intent: user_ready
   - action: action_next_step
-  - slot_was_set:
-    - step_idx: 5
   - intent: how_much_ing
     entities:
     - ingredient: black pepper
@@ -643,13 +575,9 @@ stories:
     - requested_slot: null
   - active_loop: null
   - action: action_submit_recipe_form
-  - slot_was_set:
-    - step_idx: -1
   - action: action_list_ingredients
   - intent: user_ready
   - action: action_next_step
-  - slot_was_set:
-    - step_idx: 0
   - intent: how_much_ing
   - action: action_how_much_ing
 
@@ -676,25 +604,17 @@ stories:
     - requested_slot: null
   - active_loop: null
   - action: action_submit_recipe_form
-  - slot_was_set:
-    - step_idx: -1
   - action: action_list_ingredients
   - intent: user_ready
   - action: action_next_step
-  - slot_was_set:
-    - step_idx: 0
   - intent: skip_step
     entities:
     - delta_steps: '4'
   - slot_was_set:
     - delta_steps: '4'
   - action: action_skip_step
-  - slot_was_set:
-    - step_idx: 4
   - intent: user_ready
   - action: action_next_step
-  - slot_was_set:
-    - step_idx: 5
   - intent: how_much_ing
   - action: action_how_much_ing
   - slot_was_set:

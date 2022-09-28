@@ -36,12 +36,6 @@ slots:
   confirm_recipe_form:
     type: bool
     influence_conversation: true
-  step_idx:
-    type: float
-    auto_fill: false
-    influence_conversation: false
-    max_value: 1.0
-    min_value: 0.0
   delta_steps:
     type: float
     influence_conversation: false
