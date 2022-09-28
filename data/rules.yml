@@ -1,10 +1,10 @@
 version: "2.0"
 
 rules:
-- rule: Test action
-  steps:
-  - intent: add_recipe_to_list
-  - action: action_add_recipe_to_list
+# - rule: Test action
+#   steps:
+#   - intent: add_recipe_to_list
+#   - action: action_add_recipe_to_list
 
 - rule: Say goodbye anytime the user says goodbye
   steps:

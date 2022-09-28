@@ -715,3 +715,39 @@ stories:
   - action: action_how_much_ing
   - slot_was_set:
     - ingredient: null
+
+- story: interactive_story_1
+  steps:
+  - intent: add_recipe_to_list
+  - action: select_recipe_shop_form
+  - active_loop: select_recipe_shop_form
+  - slot_was_set:
+    - requested_slot: recipe
+  - slot_was_set:
+    - recipe: null
+  - slot_was_set:
+    - number_people: null
+  - slot_was_set:
+    - recipe: carbonara
+  - slot_was_set:
+    - recipe: Carbonara
+  - slot_was_set:
+    - requested_slot: number_people
+  - slot_was_set:
+    - number_people: '2'
+  - slot_was_set:
+    - number_people: '2'
+  - slot_was_set:
+    - requested_slot: confirm_recipe_form
+  - slot_was_set:
+    - confirm_recipe_form: true
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_submit_recipe_shop_form
+  - slot_was_set:
+    - recipe: null
+  - slot_was_set:
+    - number_people: null
+  - slot_was_set:
+    - confirm_recipe_form: null

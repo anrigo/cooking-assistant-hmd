@@ -126,9 +126,14 @@ def format_ingredient(ing, num, description=False):
 #         return []
 
 # SELECT RECIPE TO COOK
-class AskSelectRecipeFormRecipe(Action):
+class AskRecipe(Action):
+    '''
+    the name follows the convention action_ask_<form_name>_<slot_name>
+    thus this action will be activated whenever <slot_name> will be required
+    '''
+
     def name(self) -> Text:
-        return "action_ask_select_recipe_form_recipe"
+        return "action_ask_recipe"
 
     def run(
         self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict
@@ -178,7 +183,7 @@ class ActionValidateSelectRecipeForm(FormValidationAction):
     ) -> Dict[Text, Any]:
 
         num = tracker.get_slot('number_people')
-        
+
         if num.isdigit():
             return {"number_people": num}
         else:
@@ -369,7 +374,7 @@ class ActionAddRecipeToList(Action):
         if recipe_key is None:
             # no recipe is currently running
             # run a form to select the recipe to add
-            return [FollowupAction(name="action_ask_select_recipe_to_shop_form_recipe")]
+            return [FollowupAction(name="action_ask_recipe")]
 
         ings = recipes[recipe_key].ingredients
         num = int(tracker.get_slot('number_people'))
@@ -382,26 +387,13 @@ class ActionAddRecipeToList(Action):
 
 
 # SELECT RECIPE TO SHOP
-class AskSelectRecipeFormToShopRecipe(Action):
-    def name(self) -> Text:
-        return "action_ask_select_recipe_to_shop_form_recipe"
-
-    def run(
-        self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict
-    ) -> List[EventType]:
-
-        utt(dispatcher, 'utter_propose_recipes')
-        description = ", ".join([r for r in recipes.keys()])
-        say(dispatcher, f"{description}")
-        utt(dispatcher, 'utter_choose_one_recipe')
-
-        return [SlotSet('recipe', None), SlotSet('number_people', None)]
-
-
-class ActionValidateSelectRecipeToShopForm(FormValidationAction):
+# this form required the same exact slots that select_recipe for requires
+# so, the same action to list the recipes and the same utterances will be used
+# but the submit action will be different, since the goal of the form is different
+class ActionValidateSelectRecipeShopForm(FormValidationAction):
 
     def name(self) -> Text:
-        return "validate_select_recipe_to_shop_form"
+        return "validate_select_recipe_shop_form"
 
     def validate_recipe(
         self,
@@ -418,7 +410,6 @@ class ActionValidateSelectRecipeToShopForm(FormValidationAction):
 
         if sim[idx] >= 0.8:
             matched_recipe = list(recipes.keys())[idx]
-            # say(dispatcher, f"I understand you want to cook {matched_recipe}")
         else:
             matched_recipe = None
             say(dispatcher, "I don't know this recipe or i didn't understand the name correctly.\nCan you repeat or try another recipe?")
@@ -434,7 +425,7 @@ class ActionValidateSelectRecipeToShopForm(FormValidationAction):
     ) -> Dict[Text, Any]:
 
         num = tracker.get_slot('number_people')
-        
+
         if num.isdigit():
             return {"number_people": num}
         else:
@@ -449,22 +440,22 @@ class ActionValidateSelectRecipeToShopForm(FormValidationAction):
         domain: DomainDict,
     ) -> Dict[Text, Any]:
 
-        return {"confirm_recipe_shop_form": tracker.get_slot('confirm_recipe_shop_form')}
+        return {"confirm_recipe_form": tracker.get_slot('confirm_recipe_form')}
 
 
 class ActionSubmitRecipeToShopForm(Action):
 
     def name(self) -> Text:
-        return "action_submit_recipe_to_shop_form"
+        return "action_submit_recipe_shop_form"
 
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
-        confirm = tracker.get_slot('confirm_recipe_shop_form')
+        confirm = tracker.get_slot('confirm_recipe_form')
 
         if not confirm:
-            return [SlotSet("recipe", None), SlotSet("number_people", None), SlotSet("confirm_recipe_shop_form", None), FollowupAction(name="action_ask_select_recipe_to_shop_form_recipe")]
+            return [SlotSet("recipe", None), SlotSet("number_people", None), SlotSet("confirm_recipe_form", None), FollowupAction(name="action_ask_recipe")]
 
         recipe_key = tracker.get_slot('recipe')
         ings = recipes[recipe_key].ingredients
@@ -473,4 +464,4 @@ class ActionSubmitRecipeToShopForm(Action):
         shoplist.extend([format_ingredient(ing, num) for ing in ings])
         print(shoplist)
 
-        return [SlotSet("recipe", None), SlotSet("number_people", None), SlotSet("confirm_recipe_shop_form", None)]
+        return [SlotSet("recipe", None), SlotSet("number_people", None), SlotSet("confirm_recipe_form", None)]

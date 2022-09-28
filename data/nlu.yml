@@ -5,6 +5,7 @@ nlu:
     - Add a recipe to my shopping list
     - Add [carbonara](recipe) for [two](number_people) to my list
     - Add [carbonara](recipe) for [two](number_people) to my shopping list
+    - add a recipe to my list
 - intent: how_much_ing
   examples: |
     - How much [guanciale](ingredient)?
@@ -109,6 +110,7 @@ nlu:
     - just for [two]{"entity": "number_people", "value": "2"}
     - i'm going to make [crepes](recipe) for [4](number_people)
     - I would say for [two]{"entity": "number_people", "value": "2"}
+    - I'd say for [two]{"entity": "number_people", "value": "2"} people
 - intent: ask_recipe
   examples: |
     - I am hungry
@@ -152,6 +154,7 @@ nlu:
     - i would like to cook [carbonara](recipe) today
     - Let's cook [carbonara](recipe) for [three]{"entity": "number_people", "value": "3"}!
     - Let's go with [carbonara](recipe) for [two]{"entity": "number_people", "value": "2"}
+    - I'll prepare [carbonara](recipe)
 - intent: greet
   examples: |
     - hey
@@ -195,6 +198,7 @@ nlu:
     - yes you got it correctly
     - Yes, that's it
     - Yeah
+    - Yes it is!
 - intent: deny
   examples: |
     - no

@@ -3,6 +3,7 @@ session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
 intents:
+- add_recipe_to_list
 - affirm
 - ask_recipe
 - back_step
@@ -18,10 +19,9 @@ intents:
 - skip_step
 - user_did_not_understand
 - user_ready
-- add_recipe_to_list
 entities:
-- number_people
 - recipe
+- number_people
 - delta_steps
 - ingredient
 slots:
@@ -52,7 +52,9 @@ slots:
     influence_conversation: true
 responses:
   utter_repeat_ing:
-  - text: "I coudn't understand the ingredient you are asking for, or the ingredient is not part of the recipe.\nCould you repeat?"
+  - text: |-
+      I coudn't understand the ingredient you are asking for, or the ingredient is not part of the recipe.
+      Could you repeat?
   utter_propose_recipes:
   - text: 'Here are some recipes you can try:'
   - text: 'You could try one of those:'
@@ -61,9 +63,9 @@ responses:
   - text: Which recipe would you like to prepare?
   - text: Which one would you like to prepare?
   - text: Please choose one
-  utter_ask_select_recipe_form_confirm_recipe_form:
+  utter_ask_confirm_recipe_form:
   - text: I understand you want to cook {recipe} for {number_people} people. Is it correct?
-  utter_ask_select_recipe_form_number_people:
+  utter_ask_number_people:
   - text: For how many people are you going to cook?
   utter_present_ingredients:
   - text: Here's what you need
@@ -96,10 +98,8 @@ responses:
   utter_iamabot:
   - text: I am a bot, powered by Rasa.
 actions:
-- action_ask_select_recipe_to_shop_form_recipe
-- action_submit_recipe_to_shop_form
-- validate_select_recipe_to_shop_form
-- action_ask_select_recipe_form_recipe
+- action_add_recipe_to_list
+- action_ask_recipe
 - action_backward_step
 - action_how_much_ing
 - action_list_ingredients
@@ -107,10 +107,23 @@ actions:
 - action_repeat
 - action_skip_step
 - action_submit_recipe_form
+- action_submit_recipe_shop_form
 - validate_select_recipe_form
-- action_add_recipe_to_list
+- validate_select_recipe_shop_form
 forms:
   select_recipe_form:
+    required_slots:
+      recipe:
+      - type: from_entity
+        entity: recipe
+      number_people:
+      - type: from_entity
+        entity: number_people
+      confirm_recipe_form:
+      - type: from_intent
+        value: true
+        intent: affirm
+  select_recipe_shop_form:
     required_slots:
       recipe:
       - type: from_entity
