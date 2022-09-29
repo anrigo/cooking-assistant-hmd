@@ -1,5 +1,16 @@
 version: "2.0"
 nlu:
+- intent: show_shopping_list
+  examples: |
+    - Show my shopping list
+    - Show me my shopping list
+    - What shoud I buy?
+    - Show me page [one](page)
+    - Show me page [one](page) of my list
+    - Show me page [one](page) of my shopping list
+    - Show me page [two](page)
+    - Show me page [two](page) of my list
+    - Show me page [two](page) of my shopping list
 - intent: add_recipe_to_list
   examples: |
     - Add a recipe to my shopping list

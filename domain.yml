@@ -24,6 +24,7 @@ entities:
 - number_people
 - delta_steps
 - ingredient
+- page
 slots:
   recipe:
     type: text
@@ -33,11 +34,17 @@ slots:
     influence_conversation: true
     max_value: 1.0
     min_value: 0.0
+  page:
+    type: float
+    influence_conversation: false
+    max_value: 1.0
+    min_value: 0.0
   confirm_recipe_form:
     type: bool
     influence_conversation: true
   delta_steps:
     type: float
+    initial_value: 1
     influence_conversation: false
     max_value: 1.0
     min_value: 0.0
@@ -45,6 +52,8 @@ slots:
     type: text
     influence_conversation: true
 responses:
+  utter_recipe_added_to_list:
+  - text: The {recipe} recipe was added to your shopping list.
   utter_repeat_ing:
   - text: |-
       I coudn't understand the ingredient you are asking for, or the ingredient is not part of the recipe.
@@ -92,6 +101,7 @@ responses:
   utter_iamabot:
   - text: I am a bot, powered by Rasa.
 actions:
+- action_show_shopping_list
 - action_add_recipe_to_list
 - action_ask_recipe
 - action_backward_step

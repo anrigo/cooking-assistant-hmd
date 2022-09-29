@@ -26,6 +26,7 @@
 #
 #         return []
 
+from math import ceil
 from typing import Any, Text, Dict, List
 from rasa_sdk import Action, Tracker, FormValidationAction
 from rasa_sdk.executor import CollectingDispatcher
@@ -37,13 +38,17 @@ import numpy as np
 from actions.data import recipes
 
 # active recipe state
+
+
 class State():
     recipe_key = None
     num_people = None
     step_idx = None
 
+
 state = State()
 shoplist = list()
+pagelen = 5
 
 
 def say(dispatcher: CollectingDispatcher, message: str) -> None:
@@ -346,7 +351,8 @@ class ActionHowMuchIng(Action):
             # its the only ingredient used
             ing_idx = step.ingredients[0]
             ing = ings[ing_idx]
-            say(dispatcher, format_ingredient(ing, state.num_people, description=True))
+            say(dispatcher, format_ingredient(
+                ing, state.num_people, description=True))
         else:
             # there are more than 1 ingredient in the list
             # ask which one the user is asking about
@@ -375,7 +381,8 @@ class ActionAddRecipeToList(Action):
 
         ings = recipes[state.recipe_key].ingredients
 
-        shoplist.extend([format_ingredient(ing, state.num_people) for ing in ings])
+        shoplist.extend([format_ingredient(ing, state.num_people)
+                        for ing in ings])
         print(shoplist)
 
         return [SlotSet("recipe", None), SlotSet("number_people", None)]
@@ -457,6 +464,36 @@ class ActionSubmitRecipeToShopForm(Action):
         num_shop = int(tracker.get_slot('number_people'))
 
         shoplist.extend([format_ingredient(ing, num_shop) for ing in ings])
-        print(shoplist)
+        utt(dispatcher, 'utter_recipe_added_to_list')
 
         return [SlotSet("recipe", None), SlotSet("number_people", None), SlotSet("confirm_recipe_form", None)]
+
+
+class ActionSubmitRecipeToShopForm(Action):
+
+    def name(self) -> Text:
+        return "action_show_shopping_list"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        page = tracker.get_slot('page')
+
+        # validate for typos
+        if page.isdigit():
+            page = int(page)
+        else:
+            say(dispatcher, 'I couldn\'t understand the page you requested so I\'ll show you page 1.')
+            page = 1
+
+        totpages = ceil(len(shoplist)/pagelen)
+
+        say(dispatcher,
+            f'Showing page {page} of {totpages} of your shopping list.\nYou can ask me what I can do with the shopping list at any time.')
+        
+        elems = shoplist[(page-1)*pagelen:page*pagelen]
+        for idx, elem in enumerate(elems):
+            say(dispatcher, f'{idx+((page-1)*pagelen)} {elem}')
+        
+        return []
