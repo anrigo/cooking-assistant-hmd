@@ -3,6 +3,7 @@ session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
 intents:
+- add_current_recipe_to_list
 - add_recipe_to_list
 - affirm
 - ask_recipe
@@ -21,9 +22,9 @@ intents:
 - user_did_not_understand
 - user_ready
 entities:
-- page
 - recipe
 - number_people
+- page
 - delta_steps
 - ingredient
 slots:
@@ -102,7 +103,7 @@ responses:
   utter_iamabot:
   - text: I am a bot, powered by Rasa.
 actions:
-- action_add_recipe_to_list
+- action_add_current_recipe_to_list
 - action_ask_recipe
 - action_backward_step
 - action_how_much_ing

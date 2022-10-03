@@ -749,3 +749,50 @@ stories:
   - action: action_show_shopping_list
   - slot_was_set:
     - page: null
+
+- story: interactive_story_1
+  steps:
+  - intent: ask_recipe
+  - action: select_recipe_form
+  - active_loop: select_recipe_form
+  - slot_was_set:
+    - requested_slot: recipe
+  - slot_was_set:
+    - recipe: null
+  - slot_was_set:
+    - number_people: null
+  - slot_was_set:
+    - recipe: crepes
+  - slot_was_set:
+    - recipe: Crepes
+  - slot_was_set:
+    - requested_slot: number_people
+  - slot_was_set:
+    - number_people: '5'
+  - slot_was_set:
+    - number_people: '5'
+  - slot_was_set:
+    - requested_slot: confirm_recipe_form
+  - slot_was_set:
+    - confirm_recipe_form: true
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_submit_recipe_form
+  - slot_was_set:
+    - recipe: null
+  - slot_was_set:
+    - number_people: null
+  - slot_was_set:
+    - confirm_recipe_form: null
+  - action: action_list_ingredients
+  - intent: add_current_recipe_to_list
+  - action: action_add_current_recipe_to_list
+  - slot_was_set:
+    - recipe: null
+  - slot_was_set:
+    - number_people: null
+  - intent: show_shopping_list
+  - action: action_show_shopping_list
+  - slot_was_set:
+    - page: null

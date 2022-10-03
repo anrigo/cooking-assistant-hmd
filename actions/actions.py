@@ -368,7 +368,7 @@ class ActionHowMuchIng(Action):
 class ActionAddRecipeToList(Action):
 
     def name(self) -> Text:
-        return "action_add_recipe_to_list"
+        return "action_add_current_recipe_to_list"
 
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
@@ -501,7 +501,7 @@ class ActionSubmitRecipeToShopForm(Action):
                     f'Showing page {page} of {totpages} of your shopping list.\nYou can ask me what I can do with the shopping list at any time.')
                 
                 for idx, elem in enumerate(elems):
-                    say(dispatcher, f'{idx+((page-1)*pagelen)} {elem}')
+                    say(dispatcher, f'{idx+1+((page-1)*pagelen)} {elem}')
             else:
                 say(dispatcher, f'Page {page} doesn\'t exist, your shopping list has {totpages} pages')
         else:

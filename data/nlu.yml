@@ -12,6 +12,12 @@ nlu:
     - Show me page [two](page) of my list
     - Show me page [two](page) of my shopping list
     - Show page [two]{"entity": "page", "value": "2"} of the list
+    - Show me my list
+- intent: add_current_recipe_to_list
+  examples: |
+    - Add this recipe to my list
+    - Add the current recipe to the list
+    - Add this recipe to my shopping list
 - intent: add_recipe_to_list
   examples: |
     - Add a recipe to my shopping list
@@ -126,6 +132,7 @@ nlu:
     - I would say for [two]{"entity": "number_people", "value": "2"}
     - I'd say for [two]{"entity": "number_people", "value": "2"} people
     - For [four]{"entity": "number_people", "value": "4"} people
+    - For [five]{"entity": "number_people", "value": "5"} people I would say
 - intent: ask_recipe
   examples: |
     - I am hungry
@@ -141,6 +148,7 @@ nlu:
     - what can i cook today?
     - let's cook
     - Can we cook something?
+    - let's cook!
 - intent: select_recipe
   examples: |
     - I'll prepare [waffles](recipe)
@@ -170,6 +178,7 @@ nlu:
     - Let's cook [carbonara](recipe) for [three]{"entity": "number_people", "value": "3"}!
     - Let's go with [carbonara](recipe) for [two]{"entity": "number_people", "value": "2"}
     - I'll prepare [carbonara](recipe)
+    - I would like to cook [crepes](recipe)
 - intent: greet
   examples: |
     - hey
@@ -262,18 +271,18 @@ nlu:
     - are you a human?
     - am I talking to a bot?
     - am I talking to a human?
-- synonym: '1'
-  examples: |
-    - this step
-    - once
-    - one
-    - me
 - synonym: '2'
   examples: |
     - two
 - synonym: '3'
   examples: |
     - three
+- synonym: '1'
+  examples: |
+    - this step
+    - once
+    - one
+    - me
 - synonym: '5'
   examples: |
     - five
