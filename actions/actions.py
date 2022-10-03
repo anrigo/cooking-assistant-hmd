@@ -481,10 +481,13 @@ class ActionSubmitRecipeToShopForm(Action):
         page = tracker.get_slot('page')
 
         # validate for typos
-        if page.isdigit():
-            page = int(page)
+        if page is not None:
+            if page.isdigit():
+                page = int(page)
+            else:
+                say(dispatcher, 'I couldn\'t understand the page you requested so I\'ll show you page 1.')
+                page = 1
         else:
-            say(dispatcher, 'I couldn\'t understand the page you requested so I\'ll show you page 1.')
             page = 1
 
         totpages = ceil(len(shoplist)/pagelen)
@@ -496,4 +499,4 @@ class ActionSubmitRecipeToShopForm(Action):
         for idx, elem in enumerate(elems):
             say(dispatcher, f'{idx+((page-1)*pagelen)} {elem}')
         
-        return []
+        return [SlotSet('page', None)]

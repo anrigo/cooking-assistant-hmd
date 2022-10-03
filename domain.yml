@@ -3,6 +3,7 @@ session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
 intents:
+- show_shopping_list
 - add_recipe_to_list
 - affirm
 - ask_recipe
