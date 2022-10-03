@@ -3,6 +3,7 @@ session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
 intents:
+- remove_shop_item
 - add_current_recipe_to_list
 - add_recipe_to_list
 - affirm
@@ -37,6 +38,11 @@ slots:
     max_value: 1.0
     min_value: 0.0
   page:
+    type: float
+    influence_conversation: false
+    max_value: 1.0
+    min_value: 0.0
+  item_id:
     type: float
     influence_conversation: false
     max_value: 1.0
@@ -103,6 +109,7 @@ responses:
   utter_iamabot:
   - text: I am a bot, powered by Rasa.
 actions:
+- action_remove_shop_item
 - action_add_current_recipe_to_list
 - action_ask_recipe
 - action_backward_step

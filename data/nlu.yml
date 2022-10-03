@@ -1,5 +1,11 @@
 version: "2.0"
 nlu:
+- intent: remove_shop_item
+  examples: |
+    - Remove item [one](item_id) from my list
+    - Remove item [one](item_id) from my list
+    - Remove [two](item_id) from the list
+    - Remove [two](item_id) from my shopping list
 - intent: show_shopping_list
   examples: |
     - Show my shopping list

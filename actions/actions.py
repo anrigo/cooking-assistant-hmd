@@ -365,7 +365,8 @@ class ActionHowMuchIng(Action):
         return [SlotSet('ingredient', None)]
 
 
-class ActionAddRecipeToList(Action):
+class ActionAddCurrentRecipeToList(Action):
+    # adds active recipe to the shopping list
 
     def name(self) -> Text:
         return "action_add_current_recipe_to_list"
@@ -508,3 +509,24 @@ class ActionSubmitRecipeToShopForm(Action):
             say(dispatcher, 'Your shopping list is empty')
         
         return [SlotSet('page', None)]
+
+
+class ActionRemoveShopItem(Action):
+
+    def name(self) -> Text:
+        return "action_remove_shop_item"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        
+        item_id = tracker.get_slot('item_id')
+
+        if item_id is not None and item_id.isdigit():
+            item_id = int(item_id)
+            item = shoplist.pop(item_id)
+            say(dispatcher, f'I reomved {item} from your shopping list')
+        else:
+            say(dispatcher, 'I\'m sorry I coudn\'t understand')
+
+        return [SlotSet('item_id', None)]
