@@ -490,13 +490,21 @@ class ActionSubmitRecipeToShopForm(Action):
         else:
             page = 1
 
-        totpages = ceil(len(shoplist)/pagelen)
+        if len(shoplist) > 0:
+            totpages = ceil(len(shoplist)/pagelen)
 
-        say(dispatcher,
-            f'Showing page {page} of {totpages} of your shopping list.\nYou can ask me what I can do with the shopping list at any time.')
-        
-        elems = shoplist[(page-1)*pagelen:page*pagelen]
-        for idx, elem in enumerate(elems):
-            say(dispatcher, f'{idx+((page-1)*pagelen)} {elem}')
+            
+            elems = shoplist[(page-1)*pagelen:page*pagelen]
+            
+            if len(elems) > 0:
+                say(dispatcher,
+                    f'Showing page {page} of {totpages} of your shopping list.\nYou can ask me what I can do with the shopping list at any time.')
+                
+                for idx, elem in enumerate(elems):
+                    say(dispatcher, f'{idx+((page-1)*pagelen)} {elem}')
+            else:
+                say(dispatcher, f'Page {page} doesn\'t exist, your shopping list has {totpages} pages')
+        else:
+            say(dispatcher, 'Your shopping list is empty')
         
         return [SlotSet('page', None)]

@@ -11,12 +11,15 @@ nlu:
     - Show me page [two](page)
     - Show me page [two](page) of my list
     - Show me page [two](page) of my shopping list
+    - Show page [two]{"entity": "page", "value": "2"} of the list
 - intent: add_recipe_to_list
   examples: |
     - Add a recipe to my shopping list
     - Add [carbonara](recipe) for [two](number_people) to my list
     - Add [carbonara](recipe) for [two](number_people) to my shopping list
     - add a recipe to my list
+    - Add [amatriciana](recipe) for [three]{"entity": "number_people", "value": "3"} to my shopping list
+    - Now add [crepes](recipe) to my list
 - intent: how_much_ing
   examples: |
     - How much [guanciale](ingredient)?
@@ -122,6 +125,7 @@ nlu:
     - i'm going to make [crepes](recipe) for [4](number_people)
     - I would say for [two]{"entity": "number_people", "value": "2"}
     - I'd say for [two]{"entity": "number_people", "value": "2"} people
+    - For [four]{"entity": "number_people", "value": "4"} people
 - intent: ask_recipe
   examples: |
     - I am hungry
@@ -210,6 +214,7 @@ nlu:
     - Yes, that's it
     - Yeah
     - Yes it is!
+    - Yes
 - intent: deny
   examples: |
     - no
