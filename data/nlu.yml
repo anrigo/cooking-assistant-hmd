@@ -2,22 +2,21 @@ version: "2.0"
 nlu:
 - intent: remove_shop_item
   examples: |
-    - Remove item [one](item_id) from my list
-    - Remove item [one](item_id) from my list
-    - Remove [two](item_id) from the list
-    - Remove [two](item_id) from my shopping list
+    - Remove item [one](number) from my list
+    - Remove [two](number) from the list
+    - Remove [two](number) from my shopping list
 - intent: show_shopping_list
   examples: |
     - Show my shopping list
     - Show me my shopping list
     - What shoud I buy?
-    - Show me page [one](page)
-    - Show me page [one](page) of my list
-    - Show me page [one](page) of my shopping list
-    - Show me page [two](page)
-    - Show me page [two](page) of my list
-    - Show me page [two](page) of my shopping list
-    - Show page [two]{"entity": "page", "value": "2"} of the list
+    - Show me number [one](number)
+    - Show me number [one](number) of my list
+    - Show me number [one](number) of my shopping list
+    - Show me number [two](number)
+    - Show me number [two](number) of my list
+    - Show me number [two](number) of my shopping list
+    - Show number [two](number) of the list
     - Show me my list
 - intent: add_current_recipe_to_list
   examples: |
@@ -27,10 +26,10 @@ nlu:
 - intent: add_recipe_to_list
   examples: |
     - Add a recipe to my shopping list
-    - Add [carbonara](recipe) for [two](number_people) to my list
-    - Add [carbonara](recipe) for [two](number_people) to my shopping list
+    - Add [carbonara](recipe) for [two](number) to my list
+    - Add [carbonara](recipe) for [two](number) to my shopping list
     - add a recipe to my list
-    - Add [amatriciana](recipe) for [three]{"entity": "number_people", "value": "3"} to my shopping list
+    - Add [amatriciana](recipe) for [three](number) to my shopping list
     - Now add [crepes](recipe) to my list
 - intent: how_much_ing
   examples: |
@@ -49,28 +48,28 @@ nlu:
     - I meant [egg yolks](ingredient)
 - intent: skip_step
   examples: |
-    - Skip [this step]{"entity": "delta_steps", "value": "1"}
-    - Skip [this step]{"entity": "delta_steps", "value": "1"} please
-    - Skip [two]{"entity": "delta_steps", "value": "2"} steps
-    - Skip [two]{"entity": "delta_steps", "value": "2"} steps please
-    - Skip [once]{"entity": "delta_steps", "value": "1"}
-    - Go forward [three]{"entity": "delta_steps", "value": "3"} steps
-    - Go on [three]{"entity": "delta_steps", "value": "3"} steps
-    - Skip [two]{"entity": "delta_steps", "value": "2"} times
-    - skip [two]{"entity": "delta_steps", "value": "2"} steps
-    - skip [five]{"entity": "number_people", "value": "5"} steps
-    - skip [five]{"entity": "delta_steps", "value": "5"} steps please
-    - Skip [four]{"entity": "number_people", "value": "4"} steps please
-    - Skip [four]{"entity": "delta_steps", "value": "4"} steps please
+    - Skip [this step](number)
+    - Skip [this step](number) please
+    - Skip [two](number) steps
+    - Skip [two](number) steps please
+    - Skip [once](number)
+    - Go forward [three](number) steps
+    - Go on [three](number) steps
+    - Skip [two](number) times
+    - skip [two](number) steps
+    - skip [five](number) steps
+    - skip [five](number) steps please
+    - Skip [four](number) steps please
+    - Skip [two]{"entity": "number", "value": "2"} steps please
 - intent: back_step
   examples: |
-    - Can we go back [two]{"entity": "delta_steps", "value": "2"} steps?
-    - Go back [one]{"entity": "delta_steps", "value": "1"} step
-    - Go back [two]{"entity": "delta_steps", "value": "2"} step
-    - please go back [one]{"entity": "delta_steps", "value": "1"} step
-    - can you go back [one]{"entity": "delta_steps", "value": "1"} step?
-    - go back [two]{"entity": "delta_steps", "value": "2"} steps
-    - go back [once]{"entity": "delta_steps", "value": "1"}
+    - Can we go back [two](number) steps?
+    - Go back [one](number) step
+    - Go back [two](number) step
+    - please go back [one](number) step
+    - can you go back [one](number) step?
+    - go back [two](number) steps
+    - go back [once](number)
     - go back
     - Go back
 - intent: user_did_not_understand
@@ -120,25 +119,25 @@ nlu:
     - Next step
 - intent: inform_num_people
   examples: |
-    - i'll cook for [3](number_people) people
-    - i'll prepare for [2](number_people) people
-    - i'll cook for [three]{"entity": "number_people", "value": "3"} people
-    - i'll prepare for [two]{"entity": "number_people", "value": "2"} people
-    - for [5](number_people) people
-    - for [four]{"entity": "number_people", "value": "4"}
-    - for [five]{"entity": "number_people", "value": "5"}
-    - for [six]{"entity": "number_people", "value": "6"}
-    - just for [me]{"entity": "number_people", "value": "1"}
-    - just for [one]{"entity": "number_people", "value": "1"}
-    - for [three]{"entity": "number_people", "value": "3"} people
-    - for [two]{"entity": "number_people", "value": "2"}
-    - Just for [two]{"entity": "number_people", "value": "2"}
-    - just for [two]{"entity": "number_people", "value": "2"}
-    - i'm going to make [crepes](recipe) for [4](number_people)
-    - I would say for [two]{"entity": "number_people", "value": "2"}
-    - I'd say for [two]{"entity": "number_people", "value": "2"} people
-    - For [four]{"entity": "number_people", "value": "4"} people
-    - For [five]{"entity": "number_people", "value": "5"} people I would say
+    - i'll cook for [3](number) people
+    - i'll prepare for [2](number) people
+    - i'll cook for [three](number) people
+    - i'll prepare for [two](number) people
+    - for [5](number) people
+    - for [four](number)
+    - for [five](number)
+    - for [six](number)
+    - just for [me](number)
+    - just for [one](number)
+    - for [three](number) people
+    - for [two](number)
+    - Just for [two](number)
+    - just for [two](number)
+    - i'm going to make [crepes](recipe) for [4](number)
+    - I would say for [two](number)
+    - I'd say for [two](number) people
+    - For [four](number) people
+    - For [five](number) people I would say
 - intent: ask_recipe
   examples: |
     - I am hungry
@@ -168,23 +167,24 @@ nlu:
     - I think [carbonara](recipe) will do
     - I think [cacio e pepe](recipe) will do
     - I think [amatriciana](recipe) will do
-    - I'll prepare [waffles](recipe) for [four]{"entity": "number_people", "value": "4"}
-    - I'll cook [pizza](recipe) for [three]{"entity": "number_people", "value": "3"} people
+    - I'll prepare [waffles](recipe) for [four](number)
+    - I'll cook [pizza](recipe) for [three](number) people
     - i'll go for [crepes](recipe)
     - i'll cook [carbonara](recipe)
-    - i'll cook [crepes](recipe) for [four]{"entity": "number_people", "value": "4"} people
+    - i'll cook [crepes](recipe) for [four](number) people
     - i'll go with [crepes](recipe)
     - i think i'll cook [amatriciana](recipe)
     - i think im going to cook a [carbonara](recipe)
-    - i want to cook [carbonara](recipe) for [three]{"entity": "number_people", "value": "3"}
-    - We will cook [carbonara](recipe) for [two]{"entity": "number_people", "value": "2"} today
-    - We are going to cook [carbonara](recipe) for [two]{"entity": "number_people", "value": "2"} today!
+    - i want to cook [carbonara](recipe) for [three](number)
+    - We will cook [carbonara](recipe) for [two](number) today
+    - We are going to cook [carbonara](recipe) for [two](number) today!
     - i'll go for [carbonara](recipe)
     - i would like to cook [carbonara](recipe) today
-    - Let's cook [carbonara](recipe) for [three]{"entity": "number_people", "value": "3"}!
-    - Let's go with [carbonara](recipe) for [two]{"entity": "number_people", "value": "2"}
+    - Let's cook [carbonara](recipe) for [three](number)!
+    - Let's go with [carbonara](recipe) for [two](number)
     - I'll prepare [carbonara](recipe)
     - I would like to cook [crepes](recipe)
+    - let's cook [amatriciana](recipe) for [two]{"entity": "number", "value": "2"}
 - intent: greet
   examples: |
     - hey

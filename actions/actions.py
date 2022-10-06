@@ -152,7 +152,7 @@ class AskRecipe(Action):
         say(dispatcher, f"{description}")
         utt(dispatcher, 'utter_choose_one_recipe')
 
-        return [SlotSet('recipe', None), SlotSet('number_people', None)]
+        return [SlotSet('recipe', None), SlotSet('number', None)]
 
 
 class ActionValidateSelectRecipeForm(FormValidationAction):
@@ -182,7 +182,7 @@ class ActionValidateSelectRecipeForm(FormValidationAction):
 
         return {"recipe": matched_recipe}
 
-    def validate_number_people(
+    def validate_number(
         self,
         slot_value: Any,
         dispatcher: CollectingDispatcher,
@@ -190,13 +190,13 @@ class ActionValidateSelectRecipeForm(FormValidationAction):
         domain: DomainDict,
     ) -> Dict[Text, Any]:
 
-        num = tracker.get_slot('number_people')
+        num = tracker.get_slot('number')
 
         if num.isdigit():
-            return {"number_people": num}
+            return {"number": num}
         else:
             say(dispatcher, f'{num} is not a valid number.')
-            return {"number_people": None}
+            return {"number": None}
 
     def validate_confirm_recipe_form(
         self,
@@ -221,13 +221,13 @@ class ActionSubmitRecipeForm(Action):
         confirm = tracker.get_slot('confirm_recipe_form')
 
         if not confirm:
-            return [SlotSet("recipe", None), SlotSet("number_people", None), SlotSet("confirm_recipe_form", None), FollowupAction(name="action_ask_recipe")]
+            return [SlotSet("recipe", None), SlotSet("number", None), SlotSet("confirm_recipe_form", None), FollowupAction(name="action_ask_recipe")]
 
         state.recipe_key = tracker.get_slot('recipe')
-        state.num_people = int(tracker.get_slot('number_people'))
+        state.num_people = int(tracker.get_slot('number'))
         state.step_idx = -1
 
-        return [SlotSet("recipe", None), SlotSet("number_people", None), SlotSet("confirm_recipe_form", None), FollowupAction(name="action_list_ingredients")]
+        return [SlotSet("recipe", None), SlotSet("number", None), SlotSet("confirm_recipe_form", None), FollowupAction(name="action_list_ingredients")]
 
 
 class ActionListIngredients(Action):
@@ -295,8 +295,8 @@ class ActionBackwardStep(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
-        delta = int(tracker.get_slot('delta_steps')) if tracker.get_slot(
-            'delta_steps') is not None else 1
+        delta = int(tracker.get_slot('number')) if tracker.get_slot(
+            'number') is not None else 1
 
         return seek(tracker, dispatcher, -delta)
 
@@ -310,7 +310,7 @@ class ActionSkipStep(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
-        delta = tracker.get_slot('delta_steps')
+        delta = tracker.get_slot('number')
 
         if delta is not None:
             delta = int(delta)
@@ -386,7 +386,7 @@ class ActionAddCurrentRecipeToList(Action):
                         for ing in ings])
         print(shoplist)
 
-        return [SlotSet("recipe", None), SlotSet("number_people", None)]
+        return [SlotSet("recipe", None), SlotSet("number", None)]
 
 
 # SELECT RECIPE TO SHOP
@@ -419,7 +419,7 @@ class ActionValidateSelectRecipeShopForm(FormValidationAction):
 
         return {"recipe": matched_recipe}
 
-    def validate_number_people(
+    def validate_number(
         self,
         slot_value: Any,
         dispatcher: CollectingDispatcher,
@@ -427,13 +427,13 @@ class ActionValidateSelectRecipeShopForm(FormValidationAction):
         domain: DomainDict,
     ) -> Dict[Text, Any]:
 
-        num = tracker.get_slot('number_people')
+        num = tracker.get_slot('number')
 
         if num.isdigit():
-            return {"number_people": num}
+            return {"number": num}
         else:
             say(dispatcher, f'{num} is not a valid number.')
-            return {"number_people": None}
+            return {"number": None}
 
     def validate_confirm_recipe_form(
         self,
@@ -458,16 +458,16 @@ class ActionSubmitRecipeToShopForm(Action):
         confirm = tracker.get_slot('confirm_recipe_form')
 
         if not confirm:
-            return [SlotSet("recipe", None), SlotSet("number_people", None), SlotSet("confirm_recipe_form", None), FollowupAction(name="action_ask_recipe")]
+            return [SlotSet("recipe", None), SlotSet("number", None), SlotSet("confirm_recipe_form", None), FollowupAction(name="action_ask_recipe")]
 
         recipe_key_shop = tracker.get_slot('recipe')
         ings = recipes[recipe_key_shop].ingredients
-        num_shop = int(tracker.get_slot('number_people'))
+        num_shop = int(tracker.get_slot('number'))
 
         shoplist.extend([format_ingredient(ing, num_shop) for ing in ings])
         utt(dispatcher, 'utter_recipe_added_to_list')
 
-        return [SlotSet("recipe", None), SlotSet("number_people", None), SlotSet("confirm_recipe_form", None)]
+        return [SlotSet("recipe", None), SlotSet("number", None), SlotSet("confirm_recipe_form", None)]
 
 
 class ActionSubmitRecipeToShopForm(Action):
@@ -479,7 +479,7 @@ class ActionSubmitRecipeToShopForm(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
-        page = tracker.get_slot('page')
+        page = tracker.get_slot('number')
 
         # validate for typos
         if page is not None:
@@ -508,7 +508,7 @@ class ActionSubmitRecipeToShopForm(Action):
         else:
             say(dispatcher, 'Your shopping list is empty')
         
-        return [SlotSet('page', None)]
+        return [SlotSet('number', None)]
 
 
 class ActionRemoveShopItem(Action):
@@ -520,7 +520,7 @@ class ActionRemoveShopItem(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         
-        item_id = tracker.get_slot('item_id')
+        item_id = tracker.get_slot('number')
 
         if item_id is not None and item_id.isdigit():
             item_id = int(item_id)
@@ -529,4 +529,4 @@ class ActionRemoveShopItem(Action):
         else:
             say(dispatcher, 'I\'m sorry I coudn\'t understand')
 
-        return [SlotSet('item_id', None)]
+        return [SlotSet('number', None)]

@@ -3,7 +3,6 @@ session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
 intents:
-- remove_shop_item
 - add_current_recipe_to_list
 - add_recipe_to_list
 - affirm
@@ -17,6 +16,7 @@ intents:
 - inform_num_people
 - mood_great
 - mood_unhappy
+- remove_shop_item
 - select_recipe
 - show_shopping_list
 - skip_step
@@ -24,38 +24,20 @@ intents:
 - user_ready
 entities:
 - recipe
-- number_people
-- page
-- delta_steps
+- number
 - ingredient
 slots:
   recipe:
     type: text
     influence_conversation: true
-  number_people:
+  number:
     type: float
     influence_conversation: true
-    max_value: 1.0
-    min_value: 0.0
-  page:
-    type: float
-    influence_conversation: false
-    max_value: 1.0
-    min_value: 0.0
-  item_id:
-    type: float
-    influence_conversation: false
     max_value: 1.0
     min_value: 0.0
   confirm_recipe_form:
     type: bool
     influence_conversation: true
-  delta_steps:
-    type: float
-    initial_value: 1
-    influence_conversation: false
-    max_value: 1.0
-    min_value: 0.0
   ingredient:
     type: text
     influence_conversation: true
@@ -75,8 +57,8 @@ responses:
   - text: Which one would you like to prepare?
   - text: Please choose one
   utter_ask_confirm_recipe_form:
-  - text: I understand you want to cook {recipe} for {number_people} people. Is it correct?
-  utter_ask_number_people:
+  - text: I understand you want to cook {recipe} for {number} people. Is it correct?
+  utter_ask_number:
   - text: For how many people are you going to cook?
   utter_present_ingredients:
   - text: Here's what you need
@@ -109,13 +91,13 @@ responses:
   utter_iamabot:
   - text: I am a bot, powered by Rasa.
 actions:
-- action_remove_shop_item
 - action_add_current_recipe_to_list
 - action_ask_recipe
 - action_backward_step
 - action_how_much_ing
 - action_list_ingredients
 - action_next_step
+- action_remove_shop_item
 - action_repeat
 - action_show_shopping_list
 - action_skip_step
@@ -129,9 +111,9 @@ forms:
       recipe:
       - type: from_entity
         entity: recipe
-      number_people:
+      number:
       - type: from_entity
-        entity: number_people
+        entity: number
       confirm_recipe_form:
       - type: from_intent
         value: true
@@ -141,9 +123,9 @@ forms:
       recipe:
       - type: from_entity
         entity: recipe
-      number_people:
+      number:
       - type: from_entity
-        entity: number_people
+        entity: number
       confirm_recipe_form:
       - type: from_intent
         value: true
