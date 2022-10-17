@@ -48,8 +48,8 @@ nlu:
     - I meant [egg yolks](ingredient)
 - intent: skip_step
   examples: |
-    - Skip [this step](number)
-    - Skip [this step](number) please
+    - Skip this step
+    - Skip this step please
     - Skip [two](number) steps
     - Skip [two](number) steps please
     - Skip [once](number)
@@ -285,7 +285,6 @@ nlu:
     - three
 - synonym: '1'
   examples: |
-    - this step
     - once
     - one
     - me

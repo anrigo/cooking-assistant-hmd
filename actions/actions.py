@@ -315,6 +315,8 @@ class ActionSkipStep(Action):
         if delta is not None:
             delta = int(delta)
             return seek(tracker, dispatcher, delta)
+        elif 'this step' in tracker.latest_message['text']:
+            return seek(tracker, dispatcher, 1)
         else:
             say(dispatcher, 'Sorry, I didn\'t understand how many steps you\'d like to skip')
             return []
