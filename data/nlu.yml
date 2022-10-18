@@ -127,7 +127,10 @@ nlu:
     - for [four](number)
     - for [five](number)
     - for [six](number)
-    - just for [me](number)
+    - just for me
+    - just me
+    - only me
+    - for me only
     - just for [one](number)
     - for [three](number) people
     - for [two](number)
@@ -287,7 +290,6 @@ nlu:
   examples: |
     - once
     - one
-    - me
 - synonym: '5'
   examples: |
     - five

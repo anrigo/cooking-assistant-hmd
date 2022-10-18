@@ -111,9 +111,9 @@ forms:
       recipe:
       - type: from_entity
         entity: recipe
-      number:
-      - type: from_entity
-        entity: number
+      # number:
+      # - type: from_entity
+      #   entity: number
       confirm_recipe_form:
       - type: from_intent
         value: true

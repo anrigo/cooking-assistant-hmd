@@ -27,13 +27,14 @@
 #         return []
 
 from math import ceil
-from typing import Any, Text, Dict, List
+from typing import Any, Optional, Text, Dict, List
 from rasa_sdk import Action, Tracker, FormValidationAction
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.types import DomainDict
 from rasa_sdk.events import SlotSet, FollowupAction, EventType
 from difflib import SequenceMatcher
 import numpy as np
+from regex import R
 
 from actions.data import recipes
 
@@ -160,6 +161,16 @@ class ActionValidateSelectRecipeForm(FormValidationAction):
     def name(self) -> Text:
         return "validate_select_recipe_form"
 
+    async def required_slots(
+        self,
+        slots_mapped_in_domain: List[Text],
+        dispatcher: "CollectingDispatcher",
+        tracker: "Tracker",
+        domain: "DomainDict",
+    ) -> Optional[List[Text]]:
+        required_slots = slots_mapped_in_domain + ["number"]
+        return required_slots
+
     def validate_recipe(
         self,
         slot_value: Any,
@@ -182,6 +193,37 @@ class ActionValidateSelectRecipeForm(FormValidationAction):
 
         return {"recipe": matched_recipe}
 
+    async def extract_number(
+        self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict
+    ) -> Dict[Text, Any]:
+        text_of_last_user_message = tracker.latest_message.get("text")
+
+        # 'entities': [{'entity': 'recipe', 'start': 11, 'end': 20, 'confidence_entity': 0.999663591384887, 'value': 'carbonara', 'extractor': 'DIETClassifier'}]
+
+        ents = tracker.latest_message['entities']
+        ents_names = [ent['entity'] for ent in ents]
+        text = tracker.latest_message['text']
+
+        # if the number slot was already set, skip all this
+        # otherwise it will get set to None and rasa will ask
+        # the user a number again, in an endless cycle
+        if tracker.get_slot('number') is None:
+            if 'number' in ents_names:
+                # if a number entity was extracted, use that value
+                num_idx = ents_names.index('number')
+                return {"number": ents[num_idx]['value']}
+            elif (' me' in text or 'me ' in text):
+                # if no number entity was present, but the user
+                # said something along the lines of "just for me"
+                # use 1 as value
+                return {"number": '1'}
+            else:
+                # if no number entity was extracted
+                # and the user is not cooking for him/herself
+                # leave the slot empty, no number was provided
+                return {"number": None}
+        return {}
+
     def validate_number(
         self,
         slot_value: Any,
@@ -192,10 +234,12 @@ class ActionValidateSelectRecipeForm(FormValidationAction):
 
         num = tracker.get_slot('number')
 
-        if num.isdigit():
+        if num is None:
+            return {"number": None}
+        elif num.isdigit():
             return {"number": num}
         else:
-            say(dispatcher, f'{num} is not a valid number.')
+            say(dispatcher, 'Sorry I didn\'t understand.')
             return {"number": None}
 
     def validate_confirm_recipe_form(
@@ -496,20 +540,20 @@ class ActionSubmitRecipeToShopForm(Action):
         if len(shoplist) > 0:
             totpages = ceil(len(shoplist)/pagelen)
 
-            
             elems = shoplist[(page-1)*pagelen:page*pagelen]
-            
+
             if len(elems) > 0:
                 say(dispatcher,
                     f'Showing page {page} of {totpages} of your shopping list.\nYou can ask me what I can do with the shopping list at any time.')
-                
+
                 for idx, elem in enumerate(elems):
                     say(dispatcher, f'{idx+1+((page-1)*pagelen)} {elem}')
             else:
-                say(dispatcher, f'Page {page} doesn\'t exist, your shopping list has {totpages} pages')
+                say(dispatcher,
+                    f'Page {page} doesn\'t exist, your shopping list has {totpages} pages')
         else:
             say(dispatcher, 'Your shopping list is empty')
-        
+
         return [SlotSet('number', None)]
 
 
@@ -521,7 +565,7 @@ class ActionRemoveShopItem(Action):
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        
+
         item_id = tracker.get_slot('number')
 
         if item_id is not None and item_id.isdigit():
