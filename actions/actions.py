@@ -168,8 +168,8 @@ class ActionValidateSelectRecipeForm(FormValidationAction):
         tracker: "Tracker",
         domain: "DomainDict",
     ) -> Optional[List[Text]]:
-        required_slots = slots_mapped_in_domain + ["number"]
-        return required_slots
+        slots_mapped_in_domain.insert(1, 'number')
+        return slots_mapped_in_domain
 
     def validate_recipe(
         self,
@@ -196,7 +196,6 @@ class ActionValidateSelectRecipeForm(FormValidationAction):
     async def extract_number(
         self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict
     ) -> Dict[Text, Any]:
-        text_of_last_user_message = tracker.latest_message.get("text")
 
         # 'entities': [{'entity': 'recipe', 'start': 11, 'end': 20, 'confidence_entity': 0.999663591384887, 'value': 'carbonara', 'extractor': 'DIETClassifier'}]
 
