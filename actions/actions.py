@@ -435,13 +435,23 @@ class ActionAddCurrentRecipeToList(Action):
 
 
 # SELECT RECIPE TO SHOP
-# this form required the same exact slots that select_recipe for requires
+# this form required the same exact slots that the select_recipe form requires
 # so, the same action to list the recipes and the same utterances will be used
 # but the submit action will be different, since the goal of the form is different
 class ActionValidateSelectRecipeShopForm(FormValidationAction):
 
     def name(self) -> Text:
         return "validate_select_recipe_shop_form"
+
+    async def required_slots(
+        self,
+        slots_mapped_in_domain: List[Text],
+        dispatcher: "CollectingDispatcher",
+        tracker: "Tracker",
+        domain: "DomainDict",
+    ) -> Optional[List[Text]]:
+        slots_mapped_in_domain.insert(1, 'number')
+        return slots_mapped_in_domain
 
     def validate_recipe(
         self,
@@ -464,6 +474,36 @@ class ActionValidateSelectRecipeShopForm(FormValidationAction):
 
         return {"recipe": matched_recipe}
 
+    async def extract_number(
+        self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict
+    ) -> Dict[Text, Any]:
+
+        # 'entities': [{'entity': 'recipe', 'start': 11, 'end': 20, 'confidence_entity': 0.999663591384887, 'value': 'carbonara', 'extractor': 'DIETClassifier'}]
+
+        ents = tracker.latest_message['entities']
+        ents_names = [ent['entity'] for ent in ents]
+        text = tracker.latest_message['text']
+
+        # if the number slot was already set, skip all this
+        # otherwise it will get set to None and rasa will ask
+        # the user a number again, in an endless cycle
+        if tracker.get_slot('number') is None:
+            if 'number' in ents_names:
+                # if a number entity was extracted, use that value
+                num_idx = ents_names.index('number')
+                return {"number": ents[num_idx]['value']}
+            elif (' me' in text or 'me ' in text):
+                # if no number entity was present, but the user
+                # said something along the lines of "just for me"
+                # use 1 as value
+                return {"number": '1'}
+            else:
+                # if no number entity was extracted
+                # and the user is not cooking for him/herself
+                # leave the slot empty, no number was provided
+                return {"number": None}
+        return {}
+
     def validate_number(
         self,
         slot_value: Any,
@@ -474,10 +514,12 @@ class ActionValidateSelectRecipeShopForm(FormValidationAction):
 
         num = tracker.get_slot('number')
 
-        if num.isdigit():
+        if num is None:
+            return {"number": None}
+        elif num.isdigit():
             return {"number": num}
         else:
-            say(dispatcher, f'{num} is not a valid number.')
+            say(dispatcher, 'Sorry I didn\'t understand.')
             return {"number": None}
 
     def validate_confirm_recipe_form(
@@ -515,7 +557,7 @@ class ActionSubmitRecipeToShopForm(Action):
         return [SlotSet("recipe", None), SlotSet("number", None), SlotSet("confirm_recipe_form", None)]
 
 
-class ActionSubmitRecipeToShopForm(Action):
+class ActionShowShoppingList(Action):
 
     def name(self) -> Text:
         return "action_show_shopping_list"
