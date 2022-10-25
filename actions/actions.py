@@ -28,6 +28,7 @@
 
 from math import ceil
 from typing import Any, Optional, Text, Dict, List
+from munch import Munch
 from rasa_sdk import Action, Tracker, FormValidationAction
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.types import DomainDict
@@ -617,3 +618,28 @@ class ActionRemoveShopItem(Action):
             say(dispatcher, 'I\'m sorry I coudn\'t understand')
 
         return [SlotSet('number', None)]
+
+
+class ActionAddShopIng(Action):
+
+    def name(self) -> Text:
+        return "action_add_shop_ing"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        amount = tracker.get_slot('number')
+        unit = tracker.get_slot('unit')
+        name = tracker.get_slot('ingredient')
+        
+        if amount is not None and amount.isdigit():
+            amount = int(amount)
+
+        if name is not None:
+            ing = Munch.fromDict({'name': name, 'unit': unit, 'amount': amount})
+            shoplist.append(format_ingredient(ing, 1))
+        else:
+            say(dispatcher, 'I coudn\'t understand what ingredient you\'d like to add to your list. Can you repeat?')
+        
+        return [SlotSet('number', None), SlotSet('unit', None), SlotSet('ingredient', None)]

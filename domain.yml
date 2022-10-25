@@ -3,6 +3,7 @@ session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
 intents:
+- add_shop_ing
 - add_current_recipe_to_list
 - add_recipe_to_list
 - affirm
@@ -26,6 +27,7 @@ entities:
 - recipe
 - number
 - ingredient
+- unit
 slots:
   recipe:
     type: text
@@ -39,6 +41,9 @@ slots:
     type: bool
     influence_conversation: true
   ingredient:
+    type: text
+    influence_conversation: true
+  unit:
     type: text
     influence_conversation: true
 responses:
@@ -91,6 +96,7 @@ responses:
   utter_iamabot:
   - text: I am a bot, powered by Rasa.
 actions:
+- action_add_shop_ing
 - action_add_current_recipe_to_list
 - action_ask_recipe
 - action_backward_step

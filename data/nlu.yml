@@ -1,5 +1,10 @@
 version: "2.0"
 nlu:
+- intent: add_shop_ing
+  examples: |
+    - Add [five](number) [eggs](ingredient) to my list
+    - Add [four](number) [eggs](ingredient) to my shopping list
+    - Add [two hundreds](number) [grams](unit) of [pasta](ingredient) to my list
 - intent: remove_shop_item
   examples: |
     - Remove item [one](number) from my list
@@ -299,6 +304,27 @@ nlu:
 - synonym: '6'
   examples: |
     - six
+- synonym: '7'
+  examples: |
+    - seven
+- synonym: '8'
+  examples: |
+    - eight
+- synonym: '9'
+  examples: |
+    - nine
+- synonym: '10'
+  examples: |
+    - ten
+- synonym: '100'
+  examples: |
+    - one hundred
+- synonym: '150'
+  examples: |
+    - one hundred and fifty
+- synonym: '200'
+  examples: |
+    - two hundred
 - synonym: black pepper
   examples: |
     - pepper
