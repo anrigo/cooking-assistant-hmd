@@ -3,6 +3,7 @@ session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
 intents:
+- where_to_start
 - add_shop_ing
 - add_current_recipe_to_list
 - add_recipe_to_list
@@ -47,6 +48,13 @@ slots:
     type: text
     influence_conversation: true
 responses:
+  utter_next_step:
+  - text: Here's the next step
+  - text: Nice work! Here's the next step
+  - text: Great work! Here's the next step
+  - text: Great work! Let's proceed to the next step
+  utter_skip_steps:
+  - text: Ok, skipping {number} steps
   utter_recipe_added_to_list:
   - text: The {recipe} recipe was added to your shopping list.
   utter_repeat_ing:
@@ -81,7 +89,9 @@ responses:
   utter_recipe_completed:
   - text: Congratulations! You completed the recipe!
   utter_start_from_here:
-  - text: To start cooking something, for example Carbonara, say "I would like to cook Carbonara!"\nYou can also ask me for a recipe suggestion.
+  - text: |-
+      To start cooking something, for example Carbonara, say "I would like to cook Carbonara!"
+      You can also ask me for a recipe suggestion, or add a recipe to your shopping list.
   utter_greet:
   - text: Hey! How are you?
   utter_cheer_up:

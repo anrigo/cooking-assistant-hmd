@@ -304,6 +304,7 @@ class ActionNextStep(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
+        utt(dispatcher, 'utter_next_step')
         return seek(tracker, dispatcher, 1)
 
 
@@ -358,8 +359,10 @@ class ActionSkipStep(Action):
 
         if delta is not None:
             delta = int(delta)
+            utt(dispatcher, 'utter_skip_steps')
             return seek(tracker, dispatcher, delta)
         elif 'this step' in tracker.latest_message['text']:
+            utt(dispatcher, 'utter_next_step')
             return seek(tracker, dispatcher, 1)
         else:
             say(dispatcher, 'Sorry, I didn\'t understand how many steps you\'d like to skip')
@@ -633,8 +636,14 @@ class ActionAddShopIng(Action):
         unit = tracker.get_slot('unit')
         name = tracker.get_slot('ingredient')
         
-        if amount is not None and amount.isdigit():
-            amount = int(amount)
+        if amount is not None:
+            if amount.isdigit():
+                amount = int(amount)
+            else:
+                try:
+                    amount = float(amount)
+                except:
+                    pass
 
         if name is not None:
             ing = Munch.fromDict({'name': name, 'unit': unit, 'amount': amount})

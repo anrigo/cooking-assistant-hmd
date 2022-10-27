@@ -1,10 +1,18 @@
 version: "2.0"
 nlu:
+- intent: where_to_start
+  examples: |
+    - What can you do?
+    - What can you do for me?
+    - How can you help me?
 - intent: add_shop_ing
   examples: |
     - Add [five](number) [eggs](ingredient) to my list
     - Add [four](number) [eggs](ingredient) to my shopping list
-    - Add [two hundreds](number) [grams](unit) of [pasta](ingredient) to my list
+    - Add [two hundred](number) [grams](unit) of [pasta](ingredient) to my list
+    - Add [one](number) [liter](unit) of [milk](ingredient) to my list
+    - Add [half](number) a [liter](unit) of [milk](ingredient) to my shopping list
+    - Add [butter](ingredient) to my list
 - intent: remove_shop_item
   examples: |
     - Remove item [one](number) from my list
@@ -285,6 +293,9 @@ nlu:
     - are you a human?
     - am I talking to a bot?
     - am I talking to a human?
+- synonym: '0.5'
+  examples: |
+    - half
 - synonym: '2'
   examples: |
     - two
