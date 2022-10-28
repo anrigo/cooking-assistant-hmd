@@ -107,6 +107,8 @@ responses:
   - text: Bye
   utter_iamabot:
   - text: I am your cooking assistant and I'm here to help you select a recipe follow its steps!
+  utter_fallback:
+  - text: I'm sorry I didn't understand. Could you repeat or rephrase the question?
 actions:
 - action_add_shop_ing
 - action_add_current_recipe_to_list

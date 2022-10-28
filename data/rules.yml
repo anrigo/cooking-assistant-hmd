@@ -16,3 +16,9 @@ rules:
   steps:
   - intent: bot_challenge
   - action: utter_iamabot
+
+# fallback
+- rule: In case of low NLU confidence, use the fallback to ask the user to repeat or rephrase
+  steps:
+  - intent: nlu_fallback
+  - action: utter_fallback
