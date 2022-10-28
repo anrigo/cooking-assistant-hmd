@@ -48,6 +48,8 @@ slots:
     type: text
     influence_conversation: true
 responses:
+  utter_no_recipe_running:
+  - text: You are currently not preparing any recipe.
   utter_next_step:
   - text: Here's the next step
   - text: Nice work! Here's the next step
@@ -104,7 +106,7 @@ responses:
   utter_goodbye:
   - text: Bye
   utter_iamabot:
-  - text: I am a bot, powered by Rasa.
+  - text: I am your cooking assistant and I'm here to help you select a recipe follow its steps!
 actions:
 - action_add_shop_ing
 - action_add_current_recipe_to_list

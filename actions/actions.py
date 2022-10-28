@@ -355,6 +355,11 @@ class ActionSkipStep(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
+        if state.recipe_key is None:
+            utt(dispatcher, 'utter_no_recipe_running')
+            utt(dispatcher, 'utter_start_from_here')
+            return []
+
         delta = tracker.get_slot('number')
 
         if delta is not None:
@@ -377,6 +382,12 @@ class ActionHowMuchIng(Action):
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        if state.recipe_key is None:
+            utt(dispatcher, 'utter_no_recipe_running')
+            utt(dispatcher, 'utter_start_from_here')
+            return [SlotSet('ingredient', None)]
+
 
         # requested ingredient
         query = tracker.get_slot('ingredient')

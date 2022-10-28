@@ -23,13 +23,13 @@ nlu:
     - Show my shopping list
     - Show me my shopping list
     - What shoud I buy?
-    - Show me number [one](number)
-    - Show me number [one](number) of my list
-    - Show me number [one](number) of my shopping list
-    - Show me number [two](number)
-    - Show me number [two](number) of my list
-    - Show me number [two](number) of my shopping list
-    - Show number [two](number) of the list
+    - Show me page [one](number)
+    - Show me page [one](number) of my list
+    - Show me page [one](number) of my shopping list
+    - Show me page [two](number)
+    - Show me page [two](number) of my list
+    - Show me page [two](number) of my shopping list
+    - Show page [two](number) of the list
     - Show me my list
 - intent: add_current_recipe_to_list
   examples: |
@@ -59,6 +59,12 @@ nlu:
     - How much of it?
     - To [eggs](ingredient)
     - I meant [egg yolks](ingredient)
+- intent: show_ing_list
+  examples: |
+    - Tell me this recipe ingredients
+    - Tell me the ingredients
+    - Tell me the ingredients again
+    - Give me the ingredients list
 - intent: skip_step
   examples: |
     - Skip this step

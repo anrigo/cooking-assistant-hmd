@@ -1,16 +1,7 @@
 version: "2.0"
 
 rules:
-- rule: Test action
-  steps:
-  - intent: add_shop_ing
-  - action: action_add_shop_ing
-
-- rule: Test action 2
-  steps:
-  - intent: show_shopping_list
-  - action: action_show_shopping_list
-
+# chitchat
 - rule: Start here
   steps:
   - intent: where_to_start
