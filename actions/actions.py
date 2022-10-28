@@ -69,6 +69,7 @@ def seek(tracker: Tracker, dispatcher: CollectingDispatcher, delta: int):
 
     if state.recipe_key is None:
         # no recipe is currently running
+        utt(dispatcher, 'utter_no_recipe_running')
         utt(dispatcher, 'utter_start_from_here')
         return []
 
@@ -354,11 +355,6 @@ class ActionSkipStep(Action):
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-
-        if state.recipe_key is None:
-            utt(dispatcher, 'utter_no_recipe_running')
-            utt(dispatcher, 'utter_start_from_here')
-            return []
 
         delta = tracker.get_slot('number')
 
