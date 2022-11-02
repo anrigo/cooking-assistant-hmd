@@ -1,5 +1,9 @@
 version: "2.0"
 nlu:
+- intent: stop_recipe
+  examples: |
+    - Stop this recipe
+    - Please, interrupt this recipe
 - intent: where_to_start
   examples: |
     - What can you do?

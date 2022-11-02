@@ -665,3 +665,19 @@ class ActionAddShopIng(Action):
             say(dispatcher, 'I coudn\'t understand what ingredient you\'d like to add to your list. Can you repeat?')
         
         return [SlotSet('number', None), SlotSet('unit', None), SlotSet('ingredient', None)]
+
+
+class ActionStopRecipe(Action):
+
+    def name(self) -> Text:
+        return "action_stop_recipe"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        utt(dispatcher, 'utter_stopping_recipe')
+
+        state.recipe_key = None
+        state.num_people = None
+        state.step_idx = None
