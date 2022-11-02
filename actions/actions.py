@@ -43,12 +43,21 @@ from actions.data import recipes
 
 
 class State():
+    ''' convenient recipe state wrapper '''
+
     recipe_key = None
     num_people = None
     step_idx = None
 
+    def __init__(self, tracker: Tracker) -> None:
+        self.recipe_key = tracker.get_slot('recipe_key')
+        self.num_people = tracker.get_slot('num_people')
+        self.step_idx = tracker.get_slot('step_idx')
 
-state = State()
+    def slotset(self):
+        return [SlotSet('recipe_key', self.recipe_key), SlotSet('num_people', self.num_people), SlotSet('step_idx', self.step_idx)]
+
+
 shoplist = list()
 pagelen = 5
 
@@ -66,6 +75,8 @@ def similarity_score(seq1: str, seq2: str) -> float:
 
 
 def seek(tracker: Tracker, dispatcher: CollectingDispatcher, delta: int):
+
+    state = State(tracker)
 
     if state.recipe_key is None:
         # no recipe is currently running
@@ -86,12 +97,12 @@ def seek(tracker: Tracker, dispatcher: CollectingDispatcher, delta: int):
         step = steps[state.step_idx]
         say(dispatcher, step.description)
 
-        return []
+        return state.slotset()
     else:
         # recipe completed
         utt(dispatcher, 'utter_recipe_completed')
         utt(dispatcher, 'utter_start_from_here')
-        return []
+        return state.slotset()
 
 
 def format_ingredient(ing, num, description=False):
@@ -268,11 +279,12 @@ class ActionSubmitRecipeForm(Action):
         if not confirm:
             return [SlotSet("recipe", None), SlotSet("number", None), SlotSet("confirm_recipe_form", None), FollowupAction(name="action_ask_recipe")]
 
+        state = State(tracker)
         state.recipe_key = tracker.get_slot('recipe')
         state.num_people = int(tracker.get_slot('number'))
         state.step_idx = -1
 
-        return [SlotSet("recipe", None), SlotSet("number", None), SlotSet("confirm_recipe_form", None), FollowupAction(name="action_list_ingredients")]
+        return [SlotSet("recipe", None), SlotSet("number", None), SlotSet("confirm_recipe_form", None), FollowupAction(name="action_list_ingredients"), *state.slotset()]
 
 
 class ActionListIngredients(Action):
@@ -283,6 +295,8 @@ class ActionListIngredients(Action):
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        state = State(tracker)
 
         if state.recipe_key is None:
             # no recipe is currently running
@@ -318,11 +332,13 @@ class ActionNextStep(Action):
 class ActionRepeat(Action):
 
     def name(self) -> Text:
-        return "action_repeat"
+        return "action_repeat_step"
 
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        state = State(tracker)
 
         steps = recipes[state.recipe_key].steps
 
@@ -385,11 +401,12 @@ class ActionHowMuchIng(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
+        state = State(tracker)
+
         if state.recipe_key is None:
             utt(dispatcher, 'utter_no_recipe_running')
             utt(dispatcher, 'utter_start_from_here')
             return [SlotSet('ingredient', None)]
-
 
         # requested ingredient
         query = tracker.get_slot('ingredient')
@@ -436,6 +453,8 @@ class ActionAddCurrentRecipeToList(Action):
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        state = State(tracker)
 
         if state.recipe_key is None:
             # no recipe is currently running
@@ -648,7 +667,7 @@ class ActionAddShopIng(Action):
         amount = tracker.get_slot('number')
         unit = tracker.get_slot('unit')
         name = tracker.get_slot('ingredient')
-        
+
         if amount is not None:
             if amount.isdigit():
                 amount = int(amount)
@@ -659,11 +678,12 @@ class ActionAddShopIng(Action):
                     pass
 
         if name is not None:
-            ing = Munch.fromDict({'name': name, 'unit': unit, 'amount': amount})
+            ing = Munch.fromDict(
+                {'name': name, 'unit': unit, 'amount': amount})
             shoplist.append(format_ingredient(ing, 1))
         else:
             say(dispatcher, 'I coudn\'t understand what ingredient you\'d like to add to your list. Can you repeat?')
-        
+
         return [SlotSet('number', None), SlotSet('unit', None), SlotSet('ingredient', None)]
 
 
@@ -678,6 +698,10 @@ class ActionStopRecipe(Action):
 
         utt(dispatcher, 'utter_stopping_recipe')
 
+        state = State(tracker)
+
         state.recipe_key = None
         state.num_people = None
         state.step_idx = None
+
+        return state.slotset()

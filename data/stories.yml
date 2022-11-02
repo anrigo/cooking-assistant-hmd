@@ -203,14 +203,14 @@ stories:
   - action: action_submit_recipe_form
   - action: action_list_ingredients
   - intent: user_did_not_understand
-  - action: action_repeat
+  - action: action_repeat_step
   - action: action_list_ingredients
   - intent: user_ready
   - action: action_next_step
   - intent: user_ready
   - action: action_next_step
   - intent: user_did_not_understand
-  - action: action_repeat
+  - action: action_repeat_step
 
 - story: interactive_story_1
   steps:

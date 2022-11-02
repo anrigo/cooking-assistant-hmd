@@ -32,6 +32,22 @@ entities:
 - ingredient
 - unit
 slots:
+  recipe_key:
+    type: text
+    influence_conversation: true
+    auto_fill: false
+  num_people:
+    type: float
+    influence_conversation: true
+    max_value: 1.0
+    min_value: 0.0
+    auto_fill: false
+  step_idx:
+    type: float
+    influence_conversation: true
+    max_value: 1.0
+    min_value: 0.0
+    auto_fill: false
   recipe:
     type: text
     influence_conversation: true
@@ -123,7 +139,7 @@ actions:
 - action_list_ingredients
 - action_next_step
 - action_remove_shop_item
-- action_repeat
+- action_repeat_step
 - action_show_shopping_list
 - action_skip_step
 - action_submit_recipe_form
