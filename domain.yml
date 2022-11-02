@@ -50,21 +50,21 @@ slots:
     auto_fill: false
   recipe:
     type: text
-    influence_conversation: true
+    influence_conversation: false
   number:
     type: float
-    influence_conversation: true
+    influence_conversation: false
     max_value: 1.0
     min_value: 0.0
   confirm_recipe_form:
     type: bool
-    influence_conversation: true
+    influence_conversation: false
   ingredient:
     type: text
-    influence_conversation: true
+    influence_conversation: false
   unit:
     type: text
-    influence_conversation: true
+    influence_conversation: false
 responses:
   utter_stopping_recipe:
   - text: Ok, I stopped the current recipe.
