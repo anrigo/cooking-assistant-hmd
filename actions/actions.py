@@ -284,6 +284,12 @@ class ActionListIngredients(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
+        if state.recipe_key is None:
+            # no recipe is currently running
+            utt(dispatcher, 'utter_no_recipe_running')
+            utt(dispatcher, 'utter_start_from_here')
+            return []
+
         ings = recipes[state.recipe_key].ingredients
 
         utt(dispatcher, "utter_present_ingredients")

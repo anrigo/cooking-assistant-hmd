@@ -1,6 +1,11 @@
 version: "2.0"
 
 rules:
+# - rule: Test action
+#   steps:
+#   - intent: show_ing_list
+#   - action: action_list_ingredients
+
 # chitchat
 - rule: Start here
   steps:
