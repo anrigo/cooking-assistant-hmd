@@ -210,20 +210,16 @@ class ActionValidateSelectRecipeForm(FormValidationAction):
         self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict
     ) -> Dict[Text, Any]:
 
-        # 'entities': [{'entity': 'recipe', 'start': 11, 'end': 20, 'confidence_entity': 0.999663591384887, 'value': 'carbonara', 'extractor': 'DIETClassifier'}]
-
-        ents = tracker.latest_message['entities']
-        ents_names = [ent['entity'] for ent in ents]
+        number = next(tracker.get_latest_entity_values('number'), None)
         text = tracker.latest_message['text']
 
         # if the number slot was already set, skip all this
         # otherwise it will get set to None and rasa will ask
         # the user a number again, in an endless cycle
         if tracker.get_slot('number') is None:
-            if 'number' in ents_names:
+            if number is not None:
                 # if a number entity was extracted, use that value
-                num_idx = ents_names.index('number')
-                return {"number": ents[num_idx]['value']}
+                return {"number": number}
             elif (' me' in text or 'me ' in text):
                 # if no number entity was present, but the user
                 # said something along the lines of "just for me"
@@ -514,20 +510,16 @@ class ActionValidateSelectRecipeShopForm(FormValidationAction):
         self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict
     ) -> Dict[Text, Any]:
 
-        # 'entities': [{'entity': 'recipe', 'start': 11, 'end': 20, 'confidence_entity': 0.999663591384887, 'value': 'carbonara', 'extractor': 'DIETClassifier'}]
-
-        ents = tracker.latest_message['entities']
-        ents_names = [ent['entity'] for ent in ents]
+        number = next(tracker.get_latest_entity_values('number'), None)
         text = tracker.latest_message['text']
 
         # if the number slot was already set, skip all this
         # otherwise it will get set to None and rasa will ask
         # the user a number again, in an endless cycle
         if tracker.get_slot('number') is None:
-            if 'number' in ents_names:
+            if number is not None:
                 # if a number entity was extracted, use that value
-                num_idx = ents_names.index('number')
-                return {"number": ents[num_idx]['value']}
+                return {"number": number}
             elif (' me' in text or 'me ' in text):
                 # if no number entity was present, but the user
                 # said something along the lines of "just for me"
