@@ -194,15 +194,19 @@ class ActionValidateSelectRecipeForm(FormValidationAction):
 
         query = tracker.get_slot('recipe')
 
-        sim = np.array([similarity_score(query, r) for r in recipes.keys()])
-        idx = np.argmax(sim)
+        if query is not None:
+            sim = np.array([similarity_score(query, r) for r in recipes.keys()])
+            idx = np.argmax(sim)
 
-        if sim[idx] >= 0.8:
-            matched_recipe = list(recipes.keys())[idx]
-            # say(dispatcher, f"I understand you want to cook {matched_recipe}")
+            if sim[idx] >= 0.8:
+                matched_recipe = list(recipes.keys())[idx]
+                # say(dispatcher, f"I understand you want to cook {matched_recipe}")
+            else:
+                matched_recipe = None
+                say(dispatcher, "I don't know this recipe or i didn't understand the name correctly.\nCan you repeat or try another recipe?")
         else:
             matched_recipe = None
-            say(dispatcher, "I don't know this recipe or i didn't understand the name correctly.\nCan you repeat or try another recipe?")
+            say(dispatcher, "I'm sorry I didn't understand the name correctly.\nCan you repeat please?")
 
         return {"recipe": matched_recipe}
 
@@ -495,14 +499,19 @@ class ActionValidateSelectRecipeShopForm(FormValidationAction):
 
         query = tracker.get_slot('recipe')
 
-        sim = np.array([similarity_score(query, r) for r in recipes.keys()])
-        idx = np.argmax(sim)
+        if query is not None:
+            sim = np.array([similarity_score(query, r) for r in recipes.keys()])
+            idx = np.argmax(sim)
 
-        if sim[idx] >= 0.8:
-            matched_recipe = list(recipes.keys())[idx]
+            if sim[idx] >= 0.8:
+                matched_recipe = list(recipes.keys())[idx]
+                # say(dispatcher, f"I understand you want to cook {matched_recipe}")
+            else:
+                matched_recipe = None
+                say(dispatcher, "I don't know this recipe or i didn't understand the name correctly.\nCan you repeat or try another recipe?")
         else:
             matched_recipe = None
-            say(dispatcher, "I don't know this recipe or i didn't understand the name correctly.\nCan you repeat or try another recipe?")
+            say(dispatcher, "I'm sorry I didn't understand the name correctly.\nCan you repeat please?")
 
         return {"recipe": matched_recipe}
 
