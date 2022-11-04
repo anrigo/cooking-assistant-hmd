@@ -66,6 +66,10 @@ slots:
     type: text
     influence_conversation: false
 responses:
+  utter_ambiguous_number:
+  - text: You provided multiple numbers of people for this recipe and I don't know which I should use to help you.
+  utter_ambiguous_recipe:
+  - text: I can help you only with one recipe at a time. Please choose only one.
   utter_stopping_recipe:
   - text: Ok, I stopped the current recipe.
   utter_no_recipe_running:

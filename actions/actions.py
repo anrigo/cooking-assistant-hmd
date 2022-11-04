@@ -132,6 +132,72 @@ def format_ingredient(ing, num, description=False):
     return out
 
 
+def validate_recipe_slot(dispatcher: CollectingDispatcher, tracker: Tracker):
+    query = tracker.get_slot('recipe')
+
+    if isinstance(query, list):
+        # the user provided more than one recipe
+        utt(dispatcher, 'utter_ambiguous_recipe')
+        return {'recipe': None}
+
+    if query is not None:
+        sim = np.array([similarity_score(query, r) for r in recipes.keys()])
+        idx = np.argmax(sim)
+
+        if sim[idx] >= 0.8:
+            matched_recipe = list(recipes.keys())[idx]
+            # say(dispatcher, f"I understand you want to cook {matched_recipe}")
+        else:
+            matched_recipe = None
+            say(dispatcher, "I don't know this recipe or i didn't understand the name correctly.\nCan you repeat or try another recipe?")
+    else:
+        matched_recipe = None
+        say(dispatcher, "I'm sorry I didn't understand the name correctly.\nCan you repeat please?")
+
+    return {"recipe": matched_recipe}
+
+
+def extract_number_slot(dispatcher: CollectingDispatcher, tracker: Tracker):
+    number = next(tracker.get_latest_entity_values('number'), None)
+    text = tracker.latest_message['text']
+
+    if isinstance(tracker.get_slot('number'), list):
+        # the user provided more than one number of people
+        utt(dispatcher, 'utter_ambiguous_number')
+        return {'number': None}
+
+    # if the number slot was already set, skip all this
+    # otherwise it will get set to None and rasa will ask
+    # the user a number again, in an endless cycle
+    if tracker.get_slot('number') is None:
+        if number is not None:
+            # if a number entity was extracted, use that value
+            return {"number": number}
+        elif (' me' in text or 'me ' in text):
+            # if no number entity was present, but the user
+            # said something along the lines of "just for me"
+            # use 1 as value
+            return {"number": '1'}
+        else:
+            # if no number entity was extracted
+            # and the user is not cooking for him/herself
+            # leave the slot empty, no number was provided
+            return {"number": None}
+    return {}
+
+
+def validate_number_slot(dispatcher: CollectingDispatcher, tracker: Tracker):
+    num = tracker.get_slot('number')
+
+    if num is None:
+        return {"number": None}
+    elif num.isdigit():
+        return {"number": num}
+    else:
+        say(dispatcher, 'Sorry I didn\'t understand.')
+        return {"number": None}
+
+
 # class ActionProposeRecipes(Action):
 
 #     def name(self) -> Text:
@@ -192,49 +258,13 @@ class ActionValidateSelectRecipeForm(FormValidationAction):
         domain: DomainDict,
     ) -> Dict[Text, Any]:
 
-        query = tracker.get_slot('recipe')
-
-        if query is not None:
-            sim = np.array([similarity_score(query, r) for r in recipes.keys()])
-            idx = np.argmax(sim)
-
-            if sim[idx] >= 0.8:
-                matched_recipe = list(recipes.keys())[idx]
-                # say(dispatcher, f"I understand you want to cook {matched_recipe}")
-            else:
-                matched_recipe = None
-                say(dispatcher, "I don't know this recipe or i didn't understand the name correctly.\nCan you repeat or try another recipe?")
-        else:
-            matched_recipe = None
-            say(dispatcher, "I'm sorry I didn't understand the name correctly.\nCan you repeat please?")
-
-        return {"recipe": matched_recipe}
+        return validate_recipe_slot(dispatcher, tracker)
 
     async def extract_number(
         self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict
     ) -> Dict[Text, Any]:
 
-        number = next(tracker.get_latest_entity_values('number'), None)
-        text = tracker.latest_message['text']
-
-        # if the number slot was already set, skip all this
-        # otherwise it will get set to None and rasa will ask
-        # the user a number again, in an endless cycle
-        if tracker.get_slot('number') is None:
-            if number is not None:
-                # if a number entity was extracted, use that value
-                return {"number": number}
-            elif (' me' in text or 'me ' in text):
-                # if no number entity was present, but the user
-                # said something along the lines of "just for me"
-                # use 1 as value
-                return {"number": '1'}
-            else:
-                # if no number entity was extracted
-                # and the user is not cooking for him/herself
-                # leave the slot empty, no number was provided
-                return {"number": None}
-        return {}
+        return extract_number_slot(dispatcher, tracker)
 
     def validate_number(
         self,
@@ -244,15 +274,7 @@ class ActionValidateSelectRecipeForm(FormValidationAction):
         domain: DomainDict,
     ) -> Dict[Text, Any]:
 
-        num = tracker.get_slot('number')
-
-        if num is None:
-            return {"number": None}
-        elif num.isdigit():
-            return {"number": num}
-        else:
-            say(dispatcher, 'Sorry I didn\'t understand.')
-            return {"number": None}
+        return validate_number_slot(dispatcher, tracker)
 
     def validate_confirm_recipe_form(
         self,
@@ -497,49 +519,13 @@ class ActionValidateSelectRecipeShopForm(FormValidationAction):
         domain: DomainDict,
     ) -> Dict[Text, Any]:
 
-        query = tracker.get_slot('recipe')
-
-        if query is not None:
-            sim = np.array([similarity_score(query, r) for r in recipes.keys()])
-            idx = np.argmax(sim)
-
-            if sim[idx] >= 0.8:
-                matched_recipe = list(recipes.keys())[idx]
-                # say(dispatcher, f"I understand you want to cook {matched_recipe}")
-            else:
-                matched_recipe = None
-                say(dispatcher, "I don't know this recipe or i didn't understand the name correctly.\nCan you repeat or try another recipe?")
-        else:
-            matched_recipe = None
-            say(dispatcher, "I'm sorry I didn't understand the name correctly.\nCan you repeat please?")
-
-        return {"recipe": matched_recipe}
+        return validate_recipe_slot(dispatcher, tracker)
 
     async def extract_number(
         self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict
     ) -> Dict[Text, Any]:
 
-        number = next(tracker.get_latest_entity_values('number'), None)
-        text = tracker.latest_message['text']
-
-        # if the number slot was already set, skip all this
-        # otherwise it will get set to None and rasa will ask
-        # the user a number again, in an endless cycle
-        if tracker.get_slot('number') is None:
-            if number is not None:
-                # if a number entity was extracted, use that value
-                return {"number": number}
-            elif (' me' in text or 'me ' in text):
-                # if no number entity was present, but the user
-                # said something along the lines of "just for me"
-                # use 1 as value
-                return {"number": '1'}
-            else:
-                # if no number entity was extracted
-                # and the user is not cooking for him/herself
-                # leave the slot empty, no number was provided
-                return {"number": None}
-        return {}
+        return extract_number_slot(dispatcher, tracker)
 
     def validate_number(
         self,
@@ -549,15 +535,7 @@ class ActionValidateSelectRecipeShopForm(FormValidationAction):
         domain: DomainDict,
     ) -> Dict[Text, Any]:
 
-        num = tracker.get_slot('number')
-
-        if num is None:
-            return {"number": None}
-        elif num.isdigit():
-            return {"number": num}
-        else:
-            say(dispatcher, 'Sorry I didn\'t understand.')
-            return {"number": None}
+        return validate_number_slot(dispatcher, tracker)
 
     def validate_confirm_recipe_form(
         self,
