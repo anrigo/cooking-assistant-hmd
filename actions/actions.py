@@ -163,7 +163,7 @@ def extract_number_slot(dispatcher: CollectingDispatcher, tracker: Tracker):
 
     if isinstance(tracker.get_slot('number'), list):
         # the user provided more than one number of people
-        utt(dispatcher, 'utter_ambiguous_number')
+        utt(dispatcher, 'utter_ambiguous_num_people')
         return {'number': None}
 
     # if the number slot was already set, skip all this
