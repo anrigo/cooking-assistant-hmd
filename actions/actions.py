@@ -333,7 +333,7 @@ class ActionListIngredients(Action):
         for ing in ings:
             say(dispatcher, format_ingredient(ing, state.num_people))
 
-        utt(dispatcher, 'utter_user_ready')
+        utt(dispatcher, 'utter_user_ready_inglist')
 
         return []
 
@@ -347,8 +347,16 @@ class ActionNextStep(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
-        utt(dispatcher, 'utter_next_step')
-        return seek(tracker, dispatcher, 1)
+        state = State(tracker)
+        
+        if state.recipe_key is not None:
+            utt(dispatcher, 'utter_next_step')
+        
+        slotset = seek(tracker, dispatcher, 1)
+        
+        if state.step_idx is not None and state.step_idx < 2:
+            utt(dispatcher, 'utter_user_ready_step')
+        return slotset
 
 
 class ActionRepeat(Action):

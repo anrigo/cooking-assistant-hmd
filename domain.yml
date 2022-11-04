@@ -103,9 +103,13 @@ responses:
   - text: Here's what you need
   - text: Here's a list of ingredients
   - text: Here's the list of ingredients you are going to need
-  utter_user_ready:
-  - text: Please tell me when you are ready
-  - text: Let me know when you are ready
+  utter_user_ready_inglist:
+  - text: |-
+      Prepare the ingredients then let me know when you are ready to start cooking
+      If you forget some ingredients don't worry, you ask me to repeat the amount of a single ingredient or the entire ingredient list
+  utter_user_ready_step:
+  - text: Please tell me when you are done
+  - text: Let me know when you are done
   - text: Please tell me when you are ready for the next step
   - text: Let me know when you are ready for the next step
   - text: Tell me when you want to proceed
