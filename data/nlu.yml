@@ -11,7 +11,7 @@ nlu:
     - Cencel this recipe
     - Cancel this
     - Cancel please
-- intent: where_to_start
+- intent: chitchatfaq/where_to_start
   examples: |
     - What can you do?
     - What can you do for me?
@@ -218,7 +218,7 @@ nlu:
     - I'll prepare [carbonara](recipe)
     - I would like to cook [crepes](recipe)
     - let's cook [amatriciana](recipe) for [two]{"entity": "number", "value": "2"}
-- intent: greet
+- intent: chitchatfaq/greet
   examples: |
     - hey
     - hello
@@ -233,7 +233,7 @@ nlu:
     - goodmorning
     - goodevening
     - good afternoon
-- intent: goodbye
+- intent: chitchatfaq/goodbye
   examples: |
     - good afternoon
     - cu
@@ -272,7 +272,7 @@ nlu:
     - don't like that
     - no way
     - not really
-- intent: mood_great
+- intent: chitchatfaq/mood_great
   examples: |
     - perfect
     - great
@@ -288,7 +288,7 @@ nlu:
     - so so perfect
     - so good
     - so perfect
-- intent: mood_unhappy
+- intent: chitchatfaq/mood_unhappy
   examples: |
     - my day was horrible
     - I am sad
@@ -304,7 +304,7 @@ nlu:
     - extremly sad
     - so saad
     - so sad
-- intent: bot_challenge
+- intent: chitchatfaq/bot_challenge
   examples: |
     - are you a bot?
     - are you a human?

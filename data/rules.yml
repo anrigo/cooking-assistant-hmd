@@ -7,20 +7,10 @@ rules:
 #   - action: action_stop_recipe
 
 # chitchat
-- rule: Start here
+- rule: Chitchat and faqs
   steps:
-  - intent: where_to_start
-  - action: utter_start_from_here
-
-- rule: Say goodbye anytime the user says goodbye
-  steps:
-  - intent: goodbye
-  - action: utter_goodbye
-
-- rule: Say 'I am a bot' anytime the user challenges
-  steps:
-  - intent: bot_challenge
-  - action: utter_iamabot
+  - intent: chitchatfaq
+  - action: utter_chitchatfaq
 
 # fallback
 - rule: In case of low NLU confidence, use the fallback to ask the user to repeat or rephrase

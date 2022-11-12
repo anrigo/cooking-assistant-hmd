@@ -3,23 +3,18 @@ session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
 intents:
+- chitchatfaq
 - stop
 - show_ing_list
-- where_to_start
 - add_shop_ing
 - add_current_recipe_to_list
 - add_recipe_to_list
 - affirm
 - ask_recipe
 - back_step
-- bot_challenge
 - deny
-- goodbye
-- greet
 - how_much_ing
 - inform_num_people
-- mood_great
-- mood_unhappy
 - remove_shop_item
 - select_recipe
 - show_shopping_list
@@ -118,23 +113,22 @@ responses:
   - text: To which ingredient are you referring to?
   utter_recipe_completed:
   - text: Congratulations! You completed the recipe!
-  utter_start_from_here:
+  utter_chitchatfaq/where_to_start:
   - text: |-
       To start cooking something, for example Carbonara, say "I would like to cook Carbonara!"
       You can also ask me for a recipe suggestion, or add a recipe to your shopping list.
-  utter_greet:
-  - text: Hey! How are you?
-  utter_cheer_up:
+  utter_chitchatfaq/greet:
+  - text: Hey! I'm a cooking assistant, you can ask me what I can do at any time!
+  utter_chitchatfaq/mood_unhappy:
   - text: 'Here is something to cheer you up:'
-    image: https://i.imgur.com/nGF1K8f.jpg
-  utter_did_that_help:
+    image: https://blog.giallozafferano.it/creandosiimpara/wp-content/uploads/2020/07/maritozzi.jpeg
   - text: Did that help you?
-  utter_happy:
+  utter_chitchatfaq/happy:
   - text: Great, carry on!
-  utter_goodbye:
+  utter_chitchatfaq/goodbye:
   - text: Bye
-  utter_iamabot:
-  - text: I am your cooking assistant and I'm here to help you select a recipe follow its steps!
+  utter_chitchatfaq/bot_challenge:
+  - text: I am your cooking assistant and I'm here to help you select a recipe and follow its steps!
   utter_fallback:
   - text: I'm sorry I didn't understand. Could you repeat or rephrase the question?
 actions:
