@@ -596,7 +596,10 @@ class ActionShowShoppingList(Action):
             if page.isdigit():
                 page = int(page)
             else:
-                say(dispatcher, 'I couldn\'t understand the page you requested so I\'ll show you page 1.')
+                if len(shoplist) > 0:
+                    # say this if the list is not empty
+                    utt(dispatcher, 'utter_show_page_one')
+                    # otherwise silently set page to 1, which will then be refused since the page does not exist
                 page = 1
         else:
             page = 1
@@ -607,8 +610,10 @@ class ActionShowShoppingList(Action):
             elems = shoplist[(page-1)*pagelen:page*pagelen]
 
             if len(elems) > 0:
-                say(dispatcher,
-                    f'Showing page {page} of {totpages} of your shopping list.\nYou can ask me what I can do with the shopping list at any time.')
+                
+                if totpages > 1:
+                    say(dispatcher,
+                        f'Showing page {page} of {totpages} of your shopping list.')
 
                 for idx, elem in enumerate(elems):
                     say(dispatcher, f'{idx+1+((page-1)*pagelen)} {elem}')
@@ -616,7 +621,9 @@ class ActionShowShoppingList(Action):
                 say(dispatcher,
                     f'Page {page} doesn\'t exist, your shopping list has {totpages} pages')
         else:
-            say(dispatcher, 'Your shopping list is empty')
+            utt(dispatcher, 'utter_list_empty')
+        
+        utt(dispatcher, 'utter_ask_list_faq')
 
         return [SlotSet('number', None)]
 

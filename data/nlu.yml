@@ -1,5 +1,9 @@
 version: "2.0"
 nlu:
+- intent: chitchatfaq/how_to_shopping_list
+  examples: |
+    - What can you do with the shopping list?
+    - How can I use the shopping list?
 - intent: stop
   examples: |
     - Stop this recipe
@@ -34,6 +38,7 @@ nlu:
     - Show my shopping list
     - Show me my shopping list
     - What shoud I buy?
+    - Read my shopping list
     - Show me page [one](number)
     - Show me page [one](number) of my list
     - Show me page [one](number) of my shopping list

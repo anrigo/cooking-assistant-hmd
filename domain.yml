@@ -113,22 +113,39 @@ responses:
   - text: To which ingredient are you referring to?
   utter_recipe_completed:
   - text: Congratulations! You completed the recipe!
+  utter_list_empty:
+  - text: |-
+      Your shopping list is empty.
+      Add something to the list, for example by saying "Add six eggs to my list"
+  utter_ask_list_faq:
+  - text: You can ask me what I can do with the shopping list at any time.
+  utter_show_page_one:
+  - text: I couldn't understand the page you requested so I'll show you page 1.
   utter_chitchatfaq/where_to_start:
   - text: |-
       To start cooking something, for example Carbonara, say "I would like to cook Carbonara!"
-      You can also ask me for a recipe suggestion, or add a recipe to your shopping list.
+      You can also ask me for a recipe suggestion with "What can I cook today?"
+      I can also manage a shopping list for you, you can add a recipe to the list by saying "Add a recipe to the list" and consult the list with "Show my list"
   utter_chitchatfaq/greet:
-  - text: Hey! I'm a cooking assistant, you can ask me what I can do at any time!
+  - text: Hey! I'm your cooking assistant, you can ask me what I can do at any time!
   utter_chitchatfaq/mood_unhappy:
   - text: 'Here is something to cheer you up:'
     image: https://blog.giallozafferano.it/creandosiimpara/wp-content/uploads/2020/07/maritozzi.jpeg
   - text: Did that help you?
   utter_chitchatfaq/happy:
   - text: Great, carry on!
+  utter_chitchatfaq/mood_great:
+  - text: Nice, let's cook together!
   utter_chitchatfaq/goodbye:
   - text: Bye
   utter_chitchatfaq/bot_challenge:
   - text: I am your cooking assistant and I'm here to help you select a recipe and follow its steps!
+  utter_chitchatfaq/how_to_shopping_list:
+  - text: |-
+      You can add a recipe to the shopping list, or you can add a single ingredient for example by saying "Add butter to my list"
+      You can ask me to read the list by saying "Read me my shopping list".
+      If the list has multiple pages you can choose which one to check out by saying "Show me page two of my list".
+      Each ingredient of the list has an ID, for example "3 butter", you can remove it by saying "Remove item three".
   utter_fallback:
   - text: I'm sorry I didn't understand. Could you repeat or rephrase the question?
 actions:
