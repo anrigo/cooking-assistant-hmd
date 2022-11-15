@@ -149,6 +149,42 @@ responses:
       Each ingredient of the list has an ID, for example "3 butter", you can remove it by saying "Remove item three".
   utter_fallback:
   - text: I'm sorry I didn't understand. Could you repeat or rephrase the question?
+  utter_chitchatfaq/marry_me:
+  - text: I'm a machine, I don't need to have relationships
+  - text: A relationship between a machine like me and a human would never work
+  utter_chitchatfaq/know_others:
+  - text: I was never released to the public, so no.
+  - text: No, I was only created for a university project.
+  - text: No but I'm a distant relative of Alexa and Google Home.
+  utter_chitchatfaq/you_busy:
+  - text: I'm never busy, I'm always available to help you cook!
+  - text: I'm always free to help you cook!
+  - text: I'm always free to help you cook some nice meals!
+  utter_chitchatfaq/say_funny:
+  - text: |-
+      My wife rang me at the pub and said, “If you’re not home in 10 minutes, I’m giving the dinner I cooked you to the dog.”
+      I was home in 5 minutes.
+      I’d hate for anything to happen to the dog.
+  - text: |-
+      Burnt my Hawaiian pizza today…
+      Should have cooked it on aloha temperature.
+  - text: |-
+      Did you know the first French fry wasn’t cooked in France?
+      It was cooked in Greece.
+  - text: |-
+      I cooked a medium rare steak for my friend and he said, “I like it well done.”
+      I said, “Thanks. That means a lot.”
+  - text: |-
+      I used to be a member of the secret cooking society.
+      But they kicked me out for spilling the beans.
+  - text: |-
+      Do cannibals eat ramen?
+      Or do they cook them first?
+  utter_chitchatfaq/say_something_else:
+  - text: I'm a machine, I just stick to my programming
+  - text: Maybe after my next update :)
+  utter_chitchatfaq/how_are_you:
+  - text: I'm great and ready to cook!
 actions:
 - action_stop_recipe
 - action_add_shop_ing

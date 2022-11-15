@@ -21,6 +21,10 @@ nlu:
     - What can you do for me?
     - How can you help me?
     - How can I start cooking?
+    - Help
+    - help
+    - Please help
+    - Please help me
 - intent: add_shop_ing
   examples: |
     - Add [five](number) [eggs](ingredient) to my list
@@ -242,7 +246,6 @@ nlu:
 - intent: chitchatfaq/goodbye
   examples: |
     - good afternoon
-    - cu
     - good by
     - cee you later
     - good night
@@ -252,6 +255,7 @@ nlu:
     - see you around
     - bye bye
     - see you later
+    - talk to you later
 - intent: affirm
   examples: |
     - yes
@@ -264,6 +268,7 @@ nlu:
     - yes it is correct
     - you are right
     - Yeah!
+    - yeah
     - yes you got it correctly
     - Yes, that's it
     - Yeah
@@ -316,6 +321,43 @@ nlu:
     - are you a human?
     - am I talking to a bot?
     - am I talking to a human?
+    - Are you real?
+    - Who are you?
+    - What are you?
+- intent: chitchatfaq/marry_me
+  examples: |
+    - Will you marry me?
+    - Are you single?
+    - Do you have a partner?
+    - Do you have a boyfriend?
+    - Do you have a girlfriend?
+    - Do you love me?
+- intent: chitchatfaq/know_others
+  examples: |
+    - Do you know other assistants?
+    - Do you know other vocal assistants?
+    - Have you ever met other vocal assistants?
+    - Have you ever met other assistants?
+- intent: chitchatfaq/you_busy
+  examples: |
+    - Are busy?
+    - Are you free?
+    - Are you free to help me right now?
+- intent: chitchatfaq/say_funny
+  examples: |
+    - Say something funny
+    - Tell me a joke
+    - Tell me something funny
+- intent: chitchatfaq/say_something_else
+  examples: |
+    - Can you say anything else?
+    - Say something else
+- intent: chitchatfaq/how_are_you
+  examples: |
+    - How are you?
+    - How are you doing?
+    - How is it going?
+    - How is it hanging?
 - synonym: '0.5'
   examples: |
     - half
