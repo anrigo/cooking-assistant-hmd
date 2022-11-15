@@ -161,6 +161,11 @@ def extract_number_slot(dispatcher: CollectingDispatcher, tracker: Tracker):
     number = next(tracker.get_latest_entity_values('number'), None)
     text = tracker.latest_message['text']
 
+    if tracker.get_intent_of_latest_message() == 'stop':
+        # fill the slots with placeholders, then
+        # set confirm_recipe_form to False, so the submit action will stop the form
+        return {'recipe': 'Crepes', 'number': '1', 'confirm_recipe_form': False}
+
     if isinstance(tracker.get_slot('number'), list):
         # the user provided more than one number of people
         utt(dispatcher, 'utter_ambiguous_num_people')
@@ -298,7 +303,12 @@ class ActionSubmitRecipeForm(Action):
 
         confirm = tracker.get_slot('confirm_recipe_form')
 
-        if not confirm:
+        if confirm is False:
+            # if it's False, the user has asked to exit the form
+            utt(dispatcher, 'utter_stopping_recipe')
+            return [SlotSet("recipe", None), SlotSet("number", None), SlotSet("confirm_recipe_form", None)]
+        elif confirm is None:
+            # if it's None (default value) the user said No to the explicit confirmation
             return [SlotSet("recipe", None), SlotSet("number", None), SlotSet("confirm_recipe_form", None), FollowupAction(name="action_ask_recipe")]
 
         state = State(tracker)
@@ -567,7 +577,12 @@ class ActionSubmitRecipeToShopForm(Action):
 
         confirm = tracker.get_slot('confirm_recipe_form')
 
-        if not confirm:
+        if confirm is False:
+            # if it's False, the user has asked to exit the form
+            utt(dispatcher, 'utter_stopping_recipe')
+            return [SlotSet("recipe", None), SlotSet("number", None), SlotSet("confirm_recipe_form", None)]
+        elif confirm is None:
+            # if it's None (default value) the user said No to the explicit confirmation
             return [SlotSet("recipe", None), SlotSet("number", None), SlotSet("confirm_recipe_form", None), FollowupAction(name="action_ask_recipe")]
 
         recipe_key_shop = tracker.get_slot('recipe')
@@ -623,7 +638,7 @@ class ActionShowShoppingList(Action):
         else:
             utt(dispatcher, 'utter_list_empty')
         
-        utt(dispatcher, 'utter_ask_list_faq')
+        utt(dispatcher, 'utter_canask_list_faq')
 
         return [SlotSet('number', None)]
 
