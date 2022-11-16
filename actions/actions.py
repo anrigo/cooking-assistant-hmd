@@ -102,6 +102,12 @@ def seek(tracker: Tracker, dispatcher: CollectingDispatcher, delta: int):
         # recipe completed
         utt(dispatcher, 'utter_recipe_completed')
         utt(dispatcher, 'utter_start_from_here')
+        
+        # reset the state
+        state.recipe_key = None
+        state.num_people = None
+        state.step_idx = None
+
         return state.slotset()
 
 
