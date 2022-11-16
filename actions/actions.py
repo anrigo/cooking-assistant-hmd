@@ -102,7 +102,7 @@ def seek(tracker: Tracker, dispatcher: CollectingDispatcher, delta: int):
         # recipe completed
         utt(dispatcher, 'utter_recipe_completed')
         utt(dispatcher, 'utter_start_from_here')
-        
+
         # reset the state
         state.recipe_key = None
         state.num_people = None
@@ -511,7 +511,8 @@ class ActionAddCurrentRecipeToList(Action):
 
         shoplist.extend([format_ingredient(ing, state.num_people)
                         for ing in ings])
-        print(shoplist)
+
+        utt(dispatcher, 'utter_current_recipe_added_to_list')
 
         return [SlotSet("recipe", None), SlotSet("number", None)]
 
@@ -695,7 +696,9 @@ class ActionAddShopIng(Action):
         if name is not None:
             ing = Munch.fromDict(
                 {'name': name, 'unit': unit, 'amount': amount})
-            shoplist.append(format_ingredient(ing, 1))
+            desc = format_ingredient(ing, 1)
+            shoplist.append(desc)
+            say(dispatcher, f'I added {desc} to your list')
         else:
             say(dispatcher, 'I coudn\'t understand what ingredient you\'d like to add to your list. Can you repeat?')
 

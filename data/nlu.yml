@@ -33,11 +33,13 @@ nlu:
     - Add [one](number) [liter](unit) of [milk](ingredient) to my list
     - Add [half](number) a [liter](unit) of [milk](ingredient) to my shopping list
     - Add [butter](ingredient) to my list
+    - Add [butter](ingredient) to my list
 - intent: remove_shop_item
   examples: |
     - Remove item [one](number) from my list
     - Remove [two](number) from the list
     - Remove [two](number) from my shopping list
+    - Remove item [two]{"entity": "number", "value": "2"} from my list
 - intent: show_shopping_list
   examples: |
     - Show my shopping list
@@ -52,6 +54,9 @@ nlu:
     - Show me page [two](number) of my shopping list
     - Show page [two](number) of the list
     - Show me my list
+    - Show my list
+    - Show me page [two]{"entity": "number", "value": "2"} of the list
+    - Show page [three]{"entity": "number", "value": "3"}
 - intent: add_current_recipe_to_list
   examples: |
     - Add this recipe to my list
@@ -65,6 +70,7 @@ nlu:
     - add a recipe to my list
     - Add [amatriciana](recipe) for [three](number) to my shopping list
     - Now add [crepes](recipe) to my list
+    - Add a recipe to my list
 - intent: how_much_ing
   examples: |
     - How much [guanciale](ingredient)?
@@ -80,13 +86,13 @@ nlu:
     - How much of it?
     - To [eggs](ingredient)
     - I meant [egg yolks](ingredient)
-    - How much [guanciale](ingredient)?
 - intent: show_ing_list
   examples: |
     - Tell me this recipe ingredients
     - Tell me the ingredients
     - Tell me the ingredients again
     - Give me the ingredients list
+    - Repeat the ingredients
 - intent: skip_step
   examples: |
     - Skip this step
@@ -192,6 +198,7 @@ nlu:
     - For [four](number) people
     - For [five](number) people I would say
     - I would say for [two]{"entity": "number", "value": "2"} people
+    - Just for me
 - intent: ask_recipe
   examples: |
     - I am hungry
@@ -241,6 +248,9 @@ nlu:
     - I would like to cook [crepes](recipe)
     - let's cook [amatriciana](recipe) for [two]{"entity": "number", "value": "2"}
     - I like [carbonara](recipe)
+    - Let's cook [crepes](recipe)
+    - Let's go for [amatriciana](recipe), for [three]{"entity": "number", "value": "3"}
+    - Let's do [crepes](recipe), for [five]{"entity": "number", "value": "5"}
 - intent: chitchatfaq/greet
   examples: |
     - hey
@@ -287,6 +297,7 @@ nlu:
     - Yes it is!
     - Yes
     - Yes it is
+    - Yes that's it
 - intent: deny
   examples: |
     - no
@@ -380,6 +391,9 @@ nlu:
   examples: |
     - Hi!
     - What can you do for me?
+    - How do I manage my shopping list?
+    - What can you do with the shopping list?
+    - tell me a joke
 - synonym: '2'
   examples: |
     - two
