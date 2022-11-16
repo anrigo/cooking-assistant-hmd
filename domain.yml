@@ -3,46 +3,47 @@ session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
 intents:
-- chitchatfaq
-- stop
-- show_ing_list
-- add_shop_ing
 - add_current_recipe_to_list
 - add_recipe_to_list
+- add_shop_ing
 - affirm
 - ask_recipe
 - back_step
+- chitchatfaq:
+    is_retrieval_intent: true
 - deny
 - how_much_ing
 - inform_num_people
 - remove_shop_item
 - select_recipe
+- show_ing_list
 - show_shopping_list
 - skip_step
+- stop
 - user_did_not_understand
 - user_ready
 entities:
+- ingredient
 - recipe
 - number
-- ingredient
 - unit
 slots:
   recipe_key:
     type: text
-    influence_conversation: true
     auto_fill: false
+    influence_conversation: true
   num_people:
     type: float
+    auto_fill: false
     influence_conversation: true
     max_value: 1.0
     min_value: 0.0
-    auto_fill: false
   step_idx:
     type: float
+    auto_fill: false
     influence_conversation: true
     max_value: 1.0
     min_value: 0.0
-    auto_fill: false
   recipe:
     type: text
     influence_conversation: false
@@ -101,8 +102,9 @@ responses:
   - text: Here's the list of ingredients you are going to need
   utter_user_ready_inglist:
   - text: |-
-      Prepare the ingredients then let me know when you are ready to start cooking
+      Prepare the ingredients then let me know when you are ready to start cooking, I will guide you trough the recipe's step
       If you forget some ingredients don't worry, you can ask me to repeat the amount of a single ingredient or the entire ingredient list
+      You can also ask me to go back some steps or skip some of them if you already know how to do them
   utter_user_ready_step:
   - text: Please tell me when you are done
   - text: Let me know when you are done
@@ -189,9 +191,8 @@ responses:
   - text: Sorry I can only help you with cooking and managing your shopping list.
   - text: Sorry, I can't handle that request.
 actions:
-- action_stop_recipe
-- action_add_shop_ing
 - action_add_current_recipe_to_list
+- action_add_shop_ing
 - action_ask_recipe
 - action_backward_step
 - action_how_much_ing
@@ -201,8 +202,10 @@ actions:
 - action_repeat_step
 - action_show_shopping_list
 - action_skip_step
+- action_stop_recipe
 - action_submit_recipe_form
 - action_submit_recipe_shop_form
+- utter_chitchatfaq
 - validate_select_recipe_form
 - validate_select_recipe_shop_form
 forms:

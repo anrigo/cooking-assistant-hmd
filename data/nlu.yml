@@ -80,6 +80,7 @@ nlu:
     - How much of it?
     - To [eggs](ingredient)
     - I meant [egg yolks](ingredient)
+    - How much [guanciale](ingredient)?
 - intent: show_ing_list
   examples: |
     - Tell me this recipe ingredients
@@ -101,6 +102,7 @@ nlu:
     - skip [five](number) steps please
     - Skip [four](number) steps please
     - Skip [two]{"entity": "number", "value": "2"} steps please
+    - I know how to do this, skip [two]{"entity": "number", "value": "2"} steps please
 - intent: back_step
   examples: |
     - Can we go back [two](number) steps?
@@ -112,6 +114,7 @@ nlu:
     - go back [once](number)
     - go back
     - Go back
+    - Please, go back [two]{"entity": "number", "value": "2"} steps
 - intent: user_did_not_understand
   examples: |
     - Can you repeat?
@@ -157,6 +160,13 @@ nlu:
     - I think I'm done with this step, let's go to the next
     - Go on please
     - Next step
+    - I'm ready for the next step!
+    - I've done the step
+    - Ready
+    - I'm ready for the next
+    - Proceed to the next
+    - Ok, proceed
+    - Keep going
 - intent: inform_num_people
   examples: |
     - i'll cook for [3](number) people
@@ -181,6 +191,7 @@ nlu:
     - I'd say for [two](number) people
     - For [four](number) people
     - For [five](number) people I would say
+    - I would say for [two]{"entity": "number", "value": "2"} people
 - intent: ask_recipe
   examples: |
     - I am hungry
@@ -197,6 +208,7 @@ nlu:
     - let's cook
     - Can we cook something?
     - let's cook!
+    - Well then, what can I cook today?
 - intent: select_recipe
   examples: |
     - I'll prepare [waffles](recipe)
@@ -228,6 +240,7 @@ nlu:
     - I'll prepare [carbonara](recipe)
     - I would like to cook [crepes](recipe)
     - let's cook [amatriciana](recipe) for [two]{"entity": "number", "value": "2"}
+    - I like [carbonara](recipe)
 - intent: chitchatfaq/greet
   examples: |
     - hey
@@ -254,7 +267,6 @@ nlu:
     - have a nice day
     - see you around
     - bye bye
-    - see you later
     - talk to you later
 - intent: affirm
   examples: |
@@ -274,6 +286,7 @@ nlu:
     - Yeah
     - Yes it is!
     - Yes
+    - Yes it is
 - intent: deny
   examples: |
     - no
@@ -363,12 +376,16 @@ nlu:
     - I want to order food
     - What is 2 + 2?
     - Who's the US President?
-- synonym: '0.5'
+- intent: chitchatfaq
   examples: |
-    - half
+    - Hi!
+    - What can you do for me?
 - synonym: '2'
   examples: |
     - two
+- synonym: '0.5'
+  examples: |
+    - half
 - synonym: '3'
   examples: |
     - three
