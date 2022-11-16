@@ -236,7 +236,7 @@ nlu:
     - hello there
     - good morning
     - good evening
-    - moin
+    - morning
     - hey there
     - let's go
     - hey dude
@@ -247,7 +247,7 @@ nlu:
   examples: |
     - good afternoon
     - good by
-    - cee you later
+    - see you later
     - good night
     - bye
     - goodbye
@@ -358,6 +358,11 @@ nlu:
     - How are you doing?
     - How is it going?
     - How is it hanging?
+- intent: out_of_scope
+  examples: |
+    - I want to order food
+    - What is 2 + 2?
+    - Who's the US President?
 - synonym: '0.5'
   examples: |
     - half

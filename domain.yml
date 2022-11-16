@@ -102,7 +102,7 @@ responses:
   utter_user_ready_inglist:
   - text: |-
       Prepare the ingredients then let me know when you are ready to start cooking
-      If you forget some ingredients don't worry, you ask me to repeat the amount of a single ingredient or the entire ingredient list
+      If you forget some ingredients don't worry, you can ask me to repeat the amount of a single ingredient or the entire ingredient list
   utter_user_ready_step:
   - text: Please tell me when you are done
   - text: Let me know when you are done
@@ -185,6 +185,9 @@ responses:
   - text: Maybe after my next update :)
   utter_chitchatfaq/how_are_you:
   - text: I'm great and ready to cook!
+  utter_out_of_scope:
+  - text: Sorry I can only help you with cooking and managing your shopping list.
+  - text: Sorry, I can't handle that request.
 actions:
 - action_stop_recipe
 - action_add_shop_ing
