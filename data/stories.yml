@@ -185,7 +185,7 @@ stories:
   - slot_was_set:
     - step_idx: null
 
-- story: interactive_story_1
+- story: manage_list_show_recipe_ing
   steps:
   - intent: select_recipe
     entities:
@@ -342,3 +342,109 @@ stories:
     - unit: null
   - slot_was_set:
     - ingredient: null
+
+- story: stop_recipe_start_another
+  steps:
+  - intent: select_recipe
+    entities:
+    - recipe: amatriciana
+  - slot_was_set:
+    - recipe: amatriciana
+  - action: select_recipe_form
+  - active_loop: select_recipe_form
+  - slot_was_set:
+    - recipe: Amatriciana
+  - slot_was_set:
+    - number: null
+  - slot_was_set:
+    - requested_slot: number
+  - slot_was_set:
+    - recipe: Amatriciana
+  - slot_was_set:
+    - number: null
+  - slot_was_set:
+    - requested_slot: number
+  - slot_was_set:
+    - recipe: cacio e pepe
+  - slot_was_set:
+    - number: '3'
+  - slot_was_set:
+    - recipe: Cacio e pepe
+  - slot_was_set:
+    - number: '3'
+  - slot_was_set:
+    - requested_slot: confirm_recipe_form
+  - slot_was_set:
+    - confirm_recipe_form: true
+  - slot_was_set:
+    - requested_slot: null
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_submit_recipe_form
+  - slot_was_set:
+    - recipe: null
+  - slot_was_set:
+    - number: null
+  - slot_was_set:
+    - confirm_recipe_form: null
+  - slot_was_set:
+    - recipe_key: Cacio e pepe
+  - slot_was_set:
+    - num_people: 3
+  - slot_was_set:
+    - step_idx: -1
+  - action: action_list_ingredients
+  - intent: user_ready
+  - action: action_next_step
+  - slot_was_set:
+    - recipe_key: Cacio e pepe
+  - slot_was_set:
+    - num_people: 3
+  - slot_was_set:
+    - step_idx: 0
+  - intent: user_ready
+  - action: action_next_step
+  - slot_was_set:
+    - recipe_key: Cacio e pepe
+  - slot_was_set:
+    - num_people: 3
+  - slot_was_set:
+    - step_idx: 1
+  - intent: stop
+  - action: action_stop_recipe
+  - slot_was_set:
+    - recipe_key: null
+  - slot_was_set:
+    - num_people: null
+  - slot_was_set:
+    - step_idx: null
+  - intent: ask_recipe
+  - action: select_recipe_form
+  - active_loop: select_recipe_form
+  - slot_was_set:
+    - number: null
+  - slot_was_set:
+    - requested_slot: recipe
+  - slot_was_set:
+    - recipe: null
+  - slot_was_set:
+    - number: null
+  - slot_was_set:
+    - recipe: Carbonara
+  - slot_was_set:
+    - number: '1'
+  - slot_was_set:
+    - confirm_recipe_form: false
+  - slot_was_set:
+    - requested_slot: null
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_submit_recipe_form
+  - slot_was_set:
+    - recipe: null
+  - slot_was_set:
+    - number: null
+  - slot_was_set:
+    - confirm_recipe_form: null
