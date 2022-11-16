@@ -164,7 +164,7 @@ def extract_number_slot(dispatcher: CollectingDispatcher, tracker: Tracker):
     if tracker.get_intent_of_latest_message() == 'stop':
         # fill the slots with placeholders, then
         # set confirm_recipe_form to False, so the submit action will stop the form
-        return {'recipe': 'Crepes', 'number': '1', 'confirm_recipe_form': False}
+        return {'recipe': list(recipes.keys())[0], 'number': '1', 'confirm_recipe_form': False}
 
     if isinstance(tracker.get_slot('number'), list):
         # the user provided more than one number of people
