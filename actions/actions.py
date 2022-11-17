@@ -714,12 +714,15 @@ class ActionStopRecipe(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
-        utt(dispatcher, 'utter_stopping_recipe')
-
         state = State(tracker)
 
-        state.recipe_key = None
-        state.num_people = None
-        state.step_idx = None
+        if state.recipe_key is not None:
+            utt(dispatcher, 'utter_stopping_recipe')
 
-        return state.slotset()
+            state.recipe_key = None
+            state.num_people = None
+            state.step_idx = None
+
+            return state.slotset()
+        else:
+            utt(dispatcher, 'utter_no_recipe_running')

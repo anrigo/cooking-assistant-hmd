@@ -119,6 +119,7 @@ nlu:
     - Skip [four](number) steps please
     - Skip [two]{"entity": "number", "value": "2"} steps please
     - I know how to do this, skip [two]{"entity": "number", "value": "2"} steps please
+    - Skip [three]{"entity": "number", "value": "3"} steps please
 - intent: back_step
   examples: |
     - Can we go back [two](number) steps?
@@ -228,6 +229,7 @@ nlu:
     - let's cook!
     - Well then, what can I cook today?
     - What can I cook?
+    - Let's cook something
 - intent: select_recipe
   examples: |
     - I'll prepare [waffles](recipe)
@@ -265,6 +267,7 @@ nlu:
     - Let's do [crepes](recipe), for [five]{"entity": "number", "value": "5"}
     - let's cook [amatriciana](recipe)
     - Actually, let's cook [cacio e pepe](recipe) for [three]{"entity": "number", "value": "3"}
+    - Let's cook [cacio e epepe](recipe)
 - intent: chitchatfaq/greet
   examples: |
     - hey
@@ -411,9 +414,18 @@ nlu:
     - What can you do with the shopping list?
     - tell me a joke
     - Hi
+    - How are you?
+    - I'm sad
+    - Bye
+- synonym: '500'
+  examples: |
+    - five hundred
 - synonym: '2'
   examples: |
     - two
+- synonym: '11'
+  examples: |
+    - eleven
 - synonym: '3'
   examples: |
     - three
@@ -460,9 +472,6 @@ nlu:
 - synonym: '400'
   examples: |
     - four hundred
-- synonym: '500'
-  examples: |
-    - five hundred
 - synonym: black pepper
   examples: |
     - pepper
