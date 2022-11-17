@@ -694,3 +694,139 @@ stories:
     - step_idx: null
   - intent: chitchatfaq
   - action: utter_chitchatfaq
+
+- story: interactive_story_1
+  steps:
+  - intent: chitchatfaq
+  - action: utter_chitchatfaq
+  - intent: add_recipe_to_list
+  - action: select_recipe_shop_form
+  - active_loop: select_recipe_shop_form
+  - slot_was_set:
+    - number: null
+  - slot_was_set:
+    - requested_slot: recipe
+  - slot_was_set:
+    - recipe: null
+  - slot_was_set:
+    - number: null
+  - slot_was_set:
+    - recipe: Carbonara
+  - slot_was_set:
+    - recipe: Carbonara
+  - slot_was_set:
+    - number: null
+  - slot_was_set:
+    - requested_slot: number
+  - slot_was_set:
+    - number: '2'
+  - slot_was_set:
+    - number: '2'
+  - slot_was_set:
+    - requested_slot: confirm_recipe_form
+  - slot_was_set:
+    - confirm_recipe_form: true
+  - slot_was_set:
+    - requested_slot: null
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_submit_recipe_shop_form
+  - slot_was_set:
+    - recipe: null
+  - slot_was_set:
+    - number: null
+  - slot_was_set:
+    - confirm_recipe_form: null
+  - intent: show_shopping_list
+  - action: action_show_shopping_list
+  - slot_was_set:
+    - number: null
+  - intent: ask_recipe
+  - action: select_recipe_form
+  - active_loop: select_recipe_form
+  - slot_was_set:
+    - number: null
+  - slot_was_set:
+    - requested_slot: recipe
+  - slot_was_set:
+    - recipe: null
+  - slot_was_set:
+    - number: null
+  - slot_was_set:
+    - recipe: Crepes
+  - slot_was_set:
+    - number: '2'
+  - slot_was_set:
+    - recipe: Crepes
+  - slot_was_set:
+    - requested_slot: confirm_recipe_form
+  - slot_was_set:
+    - confirm_recipe_form: true
+  - slot_was_set:
+    - requested_slot: null
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_submit_recipe_form
+  - slot_was_set:
+    - recipe: null
+  - slot_was_set:
+    - number: null
+  - slot_was_set:
+    - confirm_recipe_form: null
+  - slot_was_set:
+    - recipe_key: Crepes
+  - slot_was_set:
+    - num_people: 2
+  - slot_was_set:
+    - step_idx: -1
+  - action: action_list_ingredients
+  - intent: user_ready
+  - action: action_next_step
+  - slot_was_set:
+    - recipe_key: Crepes
+  - slot_was_set:
+    - num_people: 2
+  - slot_was_set:
+    - step_idx: 0
+  - intent: user_ready
+  - action: action_next_step
+  - slot_was_set:
+    - recipe_key: Crepes
+  - slot_was_set:
+    - num_people: 2
+  - slot_was_set:
+    - step_idx: 1
+  - intent: user_ready
+  - action: action_next_step
+  - slot_was_set:
+    - recipe_key: Crepes
+  - slot_was_set:
+    - num_people: 2
+  - slot_was_set:
+    - step_idx: 2
+  - intent: user_ready
+  - action: action_next_step
+  - slot_was_set:
+    - recipe_key: Crepes
+  - slot_was_set:
+    - num_people: 2
+  - slot_was_set:
+    - step_idx: 3
+  - intent: user_ready
+  - action: action_next_step
+  - slot_was_set:
+    - recipe_key: Crepes
+  - slot_was_set:
+    - num_people: 2
+  - slot_was_set:
+    - step_idx: 4
+  - intent: stop
+  - action: action_stop_recipe
+  - slot_was_set:
+    - recipe_key: null
+  - slot_was_set:
+    - num_people: null
+  - slot_was_set:
+    - step_idx: null
