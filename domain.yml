@@ -23,10 +23,10 @@ intents:
 - user_did_not_understand
 - user_ready
 entities:
-- unit
-- number
-- ingredient
 - recipe
+- ingredient
+- number
+- unit
 slots:
   recipe_key:
     type: text
@@ -125,6 +125,8 @@ responses:
   - text: You can ask me what I can do with the shopping list at any time.
   utter_show_page_one:
   - text: I couldn't understand the page you requested so I'll show you page 1.
+  utter_item_does_not_exist:
+  - text: Sorry, there's no item with ID {number}
   utter_chitchatfaq/where_to_start:
   - text: |-
       To start cooking something, for example Carbonara, say "I would like to cook Carbonara!"

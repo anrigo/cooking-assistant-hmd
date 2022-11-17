@@ -669,8 +669,11 @@ class ActionRemoveShopItem(Action):
 
         if item_id is not None and item_id.isdigit():
             item_id = int(item_id) - 1
-            item = shoplist.pop(item_id)
-            say(dispatcher, f'I reomved {item} from your shopping list')
+            if item_id >= 0 and item_id < len(shoplist):
+                item = shoplist.pop(item_id)
+                say(dispatcher, f'I removed {item} from your shopping list')
+            else:
+                utt(dispatcher, 'utter_item_does_not_exist')
         else:
             say(dispatcher, 'I\'m sorry I coudn\'t understand')
 
