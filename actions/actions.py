@@ -662,7 +662,7 @@ class ActionRemoveShopItem(Action):
         item_id = tracker.get_slot('number')
 
         if item_id is not None and item_id.isdigit():
-            item_id = int(item_id)
+            item_id = int(item_id) - 1
             item = shoplist.pop(item_id)
             say(dispatcher, f'I reomved {item} from your shopping list')
         else:

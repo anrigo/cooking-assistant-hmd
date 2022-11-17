@@ -448,3 +448,156 @@ stories:
     - number: null
   - slot_was_set:
     - confirm_recipe_form: null
+
+- story: manage_list_remove_items
+  steps:
+  - intent: chitchatfaq
+  - action: utter_chitchatfaq
+  - intent: add_shop_ing
+    entities:
+    - number: '500'
+    - unit: grams
+    - ingredient: sugar
+  - slot_was_set:
+    - number: '500'
+  - slot_was_set:
+    - ingredient: sugar
+  - slot_was_set:
+    - unit: grams
+  - action: action_add_shop_ing
+  - slot_was_set:
+    - number: null
+  - slot_was_set:
+    - unit: null
+  - slot_was_set:
+    - ingredient: null
+  - intent: add_recipe_to_list
+    entities:
+    - recipe: crepes
+  - slot_was_set:
+    - recipe: crepes
+  - action: select_recipe_shop_form
+  - active_loop: select_recipe_shop_form
+  - slot_was_set:
+    - recipe: Crepes
+  - slot_was_set:
+    - number: null
+  - slot_was_set:
+    - requested_slot: number
+  - slot_was_set:
+    - recipe: Crepes
+  - slot_was_set:
+    - number: null
+  - slot_was_set:
+    - requested_slot: number
+  - slot_was_set:
+    - number: '3'
+  - slot_was_set:
+    - number: '3'
+  - slot_was_set:
+    - requested_slot: confirm_recipe_form
+  - slot_was_set:
+    - confirm_recipe_form: true
+  - slot_was_set:
+    - requested_slot: null
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_submit_recipe_shop_form
+  - slot_was_set:
+    - recipe: null
+  - slot_was_set:
+    - number: null
+  - slot_was_set:
+    - confirm_recipe_form: null
+  - intent: show_shopping_list
+  - action: action_show_shopping_list
+  - slot_was_set:
+    - number: null
+  - intent: add_shop_ing
+    entities:
+    - number: '2'
+    - unit: liters
+    - ingredient: whole milk
+  - slot_was_set:
+    - number: '2'
+  - slot_was_set:
+    - ingredient: whole milk
+  - slot_was_set:
+    - unit: liters
+  - action: action_add_shop_ing
+  - slot_was_set:
+    - number: null
+  - slot_was_set:
+    - unit: null
+  - slot_was_set:
+    - ingredient: null
+  - intent: add_recipe_to_list
+    entities:
+    - recipe: amatriciana
+  - slot_was_set:
+    - recipe: amatriciana
+  - action: select_recipe_shop_form
+  - active_loop: select_recipe_shop_form
+  - slot_was_set:
+    - recipe: Amatriciana
+  - slot_was_set:
+    - number: null
+  - slot_was_set:
+    - requested_slot: number
+  - slot_was_set:
+    - recipe: Amatriciana
+  - slot_was_set:
+    - number: null
+  - slot_was_set:
+    - requested_slot: number
+  - slot_was_set:
+    - number: '1'
+  - slot_was_set:
+    - requested_slot: confirm_recipe_form
+  - slot_was_set:
+    - confirm_recipe_form: true
+  - slot_was_set:
+    - requested_slot: null
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_submit_recipe_shop_form
+  - slot_was_set:
+    - recipe: null
+  - slot_was_set:
+    - number: null
+  - slot_was_set:
+    - confirm_recipe_form: null
+  - intent: show_shopping_list
+  - action: action_show_shopping_list
+  - slot_was_set:
+    - number: null
+  - intent: show_shopping_list
+    entities:
+    - number: '2'
+  - slot_was_set:
+    - number: '2'
+  - action: action_show_shopping_list
+  - slot_was_set:
+    - number: null
+  - intent: show_shopping_list
+    entities:
+    - number: '3'
+  - slot_was_set:
+    - number: '3'
+  - action: action_show_shopping_list
+  - slot_was_set:
+    - number: null
+  - intent: remove_shop_item
+    entities:
+    - number: '11'
+  - slot_was_set:
+    - number: '11'
+  - action: action_remove_shop_item
+  - slot_was_set:
+    - number: null
+  - intent: show_shopping_list
+  - action: action_show_shopping_list
+  - slot_was_set:
+    - number: null

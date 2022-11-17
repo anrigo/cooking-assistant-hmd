@@ -23,9 +23,9 @@ intents:
 - user_did_not_understand
 - user_ready
 entities:
-- recipe
-- number
 - ingredient
+- number
+- recipe
 - unit
 slots:
   recipe_key:

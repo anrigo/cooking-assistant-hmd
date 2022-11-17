@@ -34,12 +34,15 @@ nlu:
     - Add [one](number) [liter](unit) of [milk](ingredient) to my list
     - Add [half](number) a [liter](unit) of [milk](ingredient) to my shopping list
     - Add [butter](ingredient) to my list
+    - Add [five hundred]{"entity": "number", "value": "500"} [grams](unit) of [sugar](ingredient) to my list
+    - Add [two]{"entity": "number", "value": "2"} [liters](unit) of [whole milk](ingredient) to my list
 - intent: remove_shop_item
   examples: |
     - Remove item [one](number) from my list
     - Remove [two](number) from the list
     - Remove [two](number) from my shopping list
     - Remove item [two]{"entity": "number", "value": "2"} from my list
+    - Remove item [eleven]{"entity": "number", "value": "11"}
 - intent: show_shopping_list
   examples: |
     - Show my shopping list
@@ -57,6 +60,11 @@ nlu:
     - Show my list
     - Show me page [two]{"entity": "number", "value": "2"} of the list
     - Show page [three]{"entity": "number", "value": "3"}
+    - Show my list again
+    - Read shopping list
+    - Read page [two]{"entity": "number", "value": "2"}
+    - Read page [three]{"entity": "number", "value": "3"}
+    - Tell me the list
 - intent: add_current_recipe_to_list
   examples: |
     - Add this recipe to my list
@@ -71,6 +79,8 @@ nlu:
     - Add [amatriciana](recipe) for [three](number) to my shopping list
     - Now add [crepes](recipe) to my list
     - Add a recipe to my list
+    - Now add the ingredients to make [crepes](recipe) to my list
+    - Add [amatriciana](recipe) ingredients to the list
 - intent: how_much_ing
   examples: |
     - How much [guanciale](ingredient)?
@@ -199,6 +209,7 @@ nlu:
     - For [five](number) people I would say
     - I would say for [two]{"entity": "number", "value": "2"} people
     - Just for me
+    - I'd say for [three]{"entity": "number", "value": "3"} people
 - intent: ask_recipe
   examples: |
     - I am hungry
@@ -301,6 +312,8 @@ nlu:
     - Yes
     - Yes it is
     - Yes that's it
+    - Yes it's correct
+    - Yeah, that's it
 - intent: deny
   examples: |
     - no
@@ -397,6 +410,7 @@ nlu:
     - How do I manage my shopping list?
     - What can you do with the shopping list?
     - tell me a joke
+    - Hi
 - synonym: '2'
   examples: |
     - two
@@ -440,6 +454,15 @@ nlu:
 - synonym: '200'
   examples: |
     - two hundred
+- synonym: '300'
+  examples: |
+    - three hundred
+- synonym: '400'
+  examples: |
+    - four hundred
+- synonym: '500'
+  examples: |
+    - five hundred
 - synonym: black pepper
   examples: |
     - pepper
