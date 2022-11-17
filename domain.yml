@@ -23,10 +23,10 @@ intents:
 - user_did_not_understand
 - user_ready
 entities:
-- recipe
+- unit
 - number
 - ingredient
-- unit
+- recipe
 slots:
   recipe_key:
     type: text

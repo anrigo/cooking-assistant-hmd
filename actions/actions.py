@@ -78,11 +78,14 @@ def seek(tracker: Tracker, dispatcher: CollectingDispatcher, delta: int):
 
     state = State(tracker)
 
+    # reset the number slot so it doesn't get picked up by other actions/forms
+    reset_num = [SlotSet('number', None)]
+
     if state.recipe_key is None:
         # no recipe is currently running
         utt(dispatcher, 'utter_no_recipe_running')
         utt(dispatcher, 'utter_start_from_here')
-        return []
+        return reset_num
 
     steps = recipes[state.recipe_key].steps
 
@@ -91,13 +94,19 @@ def seek(tracker: Tracker, dispatcher: CollectingDispatcher, delta: int):
 
     if state.step_idx < 0:
         # step negative: ingredients
-        return [FollowupAction(name="action_list_ingredients")]
+        return [FollowupAction(name="action_list_ingredients")] + reset_num
     elif state.step_idx < len(steps):
         # step positive and inside recipe boundaries
+
+        if delta > 1:
+            utt(dispatcher, 'utter_skip_steps')
+        elif delta == 1:
+            utt(dispatcher, 'utter_next_step')
+
         step = steps[state.step_idx]
         say(dispatcher, step.description)
 
-        return state.slotset()
+        return state.slotset() + reset_num
     else:
         # recipe completed
         utt(dispatcher, 'utter_recipe_completed')
@@ -108,7 +117,7 @@ def seek(tracker: Tracker, dispatcher: CollectingDispatcher, delta: int):
         state.num_people = None
         state.step_idx = None
 
-        return state.slotset()
+        return state.slotset() + reset_num
 
 
 def format_ingredient(ing, num, description=False):
@@ -365,9 +374,6 @@ class ActionNextStep(Action):
 
         state = State(tracker)
         
-        if state.recipe_key is not None:
-            utt(dispatcher, 'utter_next_step')
-        
         slotset = seek(tracker, dispatcher, 1)
         
         if state.step_idx is not None and state.step_idx < 2:
@@ -412,6 +418,8 @@ class ActionBackwardStep(Action):
         delta = int(tracker.get_slot('number')) if tracker.get_slot(
             'number') is not None else 1
 
+        say(dispatcher, 'Sure')
+
         return seek(tracker, dispatcher, -delta)
 
 
@@ -428,10 +436,8 @@ class ActionSkipStep(Action):
 
         if delta is not None:
             delta = int(delta)
-            utt(dispatcher, 'utter_skip_steps')
             return seek(tracker, dispatcher, delta)
         elif 'this step' in tracker.latest_message['text']:
-            utt(dispatcher, 'utter_next_step')
             return seek(tracker, dispatcher, 1)
         else:
             say(dispatcher, 'Sorry, I didn\'t understand how many steps you\'d like to skip')
