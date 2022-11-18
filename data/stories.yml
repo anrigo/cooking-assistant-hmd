@@ -2020,3 +2020,530 @@ stories:
     - step_idx: 1
   - slot_was_set:
     - number: null
+
+- story: interactive_story_1
+  steps:
+  - intent: select_recipe
+  - action: select_recipe_form
+  - active_loop: select_recipe_form
+  - slot_was_set:
+    - number: null
+  - slot_was_set:
+    - requested_slot: recipe
+  - slot_was_set:
+    - recipe: null
+  - slot_was_set:
+    - number: null
+  - slot_was_set:
+    - recipe: cacio e epep
+  - slot_was_set:
+    - recipe: Cacio e pepe
+  - slot_was_set:
+    - number: null
+  - slot_was_set:
+    - requested_slot: number
+  - slot_was_set:
+    - number: '3'
+  - slot_was_set:
+    - number: '3'
+  - slot_was_set:
+    - requested_slot: confirm_recipe_form
+  - slot_was_set:
+    - confirm_recipe_form: true
+  - slot_was_set:
+    - requested_slot: null
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_submit_recipe_form
+  - slot_was_set:
+    - recipe: null
+  - slot_was_set:
+    - number: null
+  - slot_was_set:
+    - confirm_recipe_form: null
+  - slot_was_set:
+    - recipe_key: Cacio e pepe
+  - slot_was_set:
+    - num_people: 3
+  - slot_was_set:
+    - step_idx: -1
+  - action: action_list_ingredients
+  - intent: user_ready
+  - action: action_next_step
+  - slot_was_set:
+    - recipe_key: Cacio e pepe
+  - slot_was_set:
+    - num_people: 3
+  - slot_was_set:
+    - step_idx: 0
+  - slot_was_set:
+    - number: null
+  - intent: user_ready
+  - action: action_next_step
+  - slot_was_set:
+    - recipe_key: Cacio e pepe
+  - slot_was_set:
+    - num_people: 3
+  - slot_was_set:
+    - step_idx: 1
+  - slot_was_set:
+    - number: null
+  - intent: user_ready
+  - action: action_next_step
+  - slot_was_set:
+    - recipe_key: Cacio e pepe
+  - slot_was_set:
+    - num_people: 3
+  - slot_was_set:
+    - step_idx: 2
+  - slot_was_set:
+    - number: null
+  - intent: user_ready
+  - action: action_next_step
+  - slot_was_set:
+    - recipe_key: Cacio e pepe
+  - slot_was_set:
+    - num_people: 3
+  - slot_was_set:
+    - step_idx: 3
+  - slot_was_set:
+    - number: null
+  - intent: user_ready
+  - action: action_next_step
+  - slot_was_set:
+    - recipe_key: Cacio e pepe
+  - slot_was_set:
+    - num_people: 3
+  - slot_was_set:
+    - step_idx: 4
+  - slot_was_set:
+    - number: null
+
+- story: interactive_story_1
+  steps:
+  - intent: chitchatfaq
+  - action: utter_chitchatfaq
+  - intent: ask_recipe
+  - action: select_recipe_form
+  - active_loop: select_recipe_form
+  - slot_was_set:
+    - number: null
+  - slot_was_set:
+    - requested_slot: recipe
+  - slot_was_set:
+    - recipe: null
+  - slot_was_set:
+    - number: null
+  - slot_was_set:
+    - recipe: amatriciana
+  - slot_was_set:
+    - recipe: Amatriciana
+  - slot_was_set:
+    - number: null
+  - slot_was_set:
+    - requested_slot: number
+  - slot_was_set:
+    - number: '2'
+  - slot_was_set:
+    - number: '2'
+  - slot_was_set:
+    - requested_slot: confirm_recipe_form
+  - slot_was_set:
+    - confirm_recipe_form: true
+  - slot_was_set:
+    - requested_slot: null
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_submit_recipe_form
+  - slot_was_set:
+    - recipe: null
+  - slot_was_set:
+    - number: null
+  - slot_was_set:
+    - confirm_recipe_form: null
+  - slot_was_set:
+    - recipe_key: Amatriciana
+  - slot_was_set:
+    - num_people: 2
+  - slot_was_set:
+    - step_idx: -1
+  - action: action_list_ingredients
+  - intent: user_ready
+  - action: action_next_step
+  - slot_was_set:
+    - recipe_key: Amatriciana
+  - slot_was_set:
+    - num_people: 2
+  - slot_was_set:
+    - step_idx: 0
+  - slot_was_set:
+    - number: null
+  - intent: user_ready
+  - action: action_next_step
+  - slot_was_set:
+    - recipe_key: Amatriciana
+  - slot_was_set:
+    - num_people: 2
+  - slot_was_set:
+    - step_idx: 1
+  - slot_was_set:
+    - number: null
+  - intent: out_of_scope
+  - action: utter_out_of_scope
+  - intent: user_ready
+  - action: action_next_step
+  - slot_was_set:
+    - recipe_key: Amatriciana
+  - slot_was_set:
+    - num_people: 2
+  - slot_was_set:
+    - step_idx: 2
+  - slot_was_set:
+    - number: null
+  - intent: out_of_scope
+  - action: utter_out_of_scope
+
+- story: interactive_story_1
+  steps:
+  - intent: chitchatfaq
+  - action: utter_chitchatfaq
+  - intent: ask_recipe
+  - action: select_recipe_form
+  - active_loop: select_recipe_form
+  - slot_was_set:
+    - number: null
+  - slot_was_set:
+    - requested_slot: recipe
+  - slot_was_set:
+    - recipe: null
+  - slot_was_set:
+    - number: null
+  - slot_was_set:
+    - recipe: amatriciana
+  - slot_was_set:
+    - recipe: Amatriciana
+  - slot_was_set:
+    - number: null
+  - slot_was_set:
+    - requested_slot: number
+  - slot_was_set:
+    - number: '4'
+  - slot_was_set:
+    - number: '4'
+  - slot_was_set:
+    - requested_slot: confirm_recipe_form
+  - slot_was_set:
+    - confirm_recipe_form: true
+  - slot_was_set:
+    - requested_slot: null
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_submit_recipe_form
+  - slot_was_set:
+    - recipe: null
+  - slot_was_set:
+    - number: null
+  - slot_was_set:
+    - confirm_recipe_form: null
+  - slot_was_set:
+    - recipe_key: Amatriciana
+  - slot_was_set:
+    - num_people: 4
+  - slot_was_set:
+    - step_idx: -1
+  - action: action_list_ingredients
+  - intent: user_ready
+  - action: action_next_step
+  - slot_was_set:
+    - recipe_key: Amatriciana
+  - slot_was_set:
+    - num_people: 4
+  - slot_was_set:
+    - step_idx: 0
+  - slot_was_set:
+    - number: null
+  - intent: user_ready
+  - action: action_next_step
+  - slot_was_set:
+    - recipe_key: Amatriciana
+  - slot_was_set:
+    - num_people: 4
+  - slot_was_set:
+    - step_idx: 1
+  - slot_was_set:
+    - number: null
+  - intent: user_ready
+  - action: action_next_step
+  - slot_was_set:
+    - recipe_key: Amatriciana
+  - slot_was_set:
+    - num_people: 4
+  - slot_was_set:
+    - step_idx: 2
+  - slot_was_set:
+    - number: null
+  - intent: stop
+  - action: action_stop_recipe
+  - slot_was_set:
+    - recipe_key: null
+  - slot_was_set:
+    - num_people: null
+  - slot_was_set:
+    - step_idx: null
+  - intent: select_recipe
+    entities:
+    - recipe: carbonara
+    - number: '3'
+  - slot_was_set:
+    - recipe: carbonara
+  - slot_was_set:
+    - number: '3'
+  - action: select_recipe_form
+  - active_loop: select_recipe_form
+  - slot_was_set:
+    - recipe: Carbonara
+  - slot_was_set:
+    - requested_slot: confirm_recipe_form
+  - slot_was_set:
+    - recipe: Carbonara
+  - slot_was_set:
+    - requested_slot: confirm_recipe_form
+  - slot_was_set:
+    - confirm_recipe_form: true
+  - slot_was_set:
+    - requested_slot: null
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_submit_recipe_form
+  - slot_was_set:
+    - recipe: null
+  - slot_was_set:
+    - number: null
+  - slot_was_set:
+    - confirm_recipe_form: null
+  - slot_was_set:
+    - recipe_key: Carbonara
+  - slot_was_set:
+    - num_people: 3
+  - slot_was_set:
+    - step_idx: -1
+  - action: action_list_ingredients
+  - intent: user_ready
+  - action: action_next_step
+  - slot_was_set:
+    - recipe_key: Carbonara
+  - slot_was_set:
+    - num_people: 3
+  - slot_was_set:
+    - step_idx: 0
+  - slot_was_set:
+    - number: null
+  - intent: user_ready
+  - action: action_next_step
+  - slot_was_set:
+    - recipe_key: Carbonara
+  - slot_was_set:
+    - num_people: 3
+  - slot_was_set:
+    - step_idx: 1
+  - slot_was_set:
+    - number: null
+  - intent: skip_step
+    entities:
+    - number: '5'
+  - slot_was_set:
+    - number: '5'
+  - action: action_skip_step
+  - slot_was_set:
+    - recipe_key: Carbonara
+  - slot_was_set:
+    - num_people: 3
+  - slot_was_set:
+    - step_idx: 6
+  - slot_was_set:
+    - number: null
+  - intent: user_ready
+  - action: action_next_step
+  - slot_was_set:
+    - recipe_key: Carbonara
+  - slot_was_set:
+    - num_people: 3
+  - slot_was_set:
+    - step_idx: 7
+  - slot_was_set:
+    - number: null
+  - intent: how_much_ing
+  - action: action_how_much_ing
+  - slot_was_set:
+    - ingredient: null
+  - intent: add_shop_ing
+    entities:
+    - number: '200'
+    - unit: grams
+    - ingredient: guanciale
+  - slot_was_set:
+    - number: '200'
+  - slot_was_set:
+    - ingredient: guanciale
+  - slot_was_set:
+    - unit: grams
+  - action: action_add_shop_ing
+  - slot_was_set:
+    - number: null
+  - slot_was_set:
+    - unit: null
+  - slot_was_set:
+    - ingredient: null
+  - intent: user_ready
+  - action: action_next_step
+  - slot_was_set:
+    - recipe_key: Carbonara
+  - slot_was_set:
+    - num_people: 3
+  - slot_was_set:
+    - step_idx: 8
+  - slot_was_set:
+    - number: null
+  - intent: user_did_not_understand
+  - action: action_repeat_step
+  - intent: user_ready
+  - action: action_next_step
+  - slot_was_set:
+    - recipe_key: Carbonara
+  - slot_was_set:
+    - num_people: 3
+  - slot_was_set:
+    - step_idx: 9
+  - slot_was_set:
+    - number: null
+  - intent: skip_step
+    entities:
+    - number: '2'
+  - slot_was_set:
+    - number: '2'
+  - action: action_skip_step
+  - slot_was_set:
+    - recipe_key: null
+  - slot_was_set:
+    - num_people: null
+  - slot_was_set:
+    - step_idx: null
+  - slot_was_set:
+    - number: null
+  - intent: show_shopping_list
+  - action: action_show_shopping_list
+  - slot_was_set:
+    - number: null
+
+- story: interactive_story_1
+  steps:
+  - intent: chitchatfaq
+  - action: utter_chitchatfaq
+  - intent: chitchatfaq
+  - action: utter_chitchatfaq
+  - intent: ask_recipe
+  - action: select_recipe_form
+  - active_loop: select_recipe_form
+  - slot_was_set:
+    - number: null
+  - slot_was_set:
+    - requested_slot: recipe
+  - slot_was_set:
+    - recipe: null
+  - slot_was_set:
+    - number: null
+  - slot_was_set:
+    - recipe: cacio e pepe
+  - slot_was_set:
+    - recipe: Cacio e pepe
+  - slot_was_set:
+    - number: null
+  - slot_was_set:
+    - requested_slot: number
+  - slot_was_set:
+    - number: '2'
+  - slot_was_set:
+    - number: '2'
+  - slot_was_set:
+    - requested_slot: confirm_recipe_form
+  - slot_was_set:
+    - confirm_recipe_form: true
+  - slot_was_set:
+    - requested_slot: null
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_submit_recipe_form
+  - slot_was_set:
+    - recipe: null
+  - slot_was_set:
+    - number: null
+  - slot_was_set:
+    - confirm_recipe_form: null
+  - slot_was_set:
+    - recipe_key: Cacio e pepe
+  - slot_was_set:
+    - num_people: 2
+  - slot_was_set:
+    - step_idx: -1
+  - action: action_list_ingredients
+  - intent: user_ready
+  - action: action_next_step
+  - slot_was_set:
+    - recipe_key: Cacio e pepe
+  - slot_was_set:
+    - num_people: 2
+  - slot_was_set:
+    - step_idx: 0
+  - slot_was_set:
+    - number: null
+  - intent: ask_recipe
+  - action: select_recipe_form
+  - active_loop: select_recipe_form
+  - slot_was_set:
+    - number: null
+  - slot_was_set:
+    - requested_slot: recipe
+  - slot_was_set:
+    - recipe: null
+  - slot_was_set:
+    - number: null
+  - slot_was_set:
+    - recipe: Crepes
+  - slot_was_set:
+    - recipe: Crepes
+  - slot_was_set:
+    - number: null
+  - slot_was_set:
+    - requested_slot: number
+  - slot_was_set:
+    - number: '3'
+  - slot_was_set:
+    - number: '3'
+  - slot_was_set:
+    - requested_slot: confirm_recipe_form
+  - slot_was_set:
+    - confirm_recipe_form: true
+  - slot_was_set:
+    - requested_slot: null
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_submit_recipe_form
+  - slot_was_set:
+    - recipe: null
+  - slot_was_set:
+    - number: null
+  - slot_was_set:
+    - confirm_recipe_form: null
+  - slot_was_set:
+    - recipe_key: Crepes
+  - slot_was_set:
+    - num_people: 3
+  - slot_was_set:
+    - step_idx: -1
+  - action: action_list_ingredients

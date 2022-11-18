@@ -14,6 +14,7 @@ intents:
 - deny
 - how_much_ing
 - inform_num_people
+- out_of_scope
 - remove_shop_item
 - select_recipe
 - show_ing_list
@@ -211,6 +212,7 @@ actions:
 - action_submit_recipe_form
 - action_submit_recipe_shop_form
 - utter_chitchatfaq
+- utter_out_of_scope
 - validate_select_recipe_form
 - validate_select_recipe_shop_form
 forms:
