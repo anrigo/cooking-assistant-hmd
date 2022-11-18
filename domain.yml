@@ -23,9 +23,9 @@ intents:
 - user_did_not_understand
 - user_ready
 entities:
+- number
 - recipe
 - ingredient
-- number
 - unit
 slots:
   recipe_key:
@@ -193,6 +193,8 @@ responses:
   utter_out_of_scope:
   - text: Sorry I can only help you with cooking and managing your shopping list.
   - text: Sorry, I can't handle that request.
+  utter_default:
+  - text: Sorry I didn't get that. Can you rephrase?
 actions:
 - action_add_current_recipe_to_list
 - action_add_shop_ing

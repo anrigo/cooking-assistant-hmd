@@ -16,6 +16,7 @@ nlu:
     - Cancel this
     - Cancel please
     - stop this
+    - No, stop this
 - intent: chitchatfaq/where_to_start
   examples: |
     - What can you do?
@@ -70,6 +71,7 @@ nlu:
     - Read page [three]{"entity": "number", "value": "3"}
     - Tell me the list
     - Ok, read my list now
+    - Read my list
 - intent: add_current_recipe_to_list
   examples: |
     - Add this recipe to my list
@@ -86,6 +88,7 @@ nlu:
     - Add a recipe to my list
     - Now add the ingredients to make [crepes](recipe) to my list
     - Add [amatriciana](recipe) ingredients to the list
+    - Add [crepes](recipe) ingredients to yhe list
 - intent: how_much_ing
   examples: |
     - How much [guanciale](ingredient)?
@@ -237,8 +240,10 @@ nlu:
     - For [two]{"entity": "number", "value": "2"}
     - [Two]{"entity": "number", "value": "2"}
     - For me
-    - For [two]{"entity": "number", "value": "2"}
     - Actually, let's make it [four]{"entity": "number", "value": "4"}
+    - [two]{"entity": "number", "value": "2"}
+    - [Two]{"entity": "number", "value": "2"}
+    - For [three]{"entity": "number", "value": "3"}
 - intent: ask_recipe
   examples: |
     - I am hungry
@@ -262,6 +267,8 @@ nlu:
     - OK then, let's cook something
     - let's cook something
     - Let's cook
+    - Ok then, let's cook!
+    - Let's start cooking
 - intent: select_recipe
   examples: |
     - I'll prepare [waffles](recipe)
@@ -307,8 +314,16 @@ nlu:
     - [Crepes](recipe) for [three]{"entity": "number", "value": "3"}
     - [Amatriciana](recipe)
     - [Amatriciana](recipe) for [two]{"entity": "number", "value": "2"}
-    - Let's cook [crepes](recipe)
     - Let's go for [crepes](recipe) for [three]{"entity": "number", "value": "3"}
+    - Let's cook [carbonara](recipe)
+    - Actually let's go for [cacio e pepe](recipe) for [two]{"entity": "number", "value": "2"}
+    - Actually, let's cook [cacio e pepe](recipe) for [two]{"entity": "number", "value": "2"}
+    - Let's cook [crepes](recipe) instead
+    - Let's cook [amatriciana](recipe) for [two]{"entity": "number", "value": "2"}
+    - [amatrcina](recipe)
+    - [Amatriciana](recipe)
+    - Let's cook [crepes](recipe) for [two]{"entity": "number", "value": "2"}
+    - Now I want to cook [carbonara](recipe)
 - intent: chitchatfaq/greet
   examples: |
     - hey
@@ -369,6 +384,7 @@ nlu:
     - not really
     - No
     - Actually, no
+    - Mm, no
 - intent: chitchatfaq/mood_great
   examples: |
     - perfect
@@ -464,6 +480,7 @@ nlu:
     - What can you do
     - hi
     - What can you do with the list?
+    - What can yiu do?
 - synonym: '500'
   examples: |
     - five hundred
@@ -474,6 +491,9 @@ nlu:
 - synonym: '300'
   examples: |
     - three hundred
+- synonym: '0.5'
+  examples: |
+    - half
 - synonym: '11'
   examples: |
     - eleven
@@ -493,9 +513,6 @@ nlu:
 - synonym: '5'
   examples: |
     - five
-- synonym: '0.5'
-  examples: |
-    - half
 - synonym: '6'
   examples: |
     - six

@@ -324,7 +324,7 @@ class ActionSubmitRecipeForm(Action):
             return [SlotSet("recipe", None), SlotSet("number", None), SlotSet("confirm_recipe_form", None)]
         elif confirm is None:
             # if it's None (default value) the user said No to the explicit confirmation
-            return [SlotSet("recipe", None), SlotSet("number", None), SlotSet("confirm_recipe_form", None), FollowupAction(name="action_ask_recipe")]
+            return [SlotSet("recipe", None), SlotSet("number", None), SlotSet("confirm_recipe_form", None), FollowupAction(name="select_recipe_form")]
 
         state = State(tracker)
         state.recipe_key = tracker.get_slot('recipe')
@@ -511,7 +511,7 @@ class ActionAddCurrentRecipeToList(Action):
         if state.recipe_key is None:
             # no recipe is currently running
             # run a form to select the recipe to add
-            return [FollowupAction(name="action_ask_recipe")]
+            return [FollowupAction(name="select_recipe_shop_form")]
 
         ings = recipes[state.recipe_key].ingredients
 
@@ -596,7 +596,7 @@ class ActionSubmitRecipeToShopForm(Action):
             return [SlotSet("recipe", None), SlotSet("number", None), SlotSet("confirm_recipe_form", None)]
         elif confirm is None:
             # if it's None (default value) the user said No to the explicit confirmation
-            return [SlotSet("recipe", None), SlotSet("number", None), SlotSet("confirm_recipe_form", None), FollowupAction(name="action_ask_recipe")]
+            return [SlotSet("recipe", None), SlotSet("number", None), SlotSet("confirm_recipe_form", None), FollowupAction(name="select_recipe_shop_form")]
 
         recipe_key_shop = tracker.get_slot('recipe')
         ings = recipes[recipe_key_shop].ingredients
