@@ -3142,7 +3142,7 @@ stories:
     - number: null
   - slot_was_set:
     - confirm_recipe_form: null
-  - checkpoint: 
+  - checkpoint: direct_Cacio_list
 
 - story: direct_Carbonara_direct_amatriciana_list_show
   steps:
