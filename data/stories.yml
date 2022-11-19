@@ -2,11 +2,6 @@ version: "2.0"
 
 stories:
 
-  # - intent: show_shopping_list
-  # - action: action_show_shopping_list
-  # - slot_was_set:
-  #   - number: null
-
 - story: select_amatriciana
   steps:
   - intent: chitchatfaq
@@ -2798,5 +2793,470 @@ stories:
   - action: action_backward_step
   - slot_was_set:
     - step_idx: 3
+  - slot_was_set:
+    - number: null
+
+- story: check_sel_amatriciana_cacio_list_show_next
+  steps:
+  - checkpoint: check_sel_Amatriciana
+  - intent: user_ready
+  - action: action_next_step
+  - slot_was_set:
+    - step_idx: 0
+  - slot_was_set:
+    - number: null
+  - intent: user_ready
+  - action: action_next_step
+  - slot_was_set:
+    - step_idx: 1
+  - slot_was_set:
+    - number: null
+  - intent: user_ready
+  - action: action_next_step
+  - slot_was_set:
+    - step_idx: 2
+  - slot_was_set:
+    - number: null
+  - checkpoint: Cacio_list
+  - intent: show_shopping_list
+  - action: action_show_shopping_list
+  - slot_was_set:
+    - number: null
+
+- story: check_sel_Carbonara_crepes_list_show_next
+  steps:
+  - checkpoint: check_sel_Carbonara
+  - intent: user_ready
+  - action: action_next_step
+  - slot_was_set:
+    - step_idx: 0
+  - slot_was_set:
+    - number: null
+  - intent: user_ready
+  - action: action_next_step
+  - slot_was_set:
+    - step_idx: 1
+  - slot_was_set:
+    - number: null
+  - intent: user_ready
+  - action: action_next_step
+  - slot_was_set:
+    - step_idx: 2
+  - slot_was_set:
+    - number: null
+  - checkpoint: Crepes_list
+  - intent: show_shopping_list
+  - action: action_show_shopping_list
+  - slot_was_set:
+    - number: null
+
+- story: check_sel_Crepes_Amatriciana_list_show_next
+  steps:
+  - checkpoint: check_sel_Crepes
+  - intent: user_ready
+  - action: action_next_step
+  - slot_was_set:
+    - step_idx: 0
+  - slot_was_set:
+    - number: null
+  - intent: user_ready
+  - action: action_next_step
+  - slot_was_set:
+    - step_idx: 1
+  - slot_was_set:
+    - number: null
+  - intent: user_ready
+  - action: action_next_step
+  - slot_was_set:
+    - step_idx: 2
+  - slot_was_set:
+    - number: null
+  - checkpoint: Amatriciana_list
+  - intent: show_shopping_list
+  - action: action_show_shopping_list
+  - slot_was_set:
+    - number: null
+
+- story: check_sel_Carbonara_amatriciana_list_show_next
+  steps:
+  - checkpoint: check_sel_Carbonara
+  - intent: user_ready
+  - action: action_next_step
+  - slot_was_set:
+    - step_idx: 0
+  - slot_was_set:
+    - number: null
+  - intent: user_ready
+  - action: action_next_step
+  - slot_was_set:
+    - step_idx: 1
+  - slot_was_set:
+    - number: null
+  - intent: user_ready
+  - action: action_next_step
+  - slot_was_set:
+    - step_idx: 2
+  - slot_was_set:
+    - number: null
+  - checkpoint: Amatriciana_list
+  - intent: show_shopping_list
+  - action: action_show_shopping_list
+  - slot_was_set:
+    - number: null
+
+- story: sel_amatriciana_next_crepes_list
+  steps:
+  - intent: chitchatfaq
+  - action: utter_chitchatfaq
+  - intent: ask_recipe
+  - action: select_recipe_form
+  - active_loop: select_recipe_form
+  - slot_was_set:
+    - number: null
+  - slot_was_set:
+    - requested_slot: recipe
+  - slot_was_set:
+    - recipe: null
+  - slot_was_set:
+    - number: null
+  - slot_was_set:
+    - recipe: Amatriciana
+  - slot_was_set:
+    - recipe: Amatriciana
+  - slot_was_set:
+    - number: null
+  - slot_was_set:
+    - requested_slot: number
+  - slot_was_set:
+    - number: '2'
+  - slot_was_set:
+    - number: '2'
+  - slot_was_set:
+    - requested_slot: confirm_recipe_form
+  - slot_was_set:
+    - confirm_recipe_form: true
+  - slot_was_set:
+    - requested_slot: null
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_submit_recipe_form
+  - slot_was_set:
+    - recipe: null
+  - slot_was_set:
+    - number: null
+  - slot_was_set:
+    - confirm_recipe_form: null
+  - slot_was_set:
+    - recipe_key: Amatriciana
+  - slot_was_set:
+    - num_people: 2
+  - slot_was_set:
+    - step_idx: -1
+  - action: action_list_ingredients
+  - intent: user_ready
+  - action: action_next_step
+  - slot_was_set:
+    - step_idx: 0
+  - slot_was_set:
+    - number: null
+  - intent: add_recipe_to_list
+    entities:
+    - recipe: crepes
+  - slot_was_set:
+    - recipe: crepes
+  - action: select_recipe_shop_form
+  - active_loop: select_recipe_shop_form
+  - slot_was_set:
+    - recipe: Crepes
+  - slot_was_set:
+    - number: null
+  - slot_was_set:
+    - requested_slot: number
+  - slot_was_set:
+    - recipe: Crepes
+  - slot_was_set:
+    - number: null
+  - slot_was_set:
+    - requested_slot: number
+  - slot_was_set:
+    - number: '3'
+  - slot_was_set:
+    - number: '3'
+  - slot_was_set:
+    - requested_slot: confirm_recipe_form
+  - slot_was_set:
+    - confirm_recipe_form: true
+  - slot_was_set:
+    - requested_slot: null
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_submit_recipe_shop_form
+  - slot_was_set:
+    - recipe: null
+  - slot_was_set:
+    - number: null
+  - slot_was_set:
+    - confirm_recipe_form: null
+
+- story: direct_carbonara_list
+  steps:
+  - intent: add_recipe_to_list
+    entities:
+    - recipe: carbonara
+    - number: '2'
+  - slot_was_set:
+    - recipe: carbonara
+  - slot_was_set:
+    - number: '2'
+  - action: select_recipe_shop_form
+  - active_loop: select_recipe_shop_form
+  - slot_was_set:
+    - recipe: Carbonara
+  - slot_was_set:
+    - requested_slot: confirm_recipe_form
+  - slot_was_set:
+    - recipe: Carbonara
+  - slot_was_set:
+    - requested_slot: confirm_recipe_form
+  - slot_was_set:
+    - confirm_recipe_form: true
+  - slot_was_set:
+    - requested_slot: null
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_submit_recipe_shop_form
+  - slot_was_set:
+    - recipe: null
+  - slot_was_set:
+    - number: null
+  - slot_was_set:
+    - confirm_recipe_form: null
+  - checkpoint: direct_Carbonara_list
+
+- story: direct_Amatriciana_list
+  steps:
+  - intent: add_recipe_to_list
+    entities:
+    - recipe: Amatriciana
+    - number: '2'
+  - slot_was_set:
+    - recipe: Amatriciana
+  - slot_was_set:
+    - number: '2'
+  - action: select_recipe_shop_form
+  - active_loop: select_recipe_shop_form
+  - slot_was_set:
+    - recipe: Amatriciana
+  - slot_was_set:
+    - requested_slot: confirm_recipe_form
+  - slot_was_set:
+    - recipe: Amatriciana
+  - slot_was_set:
+    - requested_slot: confirm_recipe_form
+  - slot_was_set:
+    - confirm_recipe_form: true
+  - slot_was_set:
+    - requested_slot: null
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_submit_recipe_shop_form
+  - slot_was_set:
+    - recipe: null
+  - slot_was_set:
+    - number: null
+  - slot_was_set:
+    - confirm_recipe_form: null
+  - checkpoint: direct_Amatriciana_list
+
+- story: direct_Crepes_list
+  steps:
+  - intent: add_recipe_to_list
+    entities:
+    - recipe: Crepes
+    - number: '2'
+  - slot_was_set:
+    - recipe: Crepes
+  - slot_was_set:
+    - number: '2'
+  - action: select_recipe_shop_form
+  - active_loop: select_recipe_shop_form
+  - slot_was_set:
+    - recipe: Crepes
+  - slot_was_set:
+    - requested_slot: confirm_recipe_form
+  - slot_was_set:
+    - recipe: Crepes
+  - slot_was_set:
+    - requested_slot: confirm_recipe_form
+  - slot_was_set:
+    - confirm_recipe_form: true
+  - slot_was_set:
+    - requested_slot: null
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_submit_recipe_shop_form
+  - slot_was_set:
+    - recipe: null
+  - slot_was_set:
+    - number: null
+  - slot_was_set:
+    - confirm_recipe_form: null
+  - checkpoint: direct_Crepes_list
+
+- story: direct_Cacio_list
+  steps:
+  - intent: add_recipe_to_list
+    entities:
+    - recipe: Cacio e pepe
+    - number: '2'
+  - slot_was_set:
+    - recipe: Cacio e pepe
+  - slot_was_set:
+    - number: '2'
+  - action: select_recipe_shop_form
+  - active_loop: select_recipe_shop_form
+  - slot_was_set:
+    - recipe: Cacio e pepe
+  - slot_was_set:
+    - requested_slot: confirm_recipe_form
+  - slot_was_set:
+    - recipe: Cacio e pepe
+  - slot_was_set:
+    - requested_slot: confirm_recipe_form
+  - slot_was_set:
+    - confirm_recipe_form: true
+  - slot_was_set:
+    - requested_slot: null
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_submit_recipe_shop_form
+  - slot_was_set:
+    - recipe: null
+  - slot_was_set:
+    - number: null
+  - slot_was_set:
+    - confirm_recipe_form: null
+  - checkpoint: 
+
+- story: direct_Carbonara_direct_amatriciana_list_show
+  steps:
+  - checkpoint: direct_Carbonara
+  - checkpoint: direct_Amatriciana_list
+  - intent: show_shopping_list
+  - action: action_show_shopping_list
+  - slot_was_set:
+    - number: null
+
+- story: direct_Crepes_direct_Cacio_list_show
+  steps:
+  - checkpoint: direct_Crepes
+  - checkpoint: direct_Cacio_list
+  - intent: show_shopping_list
+  - action: action_show_shopping_list
+  - slot_was_set:
+    - number: null
+
+- story: direct_Cacio_direct_Crepes_list_show
+  steps:
+  - checkpoint: direct_Cacio
+  - checkpoint: direct_Crepes_list
+  - intent: show_shopping_list
+  - action: action_show_shopping_list
+  - slot_was_set:
+    - number: null
+
+- story: check_sel_Cacio_direct_Crepes_list_show
+  steps:
+  - checkpoint: check_sel_Cacio
+  - checkpoint: direct_Crepes_list
+  - intent: show_shopping_list
+  - action: action_show_shopping_list
+  - slot_was_set:
+    - number: null
+
+- story: check_sel_Amatriciana_direct_Crepes_list_show
+  steps:
+  - checkpoint: check_sel_Amatriciana
+  - checkpoint: direct_Crepes_list
+  - intent: show_shopping_list
+  - action: action_show_shopping_list
+  - slot_was_set:
+    - number: null
+
+- story: check_sel_Crepes_direct_Carbonara_list_show
+  steps:
+  - checkpoint: check_sel_Crepes
+  - checkpoint: direct_Carbonara_list
+  - intent: show_shopping_list
+  - action: action_show_shopping_list
+  - slot_was_set:
+    - number: null
+
+- story: direct_Crepes_list_check_sel_Cacio_show
+  steps:
+  - checkpoint: direct_Crepes_list
+  - checkpoint: check_sel_Cacio
+  - intent: show_shopping_list
+  - action: action_show_shopping_list
+  - slot_was_set:
+    - number: null
+
+- story: direct_Carbonara_list_check_sel_Amatriciana_show
+  steps:
+  - checkpoint: direct_Carbonara_list
+  - checkpoint: check_sel_Amatriciana
+  - intent: show_shopping_list
+  - action: action_show_shopping_list
+  - slot_was_set:
+    - number: null
+
+- story: direct_Amatriciana_list_check_sel_Cacio_show
+  steps:
+  - checkpoint: direct_Amatriciana_list
+  - checkpoint: check_sel_Cacio
+  - intent: show_shopping_list
+  - action: action_show_shopping_list
+  - slot_was_set:
+    - number: null
+
+- story: direct_Crepes_list_compl_Cacio_show
+  steps:
+  - checkpoint: direct_Crepes_list
+  - checkpoint: compl_Cacio
+  - intent: show_shopping_list
+  - action: action_show_shopping_list
+  - slot_was_set:
+    - number: null
+
+- story: direct_Crepes_list_compl_Carbonara_show
+  steps:
+  - checkpoint: direct_Crepes_list
+  - checkpoint: compl_Carbonara
+  - intent: show_shopping_list
+  - action: action_show_shopping_list
+  - slot_was_set:
+    - number: null
+
+- story: direct_Amatriciana_list_compl_Cacio_show
+  steps:
+  - checkpoint: direct_Amatriciana_list
+  - checkpoint: compl_Cacio
+  - intent: show_shopping_list
+  - action: action_show_shopping_list
+  - slot_was_set:
+    - number: null
+
+- story: direct_Amatriciana_list_compl_Carbonara_show
+  steps:
+  - checkpoint: direct_Amatriciana_list
+  - checkpoint: compl_Carbonara
+  - intent: show_shopping_list
+  - action: action_show_shopping_list
   - slot_was_set:
     - number: null

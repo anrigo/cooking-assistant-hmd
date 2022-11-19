@@ -95,6 +95,8 @@ nlu:
     - Now add the ingredients to make [crepes](recipe) to my list
     - Add [amatriciana](recipe) ingredients to the list
     - Add [crepes](recipe) ingredients to yhe list
+    - Add [crepes](recipe) to my list
+    - Add [carbonara](recipe) for [two]{"entity": "number", "value": "2"} to my shopping list
 - intent: how_much_ing
   examples: |
     - How much [guanciale](ingredient)?
