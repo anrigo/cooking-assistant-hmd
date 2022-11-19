@@ -142,7 +142,6 @@ nlu:
     - Skip [three]{"entity": "number", "value": "3"} steps
     - Skip [two]{"entity": "number", "value": "2"} steps
     - Skip [five]{"entity": "number", "value": "5"} steps
-    - Skip [five]{"entity": "number", "value": "5"} steps
 - intent: back_step
   examples: |
     - Can we go back [two](number) steps?
@@ -349,7 +348,8 @@ nlu:
     - Let's go with [cacio e pepe](recipe)
     - [Crepes](recipe) seem nice
     - [crepes](recipe)
-    - Let's cook [amatriciana](recipe) for [two]{"entity": "number", "value": "2"}
+    - let's cook [carbonara](recipe)
+    - let's cook [amatriciana](recipe) for [one]{"entity": "number", "value": "1"}
 - intent: chitchatfaq/greet
   examples: |
     - hey
