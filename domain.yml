@@ -24,10 +24,10 @@ intents:
 - user_did_not_understand
 - user_ready
 entities:
-- number
 - recipe
-- ingredient
+- number
 - unit
+- ingredient
 slots:
   recipe_key:
     type: text
