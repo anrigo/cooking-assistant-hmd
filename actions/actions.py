@@ -35,7 +35,7 @@ from rasa_sdk.types import DomainDict
 from rasa_sdk.events import SlotSet, FollowupAction, EventType
 from difflib import SequenceMatcher
 import numpy as np
-from regex import R
+from copy import deepcopy
 
 from actions.data import recipes
 
@@ -49,13 +49,25 @@ class State():
     num_people = None
     step_idx = None
 
+    prev_state = None
+
     def __init__(self, tracker: Tracker) -> None:
         self.recipe_key = tracker.get_slot('recipe_key')
         self.num_people = tracker.get_slot('num_people')
         self.step_idx = tracker.get_slot('step_idx')
+        self.prev_state = deepcopy(self)
 
     def slotset(self):
-        return [SlotSet('recipe_key', self.recipe_key), SlotSet('num_people', self.num_people), SlotSet('step_idx', self.step_idx)]
+        slots = list()
+
+        if self.prev_state.recipe_key != self.recipe_key:
+            slots.append(SlotSet('recipe_key', self.recipe_key))
+        if self.prev_state.num_people != self.num_people:
+            slots.append(SlotSet('num_people', self.num_people))
+        if self.prev_state.step_idx != self.step_idx:
+            slots.append(SlotSet('step_idx', self.step_idx))
+
+        return slots
 
 
 shoplist = list()
