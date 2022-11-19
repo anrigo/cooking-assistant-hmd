@@ -97,6 +97,8 @@ nlu:
     - Add [crepes](recipe) ingredients to yhe list
     - Add [crepes](recipe) to my list
     - Add [carbonara](recipe) for [two]{"entity": "number", "value": "2"} to my shopping list
+    - Add [crepes](recipe) to my list
+    - Add [carbonara](recipe) to my list
 - intent: how_much_ing
   examples: |
     - How much [guanciale](ingredient)?
@@ -144,6 +146,7 @@ nlu:
     - Skip [three]{"entity": "number", "value": "3"} steps
     - Skip [two]{"entity": "number", "value": "2"} steps
     - Skip [five]{"entity": "number", "value": "5"} steps
+    - Skip [one]{"entity": "number", "value": "1"} step
 - intent: back_step
   examples: |
     - Can we go back [two](number) steps?
@@ -258,6 +261,8 @@ nlu:
     - For [four]{"entity": "number", "value": "4"} peopl
     - Merely [two]{"entity": "number", "value": "2"}
     - For [three]{"entity": "number", "value": "3"} people
+    - For [two]{"entity": "number", "value": "2"}
+    - For [three]{"entity": "number", "value": "3"}
 - intent: ask_recipe
   examples: |
     - I am hungry
@@ -352,6 +357,13 @@ nlu:
     - [crepes](recipe)
     - let's cook [carbonara](recipe)
     - let's cook [amatriciana](recipe) for [one]{"entity": "number", "value": "1"}
+    - let's cook [carbonara](recipe) for [three]{"entity": "number", "value": "3"}
+    - let's cook [amatriciana](recipe)
+    - [Amatriciana](recipe)
+    - [Cacio e pepe](recipe) for [two]{"entity": "number", "value": "2"}
+    - let's cook [carbonara](recipe)
+    - [Crepes](recipe) for [three]{"entity": "number", "value": "3"}
+    - [Cacio e pepe](recipe) for [three]{"entity": "number", "value": "3"}
 - intent: chitchatfaq/greet
   examples: |
     - hey
