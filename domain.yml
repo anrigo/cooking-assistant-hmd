@@ -25,9 +25,9 @@ intents:
 - user_ready
 entities:
 - recipe
+- ingredient
 - number
 - unit
-- ingredient
 slots:
   recipe_key:
     type: text

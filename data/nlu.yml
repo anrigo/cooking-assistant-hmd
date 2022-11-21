@@ -97,7 +97,6 @@ nlu:
     - Add [crepes](recipe) ingredients to yhe list
     - Add [crepes](recipe) to my list
     - Add [carbonara](recipe) for [two]{"entity": "number", "value": "2"} to my shopping list
-    - Add [crepes](recipe) to my list
     - Add [carbonara](recipe) to my list
 - intent: how_much_ing
   examples: |
@@ -117,6 +116,7 @@ nlu:
     - How much [guanciale](ingredient)
     - How much [butter](ingredient)
     - How much?
+    - To [pepper]{"entity": "ingredient", "value": "black pepper"}
     - To [pepper]{"entity": "ingredient", "value": "black pepper"}
 - intent: show_ing_list
   examples: |
@@ -147,6 +147,8 @@ nlu:
     - Skip [two]{"entity": "number", "value": "2"} steps
     - Skip [five]{"entity": "number", "value": "5"} steps
     - Skip [one]{"entity": "number", "value": "1"} step
+    - Skip [three]{"entity": "number", "value": "3"} steps
+    - skip [four]{"entity": "number", "value": "4"} steps
 - intent: back_step
   examples: |
     - Can we go back [two](number) steps?
@@ -173,6 +175,7 @@ nlu:
     - can you repeat?
     - i'm sorry, can you repeat?
     - i did not understand, can you repeat?
+    - Can you repeat this step?
 - intent: user_ready
   examples: |
     - I'm ready
@@ -261,8 +264,6 @@ nlu:
     - For [four]{"entity": "number", "value": "4"} peopl
     - Merely [two]{"entity": "number", "value": "2"}
     - For [three]{"entity": "number", "value": "3"} people
-    - For [two]{"entity": "number", "value": "2"}
-    - For [three]{"entity": "number", "value": "3"}
 - intent: ask_recipe
   examples: |
     - I am hungry
@@ -358,12 +359,10 @@ nlu:
     - let's cook [carbonara](recipe)
     - let's cook [amatriciana](recipe) for [one]{"entity": "number", "value": "1"}
     - let's cook [carbonara](recipe) for [three]{"entity": "number", "value": "3"}
-    - let's cook [amatriciana](recipe)
-    - [Amatriciana](recipe)
     - [Cacio e pepe](recipe) for [two]{"entity": "number", "value": "2"}
-    - let's cook [carbonara](recipe)
-    - [Crepes](recipe) for [three]{"entity": "number", "value": "3"}
     - [Cacio e pepe](recipe) for [three]{"entity": "number", "value": "3"}
+    - let's cook [amatriciana](recipe) for [two]{"entity": "number", "value": "2"}
+    - Let's cook [carbonara](recipe) for [five]{"entity": "number", "value": "5"}
 - intent: chitchatfaq/greet
   examples: |
     - hey
