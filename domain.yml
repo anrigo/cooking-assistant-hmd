@@ -82,6 +82,8 @@ responses:
   - text: Ok, skipping {number} steps
   utter_recipe_added_to_list:
   - text: All {recipe} ingredients are now in your shopping list.
+  utter_current_recipe_added_to_list:
+  - text: All {recipe_key} ingredients are now in your shopping list.
   utter_repeat_ing:
   - text: |-
       I coudn't understand the ingredient you are asking for, or the ingredient is not part of the recipe.

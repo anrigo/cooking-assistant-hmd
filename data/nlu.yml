@@ -1,9 +1,5 @@
 version: "2.0"
 nlu:
-- intent: chitchatfaq/how_to_shopping_list
-  examples: |
-    - What can you do with the shopping list?
-    - How can I use the shopping list?
 - intent: stop
   examples: |
     - Stop this recipe
@@ -17,16 +13,6 @@ nlu:
     - Cancel please
     - stop this
     - No, stop this
-- intent: chitchatfaq/where_to_start
-  examples: |
-    - What can you do?
-    - What can you do for me?
-    - How can you help me?
-    - How can I start cooking?
-    - Help
-    - help
-    - Please help
-    - Please help me
 - intent: add_shop_ing
   examples: |
     - Add [five](number) [eggs](ingredient) to my list
@@ -83,6 +69,7 @@ nlu:
     - Add this recipe to my list
     - Add the current recipe to the list
     - Add this recipe to my shopping list
+    - Add this recipe to the list
 - intent: add_recipe_to_list
   examples: |
     - Add a recipe to my shopping list
@@ -126,6 +113,7 @@ nlu:
     - Tell me the ingredients again
     - Give me the ingredients list
     - Repeat the ingredients
+    - Tell me all the ingredients
 - intent: skip_step
   examples: |
     - Skip this step
@@ -362,36 +350,9 @@ nlu:
     - [Cacio e pepe](recipe) for [two]{"entity": "number", "value": "2"}
     - [Cacio e pepe](recipe) for [three]{"entity": "number", "value": "3"}
     - Let's cook [carbonara](recipe) for [five]{"entity": "number", "value": "5"}
-    - [Amatriciana](recipe)
     - Actually, let's cook [carbonara](recipe) for [two]{"entity": "number", "value": "2"}
     - Actually, let's cook [Carbonara](recipe) for [two]{"entity": "number", "value": "2"}
-- intent: chitchatfaq/greet
-  examples: |
-    - hey
-    - hello
-    - hi
-    - hello there
-    - good morning
-    - good evening
-    - morning
-    - hey there
-    - let's go
-    - hey dude
-    - goodmorning
-    - goodevening
-    - good afternoon
-- intent: chitchatfaq/goodbye
-  examples: |
-    - good afternoon
-    - good by
-    - see you later
-    - good night
-    - bye
-    - goodbye
-    - have a nice day
-    - see you around
-    - bye bye
-    - talk to you later
+    - [Amatriciana](recipe) for [three]{"entity": "number", "value": "3"}
 - intent: affirm
   examples: |
     - yes
@@ -427,6 +388,60 @@ nlu:
     - No
     - Actually, no
     - Mm, no
+- intent: chitchatfaq/how_to_shopping_list
+  examples: |
+    - What can you do with the shopping list?
+    - How can I use the shopping list?
+    - How do I manage my shopping list?
+    - What can you do with the shopping list?
+    - What can you do with the list?
+- intent: chitchatfaq/where_to_start
+  examples: |
+    - What can you do?
+    - What can you do for me?
+    - How can you help me?
+    - How can I start cooking?
+    - Help
+    - help
+    - Please help
+    - Please help me
+    - What can you do
+    - What can yiu do?
+    - So, what can you do?
+    - What can you do?
+    - What can you do for me?
+- intent: chitchatfaq/greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - morning
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+    - Hi!
+    - Hi
+    - Hey bro
+    - Who are you?
+- intent: chitchatfaq/goodbye
+  examples: |
+    - good afternoon
+    - good by
+    - see you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - talk to you later
+    - Bye
 - intent: chitchatfaq/mood_great
   examples: |
     - perfect
@@ -459,6 +474,7 @@ nlu:
     - extremly sad
     - so saad
     - so sad
+    - I'm sad
 - intent: chitchatfaq/bot_challenge
   examples: |
     - are you a bot?
@@ -492,6 +508,7 @@ nlu:
     - Say something funny
     - Tell me a joke
     - Tell me something funny
+    - tell me a joke
 - intent: chitchatfaq/say_something_else
   examples: |
     - Can you say anything else?
@@ -509,25 +526,6 @@ nlu:
     - Who's the US President?
     - Play despacito
     - Play a song
-- intent: chitchatfaq
-  examples: |
-    - Hi!
-    - What can you do for me?
-    - How do I manage my shopping list?
-    - What can you do with the shopping list?
-    - tell me a joke
-    - Hi
-    - How are you?
-    - I'm sad
-    - Bye
-    - Hey bro
-    - What can you do
-    - hi
-    - What can you do with the list?
-    - What can yiu do?
-    - So, what can you do?
-    - Who are you?
-    - What can you do?
 - synonym: '500'
   examples: |
     - five hundred
