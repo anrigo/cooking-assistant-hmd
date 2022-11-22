@@ -151,7 +151,7 @@ responses:
   - text: I am your cooking assistant and I'm here to help you select a recipe and follow its steps!
   utter_chitchatfaq/how_to_shopping_list:
   - text: |-
-      You can add a recipe to the shopping list, or you can add a single ingredient for example by saying "Add butter to my list"
+      You can add a recipe to the shopping list for example by saying "add carbonara to my list", or you can add a single ingredient for example by saying "Add butter to my list"
       You can ask me to read the list by saying "Read me my shopping list".
       If the list has multiple pages you can choose which one to check out by saying "Show me page two of my list".
       Each ingredient of the list has an ID, for example "3 butter", you can remove it by saying "Remove item three".
