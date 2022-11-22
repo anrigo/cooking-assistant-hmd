@@ -333,7 +333,7 @@ class ActionSubmitRecipeForm(Action):
         if confirm is False:
             # if it's False, the user has asked to exit the form
             utt(dispatcher, 'utter_stopping_recipe')
-            return [SlotSet("recipe", None), SlotSet("number", None), SlotSet("confirm_recipe_form", None)]
+            return [SlotSet("recipe", None), SlotSet("number", None), SlotSet("confirm_recipe_form", None), FollowupAction(name="action_listen")]
         elif confirm is None:
             # if it's None (default value) the user said No to the explicit confirmation
             return [SlotSet("recipe", None), SlotSet("number", None), SlotSet("confirm_recipe_form", None), FollowupAction(name="select_recipe_form")]
@@ -605,7 +605,7 @@ class ActionSubmitRecipeToShopForm(Action):
         if confirm is False:
             # if it's False, the user has asked to exit the form
             utt(dispatcher, 'utter_stopping_recipe')
-            return [SlotSet("recipe", None), SlotSet("number", None), SlotSet("confirm_recipe_form", None)]
+            return [SlotSet("recipe", None), SlotSet("number", None), SlotSet("confirm_recipe_form", None), FollowupAction(name="action_listen")]
         elif confirm is None:
             # if it's None (default value) the user said No to the explicit confirmation
             return [SlotSet("recipe", None), SlotSet("number", None), SlotSet("confirm_recipe_form", None), FollowupAction(name="select_recipe_shop_form")]
