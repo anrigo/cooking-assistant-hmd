@@ -5344,6 +5344,7 @@ stories:
     - step_idx: 0
   - slot_was_set:
     - number: null
+  - intent: user_ready
   - action: action_next_step
   - slot_was_set:
     - step_idx: 1
@@ -5371,6 +5372,7 @@ stories:
     - step_idx: 0
   - slot_was_set:
     - number: null
+  - intent: user_ready
   - action: action_next_step
   - slot_was_set:
     - step_idx: 1
