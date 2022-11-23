@@ -1,0 +1,186 @@
+[
+  {
+    "text": "hello",
+    "intent_response_key_target": "chitchatfaq/greet",
+    "intent_response_key_prediction": {
+      "name": "chitchatfaq/where_to_start",
+      "confidence": 0.34234312176704407
+    }
+  },
+  {
+    "text": "my day was horrible",
+    "intent_response_key_target": "chitchatfaq/mood_unhappy",
+    "intent_response_key_prediction": {
+      "name": "chitchatfaq/goodbye",
+      "confidence": 0.6640854477882385
+    }
+  },
+  {
+    "text": "Will you marry me?",
+    "intent_response_key_target": "chitchatfaq/marry_me",
+    "intent_response_key_prediction": {
+      "name": "chitchatfaq/say_funny",
+      "confidence": 0.3118692636489868
+    }
+  },
+  {
+    "text": "let's go",
+    "intent_response_key_target": "chitchatfaq/greet",
+    "intent_response_key_prediction": {
+      "name": "chitchatfaq/mood_unhappy",
+      "confidence": 0.1887190341949463
+    }
+  },
+  {
+    "text": "good afternoon",
+    "intent_response_key_target": "chitchatfaq/goodbye",
+    "intent_response_key_prediction": {
+      "name": "chitchatfaq/greet",
+      "confidence": 0.9999755024909973
+    }
+  },
+  {
+    "text": "great",
+    "intent_response_key_target": "chitchatfaq/mood_great",
+    "intent_response_key_prediction": {
+      "name": "chitchatfaq/bot_challenge",
+      "confidence": 0.5272183418273926
+    }
+  },
+  {
+    "text": "I am great",
+    "intent_response_key_target": "chitchatfaq/mood_great",
+    "intent_response_key_prediction": {
+      "name": "chitchatfaq/bot_challenge",
+      "confidence": 0.7207512259483337
+    }
+  },
+  {
+    "text": "I don't feel very well",
+    "intent_response_key_target": "chitchatfaq/mood_unhappy",
+    "intent_response_key_prediction": {
+      "name": "chitchatfaq/mood_great",
+      "confidence": 0.22332435846328735
+    }
+  },
+  {
+    "text": "Who are you?",
+    "intent_response_key_target": "chitchatfaq/bot_challenge",
+    "intent_response_key_prediction": {
+      "name": "chitchatfaq/greet",
+      "confidence": 0.9995141625404358
+    }
+  },
+  {
+    "text": "Are you single?",
+    "intent_response_key_target": "chitchatfaq/marry_me",
+    "intent_response_key_prediction": {
+      "name": "chitchatfaq/bot_challenge",
+      "confidence": 0.4618093967437744
+    }
+  },
+  {
+    "text": "have a nice day",
+    "intent_response_key_target": "chitchatfaq/goodbye",
+    "intent_response_key_prediction": {
+      "name": "chitchatfaq/mood_unhappy",
+      "confidence": 0.4322393834590912
+    }
+  },
+  {
+    "text": "talk to you later",
+    "intent_response_key_target": "chitchatfaq/goodbye",
+    "intent_response_key_prediction": {
+      "name": "chitchatfaq/bot_challenge",
+      "confidence": 0.37718623876571655
+    }
+  },
+  {
+    "text": "so good",
+    "intent_response_key_target": "chitchatfaq/mood_great",
+    "intent_response_key_prediction": {
+      "name": "chitchatfaq/greet",
+      "confidence": 0.315693736076355
+    }
+  },
+  {
+    "text": "unhappy",
+    "intent_response_key_target": "chitchatfaq/mood_unhappy",
+    "intent_response_key_prediction": {
+      "name": "chitchatfaq/bot_challenge",
+      "confidence": 0.17014949023723602
+    }
+  },
+  {
+    "text": "How can I start cooking?",
+    "intent_response_key_target": "chitchatfaq/where_to_start",
+    "intent_response_key_prediction": {
+      "name": "chitchatfaq/how_are_you",
+      "confidence": 0.4326707124710083
+    }
+  },
+  {
+    "text": "good afternoon",
+    "intent_response_key_target": "chitchatfaq/greet",
+    "intent_response_key_prediction": {
+      "name": "chitchatfaq/goodbye",
+      "confidence": 0.9996532797813416
+    }
+  },
+  {
+    "text": "Who are you?",
+    "intent_response_key_target": "chitchatfaq/greet",
+    "intent_response_key_prediction": {
+      "name": "chitchatfaq/bot_challenge",
+      "confidence": 0.9992265105247498
+    }
+  },
+  {
+    "text": "good night",
+    "intent_response_key_target": "chitchatfaq/goodbye",
+    "intent_response_key_prediction": {
+      "name": "chitchatfaq/mood_great",
+      "confidence": 0.6891062259674072
+    }
+  },
+  {
+    "text": "Are you real?",
+    "intent_response_key_target": "chitchatfaq/bot_challenge",
+    "intent_response_key_prediction": {
+      "name": "chitchatfaq/you_busy",
+      "confidence": 0.35919758677482605
+    }
+  },
+  {
+    "text": "see you around",
+    "intent_response_key_target": "chitchatfaq/goodbye",
+    "intent_response_key_prediction": {
+      "name": "chitchatfaq/you_busy",
+      "confidence": 0.23756222426891327
+    }
+  },
+  {
+    "text": "What are you?",
+    "intent_response_key_target": "chitchatfaq/bot_challenge",
+    "intent_response_key_prediction": {
+      "name": "chitchatfaq/where_to_start",
+      "confidence": 0.20867617428302765
+    }
+  },
+  {
+    "text": "Do you love me?",
+    "intent_response_key_target": "chitchatfaq/marry_me",
+    "intent_response_key_prediction": {
+      "name": "chitchatfaq/where_to_start",
+      "confidence": 0.18944485485553741
+    }
+  },
+  {
+    "text": "Are busy?",
+    "intent_response_key_target": "chitchatfaq/you_busy",
+    "intent_response_key_prediction": {
+      "name": "chitchatfaq/bot_challenge",
+      "confidence": 0.5298747420310974
+    }
+  }
+]
