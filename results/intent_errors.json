@@ -1,34 +1,26 @@
 [
   {
-    "text": "Please, interrupt this recipe",
-    "intent": "stop",
+    "text": "How many eggs?",
+    "intent": "how_much_ing",
     "intent_prediction": {
-      "name": "show_ing_list",
-      "confidence": 0.3443036675453186
+      "name": "chitchatfaq",
+      "confidence": 0.9235734343528748
     }
   },
   {
-    "text": "i'm going to make crepes for 4",
-    "intent": "inform_num_people",
+    "text": "Go on three steps",
+    "intent": "skip_step",
     "intent_prediction": {
-      "name": "select_recipe",
-      "confidence": 0.9938420653343201
+      "name": "user_ready",
+      "confidence": 0.9365968108177185
     }
   },
   {
-    "text": "How can I use the shopping list?",
-    "intent": "chitchatfaq",
-    "intent_prediction": {
-      "name": "show_shopping_list",
-      "confidence": 0.6397427320480347
-    }
-  },
-  {
-    "text": "my day was horrible",
+    "text": "let's go",
     "intent": "chitchatfaq",
     "intent_prediction": {
       "name": "user_ready",
-      "confidence": 0.19747351109981537
+      "confidence": 0.882603645324707
     }
   },
   {
@@ -36,23 +28,55 @@
     "intent": "out_of_scope",
     "intent_prediction": {
       "name": "inform_num_people",
-      "confidence": 0.9995271563529968
+      "confidence": 0.9988311529159546
     }
   },
   {
-    "text": "Do you have any recipe proposals?",
-    "intent": "ask_recipe",
+    "text": "Keep going",
+    "intent": "user_ready",
     "intent_prediction": {
       "name": "chitchatfaq",
-      "confidence": 0.9999656081199646
+      "confidence": 0.9999986886978149
     }
   },
   {
-    "text": "Let's start cooking",
-    "intent": "ask_recipe",
+    "text": "That was easy, keep goingo",
+    "intent": "user_ready",
     "intent_prediction": {
       "name": "chitchatfaq",
-      "confidence": 0.9999991059303284
+      "confidence": 0.7409048080444336
+    }
+  },
+  {
+    "text": "y",
+    "intent": "affirm",
+    "intent_prediction": {
+      "name": "chitchatfaq",
+      "confidence": 0.7347285151481628
+    }
+  },
+  {
+    "text": "of course",
+    "intent": "affirm",
+    "intent_prediction": {
+      "name": "add_shop_ing",
+      "confidence": 0.2409011572599411
+    }
+  },
+  {
+    "text": "Play a song",
+    "intent": "out_of_scope",
+    "intent_prediction": {
+      "name": "chitchatfaq",
+      "confidence": 0.9386082887649536
+    }
+  },
+  {
+    "text": "Add butter to my list",
+    "intent": "add_shop_ing",
+    "intent_prediction": {
+      "name": "add_recipe_to_list",
+      "confidence": 0.6010613441467285
     }
   },
   {
@@ -60,7 +84,7 @@
     "intent": "affirm",
     "intent_prediction": {
       "name": "user_ready",
-      "confidence": 0.9978667497634888
+      "confidence": 0.9680936336517334
     }
   },
   {
@@ -72,123 +96,11 @@
     }
   },
   {
-    "text": "I don't think so",
-    "intent": "deny",
-    "intent_prediction": {
-      "name": "user_ready",
-      "confidence": 0.9610543847084045
-    }
-  },
-  {
-    "text": "let's go",
-    "intent": "chitchatfaq",
-    "intent_prediction": {
-      "name": "ask_recipe",
-      "confidence": 0.9433037042617798
-    }
-  },
-  {
-    "text": "great",
-    "intent": "chitchatfaq",
-    "intent_prediction": {
-      "name": "show_ing_list",
-      "confidence": 0.40949293971061707
-    }
-  },
-  {
-    "text": "I am great",
-    "intent": "chitchatfaq",
-    "intent_prediction": {
-      "name": "ask_recipe",
-      "confidence": 0.6939376592636108
-    }
-  },
-  {
-    "text": "I want to order food",
-    "intent": "out_of_scope",
-    "intent_prediction": {
-      "name": "chitchatfaq",
-      "confidence": 0.9978508949279785
-    }
-  },
-  {
-    "text": "What shoud I buy?",
-    "intent": "show_shopping_list",
-    "intent_prediction": {
-      "name": "ask_recipe",
-      "confidence": 0.4757322072982788
-    }
-  },
-  {
-    "text": "To eggs",
-    "intent": "how_much_ing",
-    "intent_prediction": {
-      "name": "add_shop_ing",
-      "confidence": 0.7294413447380066
-    }
-  },
-  {
-    "text": "of course",
-    "intent": "affirm",
-    "intent_prediction": {
-      "name": "deny",
-      "confidence": 0.2787220776081085
-    }
-  },
-  {
-    "text": "wonderful",
-    "intent": "chitchatfaq",
-    "intent_prediction": {
-      "name": "affirm",
-      "confidence": 0.3822563886642456
-    }
-  },
-  {
-    "text": "unhappy",
-    "intent": "chitchatfaq",
-    "intent_prediction": {
-      "name": "affirm",
-      "confidence": 0.28858423233032227
-    }
-  },
-  {
-    "text": "Say something else",
-    "intent": "chitchatfaq",
-    "intent_prediction": {
-      "name": "ask_recipe",
-      "confidence": 0.9951738715171814
-    }
-  },
-  {
-    "text": "Add butter to my list",
-    "intent": "add_shop_ing",
-    "intent_prediction": {
-      "name": "add_recipe_to_list",
-      "confidence": 0.6814348697662354
-    }
-  },
-  {
-    "text": "Go on three steps",
-    "intent": "skip_step",
-    "intent_prediction": {
-      "name": "user_ready",
-      "confidence": 0.9516795873641968
-    }
-  },
-  {
-    "text": "y",
-    "intent": "affirm",
-    "intent_prediction": {
-      "name": "deny",
-      "confidence": 0.5202158689498901
-    }
-  },
-  {
-    "text": "How do I manage my shopping list?",
+    "text": "How can I use the shopping list?",
     "intent": "chitchatfaq",
     "intent_prediction": {
       "name": "show_shopping_list",
-      "confidence": 0.9949645400047302
+      "confidence": 0.9209877252578735
     }
   },
   {
@@ -196,7 +108,63 @@
     "intent": "chitchatfaq",
     "intent_prediction": {
       "name": "ask_recipe",
-      "confidence": 0.9976581931114197
+      "confidence": 0.8396556973457336
+    }
+  },
+  {
+    "text": "I want to order food",
+    "intent": "out_of_scope",
+    "intent_prediction": {
+      "name": "chitchatfaq",
+      "confidence": 0.9904115200042725
+    }
+  },
+  {
+    "text": "I completed this step",
+    "intent": "user_ready",
+    "intent_prediction": {
+      "name": "skip_step",
+      "confidence": 0.7203198075294495
+    }
+  },
+  {
+    "text": "Do you have any recipe proposals?",
+    "intent": "ask_recipe",
+    "intent_prediction": {
+      "name": "chitchatfaq",
+      "confidence": 0.9999996423721313
+    }
+  },
+  {
+    "text": "I'll cook pizza for three people",
+    "intent": "select_recipe",
+    "intent_prediction": {
+      "name": "inform_num_people",
+      "confidence": 0.9988296031951904
+    }
+  },
+  {
+    "text": "never",
+    "intent": "deny",
+    "intent_prediction": {
+      "name": "chitchatfaq",
+      "confidence": 0.9993362426757812
+    }
+  },
+  {
+    "text": "I don't think so",
+    "intent": "deny",
+    "intent_prediction": {
+      "name": "user_ready",
+      "confidence": 0.9928430318832397
+    }
+  },
+  {
+    "text": "How do I manage my shopping list?",
+    "intent": "chitchatfaq",
+    "intent_prediction": {
+      "name": "show_shopping_list",
+      "confidence": 0.6754828095436096
     }
   },
   {
@@ -204,39 +172,31 @@
     "intent": "chitchatfaq",
     "intent_prediction": {
       "name": "affirm",
-      "confidence": 0.9863068461418152
+      "confidence": 0.9630005955696106
     }
   },
   {
     "text": "Who's the US President?",
     "intent": "out_of_scope",
     "intent_prediction": {
-      "name": "chitchatfaq",
-      "confidence": 0.9982737898826599
+      "name": "ask_recipe",
+      "confidence": 0.30559369921684265
     }
   },
   {
-    "text": "Tell me the list",
+    "text": "What shoud I buy?",
     "intent": "show_shopping_list",
     "intent_prediction": {
       "name": "chitchatfaq",
-      "confidence": 0.40309077501296997
+      "confidence": 0.7198954224586487
     }
   },
   {
-    "text": "What recipes do you suggest?",
-    "intent": "ask_recipe",
+    "text": "i'm going to make crepes for 4",
+    "intent": "inform_num_people",
     "intent_prediction": {
-      "name": "chitchatfaq",
-      "confidence": 0.98915696144104
-    }
-  },
-  {
-    "text": "Can you suggest me some recipes?",
-    "intent": "ask_recipe",
-    "intent_prediction": {
-      "name": "add_recipe_to_list",
-      "confidence": 0.2169683426618576
+      "name": "select_recipe",
+      "confidence": 0.9961147904396057
     }
   },
   {
@@ -248,27 +208,11 @@
     }
   },
   {
-    "text": "n",
-    "intent": "deny",
+    "text": "Say something else",
+    "intent": "chitchatfaq",
     "intent_prediction": {
-      "name": "user_ready",
-      "confidence": 0.3939582109451294
-    }
-  },
-  {
-    "text": "never",
-    "intent": "deny",
-    "intent_prediction": {
-      "name": "chitchatfaq",
-      "confidence": 0.9403707385063171
-    }
-  },
-  {
-    "text": "Play a song",
-    "intent": "out_of_scope",
-    "intent_prediction": {
-      "name": "chitchatfaq",
-      "confidence": 0.9993447065353394
+      "name": "ask_recipe",
+      "confidence": 0.8678658604621887
     }
   }
 ]

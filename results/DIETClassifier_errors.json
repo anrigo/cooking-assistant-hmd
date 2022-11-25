@@ -1,127 +1,5 @@
 [
   {
-    "text": "Add two liters of whole milk to my list",
-    "entities": [
-      {
-        "start": 4,
-        "end": 7,
-        "value": "2",
-        "entity": "number"
-      },
-      {
-        "start": 8,
-        "end": 14,
-        "value": "liters",
-        "entity": "unit"
-      },
-      {
-        "start": 18,
-        "end": 28,
-        "value": "whole milk",
-        "entity": "ingredient"
-      }
-    ],
-    "predicted_entities": [
-      {
-        "entity": "number",
-        "start": 4,
-        "end": 7,
-        "confidence_entity": 0.7592518329620361,
-        "value": "2",
-        "extractor": "DIETClassifier",
-        "processors": [
-          "EntitySynonymMapper"
-        ]
-      },
-      {
-        "entity": "unit",
-        "start": 8,
-        "end": 14,
-        "confidence_entity": 0.9935884475708008,
-        "value": "liters",
-        "extractor": "DIETClassifier"
-      },
-      {
-        "entity": "ingredient",
-        "start": 24,
-        "end": 28,
-        "confidence_entity": 0.9990936517715454,
-        "value": "milk",
-        "extractor": "DIETClassifier"
-      }
-    ]
-  },
-  {
-    "text": "Remove item eleven",
-    "entities": [
-      {
-        "start": 12,
-        "end": 18,
-        "value": "11",
-        "entity": "number"
-      }
-    ],
-    "predicted_entities": []
-  },
-  {
-    "text": "How much spaghetti?",
-    "entities": [
-      {
-        "start": 9,
-        "end": 18,
-        "value": "spaghetti",
-        "entity": "ingredient"
-      }
-    ],
-    "predicted_entities": []
-  },
-  {
-    "text": "how much black pepper?",
-    "entities": [
-      {
-        "start": 9,
-        "end": 21,
-        "value": "black pepper",
-        "entity": "ingredient"
-      }
-    ],
-    "predicted_entities": [
-      {
-        "entity": "ingredient",
-        "start": 15,
-        "end": 21,
-        "confidence_entity": 0.9991986155509949,
-        "value": "black pepper",
-        "extractor": "DIETClassifier",
-        "processors": [
-          "EntitySynonymMapper"
-        ]
-      }
-    ]
-  },
-  {
-    "text": "What is 2 + 2?",
-    "entities": [],
-    "predicted_entities": [
-      {
-        "entity": "number",
-        "start": 8,
-        "end": 9,
-        "confidence_entity": 0.999836802482605,
-        "value": "2",
-        "extractor": "DIETClassifier"
-      },
-      {
-        "entity": "number",
-        "start": 12,
-        "end": 13,
-        "confidence_entity": 0.9997978806495667,
-        "value": "2",
-        "extractor": "DIETClassifier"
-      }
-    ]
-  },
-  {
     "text": "Add two hundred grams of pasta to my list",
     "entities": [
       {
@@ -148,7 +26,7 @@
         "entity": "number",
         "start": 4,
         "end": 15,
-        "confidence_entity": 0.9465066194534302,
+        "confidence_entity": 0.7671922445297241,
         "value": "200",
         "extractor": "DIETClassifier",
         "processors": [
@@ -159,56 +37,11 @@
         "entity": "unit",
         "start": 16,
         "end": 21,
-        "confidence_entity": 0.9957713484764099,
+        "confidence_entity": 0.9977810978889465,
         "value": "grams",
         "extractor": "DIETClassifier"
       }
     ]
-  },
-  {
-    "text": "How much salt?",
-    "entities": [
-      {
-        "start": 9,
-        "end": 13,
-        "value": "salt",
-        "entity": "ingredient"
-      }
-    ],
-    "predicted_entities": []
-  },
-  {
-    "text": "I meant egg yolks",
-    "entities": [
-      {
-        "start": 8,
-        "end": 17,
-        "value": "egg yolks",
-        "entity": "ingredient"
-      }
-    ],
-    "predicted_entities": [
-      {
-        "entity": "ingredient",
-        "start": 8,
-        "end": 11,
-        "confidence_entity": 0.978379487991333,
-        "value": "egg",
-        "extractor": "DIETClassifier"
-      }
-    ]
-  },
-  {
-    "text": "for six",
-    "entities": [
-      {
-        "start": 4,
-        "end": 7,
-        "value": "six",
-        "entity": "number"
-      }
-    ],
-    "predicted_entities": []
   },
   {
     "text": "Add five hundred grams of sugar to my list",
@@ -237,7 +70,7 @@
         "entity": "number",
         "start": 4,
         "end": 16,
-        "confidence_entity": 0.6227113604545593,
+        "confidence_entity": 0.9831345081329346,
         "value": "500",
         "extractor": "DIETClassifier",
         "processors": [
@@ -248,9 +81,33 @@
         "entity": "unit",
         "start": 17,
         "end": 22,
-        "confidence_entity": 0.9959191679954529,
+        "confidence_entity": 0.9977960586547852,
         "value": "grams",
         "extractor": "DIETClassifier"
+      }
+    ]
+  },
+  {
+    "text": "how much black pepper?",
+    "entities": [
+      {
+        "start": 9,
+        "end": 21,
+        "value": "black pepper",
+        "entity": "ingredient"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "ingredient",
+        "start": 15,
+        "end": 21,
+        "confidence_entity": 0.9974541068077087,
+        "value": "black pepper",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
       }
     ]
   },
@@ -267,6 +124,139 @@
     "predicted_entities": []
   },
   {
+    "text": "What is 2 + 2?",
+    "entities": [],
+    "predicted_entities": [
+      {
+        "entity": "number",
+        "start": 8,
+        "end": 9,
+        "confidence_entity": 0.999643087387085,
+        "value": "2",
+        "extractor": "DIETClassifier"
+      },
+      {
+        "entity": "number",
+        "start": 12,
+        "end": 13,
+        "confidence_entity": 0.9995763897895813,
+        "value": "2",
+        "extractor": "DIETClassifier"
+      }
+    ]
+  },
+  {
+    "text": "Remove item eleven",
+    "entities": [
+      {
+        "start": 12,
+        "end": 18,
+        "value": "11",
+        "entity": "number"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "How much salt?",
+    "entities": [
+      {
+        "start": 9,
+        "end": 13,
+        "value": "salt",
+        "entity": "ingredient"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "I meant egg yolks",
+    "entities": [
+      {
+        "start": 8,
+        "end": 17,
+        "value": "egg yolks",
+        "entity": "ingredient"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "ingredient",
+        "start": 8,
+        "end": 11,
+        "confidence_entity": 0.9768149256706238,
+        "value": "egg",
+        "extractor": "DIETClassifier"
+      }
+    ]
+  },
+  {
+    "text": "of course",
+    "entities": [],
+    "predicted_entities": [
+      {
+        "entity": "number",
+        "start": 3,
+        "end": 9,
+        "confidence_entity": 0.47202715277671814,
+        "value": "course",
+        "extractor": "DIETClassifier"
+      }
+    ]
+  },
+  {
+    "text": "Add two liters of whole milk to my list",
+    "entities": [
+      {
+        "start": 4,
+        "end": 7,
+        "value": "2",
+        "entity": "number"
+      },
+      {
+        "start": 8,
+        "end": 14,
+        "value": "liters",
+        "entity": "unit"
+      },
+      {
+        "start": 18,
+        "end": 28,
+        "value": "whole milk",
+        "entity": "ingredient"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "number",
+        "start": 4,
+        "end": 7,
+        "confidence_entity": 0.5891134738922119,
+        "value": "2",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      },
+      {
+        "entity": "unit",
+        "start": 8,
+        "end": 14,
+        "confidence_entity": 0.9918416738510132,
+        "value": "liters",
+        "extractor": "DIETClassifier"
+      },
+      {
+        "entity": "ingredient",
+        "start": 24,
+        "end": 28,
+        "confidence_entity": 0.99847012758255,
+        "value": "milk",
+        "extractor": "DIETClassifier"
+      }
+    ]
+  },
+  {
     "text": "how much perorino romano cheese?",
     "entities": [
       {
@@ -281,9 +271,51 @@
         "entity": "ingredient",
         "start": 9,
         "end": 17,
-        "confidence_entity": 0.9666889905929565,
+        "confidence_entity": 0.9779598712921143,
         "value": "perorino",
         "extractor": "DIETClassifier"
+      }
+    ]
+  },
+  {
+    "text": "I'll cook pizza",
+    "entities": [
+      {
+        "start": 10,
+        "end": 15,
+        "value": "pizza",
+        "entity": "recipe"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "I'll cook pizza for three people",
+    "entities": [
+      {
+        "start": 10,
+        "end": 15,
+        "value": "pizza",
+        "entity": "recipe"
+      },
+      {
+        "start": 20,
+        "end": 25,
+        "value": "three",
+        "entity": "number"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "number",
+        "start": 20,
+        "end": 25,
+        "confidence_entity": 0.999887228012085,
+        "value": "3",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
       }
     ]
   },
@@ -314,7 +346,7 @@
         "entity": "number",
         "start": 4,
         "end": 8,
-        "confidence_entity": 0.998900294303894,
+        "confidence_entity": 0.9985896944999695,
         "value": "0.5",
         "extractor": "DIETClassifier",
         "processors": [
@@ -325,7 +357,7 @@
         "entity": "unit",
         "start": 9,
         "end": 13,
-        "confidence_entity": 0.9983075857162476,
+        "confidence_entity": 0.999104917049408,
         "value": "kilo",
         "extractor": "DIETClassifier"
       },
@@ -333,31 +365,43 @@
         "entity": "ingredient",
         "start": 17,
         "end": 22,
-        "confidence_entity": 0.9987381100654602,
+        "confidence_entity": 0.9992838501930237,
         "value": "flour",
         "extractor": "DIETClassifier"
       }
     ]
   },
   {
-    "text": "Skip once",
+    "text": "How much spaghetti?",
     "entities": [
       {
-        "start": 5,
-        "end": 9,
-        "value": "once",
-        "entity": "number"
+        "start": 9,
+        "end": 18,
+        "value": "spaghetti",
+        "entity": "ingredient"
       }
     ],
     "predicted_entities": []
   },
   {
-    "text": "go back once",
+    "text": "How much pecorino?",
     "entities": [
       {
-        "start": 8,
-        "end": 12,
-        "value": "once",
+        "start": 9,
+        "end": 17,
+        "value": "pecorino",
+        "entity": "ingredient"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "for six",
+    "entities": [
+      {
+        "start": 4,
+        "end": 7,
+        "value": "six",
         "entity": "number"
       }
     ],

@@ -1,4 +1,11 @@
 {
+  "ingredient": {
+    "precision": 0.9565217391304348,
+    "recall": 0.6875,
+    "f1-score": 0.8,
+    "support": 32,
+    "confused_with": {}
+  },
   "unit": {
     "precision": 1.0,
     "recall": 1.0,
@@ -8,43 +15,36 @@
   },
   "recipe": {
     "precision": 1.0,
-    "recall": 0.9907407407407407,
-    "f1-score": 0.9953488372093023,
+    "recall": 0.9722222222222222,
+    "f1-score": 0.9859154929577464,
     "support": 108,
     "confused_with": {}
   },
   "number": {
-    "precision": 0.984,
-    "recall": 0.9609375,
-    "f1-score": 0.9723320158102766,
+    "precision": 0.9765625,
+    "recall": 0.9765625,
+    "f1-score": 0.9765625,
     "support": 128,
     "confused_with": {
       "ingredient": 1
     }
   },
-  "ingredient": {
-    "precision": 0.9583333333333334,
-    "recall": 0.71875,
-    "f1-score": 0.8214285714285714,
-    "support": 32,
-    "confused_with": {}
-  },
   "micro avg": {
-    "precision": 0.9887218045112782,
-    "recall": 0.9460431654676259,
-    "f1-score": 0.9669117647058824,
+    "precision": 0.9849624060150376,
+    "recall": 0.9424460431654677,
+    "f1-score": 0.9632352941176471,
     "support": 278
   },
   "macro avg": {
-    "precision": 0.9855833333333334,
-    "recall": 0.9176070601851851,
-    "f1-score": 0.9472773561120376,
+    "precision": 0.9832710597826086,
+    "recall": 0.9090711805555556,
+    "f1-score": 0.9406194982394366,
     "support": 278
   },
   "weighted avg": {
-    "precision": 0.9878369304556356,
-    "recall": 0.9460431654676259,
-    "f1-score": 0.9648988731224256,
+    "precision": 0.9842039411948701,
+    "recall": 0.9424460431654677,
+    "f1-score": 0.9607153713648797,
     "support": 278
   }
 }
