@@ -455,6 +455,8 @@ nlu:
     - so so perfect
     - so good
     - so perfect
+    - Nice, I'm happy
+    - I'm happy
 - intent: chitchatfaq/mood_unhappy
   examples: |
     - my day was horrible

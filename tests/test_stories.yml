@@ -1,91 +1,754 @@
-#### This file contains tests to evaluate that your bot behaves as expected.
-#### If you want to learn more, please see the docs: https://rasa.com/docs/rasa/testing-your-assistant
-
+version: "2.0"
 stories:
-- story: happy path 1
-  steps:
-  - user: |
-      hello there!
-    intent: greet
-  - action: utter_greet
-  - user: |
-      amazing
-    intent: mood_great
-  - action: utter_happy
 
-- story: happy path 2
+- story: sel_recipe_next_skip_back_repeat
   steps:
-  - user: |
-      hello there!
-    intent: greet
-  - action: utter_greet
-  - user: |
-      amazing
-    intent: mood_great
-  - action: utter_happy
-  - user: |
-      bye-bye!
-    intent: goodbye
-  - action: utter_goodbye
+  - intent: chitchatfaq/greet
+    user: |-
+      Hi!
+  - action: utter_chitchatfaq
+  - intent: chitchatfaq/mood_unhappy
+    user: |-
+      I'm sad
+  - action: utter_chitchatfaq
+  - intent: chitchatfaq/where_to_start
+    user: |-
+      What can you do?
+  - action: utter_chitchatfaq
+  - intent: ask_recipe
+    user: |-
+      What can we cook?
+  - action: select_recipe_form
+  - active_loop: select_recipe_form
+  - slot_was_set:
+    - number: null
+  - slot_was_set:
+    - requested_slot: recipe
+  - slot_was_set:
+    - recipe: null
+  - slot_was_set:
+    - number: null
+  - intent: select_recipe
+    user: |-
+      I'll go for [Amatriciana](recipe)
+  - slot_was_set:
+    - recipe: Amatriciana
+  - action: select_recipe_form
+  - slot_was_set:
+    - recipe: Amatriciana
+  - slot_was_set:
+    - number: null
+  - slot_was_set:
+    - requested_slot: number
+  - intent: inform_num_people
+    user: |-
+      For [two]{"entity": "number", "value": "2"}
+  - slot_was_set:
+    - number: '2'
+  - action: select_recipe_form
+  - slot_was_set:
+    - number: '2'
+  - slot_was_set:
+    - requested_slot: confirm_recipe_form
+  - intent: affirm
+    user: |-
+      Yes!
+  - action: select_recipe_form
+  - slot_was_set:
+    - confirm_recipe_form: true
+  - slot_was_set:
+    - requested_slot: null
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_submit_recipe_form
+  - slot_was_set:
+    - recipe: null
+  - slot_was_set:
+    - number: null
+  - slot_was_set:
+    - confirm_recipe_form: null
+  - slot_was_set:
+    - recipe_key: Amatriciana
+  - slot_was_set:
+    - num_people: 2
+  - slot_was_set:
+    - step_idx: -1
+  - action: action_list_ingredients
+  - intent: user_ready
+    user: |-
+      Ok, I'm ready
+  - action: action_next_step
+  - slot_was_set:
+    - step_idx: 0
+  - slot_was_set:
+    - number: null
+  - intent: user_ready
+    user: |-
+      Next
+  - action: action_next_step
+  - slot_was_set:
+    - step_idx: 1
+  - slot_was_set:
+    - number: null
+  - intent: user_ready
+    user: |-
+      Nexy
+  - action: action_next_step
+  - slot_was_set:
+    - step_idx: 2
+  - slot_was_set:
+    - number: null
+  - intent: user_ready
+    user: |-
+      I'm done
+  - action: action_next_step
+  - slot_was_set:
+    - step_idx: 3
+  - slot_was_set:
+    - number: null
+  - intent: skip_step
+    user: |-
+      Skip [five]{"entity": "number", "value": "5"} steps
+  - slot_was_set:
+    - number: '5'
+  - action: action_skip_step
+  - slot_was_set:
+    - step_idx: 8
+  - slot_was_set:
+    - number: null
+  - intent: user_did_not_understand
+    user: |-
+      Can you repeat?
+  - action: action_repeat_step
+  - intent: user_ready
+    user: |-
+      Next
+  - action: action_next_step
+  - slot_was_set:
+    - step_idx: 9
+  - slot_was_set:
+    - number: null
+  - intent: back_step
+    user: |-
+      Wait, go back [two]{"entity": "number", "value": "2"} steps
+  - slot_was_set:
+    - number: '2'
+  - action: action_backward_step
+  - slot_was_set:
+    - step_idx: 7
+  - slot_was_set:
+    - number: null
+  - intent: user_ready
+    user: |-
+      Next
+  - action: action_next_step
+  - slot_was_set:
+    - step_idx: 8
+  - slot_was_set:
+    - number: null
+  - intent: user_ready
+    user: |-
+      Next
+  - action: action_next_step
+  - slot_was_set:
+    - step_idx: 9
+  - slot_was_set:
+    - number: null
+  - intent: user_ready
+    user: |-
+      Ok, done
+  - action: action_next_step
+  - slot_was_set:
+    - recipe_key: null
+  - slot_was_set:
+    - num_people: null
+  - slot_was_set:
+    - step_idx: null
+  - slot_was_set:
+    - number: null
 
-- story: sad path 1
+- story: unhappy_select_recipe_how_much_ing_list
   steps:
-  - user: |
-      hello
-    intent: greet
-  - action: utter_greet
-  - user: |
-      not good
-    intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - user: |
-      yes
-    intent: affirm
-  - action: utter_happy
+  - intent: select_recipe
+    user: |-
+      Let's cook [carbonara](recipe)
+  - slot_was_set:
+    - recipe: carbonara
+  - action: select_recipe_form
+  - active_loop: select_recipe_form
+  - slot_was_set:
+    - recipe: Carbonara
+  - slot_was_set:
+    - number: null
+  - slot_was_set:
+    - requested_slot: number
+  - slot_was_set:
+    - recipe: Carbonara
+  - slot_was_set:
+    - number: null
+  - slot_was_set:
+    - requested_slot: number
+  - intent: inform_num_people
+    user: |-
+      Just for me
+  - action: select_recipe_form
+  - slot_was_set:
+    - number: '1'
+  - slot_was_set:
+    - requested_slot: confirm_recipe_form
+  - intent: deny
+    user: |-
+      No
+  - action: action_submit_recipe_form
+  - slot_was_set:
+    - recipe: null
+  - slot_was_set:
+    - number: null
+  - slot_was_set:
+    - confirm_recipe_form: null
+  - action: select_recipe_form
+  - slot_was_set:
+    - number: null
+  - slot_was_set:
+    - requested_slot: recipe
+  - slot_was_set:
+    - recipe: null
+  - slot_was_set:
+    - number: null
+  - intent: select_recipe
+    user: |-
+      I'll go for [Crepes](recipe), just for me
+  - slot_was_set:
+    - recipe: Crepes
+  - action: select_recipe_form
+  - slot_was_set:
+    - recipe: Crepes
+  - slot_was_set:
+    - number: '1'
+  - slot_was_set:
+    - requested_slot: confirm_recipe_form
+  - intent: affirm
+    user: |-
+      Yes it is
+  - action: select_recipe_form
+  - slot_was_set:
+    - confirm_recipe_form: true
+  - slot_was_set:
+    - requested_slot: null
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_submit_recipe_form
+  - slot_was_set:
+    - recipe: null
+  - slot_was_set:
+    - number: null
+  - slot_was_set:
+    - confirm_recipe_form: null
+  - slot_was_set:
+    - recipe_key: Crepes
+  - slot_was_set:
+    - num_people: 1
+  - slot_was_set:
+    - step_idx: -1
+  - action: action_list_ingredients
+  - intent: user_ready
+    user: |-
+      Ready for the next
+  - action: action_next_step
+  - slot_was_set:
+    - step_idx: 0
+  - slot_was_set:
+    - number: null
+  - intent: user_ready
+    user: |-
+      Done
+  - action: action_next_step
+  - slot_was_set:
+    - step_idx: 1
+  - slot_was_set:
+    - number: null
+  - intent: user_ready
+    user: |-
+      Ok, done
+  - action: action_next_step
+  - slot_was_set:
+    - step_idx: 2
+  - slot_was_set:
+    - number: null
+  - intent: how_much_ing
+    user: |-
+      How much?
+  - action: action_how_much_ing
+  - slot_was_set:
+    - ingredient: null
+  - intent: how_much_ing
+    user: |-
+      and how many [eggs](ingredient)?
+  - slot_was_set:
+    - ingredient: eggs
+  - action: action_how_much_ing
+  - slot_was_set:
+    - ingredient: null
+  - intent: user_ready
+    user: |-
+      Ok, next
+  - action: action_next_step
+  - slot_was_set:
+    - step_idx: 3
+  - slot_was_set:
+    - number: null
+  - intent: show_ing_list
+    user: |-
+      Tell me all the ingredients
+  - action: action_list_ingredients
+  - intent: user_ready
+    user: |-
+      Next
+  - action: action_next_step
+  - slot_was_set:
+    - step_idx: 4
+  - slot_was_set:
+    - number: null
+  - intent: user_ready
+    user: |-
+      Next
+  - action: action_next_step
+  - slot_was_set:
+    - step_idx: 5
+  - slot_was_set:
+    - number: null
+  - intent: stop
+    user: |-
+      Stop the recipe
+  - action: action_stop_recipe
+  - slot_was_set:
+    - recipe_key: null
+  - slot_was_set:
+    - num_people: null
+  - slot_was_set:
+    - step_idx: null
 
-- story: sad path 2
+- story: list_faq_recipe_list_add_ing_remove_ing_show_page
   steps:
-  - user: |
-      hello
-    intent: greet
-  - action: utter_greet
-  - user: |
-      not good
-    intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - user: |
-      not really
-    intent: deny
-  - action: utter_goodbye
+  - intent: chitchatfaq/bot_challenge
+    user: |-
+      Who are you?
+  - action: utter_chitchatfaq
+  - intent: chitchatfaq/where_to_start
+    user: |-
+      Nice, what can you do?
+  - action: utter_chitchatfaq
+  - intent: show_shopping_list
+    user: |-
+      Show my list
+  - action: action_show_shopping_list
+  - slot_was_set:
+    - number: null
+  - intent: chitchatfaq/how_to_shopping_list
+    user: |-
+      How do I manage my list?
+  - action: utter_chitchatfaq
+  - intent: add_recipe_to_list
+    user: |-
+      Add to my [crabonara](recipe) ingredients to my list
+  - slot_was_set:
+    - recipe: crabonara
+  - action: select_recipe_shop_form
+  - active_loop: select_recipe_shop_form
+  - slot_was_set:
+    - recipe: Carbonara
+  - slot_was_set:
+    - number: null
+  - slot_was_set:
+    - requested_slot: number
+  - slot_was_set:
+    - recipe: Carbonara
+  - slot_was_set:
+    - number: null
+  - slot_was_set:
+    - requested_slot: number
+  - intent: inform_num_people
+    user: |-
+      For [three]{"entity": "number", "value": "3"}
+  - slot_was_set:
+    - number: '3'
+  - action: select_recipe_shop_form
+  - slot_was_set:
+    - number: '3'
+  - slot_was_set:
+    - requested_slot: confirm_recipe_form
+  - intent: affirm
+    user: |-
+      Yes
+  - action: select_recipe_shop_form
+  - slot_was_set:
+    - confirm_recipe_form: true
+  - slot_was_set:
+    - requested_slot: null
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_submit_recipe_shop_form
+  - slot_was_set:
+    - recipe: null
+  - slot_was_set:
+    - number: null
+  - slot_was_set:
+    - confirm_recipe_form: null
+  - intent: show_shopping_list
+    user: |-
+      Read my lst
+  - action: action_show_shopping_list
+  - slot_was_set:
+    - number: null
+  - intent: show_shopping_list
+    user: |-
+      Read page [two]{"entity": "number", "value": "2"} of the list
+  - slot_was_set:
+    - number: '2'
+  - action: action_show_shopping_list
+  - slot_was_set:
+    - number: null
+  - intent: remove_shop_item
+    user: |-
+      Remove item [six]{"entity": "number", "value": "6"}
+  - slot_was_set:
+    - number: '6'
+  - action: action_remove_shop_item
+  - slot_was_set:
+    - number: null
+  - intent: add_shop_ing
+    user: |-
+      Add [half]{"entity": "number", "value": "0.5"} [kilo](unit) of [flour](ingredient) to the list
+  - slot_was_set:
+    - number: '0.5'
+  - slot_was_set:
+    - ingredient: flour
+  - slot_was_set:
+    - unit: kilo
+  - action: action_add_shop_ing
+  - slot_was_set:
+    - number: null
+  - slot_was_set:
+    - unit: null
+  - slot_was_set:
+    - ingredient: null
+  - intent: show_shopping_list
+    user: |-
+      Read my list again
+  - action: action_show_shopping_list
+  - slot_was_set:
+    - number: null
+  - intent: show_shopping_list
+    user: |-
+      Read page [two]{"entity": "number", "value": "2"}
+  - slot_was_set:
+    - number: '2'
+  - action: action_show_shopping_list
+  - slot_was_set:
+    - number: null
 
-- story: sad path 3
+- story: unhappy_recipe_list_change_recipe_midform_add_ing
   steps:
-  - user: |
-      hi
-    intent: greet
-  - action: utter_greet
-  - user: |
-      very terrible
-    intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - user: |
-      no
-    intent: deny
-  - action: utter_goodbye
+  - intent: add_recipe_to_list
+    user: |-
+      Add something to my list
+  - action: select_recipe_shop_form
+  - active_loop: select_recipe_shop_form
+  - slot_was_set:
+    - number: null
+  - slot_was_set:
+    - requested_slot: recipe
+  - slot_was_set:
+    - recipe: null
+  - slot_was_set:
+    - number: null
+  - slot_was_set:
+    - recipe: Cacio e pepe
+  - slot_was_set:
+    - recipe: Cacio e pepe
+  - slot_was_set:
+    - number: null
+  - slot_was_set:
+    - requested_slot: number
+  - slot_was_set:
+    - number: '1'
+  - slot_was_set:
+    - requested_slot: confirm_recipe_form
+  - intent: deny
+    user: |-
+      No
+  - action: action_submit_recipe_shop_form
+  - slot_was_set:
+    - recipe: null
+  - slot_was_set:
+    - number: null
+  - slot_was_set:
+    - confirm_recipe_form: null
+  - action: select_recipe_shop_form
+  - slot_was_set:
+    - number: null
+  - slot_was_set:
+    - requested_slot: recipe
+  - slot_was_set:
+    - recipe: null
+  - slot_was_set:
+    - number: null
+  - slot_was_set:
+    - recipe: Cacio e pepe
+  - slot_was_set:
+    - number: '2'
+  - slot_was_set:
+    - recipe: Cacio e pepe
+  - slot_was_set:
+    - requested_slot: confirm_recipe_form
+  - slot_was_set:
+    - confirm_recipe_form: true
+  - slot_was_set:
+    - requested_slot: null
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_submit_recipe_shop_form
+  - slot_was_set:
+    - recipe: null
+  - slot_was_set:
+    - number: null
+  - slot_was_set:
+    - confirm_recipe_form: null
+  - intent: select_recipe
+    user: |-
+      Ok now let's cook [carbonara](recipe)
+  - slot_was_set:
+    - recipe: carbonara
+  - action: select_recipe_form
+  - active_loop: select_recipe_form
+  - slot_was_set:
+    - recipe: Carbonara
+  - slot_was_set:
+    - number: null
+  - slot_was_set:
+    - requested_slot: number
+  - slot_was_set:
+    - recipe: Carbonara
+  - slot_was_set:
+    - number: null
+  - slot_was_set:
+    - requested_slot: number
+  - slot_was_set:
+    - recipe: amatriciana
+  - slot_was_set:
+    - number: '2'
+  - slot_was_set:
+    - recipe: Amatriciana
+  - slot_was_set:
+    - number: '2'
+  - slot_was_set:
+    - requested_slot: confirm_recipe_form
+  - slot_was_set:
+    - confirm_recipe_form: true
+  - slot_was_set:
+    - requested_slot: null
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_submit_recipe_form
+  - slot_was_set:
+    - recipe: null
+  - slot_was_set:
+    - number: null
+  - slot_was_set:
+    - confirm_recipe_form: null
+  - slot_was_set:
+    - recipe_key: Amatriciana
+  - slot_was_set:
+    - num_people: 2
+  - slot_was_set:
+    - step_idx: -1
+  - action: action_list_ingredients
+  - intent: user_ready
+    user: |-
+      Nice, next
+  - action: action_next_step
+  - slot_was_set:
+    - step_idx: 0
+  - slot_was_set:
+    - number: null
+  - intent: user_ready
+    user: |-
+      Next
+  - action: action_next_step
+  - slot_was_set:
+    - step_idx: 1
+  - slot_was_set:
+    - number: null
+  - intent: user_ready
+    user: |-
+      Next
+  - action: action_next_step
+  - slot_was_set:
+    - step_idx: 2
+  - slot_was_set:
+    - number: null
+  - intent: add_shop_ing
+    user: |-
+      Add [guanciale](ingredient) to my list
+  - slot_was_set:
+    - recipe: carbonara
+  - slot_was_set:
+    - ingredient: guanciale
+  - action: action_add_shop_ing
+  - slot_was_set:
+    - number: null
+  - slot_was_set:
+    - unit: null
+  - slot_was_set:
+    - ingredient: null
+  - intent: show_shopping_list
+    user: |-
+      Read my list please
+  - action: action_show_shopping_list
+  - slot_was_set:
+    - number: null
+  - intent: user_ready
+    user: |-
+      Next step
+  - action: action_next_step
+  - slot_was_set:
+    - step_idx: 3
+  - slot_was_set:
+    - number: null
 
-- story: say goodbye
+- story: stop_recipe_midform_select_recipe_add_current_list_mood_great
   steps:
-  - user: |
-      bye-bye!
-    intent: goodbye
-  - action: utter_goodbye
-
-- story: bot challenge
-  steps:
-  - user: |
-      are you a bot?
-    intent: bot_challenge
-  - action: utter_iamabot
+  - intent: select_recipe
+    user: |-
+      Let's cook [carbonara](recipe)
+  - slot_was_set:
+    - recipe: carbonara
+  - action: select_recipe_form
+  - active_loop: select_recipe_form
+  - slot_was_set:
+    - recipe: Carbonara
+  - slot_was_set:
+    - number: null
+  - slot_was_set:
+    - requested_slot: number
+  - slot_was_set:
+    - recipe: Carbonara
+  - slot_was_set:
+    - number: null
+  - slot_was_set:
+    - requested_slot: number
+  - slot_was_set:
+    - recipe: Carbonara
+  - slot_was_set:
+    - number: '1'
+  - slot_was_set:
+    - confirm_recipe_form: false
+  - slot_was_set:
+    - requested_slot: null
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_submit_recipe_form
+  - slot_was_set:
+    - recipe: null
+  - slot_was_set:
+    - number: null
+  - slot_was_set:
+    - confirm_recipe_form: null
+  - intent: select_recipe
+    user: |-
+      Let's cook [crepes](recipe)
+  - slot_was_set:
+    - recipe: crepes
+  - action: select_recipe_form
+  - active_loop: select_recipe_form
+  - slot_was_set:
+    - recipe: Crepes
+  - slot_was_set:
+    - number: null
+  - slot_was_set:
+    - requested_slot: number
+  - slot_was_set:
+    - recipe: Crepes
+  - slot_was_set:
+    - number: null
+  - slot_was_set:
+    - requested_slot: number
+  - slot_was_set:
+    - number: '3'
+  - slot_was_set:
+    - number: '3'
+  - slot_was_set:
+    - requested_slot: confirm_recipe_form
+  - slot_was_set:
+    - confirm_recipe_form: true
+  - slot_was_set:
+    - requested_slot: null
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_submit_recipe_form
+  - slot_was_set:
+    - recipe: null
+  - slot_was_set:
+    - number: null
+  - slot_was_set:
+    - confirm_recipe_form: null
+  - slot_was_set:
+    - recipe_key: Crepes
+  - slot_was_set:
+    - num_people: 3
+  - slot_was_set:
+    - step_idx: -1
+  - action: action_list_ingredients
+  - intent: user_ready
+    user: |-
+      Next
+  - action: action_next_step
+  - slot_was_set:
+    - step_idx: 0
+  - slot_was_set:
+    - number: null
+  - intent: user_ready
+    user: |-
+      Done
+  - action: action_next_step
+  - slot_was_set:
+    - step_idx: 1
+  - slot_was_set:
+    - number: null
+  - intent: add_current_recipe_to_list
+    user: |-
+      Add this recipe to my list
+  - action: action_add_current_recipe_to_list
+  - slot_was_set:
+    - recipe: null
+  - slot_was_set:
+    - number: null
+  - intent: show_shopping_list
+    user: |-
+      Read my list
+  - action: action_show_shopping_list
+  - slot_was_set:
+    - number: null
+  - intent: user_ready
+    user: |-
+      Next step
+  - action: action_next_step
+  - slot_was_set:
+    - step_idx: 2
+  - slot_was_set:
+    - number: null
+  - slot_was_set:
+    - recipe: carbonara
+  - slot_was_set:
+    - recipe: crepes
+  - intent: chitchatfaq/mood_great
+    user: |-
+      Nice, I'm happy
+  - action: utter_chitchatfaq/mood_great

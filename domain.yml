@@ -9,11 +9,11 @@ intents:
 - affirm
 - ask_recipe
 - back_step
-- chitchatfaq:
-    is_retrieval_intent: true
+- chitchatfaq
 - deny
 - how_much_ing
 - inform_num_people
+- nlu_fallback
 - out_of_scope
 - remove_shop_item
 - select_recipe
@@ -61,6 +61,9 @@ slots:
     influence_conversation: false
   unit:
     type: text
+    influence_conversation: false
+  requested_slot:
+    type: unfeaturized
     influence_conversation: false
 responses:
   utter_ambiguous_num_people:
@@ -138,8 +141,8 @@ responses:
   utter_chitchatfaq/greet:
   - text: Hey! I'm your cooking assistant, you can ask me what I can do at any time!
   utter_chitchatfaq/mood_unhappy:
-  - text: 'Here is something to cheer you up:'
-    image: https://blog.giallozafferano.it/creandosiimpara/wp-content/uploads/2020/07/maritozzi.jpeg
+  - image: https://blog.giallozafferano.it/creandosiimpara/wp-content/uploads/2020/07/maritozzi.jpeg
+    text: 'Here is something to cheer you up:'
   - text: Did that help you?
   utter_chitchatfaq/happy:
   - text: Great, carry on!
