@@ -393,7 +393,6 @@ nlu:
     - What can you do with the shopping list?
     - How can I use the shopping list?
     - How do I manage my shopping list?
-    - What can you do with the shopping list?
     - What can you do with the list?
 - intent: chitchatfaq/where_to_start
   examples: |
@@ -408,8 +407,6 @@ nlu:
     - What can you do
     - What can yiu do?
     - So, what can you do?
-    - What can you do?
-    - What can you do for me?
 - intent: chitchatfaq/greet
   examples: |
     - hey
