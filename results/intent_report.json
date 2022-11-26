@@ -1,171 +1,178 @@
 {
-  "stop": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 11,
-    "confused_with": {}
-  },
-  "how_much_ing": {
-    "precision": 1.0,
-    "recall": 0.9411764705882353,
-    "f1-score": 0.9696969696969697,
-    "support": 17,
-    "confused_with": {
-      "chitchatfaq": 1
-    }
-  },
-  "chitchatfaq": {
-    "precision": 0.8990825688073395,
-    "recall": 0.9423076923076923,
-    "f1-score": 0.92018779342723,
-    "support": 104,
-    "confused_with": {
-      "show_shopping_list": 2,
-      "ask_recipe": 2
-    }
-  },
-  "user_ready": {
-    "precision": 0.92,
-    "recall": 0.9387755102040817,
-    "f1-score": 0.9292929292929293,
-    "support": 49,
-    "confused_with": {
-      "chitchatfaq": 2,
-      "skip_step": 1
-    }
-  },
-  "show_shopping_list": {
-    "precision": 0.9230769230769231,
-    "recall": 0.96,
-    "f1-score": 0.9411764705882353,
-    "support": 25,
-    "confused_with": {
-      "chitchatfaq": 1
-    }
-  },
-  "inform_num_people": {
-    "precision": 0.9444444444444444,
-    "recall": 0.9714285714285714,
-    "f1-score": 0.9577464788732395,
-    "support": 35,
-    "confused_with": {
-      "select_recipe": 1
-    }
-  },
-  "add_recipe_to_list": {
-    "precision": 0.9375,
-    "recall": 1.0,
-    "f1-score": 0.967741935483871,
-    "support": 15,
-    "confused_with": {}
-  },
-  "back_step": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 12,
-    "confused_with": {}
-  },
   "affirm": {
-    "precision": 0.9411764705882353,
-    "recall": 0.7619047619047619,
-    "f1-score": 0.8421052631578947,
+    "precision": 0.8947368421052632,
+    "recall": 0.8095238095238095,
+    "f1-score": 0.8500000000000001,
     "support": 21,
     "confused_with": {
-      "chitchatfaq": 3,
-      "user_ready": 1
+      "user_ready": 2,
+      "chitchatfaq": 2
+    }
+  },
+  "skip_step": {
+    "precision": 1.0,
+    "recall": 0.9655172413793104,
+    "f1-score": 0.9824561403508771,
+    "support": 29,
+    "confused_with": {
+      "chitchatfaq": 1
+    }
+  },
+  "ask_recipe": {
+    "precision": 0.8928571428571429,
+    "recall": 0.9259259259259259,
+    "f1-score": 0.9090909090909091,
+    "support": 27,
+    "confused_with": {
+      "chitchatfaq": 2
     }
   },
   "out_of_scope": {
     "precision": 1.0,
-    "recall": 0.2,
-    "f1-score": 0.33333333333333337,
-    "support": 5,
+    "recall": 0.375,
+    "f1-score": 0.5454545454545454,
+    "support": 8,
     "confused_with": {
-      "chitchatfaq": 2,
-      "inform_num_people": 1,
-      "ask_recipe": 1
+      "chitchatfaq": 3,
+      "affirm": 1
     }
   },
-  "ask_recipe": {
-    "precision": 0.896551724137931,
-    "recall": 0.9629629629629629,
-    "f1-score": 0.9285714285714286,
-    "support": 27,
+  "user_ready": {
+    "precision": 0.9038461538461539,
+    "recall": 0.9591836734693877,
+    "f1-score": 0.9306930693069307,
+    "support": 49,
     "confused_with": {
-      "chitchatfaq": 1
-    }
-  },
-  "skip_step": {
-    "precision": 0.9523809523809523,
-    "recall": 0.9523809523809523,
-    "f1-score": 0.9523809523809523,
-    "support": 21,
-    "confused_with": {
-      "user_ready": 1
-    }
-  },
-  "remove_shop_item": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 7,
-    "confused_with": {}
-  },
-  "select_recipe": {
-    "precision": 0.9857142857142858,
-    "recall": 0.9857142857142858,
-    "f1-score": 0.9857142857142858,
-    "support": 70,
-    "confused_with": {
-      "inform_num_people": 1
-    }
-  },
-  "user_did_not_understand": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 11,
-    "confused_with": {}
-  },
-  "deny": {
-    "precision": 1.0,
-    "recall": 0.8,
-    "f1-score": 0.888888888888889,
-    "support": 10,
-    "confused_with": {
-      "user_ready": 1,
-      "chitchatfaq": 1
-    }
-  },
-  "add_shop_ing": {
-    "precision": 0.9230769230769231,
-    "recall": 0.9230769230769231,
-    "f1-score": 0.9230769230769231,
-    "support": 13,
-    "confused_with": {
-      "add_recipe_to_list": 1
+      "chitchatfaq": 1,
+      "user_did_not_understand": 1
     }
   },
   "show_ing_list": {
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
-    "support": 6,
+    "support": 14,
     "confused_with": {}
   },
-  "accuracy": 0.9411764705882353,
+  "show_shopping_list": {
+    "precision": 1.0,
+    "recall": 0.9795918367346939,
+    "f1-score": 0.9896907216494846,
+    "support": 49,
+    "confused_with": {
+      "chitchatfaq": 1
+    }
+  },
+  "stop": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 13,
+    "confused_with": {}
+  },
+  "chitchatfaq": {
+    "precision": 0.9241379310344827,
+    "recall": 0.9710144927536232,
+    "f1-score": 0.9469964664310954,
+    "support": 138,
+    "confused_with": {
+      "user_ready": 1,
+      "affirm": 1
+    }
+  },
+  "deny": {
+    "precision": 0.9166666666666666,
+    "recall": 0.8461538461538461,
+    "f1-score": 0.8799999999999999,
+    "support": 13,
+    "confused_with": {
+      "user_ready": 2
+    }
+  },
+  "user_did_not_understand": {
+    "precision": 0.9333333333333333,
+    "recall": 1.0,
+    "f1-score": 0.9655172413793104,
+    "support": 14,
+    "confused_with": {}
+  },
+  "add_recipe_to_list": {
+    "precision": 0.9814814814814815,
+    "recall": 1.0,
+    "f1-score": 0.9906542056074767,
+    "support": 53,
+    "confused_with": {}
+  },
+  "add_shop_ing": {
+    "precision": 0.9615384615384616,
+    "recall": 0.9615384615384616,
+    "f1-score": 0.9615384615384616,
+    "support": 26,
+    "confused_with": {
+      "add_recipe_to_list": 1
+    }
+  },
+  "back_step": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 31,
+    "confused_with": {}
+  },
+  "inform_num_people": {
+    "precision": 0.9824561403508771,
+    "recall": 0.9824561403508771,
+    "f1-score": 0.9824561403508771,
+    "support": 57,
+    "confused_with": {
+      "deny": 1
+    }
+  },
+  "how_much_ing": {
+    "precision": 1.0,
+    "recall": 0.8823529411764706,
+    "f1-score": 0.9375,
+    "support": 17,
+    "confused_with": {
+      "add_shop_ing": 1,
+      "chitchatfaq": 1
+    }
+  },
+  "remove_shop_item": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 33,
+    "confused_with": {}
+  },
+  "select_recipe": {
+    "precision": 0.9855072463768116,
+    "recall": 0.9714285714285714,
+    "f1-score": 0.9784172661870504,
+    "support": 70,
+    "confused_with": {
+      "inform_num_people": 1,
+      "ask_recipe": 1
+    }
+  },
+  "add_current_recipe_to_list": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 12,
+    "confused_with": {}
+  },
+  "accuracy": 0.9599406528189911,
   "macro avg": {
-    "precision": 0.9623891273459465,
-    "recall": 0.9077626739204704,
-    "f1-score": 0.918884091804788,
-    "support": 459
+    "precision": 0.9671874420837197,
+    "recall": 0.9278782600228934,
+    "f1-score": 0.9394981667024747,
+    "support": 674
   },
   "weighted avg": {
-    "precision": 0.9428130026634401,
-    "recall": 0.9411764705882353,
-    "f1-score": 0.9381211214541637,
-    "support": 459
+    "precision": 0.9609843793186977,
+    "recall": 0.9599406528189911,
+    "f1-score": 0.9583431157466202,
+    "support": 674
   }
 }

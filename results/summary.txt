@@ -1,0 +1,40 @@
+NLU
+- CV evaluation (n=5)
+
+- Intent evaluation results
+- train Accuracy: 1.000 (0.000)
+- train F1-score: 1.000 (0.000)
+- train Precision: 1.000 (0.000)
+- test Accuracy: 0.960 (0.016)
+- test F1-score: 0.957 (0.015)
+- test Precision: 0.959 (0.011)
+
+- Entity evaluation results
+- Entity extractor: DIETClassifier
+- train Accuracy: 1.000 (0.000)
+- train F1-score: 0.999 (0.001)
+- train Precision: 0.999 (0.001)
+
+- Entity extractor: DIETClassifier
+- test Accuracy: 0.996 (0.003)
+- test F1-score: 0.983 (0.011)
+- test Precision: 0.992 (0.005)
+
+- Response Selection evaluation results
+- train Accuracy: 0.984 (0.007)
+- train F1-score: 0.984 (0.007)
+- train Precision: 0.985 (0.006)
+- test Accuracy: 0.804 (0.038)
+- test F1-score: 0.790 (0.041)
+- test Precision: 0.815 (0.046)
+
+CORE
+- Evaluation Results on CONVERSATION level:
+-  Correct:          52 / 52
+-  Accuracy:         1.000
+
+- Evaluation Results on ACTION level:
+-  Correct:          789 / 789
+-  F1-Score:         1.000
+-  Precision:        1.000
+-  Accuracy:         1.000

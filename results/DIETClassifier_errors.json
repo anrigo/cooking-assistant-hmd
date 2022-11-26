@@ -1,33 +1,33 @@
 [
   {
-    "text": "Add two hundred grams of pasta to my list",
+    "text": "Add half kilo of flour to my list",
     "entities": [
       {
         "start": 4,
-        "end": 15,
-        "value": "two hundred",
+        "end": 8,
+        "value": "0.5",
         "entity": "number"
       },
       {
-        "start": 16,
-        "end": 21,
-        "value": "grams",
+        "start": 9,
+        "end": 13,
+        "value": "kilo",
         "entity": "unit"
       },
       {
-        "start": 25,
-        "end": 30,
-        "value": "pasta",
-        "entity": "ingredient"
+        "start": 17,
+        "end": 22,
+        "value": "flour",
+        "entity": "number"
       }
     ],
     "predicted_entities": [
       {
         "entity": "number",
         "start": 4,
-        "end": 15,
-        "confidence_entity": 0.7671922445297241,
-        "value": "200",
+        "end": 8,
+        "confidence_entity": 0.9991180300712585,
+        "value": "0.5",
         "extractor": "DIETClassifier",
         "processors": [
           "EntitySynonymMapper"
@@ -35,33 +35,41 @@
       },
       {
         "entity": "unit",
-        "start": 16,
-        "end": 21,
-        "confidence_entity": 0.9977810978889465,
-        "value": "grams",
+        "start": 9,
+        "end": 13,
+        "confidence_entity": 0.9990859031677246,
+        "value": "kilo",
+        "extractor": "DIETClassifier"
+      },
+      {
+        "entity": "ingredient",
+        "start": 17,
+        "end": 22,
+        "confidence_entity": 0.7380475401878357,
+        "value": "flour",
         "extractor": "DIETClassifier"
       }
     ]
   },
   {
-    "text": "Add five hundred grams of sugar to my list",
+    "text": "Add half kilo of flour to my list",
     "entities": [
       {
         "start": 4,
-        "end": 16,
-        "value": "500",
+        "end": 8,
+        "value": "0.5",
         "entity": "number"
+      },
+      {
+        "start": 9,
+        "end": 13,
+        "value": "kilo",
+        "entity": "unit"
       },
       {
         "start": 17,
         "end": 22,
-        "value": "grams",
-        "entity": "unit"
-      },
-      {
-        "start": 26,
-        "end": 31,
-        "value": "sugar",
+        "value": "flour",
         "entity": "ingredient"
       }
     ],
@@ -69,9 +77,9 @@
       {
         "entity": "number",
         "start": 4,
-        "end": 16,
-        "confidence_entity": 0.9831345081329346,
-        "value": "500",
+        "end": 8,
+        "confidence_entity": 0.9998224377632141,
+        "value": "0.5",
         "extractor": "DIETClassifier",
         "processors": [
           "EntitySynonymMapper"
@@ -79,95 +87,54 @@
       },
       {
         "entity": "unit",
+        "start": 9,
+        "end": 13,
+        "confidence_entity": 0.9989787340164185,
+        "value": "kilo",
+        "extractor": "DIETClassifier"
+      },
+      {
+        "entity": "number",
         "start": 17,
         "end": 22,
-        "confidence_entity": 0.9977960586547852,
-        "value": "grams",
+        "confidence_entity": 0.9483366012573242,
+        "value": "flour",
         "extractor": "DIETClassifier"
       }
     ]
   },
   {
-    "text": "how much black pepper?",
+    "text": "How much spaghetti?",
     "entities": [
       {
         "start": 9,
-        "end": 21,
-        "value": "black pepper",
+        "end": 18,
+        "value": "spaghetti",
+        "entity": "ingredient"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "how much perorino romano cheese?",
+    "entities": [
+      {
+        "start": 9,
+        "end": 31,
+        "value": "perorino romano cheese",
         "entity": "ingredient"
       }
     ],
     "predicted_entities": [
       {
         "entity": "ingredient",
-        "start": 15,
-        "end": 21,
-        "confidence_entity": 0.9974541068077087,
-        "value": "black pepper",
-        "extractor": "DIETClassifier",
-        "processors": [
-          "EntitySynonymMapper"
-        ]
-      }
-    ]
-  },
-  {
-    "text": "I'll cook muffins",
-    "entities": [
-      {
-        "start": 10,
-        "end": 17,
-        "value": "muffins",
-        "entity": "recipe"
-      }
-    ],
-    "predicted_entities": []
-  },
-  {
-    "text": "What is 2 + 2?",
-    "entities": [],
-    "predicted_entities": [
-      {
-        "entity": "number",
-        "start": 8,
-        "end": 9,
-        "confidence_entity": 0.999643087387085,
-        "value": "2",
-        "extractor": "DIETClassifier"
-      },
-      {
-        "entity": "number",
-        "start": 12,
-        "end": 13,
-        "confidence_entity": 0.9995763897895813,
-        "value": "2",
-        "extractor": "DIETClassifier"
-      }
-    ]
-  },
-  {
-    "text": "Remove item eleven",
-    "entities": [
-      {
-        "start": 12,
-        "end": 18,
-        "value": "11",
-        "entity": "number"
-      }
-    ],
-    "predicted_entities": []
-  },
-  {
-    "text": "How much salt?",
-    "entities": [
-      {
         "start": 9,
-        "end": 13,
-        "value": "salt",
-        "entity": "ingredient"
+        "end": 24,
+        "confidence_entity": 0.8658859729766846,
+        "value": "perorino romano",
+        "extractor": "DIETClassifier"
       }
-    ],
-    "predicted_entities": []
+    ]
   },
   {
     "text": "I meant egg yolks",
@@ -184,25 +151,23 @@
         "entity": "ingredient",
         "start": 8,
         "end": 11,
-        "confidence_entity": 0.9768149256706238,
+        "confidence_entity": 0.9162771701812744,
         "value": "egg",
         "extractor": "DIETClassifier"
       }
     ]
   },
   {
-    "text": "of course",
-    "entities": [],
-    "predicted_entities": [
+    "text": "How much salt?",
+    "entities": [
       {
-        "entity": "number",
-        "start": 3,
-        "end": 9,
-        "confidence_entity": 0.47202715277671814,
-        "value": "course",
-        "extractor": "DIETClassifier"
+        "start": 9,
+        "end": 13,
+        "value": "salt",
+        "entity": "ingredient"
       }
-    ]
+    ],
+    "predicted_entities": []
   },
   {
     "text": "Add two liters of whole milk to my list",
@@ -231,7 +196,7 @@
         "entity": "number",
         "start": 4,
         "end": 7,
-        "confidence_entity": 0.5891134738922119,
+        "confidence_entity": 0.9987591505050659,
         "value": "2",
         "extractor": "DIETClassifier",
         "processors": [
@@ -242,7 +207,7 @@
         "entity": "unit",
         "start": 8,
         "end": 14,
-        "confidence_entity": 0.9918416738510132,
+        "confidence_entity": 0.9977644681930542,
         "value": "liters",
         "extractor": "DIETClassifier"
       },
@@ -250,88 +215,39 @@
         "entity": "ingredient",
         "start": 24,
         "end": 28,
-        "confidence_entity": 0.99847012758255,
+        "confidence_entity": 0.9992058873176575,
         "value": "milk",
         "extractor": "DIETClassifier"
       }
     ]
   },
   {
-    "text": "how much perorino romano cheese?",
-    "entities": [
-      {
-        "start": 9,
-        "end": 31,
-        "value": "perorino romano cheese",
-        "entity": "ingredient"
-      }
-    ],
+    "text": "of course",
+    "entities": [],
     "predicted_entities": [
       {
-        "entity": "ingredient",
-        "start": 9,
-        "end": 17,
-        "confidence_entity": 0.9779598712921143,
-        "value": "perorino",
+        "entity": "number",
+        "start": 3,
+        "end": 9,
+        "confidence_entity": 0.8645766973495483,
+        "value": "course",
         "extractor": "DIETClassifier"
       }
     ]
   },
   {
-    "text": "I'll cook pizza",
-    "entities": [
-      {
-        "start": 10,
-        "end": 15,
-        "value": "pizza",
-        "entity": "recipe"
-      }
-    ],
-    "predicted_entities": []
-  },
-  {
-    "text": "I'll cook pizza for three people",
-    "entities": [
-      {
-        "start": 10,
-        "end": 15,
-        "value": "pizza",
-        "entity": "recipe"
-      },
-      {
-        "start": 20,
-        "end": 25,
-        "value": "three",
-        "entity": "number"
-      }
-    ],
-    "predicted_entities": [
-      {
-        "entity": "number",
-        "start": 20,
-        "end": 25,
-        "confidence_entity": 0.999887228012085,
-        "value": "3",
-        "extractor": "DIETClassifier",
-        "processors": [
-          "EntitySynonymMapper"
-        ]
-      }
-    ]
-  },
-  {
-    "text": "Add half kilo of flour to my list",
+    "text": "Add two kilos of flour to my list",
     "entities": [
       {
         "start": 4,
-        "end": 8,
-        "value": "0.5",
+        "end": 7,
+        "value": "2",
         "entity": "number"
       },
       {
-        "start": 9,
+        "start": 8,
         "end": 13,
-        "value": "kilo",
+        "value": "kilos",
         "entity": "unit"
       },
       {
@@ -345,9 +261,9 @@
       {
         "entity": "number",
         "start": 4,
-        "end": 8,
-        "confidence_entity": 0.9985896944999695,
-        "value": "0.5",
+        "end": 7,
+        "confidence_entity": 0.9961303472518921,
+        "value": "2",
         "extractor": "DIETClassifier",
         "processors": [
           "EntitySynonymMapper"
@@ -355,54 +271,106 @@
       },
       {
         "entity": "unit",
-        "start": 9,
+        "start": 8,
         "end": 13,
-        "confidence_entity": 0.999104917049408,
-        "value": "kilo",
+        "confidence_entity": 0.998271107673645,
+        "value": "kilos",
         "extractor": "DIETClassifier"
       },
       {
         "entity": "ingredient",
         "start": 17,
         "end": 22,
-        "confidence_entity": 0.9992838501930237,
+        "confidence_entity": 0.7783703207969666,
         "value": "flour",
         "extractor": "DIETClassifier"
       }
     ]
   },
   {
-    "text": "How much spaghetti?",
-    "entities": [
-      {
-        "start": 9,
-        "end": 18,
-        "value": "spaghetti",
-        "entity": "ingredient"
-      }
-    ],
-    "predicted_entities": []
-  },
-  {
-    "text": "How much pecorino?",
-    "entities": [
-      {
-        "start": 9,
-        "end": 17,
-        "value": "pecorino",
-        "entity": "ingredient"
-      }
-    ],
-    "predicted_entities": []
-  },
-  {
-    "text": "for six",
+    "text": "Add three kilos of flour to my list",
     "entities": [
       {
         "start": 4,
-        "end": 7,
-        "value": "six",
+        "end": 9,
+        "value": "3",
         "entity": "number"
+      },
+      {
+        "start": 10,
+        "end": 15,
+        "value": "kilos",
+        "entity": "unit"
+      },
+      {
+        "start": 19,
+        "end": 24,
+        "value": "flour",
+        "entity": "number"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "number",
+        "start": 4,
+        "end": 9,
+        "confidence_entity": 0.9910091161727905,
+        "value": "3",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      },
+      {
+        "entity": "unit",
+        "start": 10,
+        "end": 15,
+        "confidence_entity": 0.9982372522354126,
+        "value": "kilos",
+        "extractor": "DIETClassifier"
+      },
+      {
+        "entity": "ingredient",
+        "start": 19,
+        "end": 24,
+        "confidence_entity": 0.7887389063835144,
+        "value": "flour",
+        "extractor": "DIETClassifier"
+      }
+    ]
+  },
+  {
+    "text": "Skip once",
+    "entities": [
+      {
+        "start": 5,
+        "end": 9,
+        "value": "once",
+        "entity": "number"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "go back once",
+    "entities": [
+      {
+        "start": 8,
+        "end": 12,
+        "value": "once",
+        "entity": "number"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "I'll cook muffins",
+    "entities": [
+      {
+        "start": 10,
+        "end": 17,
+        "value": "muffins",
+        "entity": "recipe"
       }
     ],
     "predicted_entities": []

@@ -1,9 +1,21 @@
 {
-  "action_add_shop_ing": {
+  "action_list_ingredients": {
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
-    "support": 7
+    "support": 52
+  },
+  "action_next_step": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 148
+  },
+  "action_show_shopping_list": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 11
   },
   "select_recipe_form": {
     "precision": 1.0,
@@ -17,77 +29,11 @@
     "f1-score": 1.0,
     "support": 17
   },
-  "action_listen": {
+  "action_add_shop_ing": {
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
-    "support": 335
-  },
-  "action_show_shopping_list": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 11
-  },
-  "select_recipe_shop_form": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 18
-  },
-  "action_repeat_step": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 6
-  },
-  "action_stop_recipe": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 3
-  },
-  "action_list_ingredients": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 52
-  },
-  "action_how_much_ing": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 6
-  },
-  "action_submit_recipe_form": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 53
-  },
-  "action_remove_shop_item": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 5
-  },
-  "action_add_current_recipe_to_list": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 3
-  },
-  "action_next_step": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 148
-  },
-  "utter_chitchatfaq": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 35
+    "support": 7
   },
   "action_backward_step": {
     "precision": 1.0,
@@ -95,11 +41,65 @@
     "f1-score": 1.0,
     "support": 28
   },
+  "action_submit_recipe_form": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 53
+  },
   "action_skip_step": {
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
     "support": 9
+  },
+  "action_stop_recipe": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 3
+  },
+  "action_add_current_recipe_to_list": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 3
+  },
+  "select_recipe_shop_form": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 18
+  },
+  "utter_chitchatfaq": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 35
+  },
+  "action_repeat_step": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 6
+  },
+  "action_how_much_ing": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 6
+  },
+  "action_listen": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 335
+  },
+  "action_remove_shop_item": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 5
   },
   "accuracy": 1.0,
   "macro avg": {
