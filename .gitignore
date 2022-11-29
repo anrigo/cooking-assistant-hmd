@@ -1,3 +1,4 @@
 actions/__pycache__
 # models
 *.dot
+env/
