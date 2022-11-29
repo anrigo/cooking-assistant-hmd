@@ -13,14 +13,27 @@ If you want to use a GPU for training you can install GPU support
 conda install cudatoolkit=11.2 cudnn=8.1.0
 ```
 
-# Training and running the assistant
+# Running the trained assistant
 
 Startup the action server
 ```
 rasa run actions
 ```
 
-Train the models and run the assistant
+Run the assistant in the terminal
+
+```
+rasa shell
+```
+
+# Training the model from scratch
+
+Startup the action server
+```
+rasa run actions
+```
+
+Train the model and run the assistant
 
 ```
 rasa train && rasa shell
