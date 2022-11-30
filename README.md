@@ -20,7 +20,7 @@ Startup the action server
 rasa run actions
 ```
 
-Run the assistant in the terminal
+Run the assistant in the terminal (in a separate terminal)
 
 ```
 rasa shell
@@ -33,7 +33,7 @@ Startup the action server
 rasa run actions
 ```
 
-Train the model and run the assistant
+Train the model and run the assistant (in a separate terminal)
 
 ```
 rasa train && rasa shell
