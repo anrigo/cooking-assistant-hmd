@@ -3,6 +3,7 @@ Create the environment
 
 ```
 conda env create -f hmd-env.yml
+conda activate hmd
 ```
 
 If you want to use a GPU for training you can install GPU support
