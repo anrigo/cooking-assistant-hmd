@@ -22,7 +22,7 @@ Assuming you already have python 3.8 (required) installed:
 
 
 Create the environment and activate it
-```
+```bash
 python3.8 -m venv env
 source env/bin/activate
 ```
@@ -39,9 +39,14 @@ Startup the action server
 rasa run actions
 ```
 
-Run the assistant in the terminal (in a separate terminal)
+Run the assistant in a separate terminal
 
-```
+```bash
+# activate the environment again
+conda activate hmd
+# or if you didn't use conda:
+# source env/bin/activate
+
 rasa shell
 ```
 
@@ -52,8 +57,13 @@ Startup the action server
 rasa run actions
 ```
 
-Train the model and run the assistant (in a separate terminal)
+Train the model and run the assistant in a separate terminal
 
-```
+```bash
+# activate the environment again
+conda activate hmd
+# or if you didn't use conda:
+# source env/bin/activate
+
 rasa train && rasa shell
 ```
