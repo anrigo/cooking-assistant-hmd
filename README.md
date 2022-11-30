@@ -1,3 +1,6 @@
+# What is this
+This is a conversational agent built with the Rasa framework, designed to help the user follow a recipe step by step and manage a shopping list.
+
 # Setup
 Create the environment
 
