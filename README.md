@@ -13,6 +13,21 @@ If you want to use a GPU for training you can install GPU support
 conda install cudatoolkit=11.2 cudnn=8.1.0
 ```
 
+## If you don't have conda
+Assuming you already have python 3.8 (required) installed:
+
+
+Create the environment and activate it
+```
+python3.8 -m venv env
+source env/bin/activate
+```
+
+Install the dependencies
+```
+python -m pip install -r requirements.txt
+```
+
 # Running the trained assistant
 
 Startup the action server
