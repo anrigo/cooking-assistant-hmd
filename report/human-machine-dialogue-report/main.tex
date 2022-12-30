@@ -261,6 +261,7 @@ Additionally, Rasa tests the assistant with test stories and computes the accura
 Both accuracies are 1, as all test stories are completed correctly.
 As can be seen from the evaluation results, the assistant performs fairly well. However it's worth noting that the assistant was both trained and evaluated on conversations written by me, not on real conversations collected from human subjects.
 Since I knew how the assistant was supposed to work while I was writing training and test stories, the evaluation is inherently biased.
+Additionally, although the model achieves good scores, from the confidence distributions of the three NLU tasks, shown in figures \ref{fig:intent-hist}, \ref{fig:ents-hist}, and \ref{fig:resp-sel-hist}, can be observed that the system does some mistakes with high confidence. This means that the NLU data should be improved and expanded to reduce the mistakes the system does.
 
 \begin{table}[ht]
     \centering
@@ -312,7 +313,7 @@ It also doesn't perform well in the chitchat task but that's to be expected sinc
         \textbf{Question}                                                           & \textbf{Rate (0 to 10)} \\ \midrule
         Rate the system's ability\\ to help you follow a recipe                     & 8                       \\
         Rate the system's ability\\ to help you manage a shopping list              & 8,34                    \\
-        Rate the system's ability\\ to do chitchat (smalltalk) conversation         & 5,84                    \\
+        Rate the system's ability\\ to do chitchat conversation                     & 5,84                    \\
         Rate how close is this\\ conversation to a conversation with a human        & 6,84                    \\
         Rate the speed of the system\\ in solving the task in comparison to a human & 8                       \\
         Rate the system's ability to understand you                                 & 6,5                     \\
@@ -359,6 +360,27 @@ It could also be possible to employ pre-trained components in the NLU pipeline, 
     \includegraphics[width=\textwidth]{figures/response\_selection\_confusion\_matrix.png}
     \caption{Response selection (chitchat) confusion matrix}
     \label{fig:resp-sel-conf-mat}
+\end{figure}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=\textwidth]{figures/intent\_histogram.png}
+    \caption{Intent prediction confidence histogram}
+    \label{fig:intent-hist}
+\end{figure}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=\textwidth]{figures/DIETClassifier_histogram.png}
+    \caption{Entity prediction confidence histogram}
+    \label{fig:ents-hist}
+\end{figure}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=\textwidth]{figures/response_selection_histogram.png}
+    \caption{Response selection (chitchat) confidence histogram}
+    \label{fig:resp-sel-hist}
 \end{figure}
 
 
