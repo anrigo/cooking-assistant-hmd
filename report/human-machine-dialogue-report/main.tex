@@ -383,6 +383,18 @@ It could also be possible to employ pre-trained components in the NLU pipeline, 
     \label{fig:resp-sel-hist}
 \end{figure}
 
+\clearpage
+\onecolumn
+\section*{Appendix}
+The slots that the systems makes use of are:
+\begin{itemize}
+    \item \textit{recipe\_key, num\_people, step\_idx}: These represent the current ongoing recipe, they are the current recipe, the number of people to cook for, and the current step
+    \item \textit{recipe, number}: These represent the recipe and the number of people that the user selects in a form. They will then be saved in \textit{recipe\_key} and \textit{num\_people} if the user confirms. The user confirmation is saved in \textit{confirm\_recipe\_form}. This means that the system can fill the slots with the user selection, but if the user doesn't confirm, the previously running recipe can continue as the new recipe didn't yet overwrite the old one.
+    \item \textit{number}: this represents the number of people to cook for, the amount of an ingredient to add to the shopping list, the page of the shopping list to visualize, and number of steps to skip or backtrack.
+    \textit{ingredient, unit}: The first represents an ingredient name when the user asks about an ingredient amount or wants to add it to the list. The second represents the measure unit of the amount, for example grams or kilos.
+\end{itemize}
+The entities are \textit{recipe, number, ingredient, unit} and they have the same meaning of the corresponding slots of the same name.
+
 
 % Can use something like this to put references on a page
 % by themselves when using endfloat and the captionsoff option.
